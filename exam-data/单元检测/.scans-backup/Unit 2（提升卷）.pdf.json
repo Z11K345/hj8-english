@@ -1,0 +1,503 @@
+{
+ "title": "Unit 2（提升卷）.pdf",
+ "cat": "单元检测",
+ "pages": 25,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "A．a",
+   "opts": [
+    "an",
+    "the",
+    "/"
+   ],
+   "answer": "C",
+   "expl": "：中国人的不吉利数字通常是4，因为它听起来像“死”。 a 一个，用于辅音音素前；an 一个，用于元音音素前；the 这个/那个；/不填。根据“word ‘death’” 可知，此处特指“死”这个字，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A．bad",
+   "opts": [
+    "badly",
+    "worse",
+    "the worst"
+   ],
+   "answer": "A",
+   "expl": "：14 比4 还差，因为它的发音。 bad 差的；badly 差地；worse 更差；the worst 更差。根据than 可知，此空应填比较级，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A．luck",
+   "opts": [
+    "lucky",
+    "luckily",
+    "luckiness"
+   ],
+   "answer": "B",
+   "expl": "：相反，9 对中国人来说是一个幸运数字。 luck 幸运，名词；lucky 幸运的，形容词；luckily 幸运地，副词；luckiness 幸运，名词。此空修饰 名词number，应填形容词，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "A．good",
+   "opts": [
+    "well",
+    "better",
+    "the best"
+   ],
+   "answer": "A",
+   "expl": "：8 和18 一样好，因为它们听起来像“富有”和“一定富有”。 good 好的；well 好地；better 更好；the best 最好。as…as 中间接形容词或副词原级，is 后接形容词 作表语，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "A．study",
+   "opts": [
+    "studied",
+    "will study",
+    "have studied"
+   ],
+   "answer": "D",
+   "expl": "：我在欧洲学习了很长一段时间，我发现在许多西方国家，人们不喜欢13 这个数字。 study 动词原形；studied 动词过去式；will study 一般将来时；have studied 现在完成时。根据“for a long time”可知，一段时间要与现在完成时连用，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A．This",
+   "opts": [
+    "It",
+    "That",
+    "They"
+   ],
+   "answer": "B",
+   "expl": "：我花了很多年才找到原因。 This 这个；It 它；That 那个；They 他们。固定句式：It takes/took sb+一段时间+to do sth，表示“某 人花费时间做某事”，it 作形式主语，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "A．is",
+   "opts": [
+    "was",
+    "are",
+    "were"
+   ],
+   "answer": "D",
+   "expl": "：直到我的一个外国朋友告诉我，在耶稣基督的最后晚餐上有13 个人，然后他被杀了。 is 主语是单数形式，一般现在时；was 主语是I 或单数形式，一般过去时；are 主语是you 或复数形 式；were 主语是you 或复数形式，一般过去时。根据was 可知，此句是一般过去时，主语13 people 是复数形式，应填were，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "A．when",
+   "opts": [
+    "how",
+    "why",
+    "what"
+   ],
+   "answer": "C",
+   "expl": "：这就是为什么它是一个不吉利的数字。 when 何时；how 怎样；why 为什么；what 什么。根据“took me years to look for the reason”及“That’s…it is an unlucky number.”可知，解释这就是为什么它是一个不吉利的数字，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A．use",
+   "opts": [
+    "used",
+    "using",
+    "to use"
+   ],
+   "answer": "D",
+   "expl": "：他们在很多方面都尽量不使用这个号码。 use 动词原形；used 动词原形；using 动名词；to use 动词不定式。根据“try not … this number”可知， 这个数字不吉利，所以尽量不使用这个号码，try not to do sth“尽量不做某事”，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A．if",
+   "opts": [
+    "because",
+    "though",
+    "unless"
+   ],
+   "answer": "A",
+   "expl": "：例如，如果你进电梯，你不会在里面看到数字13。 if 如果；because 因为；though 尽管；unless 除非。“you go into a lift”是“you will not see the number 13 in it”的肯定条件，用if 引导条件状语从句，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "A．ever",
+   "opts": [
+    "never",
+    "also",
+    "already"
+   ],
+   "answer": "C",
+   "expl": "：许多人还认为十三号星期五是一个非常不吉利的日子。 ever 曾经；never 从不；also 也；already 已经。根据“you go into a lift, you will not see the number 13 in it.”及“Many people… believe Friday the thirteenth is a very unlucky day”可知，还认为十三号星期五是 一个非常不吉利的日子，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "A．four",
+   "opts": [
+    "the four",
+    "fourth",
+    "the fourth"
+   ],
+   "answer": "D",
+   "expl": "：它通常是十一月的第四个星期五。 four 四个；the four 错误表达；fourth 第四，序数词；the fourth 第四，序数词。根据“Friday in November” 可知，此处表示十一月的第四个星期五，用序数词表示顺序，且序数词前要加the，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "A．on",
+   "opts": [
+    "at",
+    "in",
+    "with"
+   ],
+   "answer": "A",
+   "expl": "：他们在那天非常小心，比如开车很慢。 on 后接具体一天；at 后接具体时刻；in 后接某年某月某季节；with 和。“that day”是具体的一天， 故选A。",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "A．any",
+   "opts": [
+    "some",
+    "each",
+    "every"
+   ],
+   "answer": "B",
+   "expl": "：了解人们喜欢或不喜欢某些数字是很有趣的。 any 任何；some 一些；each 每一个；every 每一个。此空修饰复数名词numbers，排除C 和D 选项。 此句是肯定句，应填some，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "A．couldn’t",
+   "opts": [
+    "shouldn’t",
+    "mustn’t",
+    "wouldn’t"
+   ],
+   "answer": "B",
+   "expl": "：然而，我们不应该把它当回事。 couldn’t 不可以；shouldn’t 不应该；mustn’t 禁止；wouldn’t 将不。根据“As long as the number is useful, it is a good number.”可知，不应该把这个当回事，这是一个建议，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 16,
+   "stem": "A．and",
+   "opts": [
+    "so",
+    "but",
+    "or"
+   ],
+   "answer": "C",
+   "expl": "：但他不知道他需要多少砖。 and 和；so 因此；but 但是；or 或者。根据“he didn’t know how many bricks(砖) he needed”可知，此 句与前一句构成转折关系，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 17,
+   "stem": "A．reason",
+   "opts": [
+    "problem",
+    "answer",
+    "man"
+   ],
+   "answer": "C",
+   "expl": "：他知道Yi 可以帮他找到答案。 reason 理由；problem 问题；answer 回答；man 人。根据“he didn’t know how many bricks (砖) he needed” 及“could help him find the”可知，可以帮他找到答案，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 18,
+   "stem": "A．sick",
+   "opts": [
+    "wrong",
+    "careful",
+    "lucky"
+   ],
+   "answer": "B",
+   "expl": "：说到数学，我从不出错！ sick 虚弱的；wrong 错误的；careful 仔细的；lucky 幸运的。根据“He was very good at math”可知， 擅长数学，认为从不会出错，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 19,
+   "stem": "A．my",
+   "opts": [
+    "your",
+    "his",
+    "her"
+   ],
+   "answer": "A",
+   "expl": "：如果你是对的，你可以住在我的宫殿里。 my 我的；your 你的；his 他的；her 她的。根据“The emperor then made a deal with Yi”可知，这是国 王跟Yi 的交易，所以此处指住在“我的”宫殿，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 20,
+   "stem": "A．started",
+   "opts": [
+    "reached",
+    "forgot",
+    "finished"
+   ],
+   "answer": "D",
+   "expl": "：当他们完成时，正好有99999 块砖。",
+   "_dup": false
+  },
+  {
+   "no": 21,
+   "stem": "A．painted",
+   "opts": [
+    "built",
+    "cleaned",
+    "pushed"
+   ],
+   "answer": "B",
+   "expl": "：Yi 和其他工人随后建造了城墙。 painted 绘画；built 建立；cleaned 清理；pushed 推动。根据“finished building the wall”可知，开始建 造长城，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 22,
+   "stem": "A．suddenly",
+   "opts": [
+    "certainly",
+    "finally",
+    "comfortably"
+   ],
+   "answer": "C",
+   "expl": "：当他们终于把墙建好时，只剩下一块砖了。 suddenly 突然；certainly 当然；finally 最终；comfortably 舒服地。根据“finished building the wall, there was one brick left”可知，最终建完之后发现还剩一块砖，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 23,
+   "stem": "A．move",
+   "opts": [
+    "sweep",
+    "hang",
+    "touch"
+   ],
+   "answer": "A",
+   "expl": "：如果你移动它，整堵墙就会倒塌！ move 移动；sweep 打扫；hang 悬挂；touch 触摸。根据“the whole wall will fall down”及“Move it”可 知，如果移动这块砖，城墙就会倒塌，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 24,
+   "stem": "A．glad",
+   "opts": [
+    "excited",
+    "surprised",
+    "afraid"
+   ],
+   "answer": "D",
+   "expl": "：皇帝很害怕城墙会倒塌。 glad 开心的；excited 兴奋的；surprised 惊讶的；afraid 害怕的。根据“The emperor was…that the wall would fall”可知，因为一块砖整个城墙就会倒塌，这令他感到害怕，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 25,
+   "stem": "A．diary",
+   "opts": [
+    "promise",
+    "dream",
+    "opinion"
+   ],
+   "answer": "B",
+   "expl": "：然后他遵守了他的诺言。 diary 日记；promise 承诺；dream 梦想；opinion 意见。根据“He invited Yi to live in his palace”可知， 实现了自己的诺言，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 26,
+   "stem": "What’s the meaning of “run” in Paragraph 1?",
+   "opts": [
+    "奔跑",
+    "行使",
+    "参赛",
+    "经营"
+   ],
+   "answer": "D",
+   "expl": "猜测题。根据“he had to drop out when he finished secondary school and help his parents to run the store.”可知，帮助父母经营这个商店，所以run 表示“经营”。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 27,
+   "stem": "Why did Hua Luogeng leave school when he was young?",
+   "opts": [
+    "Because he didn’t like studying.",
+    "Because he had to help his parents.",
+    "Because he had received enough education.",
+    "Because he couldn’t afford to go to school."
+   ],
+   "answer": "D",
+   "expl": "理解题。根据“However, his family was poor, so he had to drop out when he finished secondary school”可知，华罗庚离开学校的原因是他无法承担去学校的费用。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 28,
+   "stem": "How does the text show us that Hua Luogeng loved maths?",
+   "opts": [
+    "By offering ideas.",
+    "By asking questions.",
+    "By giving an example.",
+    "By listing numbers."
+   ],
+   "answer": "C",
+   "expl": "判断题。根据“One day, a lady came to the store to buy something. Hua Luogeng lost himself in a maths problem and he didn’t pay attention to the customer.”及“The lady was moved and returned it to him.”可推知，文章举例一次华罗庚沉迷在数学中，导致给一位顾客弄错价格，从而证明华罗庚热 爱数学。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 29,
+   "stem": "Which of the following is the right order according to the text?a. Hua Luogeng quickly wrapped the thing up with the draft paper.b. Hua Luogeng gave all his attention to a maths problem.c. The lady was moyed and returned the draft paper to him.d. Hua Luogeng realized he used his dralt paper to wrap up the thing.",
+   "opts": [
+    "a-b-c-d",
+    "b-a-d-c",
+    "b-c-a-d",
+    "a-c-d-b"
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“Hua Luogeng lost himself in a maths problem”可知，b 项“华罗庚全神贯注于 一个数学问题。”为顺序1；根据“Then he quickly wrapped (包裹) the thing up…”可知，a 项“华罗庚 迅速用草稿纸把东西包起来。”为顺序2；根据“He realized that the piece of paper he just used for wrapping was his draft paper.”可知，d 项“华罗庚意识到他用草稿纸把东西包起来了。”为顺序3；根 据“The lady was moved and returned it to him.”可知，c 项“这位女士很感动，并把草稿纸还给了他。” 为顺序4，因而正确的顺序为：b-a-d-c。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 30,
+   "stem": "What can we learn from the text?",
+   "opts": [
+    "Success comes easy.",
+    "One is never too old to learn.",
+    "Behind bad luck comes good luck.",
+    "Nothing is impossible for a willing heart."
+   ],
+   "answer": "D",
+   "expl": "大意题。通读全文，通过讲述华罗庚热衷于数学学习，最后通过自己努力为中国数学发展 做出了巨大的贡献，而且影响了很多中国人，从而告诉我们：只要有决心，没有什么是不可能的。 故选D。",
+   "_dup": false
+  },
+  {
+   "no": 31,
+   "stem": "How does the passage start?",
+   "opts": [
+    "By listing facts.",
+    "By giving examples.",
+    "By asking questions.",
+    "By using pictures."
+   ],
+   "answer": "C",
+   "expl": "理解题。根据“Can you say the meaning of “Zero”? Can you do addition and subtraction? Most people can. But do you know bees can do these things too?”可知，文章是通过问问题的方式开始的。 故选C。",
+   "_dup": false
+  },
+  {
+   "no": 32,
+   "stem": "Which of the following card should the second group of bees fly to?",
+   "opts": [
+    "①④",
+    "②③",
+    "①②",
+    "③④"
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“the second group to choose even numbers”可知，第二组选择偶数，题干中图 ②数字2 为偶数，图③数字8 为偶数，所以②③符合原文。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 33,
+   "stem": "Which of the following is TRUE according to the passage?",
+   "opts": [
+    "Our brains are 8,600 times bigger than bees.",
+    "Bees like bitter water rather than sugar water.",
+    "After training, bees can learn even numbers more quickly than people.",
+    "After training, bees can know the difference between even numbers and odd numbers."
+   ],
+   "answer": "D",
+   "expl": "理解题。根据“After some training, they can know the difference between even numbers and odd numbers.”可知，经过训练蜜蜂可以知道偶数和奇数之间的区别。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 34,
+   "stem": "What can we learn from the last paragraph?",
+   "opts": [
+    "Bees have a great ability to learn numbers.",
+    "Bees like odd numbers better than even numbers.",
+    "Scientists know how bees learn numbers.",
+    "Scientists know why bees can tell different numbers."
+   ],
+   "answer": "A",
+   "expl": "判断题。根据最后一段内容可知，蜜蜂的大脑比我们小约86000 倍，却能这么快学会数 字，可见其有超强的数学能力。选项A“蜜蜂具有很强的学习数字的能力”符合原文内容。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 35,
+   "stem": "Where can we read this passage in the newspaper?",
+   "opts": [
+    "Animal World.",
+    "Sports Life.",
+    "Festival Week.",
+    "Beautiful Cities."
+   ],
+   "answer": "A",
+   "expl": "判断题。根据本文所讲述的蜜蜂经过训练后可以学会数字并有很强的数学能力的内容。我 们可以在报纸的动物世界部分读到这篇文章。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 36,
+   "stem": "If the ratio of a thing is around 0.618, ________.",
+   "opts": [
+    "it is a golden object",
+    "it only happens in human bodies",
+    "it should be something used for math study",
+    "it might bring people a sense of beauty"
+   ],
+   "answer": "D",
+   "expl": "理解题。根据“The ratio (比例) of these two numbers is always around 0.618. This is the golden ratio, which can be seen everywhere, like in nature, music and paintings.”可知，如果一个事物的比例大 约是0.618，那么它可能是黄金比例，这种比例在自然、音乐和绘画中随处可见，能给人带来美感。 故选D。",
+   "_dup": false
+  },
+  {
+   "no": 37,
+   "stem": "Why does the writer mention Li Bai and his poems in the passage?",
+   "opts": [
+    "To introduce the topic.",
+    "To support his opinion.",
+    "To share the beauty of Li Bai’s poems.D．To offer advice on learning math."
+   ],
+   "answer": "B",
+   "expl": "判断题。根据“In Chinese poems, we can also see the beauty of numbers. As Li Bai wrote, ‘My skiff (小船) has left ten thousand mountains far away’, ‘A thousand miles in one day’—all these numbers show how fast Li Bai traveled and how happy he felt.”可知，作者提到李白和他的诗是为了支持他的观 点，即数字中隐藏着美。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 38,
+   "stem": "What does a sine curve look like?",
+   "opts": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": "A",
+   "expl": "理解题。根据“ ‘Sine curves’ are beautiful. They go towards the two opposite directions on and on without ever ending. When you look at them, you may feel like standing by the sea and watching the waves slowly moving.”可知，正弦曲线是美丽的，它们朝着两个相反的方向不断延伸，永无止境。 当你看着它们时，你可能会觉得自己站在海边，看着海浪慢慢移动。因此，正弦曲线的图像应该是 像海浪一样起伏的，选项A 的图像最符合描述。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 39,
+   "stem": "The underlined word “dashing” probably means ________.",
+   "opts": [
+    "流淌",
+    "跳跃",
+    "猛冲",
+    "闪烁"
+   ],
+   "answer": "C",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 40,
+   "stem": "What is the passage mainly about?",
+   "opts": [
+    "Why math is beautiful and fun.",
+    "Why math is difficult and complex.",
+    "How we can learn math in a right way.",
+    "How math helps us live a better life."
+   ],
+   "answer": "A",
+   "expl": "大意题。根据文章内容可知，本文主要讲述了数学中的美，包括数字的美、曲线的美和公 式的美，以及数学如何带来乐趣。因此，文章的主要内容是为什么数学是美丽和有趣的。故选A。",
+   "_dup": false
+  }
+ ],
+ "matched": 40,
+ "total": 40
+}

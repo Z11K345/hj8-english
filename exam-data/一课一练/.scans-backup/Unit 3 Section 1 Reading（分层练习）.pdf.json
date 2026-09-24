@@ -1,0 +1,541 @@
+{
+ "title": "Unit 3 Section 1 Reading（分层练习）.pdf",
+ "cat": "一课一练",
+ "pages": 22,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "The meeting went ____ as we had planned. Everyone was satisfied with the result.",
+   "opts": [
+    "quickly",
+    "smoothly",
+    "hardly",
+    "heavily"
+   ],
+   "answer": "B",
+   "expl": "句意：会议如我们计划的那样顺利进行。每个人都对结果很满意。A. quickly 快速地；B. smoothly 顺利地；C. hardly 几乎不；D. heavily 大量地，猛烈地。根据“Everyone was satisfied with the result. ” 可知会议进行得顺利，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "Before you hand in your test paper, you'd better ___ your answers again to make sure there are no sillymistakes.",
+   "opts": [
+    "review",
+    "correct",
+    "check",
+    "match"
+   ],
+   "answer": "C",
+   "expl": "句意：在你交试卷之前，你最好再检查一下你的答案，以确保没有愚蠢的错误。A. review 复习；B. correct 改正；C. check 检查；D. match 匹配。交卷前是检查答案看有无错误，check 侧 重于检查以发现错误等，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "The ____ in this field gave us a very useful speech on how to improve our skills.",
+   "opts": [
+    "doctor",
+    "artist",
+    "expert",
+    "worker"
+   ],
+   "answer": "C",
+   "expl": "句意：这个领域的专家给我们做了一个关于如何提高我们技能的非常有用的演讲。A. doctor 医生；B. artist 艺术家；C. expert 专家；D. worker 工人。能做关于提高技能的有用演讲的应该是 领域内的专家，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "—The teacher ____ us not to swim in the river. It's dangerous.",
+   "opts": [
+    "hopes",
+    "warns",
+    "allows",
+    "encourages"
+   ],
+   "answer": "B",
+   "expl": "句意：—— 老师警告我们不要在河里游泳。很危险。—— 我们应该听从他的建议。A. hopes 希望；B. warns 警告；C. allows 允许；D. encourages 鼓励。根据“It's dangerous. ” 可知老师是警 告不要在河里游泳，warn sb. not to do sth. 警告某人不要做某事，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "The heavy rain caused a big ____ in the city. Many people lost their homes.",
+   "opts": [
+    "flood",
+    "snowstorm",
+    "earthquake",
+    "typhoon"
+   ],
+   "answer": "A",
+   "expl": "句意：大雨在城市里引起了一场大洪水。很多人失去了他们的家。A. flood 洪水；B. snowstorm 暴风雪；C. earthquake 地震；D. typhoon 台风。由“The heavy rain” 可知是大雨引发洪 水，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "—Can I pay for the shoes in cash?—Sorry, we only accept other forms of ____.",
+   "opts": [
+    "payment",
+    "pay",
+    "paying",
+    "pays"
+   ],
+   "answer": "A",
+   "expl": "句意：—— 我可以用现金支付这双鞋吗？—— 抱歉，我们只接受其他形式的支付。A. payment 支付，名词；B. pay 支付，动词或名词(工资的意思)；C. paying 是pay 的动名词形 式；D. pays 是pay 的第三人称单数形式。of 是介词，后接名词，这里指支付形式，用payment， 故选A。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "The ____ of this disease is really difficult. Many doctors are trying their best.",
+   "opts": [
+    "suggestion",
+    "discovery",
+    "treatment",
+    "research"
+   ],
+   "answer": "C",
+   "expl": "句意：这种疾病的治疗真的很困难。很多医生都在尽他们最大的努力。A. suggestion 建议； B. discovery 发现；C. treatment 治疗；D. research 研究。医生努力做的是疾病的治疗，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "—Sorry, I'm busy now. Can you leave a ____ for Tom?—Sure. Please tell him to call me back.",
+   "opts": [
+    "data",
+    "information",
+    "message",
+    "notice"
+   ],
+   "answer": "C",
+   "expl": "句意：—— 抱歉，我现在很忙。你能给汤姆留个口信吗？—— 当然。请告诉他给我回电 话。A. data 数据；B. information 信息(不可数)；C. message 消息，口信(可数)；D. notice 通 知。leave a message 留口信，是固定短语，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "—Can you help me ____ the computer to the Internet? I'm not good at it.—Sure. It's easy.",
+   "opts": [
+    "compare",
+    "connect",
+    "consider",
+    "control"
+   ],
+   "answer": "B",
+   "expl": "句意：—— 你能帮我把电脑连接到互联网上吗？我不擅长这个。—— 当然。很容易。A. compare 比较；B. connect 连接；C. consider 考虑；D. control 控制。connect…to…把…… 连接 到……，这里指把电脑连到互联网，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "The computer in our classroom ______ the Internet. It helps us a lot in our study.",
+   "opts": [
+    "is connected with",
+    "is connected to",
+    "is good at",
+    "is afraid of"
+   ],
+   "answer": "B",
+   "expl": "句意：我们教室里的电脑连接到了互联网。它在我们的学习中帮助很大。A. is connected with 与…… 有联系；B. is connected to 连接到；C. is good at 擅长；D. is afraid of 害怕。电脑是连接到 互联网，用is connected to，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "The box ______ books. You can see some of them on the floor.",
+   "opts": [
+    "is filled of",
+    "is full with",
+    "is full of",
+    "filled with"
+   ],
+   "answer": "C",
+   "expl": "句意：这个盒子装满了书。你可以看到一些在地板上。be full of = be filled with 表示“充 满，装满”，A 选项be filled of 表达错误，B 选项be full with 表达错误，D 选项filled with 是 过去分词短语，不能单独作谓语，这里需要谓语动词，所以用is full of，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "– What a careful boy you are!– Thank you. In fact, Tom does everything ________ than me.",
+   "opts": [
+    "more carefully",
+    "more careful",
+    "much careful",
+    "much carefully"
+   ],
+   "answer": "A",
+   "expl": "句意：——你真是个细心的孩子！——谢谢。事实上，汤姆所做的一切比我更仔细。用 副词修饰句中的does，故排除B/C；句中有比较连词than，因此用比较级。故选A。 三、根据首字母或者完成单词",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "A. a",
+   "opts": [
+    "an",
+    "the",
+    "/"
+   ],
+   "answer": "A",
+   "expl": "：现在，当你去某个购物中心时，你可以享受那里的免费Wi-Fi。 a 不定冠词表泛指，后接以辅音音素开头的单词；an 不定冠词表泛指，后接以元音音素开头的单词； the 定冠词表特指；/不填。此处泛指某个购物中心，certain 以辅音音素开头，其前用a。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A. Where",
+   "opts": [
+    "When",
+    "What",
+    "How"
+   ],
+   "answer": "B",
+   "expl": "：当你想坐出租车时，你可以用你的手机预订。 Where 在哪里；When 何时，当……时候；What 什么；How 如何。根据“you can book one with your phone”可知坐出租车时可以用手机预订，用When 引导时间状语从句。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A. see",
+   "opts": [
+    "sees",
+    "to see",
+    "be seen"
+   ],
+   "answer": "D",
+   "expl": "：事实上，所有这些都可以被视为智慧城市的基本组成部分。 see 动词原形；sees 动词第三人称单数形式；to see 动词不定式；be seen 被动语态。主语“all these” 与动词see 之间是动宾关系，此处是含有情态动词的被动语态，其结构为can be done。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "A. who",
+   "opts": [
+    "when",
+    "what",
+    "that"
+   ],
+   "answer": "D",
+   "expl": "：一般来说，智慧城市是一个城市使用数字技术，如互联网，以改善城市规划，节省资金 和资源，使我们的生活比以前更方便。 who 先行词指人；when 先行词指时间；what 不引导定语从句；that 先行词指物。根据“a city …uses digital technologies such as the Internet to improve city planning”可知先行词“a city”指物，用that 引导",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "A. convenient",
+   "opts": [
+    "more convenient",
+    "much convenient",
+    "convenience"
+   ],
+   "answer": "B",
+   "expl": "：一般来说，智慧城市是一个城市使用数字技术，如互联网，以改善城市规划，节省资金 和资源，使我们的生活比以前更方便。 convenient 形容词原级；more convenient 形容词比较级；much convenient 错误搭配；convenience 名词。根据“than before”可知用形容词比较级。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A. need",
+   "opts": [
+    "can",
+    "should",
+    "must"
+   ],
+   "answer": "B",
+   "expl": "：这里有一些很好的例子，我们可以从中学习。 need 需要；can 可以，能够；should 应该；must 必须。根据“great examples that we …learn from”可 知此处表示我们可以学习的好例子，用can。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "A. take",
+   "opts": [
+    "took",
+    "taking",
+    "to take"
+   ],
+   "answer": "D",
+   "expl": "：该城市使用智能水表代替传统水表。 take 动词原形；took 动词过去式；taking 动名词或现在分词；to take 动词不定式。use sth. to do sth. “使用某物做某事”。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "A. know",
+   "opts": [
+    "knew",
+    "knowing",
+    "to know"
+   ],
+   "answer": "A",
+   "expl": "：他们可以搜索水的浪费和渗漏，并发送数据让房主知道。 know 动词原形；knew 动词过去式；knowing 动名词或现在分词；to know 动词不定式。let sb. do sth. “让某人做某事”。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A. other",
+   "opts": [
+    "the others",
+    "others",
+    "another"
+   ],
+   "answer": "A",
+   "expl": "：同样的系统也用于其他城市资源，如电力和天然气。 other 其他的，后接名词复数；the others 剩余的全部人或物；others 其他人或物；another 另一。根 据“…city resources like electricity and natural gas”可知此处指其他的城市资源，空后是可数名词复数， 此处用other。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A. On",
+   "opts": [
+    "By",
+    "In",
+    "For"
+   ],
+   "answer": "C",
+   "expl": "：用这种方法，人们知道他们如何使用他们的资源，并乐于帮助减少浪费。 On 在……上；By 通过；In 用；For 为了。根据“people know …they use their resources and are glad to help reduce waste”可知此处指用这种方法人们能做到的事，in this way“用这种方法”。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "A. why",
+   "opts": [
+    "when",
+    "what",
+    "how"
+   ],
+   "answer": "D",
+   "expl": "_______________ 12. 一定的数量_______________ 【答案】1. in the future 2. bring big changes to 3. mobile payment 4. the way we study and shop 5. be connected to 6. take … for example 7. provide better treatment 8. be more eco-friendly 9. share data with each other 10. smart rubbish bins 11. according to 12. the number of 二、单项选择 1. The meeting went ____ as we had planned. Everyone was satisfied with the result. A. quickly B. smoothly C. hardly D. heavily 【答案】B 【解析】句意：会议如我们计划的那样顺利进行。每个人都对结果很满意。A. quickly 快速地；B. smoothly 顺利地；C. hardly 几乎不；D. heavily 大量地，猛烈地。根据“Everyone was satisfied with the result. ” 可知会议进行得顺利，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "A. quick",
+   "opts": [
+    "quicker",
+    "quickly",
+    "more quickly"
+   ],
+   "answer": "C",
+   "expl": "：如果人们把手机指向附近的公交车站，手机就会迅速显示出该车站的所有公交线路以及 到达时间。 quick 形容词原级；quicker 形容词比较级；quickly 副词原级；more quickly 副词比较级。此处用副 词修饰动词，语境中无对比，用副词原级。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "A. they",
+   "opts": [
+    "them",
+    "themselves",
+    "their"
+   ],
+   "answer": "D",
+   "expl": "：如果人们把手机指向附近的公交车站，手机就会迅速显示出该车站的所有公交线路以及 到达时间。 they 他们，人称代词主格；them 他们，人称代词宾格；themselves 他们自己，反身代词；their 他们",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "A. something",
+   "opts": [
+    "everything",
+    "anything",
+    "nothing"
+   ],
+   "answer": "B",
+   "expl": "：政府组织了一个研究团队，并提供了一款应用程序，可以收集几乎所有的数据：光线、 温度、汽车和人的运动。 something 某事，某物；everything 一切；anything 任何事物；nothing 没有什么。根据“light, temperature, and the movements of cars and people”可知几乎能收集一切数据。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "A. provide",
+   "opts": [
+    "provides",
+    "provided",
+    "will provide"
+   ],
+   "answer": "B",
+   "expl": "本文介绍了智慧城市的特点、发展史等等。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "A. villagers",
+   "opts": [
+    "tourists",
+    "businessmen",
+    "fishermen"
+   ],
+   "answer": "A",
+   "expl": "：在数字技术的帮助下，村民们过着更轻松、更幸福的生活。 villagers 村民们；tourists 游客们；businessmen 商人们；fishermen 渔民们。根据“Villages in China have enjoyed their development in a digital way in recent years. ”可知，此处是指村民们。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A. Designing",
+   "opts": [
+    "Building",
+    "Farming",
+    "Repairing"
+   ],
+   "answer": "C",
+   "expl": "：在过去，务农并非易事。 Designing 设计；Building 建造；Farming 务农；Repairing 修理。根据“Farmers worked hard all year round. ”可知，此处是指务农、种田，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A. grass",
+   "opts": [
+    "pet",
+    "animal",
+    "plant"
+   ],
+   "answer": "D",
+   "expl": "：与此同时，他们通常发现很难解决植物病害和害虫等问题。 grass 草；pet 宠物；animal 动物；plant 植物。根据“These machines help local farmers know when and … to fertilize and kill pests. ”可知，此处是指植物疾病。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A. business",
+   "opts": [
+    "company",
+    "community",
+    "culture"
+   ],
+   "answer": "A",
+   "expl": "：多亏了互联网，一种名为农村电子商务的新业务得以发展。 business 业务；company 公司；community 社区；culture 文化。根据“called rural e-commerce”和选项 可知，此处是指业务。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "A. hills",
+   "opts": [
+    "villages",
+    "provinces",
+    "cities"
+   ],
+   "answer": "D",
+   "expl": "：在过去，城市里的人们很难知道村民种了什么。 hills 山；villages 村庄；provinces 省；cities 城市。根据“ Selling fresh fruit and vegetables to cities is faster. ”和选项可知，此处是指城市里的人们。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "A. early",
+   "opts": [
+    "slowly",
+    "easily",
+    "luckily"
+   ],
+   "answer": "C",
+   "expl": "：现在，他们可以通过手机轻松购物。 early 早地；slowly 慢地；easily 容易地；luckily 幸运地。根据“over the phones”和选项可知，此处表 示通过手机轻松购物。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A. dreams of",
+   "opts": [
+    "looks through",
+    "turns into",
+    "arrives at"
+   ],
+   "answer": "C",
+   "expl": "：为了让更多的人了解它的文化，吸引更多的游客，它变成了一个“数字小镇”。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A. order",
+   "opts": [
+    "book",
+    "sell",
+    "offer"
+   ],
+   "answer": "B",
+   "expl": "本文主要讲述了数字化技术给农村生活带来的便利。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "How did Yang become famous at first?",
+   "opts": [
+    "By sharing articles on WeChat.",
+    "By playing the piano in a short video.",
+    "By giving online piano lessons."
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“Two and a half years ago, my son put a short video of me playing the piano at home on Douyin, and hours later it was played over 1 million times”可知，杨苏是通过一个弹钢琴的短 视频而走红的。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "How did the writer show not all old people get used to the digital world?",
+   "opts": [
+    "By telling a joke.",
+    "By using numbers.",
+    "By using an example."
+   ],
+   "answer": "C",
+   "expl": "判断题。根据“However, do other old people get used to the digital world like Yang? Ding Qiulin is a 73-year-old man from Hunan…Ding finds it hard to learn to use other apps. ”可知，作者通过丁秋林 的例子说明并非所有老年人都能适应数字化世界。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "Which of the following sentences can be put into▲?",
+   "opts": [
+    "In fact, many other old people have the same feeling as Ding.",
+    "Luckily, younger people are building a bridge between the digital world and the old.",
+    "However, many young people find it hard to teach the old to use the Internet."
+   ],
+   "answer": "B",
+   "expl": "判断题。上文举例说明了并非所有老年人都习惯了数字化世界；空后又讲了90 后志愿者罗 旭加入一个非营利组织去教老年人如何使用互联网，因此，空白处应体现年轻人对老年人数字化生 活的帮助，可推知，B 项符合。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "What did Luo Xu think of his work in the non-profit group?",
+   "opts": [
+    "Relaxing.",
+    "Meaningful.",
+    "Difficult."
+   ],
+   "answer": "B",
+   "expl": "本文是一篇记叙文。文章主要讲述了中国老年人如何适应数字化世界，并通过杨苏和丁秋 林的例子展示了不同老年人的数字化生活现状，以及年轻人罗旭帮助老年人学习使用互联网的故事。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "What tools do teachers use to make textbook pictures lively?",
+   "opts": [
+    "ChatGPT and DeepSeek.",
+    "Jimeng and Keling.",
+    "Photoshop and Illustrator.",
+    "WeChat and TikTok."
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“Using tools like Jimeng (即梦AI) and Keling (可灵AI), teachers can turn flat textbook pictures into lively characters. ”可知，教师使用的工具是即梦AI 和可灵AI。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "Why does Wu Boyu say “History isn’t just dates anymore”?",
+   "opts": [
+    "History books have colorful pictures now.",
+    "History exams became easier.",
+    "AI makes history about famous people.",
+    "AI helps students experience history vividly."
+   ],
+   "answer": "D",
+   "expl": "判断题。根据“In a history class about the Maya civilization (玛雅文明), students explore how climate change affected cities through AI-made videos. ”可推知，吴博宇说“历史不再只是日期了”是 因为在学习玛雅文明的历史课上，学生们通过人工智能制作的视频探索气候变化如何影响城市，人 工智能让学生们能够生动地体验历史，而不只是学习枯燥的日期。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "What does the flashlight example in Nanjing museum show?",
+   "opts": [
+    "AI makes art exhibitions brighter.",
+    "Technology connects traditional and modern culture.",
+    "Visitors prefer Impressionist paintings.",
+    "Flashlights are essential for museum tours."
+   ],
+   "answer": "B",
+   "expl": "判断题。根据“In Nanjing’s Stone Shadow Art Museum, AI turns ancient Chinese paintings into modern art styles. When visitors use a special flashlight, ink-and-wash mountains become colorful impressionist scenes. ”可知，在南京的石影艺术馆，人工智能将中国古代绘画转变为现代艺术风格， 当游客使用特殊手电筒时，水墨画的山变成了色彩斑斓的印象派场景，这种新旧的融合帮助我们更 好地理解文化，说明科技连接了传统和现代文化。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "What is the article mainly about?",
+   "opts": [
+    "Famous AI companies in China.",
+    "The history of digital textbooks.",
+    "Why museums need new technologies.",
+    "How AI makes learning interactive and evolving."
+   ],
+   "answer": "D",
+   "expl": "本文是一篇说明文，主要介绍了人工智能如何通过将教科书中的历史人物和艺术作品变得 生动，从而改变学习方式，使学习更具互动性和趣味性。文章还提到了人工智能在教育中的其他应 用以及潜在的问题。",
+   "_dup": false
+  }
+ ],
+ "matched": 43,
+ "total": 43
+}

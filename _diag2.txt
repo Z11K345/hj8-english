@@ -1,0 +1,70 @@
+======================================================================
+一课一练 | Unit 1 Section 2 Grammar（分层练习）.pdf
+qtext_len=11908 atext_len=20452
+CN_SEC in qtext=9  in atext=7
+CN_SEC atext headers: ['用some 或any 填空', '用复合不定代词填空', '根据括号中的提示翻译下列句子', '根据句意，从方框中选择合适的', '语法填空', '语法选择', '阅读理解']
+【答案】blocks=22
+  block[0] len=2 numnums=0 items=0
+     raw[:160]='B\n'
+  block[1] len=2 numnums=0 items=0
+     raw[:160]='C\n'
+  block[2] len=2 numnums=0 items=0
+     raw[:160]='A\n'
+qtext lines "N. letter" (cloze options?)=52
+qtext blank markers ___N___ =3
+======================================================================
+专项练习 | 【沪教】八上英语完形填空17篇.pdf
+qtext_len=32315 atext_len=59222
+CN_SEC in qtext=0  in atext=0
+CN_SEC atext headers: []
+【答案】blocks=17
+  block[0] len=51 numnums=10 items=10
+     raw[:160]='1. B\n2. A\n3. B\n4. B\n5. C\n6. A\n7. A\n8. C\n9. D\n10. C\n'
+  block[1] len=51 numnums=10 items=10
+     raw[:160]='1. B\n2. A\n3. D\n4. C\n5. A\n6. B\n7. C\n8. C\n9. B\n10. A\n'
+  block[2] len=51 numnums=10 items=10
+     raw[:160]='1. A\n2. B\n3. C\n4. D\n5. C\n6. B\n7. D\n8. A\n9. B\n10. D\n'
+qtext lines "N. letter" (cloze options?)=203
+qtext blank markers ___N___ =24
+======================================================================
+专项练习 | 【沪教】八上英语期末短文填空36篇.pdf
+qtext_len=44685 atext_len=62503
+CN_SEC in qtext=0  in atext=0
+CN_SEC atext headers: []
+【答案】blocks=36
+  block[0] len=1246 numnums=6 items=6
+     raw[:160]='1. foreign\n2. tour\n3. local\n4. introduce\n5. nervous\n6. experience\n02\nWe should be brave to show our worth\nDuring the Warring States Period (475-221 BC) differen'
+  block[1] len=1115 numnums=17 items=17
+     raw[:160]='46. beat\n47. doubt\n48. completely\n49. soldiers\n50. courage\n03\nYour memory matters a lot in life. Here are 1. m_________ to improve it.\nFirst, keep your brain 2.'
+  block[2] len=1335 numnums=17 items=17
+     raw[:160]='1. methods\n2. active\n3. foreign\n4. technique\n5. mental\n6. diet\n7. maintain\n8. ability\n9. regular\n10. stressed\n11. normal\n12. tends\n04\nTang Li, Li Chen and Zhou '
+qtext lines "N. letter" (cloze options?)=4
+qtext blank markers ___N___ =27
+======================================================================
+专项练习 | 【沪教】八上英语短文语法填空21篇.pdf
+qtext_len=26750 atext_len=47872
+CN_SEC in qtext=0  in atext=0
+CN_SEC atext headers: []
+【答案】blocks=21
+  block[0] len=90 numnums=10 items=10
+     raw[:160]='1．an\n2．but\n3．uncomfortable\n4．us\n5．cards\n6．quickly\n7．surprise\n8．to do\n9．for\n10．has enjoyed\n'
+  block[1] len=86 numnums=10 items=10
+     raw[:160]='1．first\n2．the\n3．invited\n4．of\n5．later\n6．surprised\n7．anything\n8．best\n9．twins\n10．However\n'
+  block[2] len=89 numnums=10 items=10
+     raw[:160]='1．to\n2．Although/Though\n3．first\n4．tried\n5．myself\n6．a\n7．dislike\n8．Slowly\n9．worst\n10．saying\n'
+qtext lines "N. letter" (cloze options?)=1
+qtext blank markers ___N___ =34
+======================================================================
+专项练习 | 【沪教】八上英语阅读还原五选五14篇.pdf
+qtext_len=19303 atext_len=28480
+CN_SEC in qtext=0  in atext=0
+CN_SEC atext headers: []
+【答案】blocks=14
+  block[0] len=25 numnums=5 items=5
+     raw[:160]='1. D\n2. B\n3. E\n4. A\n5. C\n'
+  block[1] len=25 numnums=5 items=5
+     raw[:160]='1. C\n2. E\n3. A\n4. B\n5. D\n'
+  block[2] len=25 numnums=5 items=5
+     raw[:160]='1. C\n2. D\n3. B\n4. E\n5. A\n'
+qtext lines "N. letter" (cloze options?)=0
+qtext blank markers ___N___ =12

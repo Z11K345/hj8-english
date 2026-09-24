@@ -1,0 +1,544 @@
+{
+ "title": "Unit 5 Section 1 Reading（分层练习）.pdf",
+ "cat": "一课一练",
+ "pages": 24,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "There is only ______water in the bottle.",
+   "opts": [
+    "bit",
+    "a bit of",
+    "few",
+    "a few of"
+   ],
+   "answer": "B",
+   "expl": "a bit of 修饰不可数名词。表示“一点",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "Mr. Brown will introduce us ______ western art next week.",
+   "opts": [
+    "to",
+    "from",
+    "on",
+    "in"
+   ],
+   "answer": "A",
+   "expl": "“introduce…to 使…初步了解。句意：布朗先生将下周介绍我们初步了解西方艺术。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "My pen-friend in America invited me to _____ his country.",
+   "opts": [
+    "come over to",
+    "say goodbye to",
+    "keep in touch with",
+    "look forward to"
+   ],
+   "answer": "A",
+   "expl": "A. come over to 来到 B. say goodbye to 向某人道别 C. keep in touch with 与…保持 联系 D. look forward to 期待…根据句意选A",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "What do you think of the party last night?It's _____. Everyone had a good time.",
+   "opts": [
+    "fantastic",
+    "nervous",
+    "dark",
+    "strict"
+   ],
+   "answer": "A",
+   "expl": "A. fantastic 极好的 B. nervous 紧张的 C. dark 黑暗的 D. strict 严格的",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "—Mrs. Zhang was sent to teach English in a poor mountain village last year.—She said she would never forget some pleasantwhile working there.",
+   "opts": [
+    "experiments",
+    "expressions",
+    "experiences",
+    "emotions"
+   ],
+   "answer": "C",
+   "expl": "句意：张太太去年被派到一个贫穷的山村教英语。-她说她永远不会忘记在那里工作时的 愉快经历。A. experiments 实验 B. expressions 表达，表情。 C. experiences 经历。这里可 数名词。D. emotions 情绪。通过句意，选C",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "—Have you finished your homework _______?—Yes, I have _______ finished it.",
+   "opts": [
+    "just; just",
+    "yet; just",
+    "just; yet",
+    "yet; yet"
+   ],
+   "answer": "B",
+   "expl": "句意：——你做完作业了吗？ — —是的，我刚做完。考查副词的词义辨析。根据题干： Have you finished your homework _______? ---Yes, I have finished it. ——你已经做完作业了 吧？——是的，我刚做完。考查固定用法：现在完成时中，already 和yet 都可以表示\"已经\"的意思。 两者区别主要如下：already 用于肯定句，放在句中或句尾。yet 用于否定句或疑问句中，放在句尾， 因此第一个空填yet，排除A/C；根据答语I have _______ finished it. 可知，第二个空用just。表示 “我刚做完。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "We plan to _______ the historic city this weekend and learn about its culture.",
+   "opts": [
+    "tour",
+    "travel",
+    "trip",
+    "voyage"
+   ],
+   "answer": "A",
+   "expl": "tour 作动词时，强调在某地进行观光、游览，符合参观历史名城并了解其文化的语境。 travel 是不及物动词，泛指旅行，不具体指向某一地点的游览；trip 是名词，不能直接作谓语； voyage 主要指航海、航行，与城市搭配不恰当。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "She felt _______ when she stood on the stage for the first time.",
+   "opts": [
+    "worried",
+    "anxious",
+    "afraid",
+    "nervous"
+   ],
+   "answer": "D",
+   "expl": "nervous 强调因紧张、不安而产生的情绪，常与特定场景(如登台、考试等)相关，句中 第一次站在舞台上的语境符合nervous 的用法。anxious 侧重焦虑，通常因担心未来的事情而不 安；afraid 意为害怕，强调对某事的恐惧；worried 意为担心，侧重对某人或某事的忧虑，均不 如nervous 贴合登台时的紧张这一语境。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "The _______ of this article is easy to understand, even for young students.",
+   "opts": [
+    "content",
+    "contest",
+    "context",
+    "contact"
+   ],
+   "answer": "A",
+   "expl": "“content” 意为“内容”，符合“这篇文章的内容即使对年轻学生来说也很容易理解” 的语 境。“contest” 意为“竞赛”；“context” 意为“上下文、语境”；“contact” 意为“联系”，这三个词与 “content” 拼写相近，但含义不同，均不符合句意，所以选A。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "Our teacher plans to _______ a new method of learning English in class.",
+   "opts": [
+    "introduce",
+    "explain",
+    "teach",
+    "show"
+   ],
+   "answer": "A",
+   "expl": "introduce 在此处意为引入、介绍(新事物)，句意为我们老师计划在课堂上引入一种 新的英语学习方法，强调首次提出新事物，符合语境。explain 意为解释，侧重说明已有事物的原 理；teach 意为教，侧重传授知识或技能；show 意为展示，侧重让他人看到某物，均不符合引 入新方法的含义，所以选A。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "Even though they live in different cities, they still _______ by calling each other every week.",
+   "opts": [
+    "keep in touch",
+    "keep in mind",
+    "keep up with",
+    "catch up with"
+   ],
+   "answer": "A",
+   "expl": "keep in touch 保持联系的含义，keep in mind 记在心上。keep up with 意为跟上、不落后 于；catch up with 意为赶上，均与联系无关，所以排除C、D，选A。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "The manager said he would meet us _______ instead of talking on the phone.",
+   "opts": [
+    "in time",
+    "in public",
+    "in person",
+    "in fact"
+   ],
+   "answer": "C",
+   "expl": "in person 意为亲自，强调本人直接做某事，符合句意经理说他会亲自见我们，而不是 在电话里说。in public 意为当众、公开地；in time 意为及时；in fact 意为事实上，均与语境不 符，所以选A。",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "They haven't decided where to go for the holiday _______.",
+   "opts": [
+    "so far",
+    "just now",
+    "at present",
+    "in the past"
+   ],
+   "answer": "A",
+   "expl": "so far 用于现在完成时的否定句中，意为到目前为止，符合句中到目前为止他们还没决 定去哪里度假的语境。just now 意为刚才，常与一般过去时连用；at present 意为目前，常与一 般现在时连用；in the past 意为在过去，常与一般过去时连用，均与句中的现在完成时不符，所 以选A。",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "During the summer vacation, my family visited several _______ in Xi'an, such as the TerracottaArmy and Dayan Tower.",
+   "opts": [
+    "places of interest",
+    "amusement parks",
+    "business districts",
+    "living areas"
+   ],
+   "answer": "A",
+   "expl": "places of interest 指的是具有游览价值的名胜之地，兵马俑和大雁塔都是西安著名的名胜 古迹，符合这一短语的含义。amusement parks 是游乐园，侧重娱乐设施；business districts 意为商 业区，是商业活动集中的地方；living areas 指生活区，是人们居住的区域，这三个选项都与句中 提到的景点不匹配，所以选A。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "They won't go to the party tonight, and we won't go _______.",
+   "opts": [
+    "also",
+    "too",
+    "as well",
+    "either"
+   ],
+   "answer": "D",
+   "expl": "either 专门用于否定句的末尾，表达也(不)的意思，此句是否定句，我们也不去用either 符合语法规则。also 用于肯定句中，位置在实义动词前；too 和as well 都用于肯定句末尾，不能 用于否定句，所以选either。 三、根据首字母或者完成单词",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "A. a",
+   "opts": [
+    "an",
+    "the",
+    "/"
+   ],
+   "answer": "B",
+   "expl": "：我现在正作为一名交换生在俄罗斯学习。 a 一个(表泛指，用于以辅音音素发音开头的单词前)；an 一个(表泛指，用于以元音音素发音开 头的单词前)；the 这(表特指)；/不填。根据“as…exchange student 可知，此处泛指一名交换生， 空后是以元音音素开头的单词exchange，所以空处应是an。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A. big",
+   "opts": [
+    "bigger",
+    "biggest",
+    "the biggest"
+   ],
+   "answer": "D",
+   "expl": "：其中一个最大的不同之处就是人们的生活方式。 big 大的(原级)；bigger 更大的(比较级)；biggest 最大的(最高级，前面应加the)；the biggest 最大的(最高级)。根据“One of…differences 可知，此处可用“one of+the+形容词最高级+名词复数， 表示“最……之一。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A. expect",
+   "opts": [
+    "expects",
+    "expected",
+    "am expecting"
+   ],
+   "answer": "C",
+   "expl": "：我想着尝试一下当地的食物。 expect 期待(原形)；expects 期待(三单形式)；expected 期待(过去式)；am expecting 正期待 着(现在进行时结构)。结合上文“One day, a Russian friend invited me to a well-known restaurant in Moscow. 和下文“After arriving there, I found nothing on the table but some small plates. ，可知此句应 用一般过去时，空处应用动词过去式expected。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "A. has",
+   "opts": [
+    "had",
+    "was",
+    "were"
+   ],
+   "answer": "D",
+   "expl": "：更让我惊讶的是，盘子上只有几片西红柿、坚果和几片洋葱。 has 有(三单形式)；had 有(过去式)；was 是(主语为单数)；were 是(主语是第二人称或复 数)。根据“there…only a few slices of tomatoes 可知，此处可用there be 句型，且就近的名词是复数， 空处应是be 动词were。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "A. Although",
+   "opts": [
+    "But",
+    "So",
+    "And"
+   ],
+   "answer": "A",
+   "expl": "：尽管菜肴很简单，但我们喝了很多，并且我能感受到他内心里的热情。 Although 尽管；But 但是；So 所以；And 并且。根据“…the dishes were simple, we drank a lot 可知， 前后句意存在让步关系，空处应是although，引导让步状语从句，表示尽管菜肴很简单，但也喝了 很多。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A. they",
+   "opts": [
+    "them",
+    "their",
+    "theirs"
+   ],
+   "answer": "B",
+   "expl": "：在中国，当我们邀请朋友或亲戚时，我们总是会给他们提供上一顿丰盛的晚餐，里面有 各种各样的菜肴。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "A. as many food as",
+   "opts": [
+    "so many food as",
+    "so much food as",
+    "as much food as"
+   ],
+   "answer": "D",
+   "expl": "：我们喜欢准备尽可能多的食物来表示我们的友好。 as many food as 错误用法，many 不能修饰不可数名词food；so many food as 错误用法，many 不能 修饰不可数名词food；so much food as 尽可能多的食物(so…as 用于否定句中)；as much food as 尽可能多的食物(as…as 用于肯定句或否定句中)。根据“We like to prepare…we can to show our friendliness. 可知，该句为肯定句，空处应是as much food as。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "A. Another",
+   "opts": [
+    "Other",
+    "The other",
+    "The others"
+   ],
+   "answer": "A",
+   "expl": "：另一个俄罗斯的习俗也让我大吃一惊。 Another 另一个(用于三者及以上)；Other 别的，另外的(后面常接名词复数)；The other 另一 个(两者中的另外一个)；The others 其余的全部。根据“…Russian custom also surprises me greatly. 可知，空后的Russian custom 为名词单数，且结合常识，俄罗斯的习俗应有不少(不至于少于三个)， 所以空处应是another，符合语境。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A. very",
+   "opts": [
+    "quite",
+    "so",
+    "such"
+   ],
+   "answer": "C",
+   "expl": "：正如我们所知，那里的冬天非常寒冷，以至于仅仅是外出都要花很大的勇气。 very 非常；quite 相当地；so 如此；such 这样地。根据“it is…cold in winter there that it takes a lot of courage to just go outside 可知，此处可用so…that…“太……以至于……。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A. swim",
+   "opts": [
+    "swam",
+    "to swim",
+    "swimming"
+   ],
+   "answer": "D",
+   "expl": "：然而，当冬天来时，俄罗斯人很喜欢游泳。 swim 游泳(原形)；swam 游泳(过去式)；to swim 游泳(不定式)；swimming 游泳(动名词/ 现在分词)。根据“Russians enjoy…可知，此处可用enjoy doing sth. “享受做某事，喜欢做某事，空 处应是动名词swimming。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "A. with",
+   "opts": [
+    "by",
+    "in",
+    "through"
+   ],
+   "answer": "A",
+   "expl": "：俄罗斯的孩子们在跳入水之前用雪来擦他们的身体。 with 用；by 被；in 在……里面；through 穿过。根据“Russian kids rub (揉擦) their bodies…snow 可知， 此处表示用雪来揉擦身体，空处应是with，符合语境。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "A. excited",
+   "opts": [
+    "excitedly",
+    "excite",
+    "excitement"
+   ],
+   "answer": "B",
+   "expl": "：水是冰冷的，但他们都在水里面玩得很兴奋！ excited 兴奋的(形容词)；excitedly 兴奋地(副词)；excite 使兴奋(动词)；excitement 兴奋(名 词)。根据“they all play…in it 可知，空处应填入副词excitedly，修饰动词play。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "A. enjoy",
+   "opts": [
+    "enjoyed",
+    "to enjoy",
+    "enjoying"
+   ],
+   "answer": "C",
+   "expl": "：因为我们真的很难像他们一样，如此享受在冰冷的水里玩耍。 enjoy 享受(原形)；enjoyed 享受(过去式)；to enjoy 享受(不定式)；enjoying 享受(现在分 词/动名词)。根据“it is really difficult for us…it 可知，此处可用“it is+形容词+for sb. to do sth. ，表 示“对某人而言，做某事是……的，空处应是不定式to enjoy。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "A. learn",
+   "opts": [
+    "learnt",
+    "will learn",
+    "have learnt"
+   ],
+   "answer": "D",
+   "expl": "：我已从这次交流访问中学习到了很多。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "A. How",
+   "opts": [
+    "How an",
+    "What",
+    "What an"
+   ],
+   "answer": "A",
+   "expl": "本文主要讲述了作者作为交换生在俄罗斯学习的经历，告诉了我们新的文化总是能让人保 持眼界和思维的开阔。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "A. left",
+   "opts": [
+    "started",
+    "joined",
+    "supported"
+   ],
+   "answer": "C",
+   "expl": "：那就是为什么我加入学校的书法社团。 left 离开；started 开始，创办；joined 加入；supported 支持。根据“ school’s calligraphy (书法) club 可知，这里指的是加入学校的书法社团。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A. brushes",
+   "opts": [
+    "pencils",
+    "scissors",
+    "winds"
+   ],
+   "answer": "A",
+   "expl": "：我被墨汁的清香和毛笔在纸上移动的轻柔声音所吸引。 brushes 毛笔；pencils 铅笔；scissors 剪刀；winds 风。根据下文的“ the brush, ink, paper, and ink stone. 可知，这里指的是毛笔在纸上移动的轻柔声音。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A. compared",
+   "opts": [
+    "introduced",
+    "separated",
+    "produced"
+   ],
+   "answer": "B",
+   "expl": "：李老师向我们介绍书法的四宝：笔、墨、纸、砚。 compared 比较；introduced 介绍；separated 分离；produced 生产。根据“Our teacher Mr. Li … the four important tools of calligraphy to us: the brush, ink, paper, and ink stone. 可知，这里指的是老师向我们 介绍书法的四宝。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "A. art",
+   "opts": [
+    "custom",
+    "method",
+    "value"
+   ],
+   "answer": "A",
+   "expl": "：这些不仅是工具，更是这一传统艺术的核心部分。 art 艺术；custom 习俗；method 方法；value 价值。根据“but the key parts of this traditional…可知， 书法是传统艺术的核心部分。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "A. quickly",
+   "opts": [
+    "widely",
+    "actively",
+    "smoothly"
+   ],
+   "answer": "D",
+   "expl": "：李老师展示如何正确握笔并让笔流畅地在纸上移动。 quickly 快速地；widely 广泛地；actively 积极地；smoothly 流畅地。根据“Mr. Li showed us how to hold the brush correctly and move it … across the paper. 可知，李老师在向我们展示如何正确的握笔，并 且让笔流畅地在纸上移动。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A. letters",
+   "opts": [
+    "characters",
+    "novels",
+    "paragraphs"
+   ],
+   "answer": "B",
+   "expl": "：他写的中文汉字像画一样美。 letters 字母；characters 汉字；novels 小说；paragraphs 段落。根据下文“My first characters were messy… 可知，这里指的是写的中国汉字。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A. classic",
+   "opts": [
+    "familiar",
+    "healthy",
+    "helpful"
+   ],
+   "answer": "D",
+   "expl": "：李老师耐心鼓励我并提供有帮助的指导。 classic 经典的；familiar 熟悉的；healthy 健康的；helpful 有帮助的。根据后文“Gradually, my handwriting improved. 可知，我的字迹进步了，说明是有帮助的指导。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A. explore",
+   "opts": [
+    "require",
+    "solve",
+    "afford"
+   ],
+   "answer": "A",
+   "expl": "本文是一篇记叙文。通过个人学习书法的经历，展现中国传统书法艺术的魅力，以及文化 体验如何帮助外国人深入理解中国文化。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "What made Emily want to learn traditional Chinese painting?",
+   "opts": [
+    "A class she took in Paris.",
+    "A book about Chinese history.",
+    "A trip to the Palace Museum.",
+    "A friend who learned Chinese painting."
+   ],
+   "answer": "C",
+   "expl": "理解题。根据“Her interest in this art form began during a cultural exchange trip to China. She visited the Palace Museum in Beijing. The beautiful landscapes and bright flowers painted with traditional brushes and ink (墨水) amazed her. This inspired (激励) her to learn more. 可知，Emily 学习 中国传统绘画的动机是因为她参观了故宫博物院。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "Which of the following shows the correct order of the story?①Emily completed a painting of a bamboo forest.②Emily joined a guohua class taught by Mr. Zhang.③Emily organized a small show at home to introduce guohua.④Emily shared her learning journey on social media to inspire others.",
+   "opts": [
+    "②→①→③→④",
+    "②→①→④→③",
+    "④→②→①→③",
+    "④→②→③→①"
+   ],
+   "answer": "A",
+   "expl": "理解题。根据“After coming back to Paris, Emily joined a guohua class taught by Mr. Zhang…After months of practice, Emily completed a painting of a bamboo forest 以及“She organized a small show at her home…Emily also began sharing her learning journey on social media. She posted videos and gave lessons online. 可知，正确顺序是：她加入了张老师教授的国画班→她完成了一幅 竹林画作→她在家里组织了一个小型展览介绍国画→她在社交媒体上分享学习经历以激励他人。故 选A。 3. 观点态度题。根据“Chinese paintings are like a window to another world. 可知，Emily 认为中国画 是通往另一个世界的窗口。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "What does Emily think Chinese paintings are like?",
+   "opts": [
+    "A difficult skill to learn.",
+    "A window to another world.",
+    "A way to make more friends.",
+    "A tool to teach painting lessons."
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“Of all the family members, I admire the father most. 可知，在所有的家庭成员 中。David 最钦佩父亲。“look up to 与“admire 同义。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "What is the best title (标题) for the text?",
+   "opts": [
+    "Exploring the History of Painting",
+    "Discovering Western Culture",
+    "Enjoying the Learning Process",
+    "Connecting Cultures Through Art"
+   ],
+   "answer": "D",
+   "expl": "本文是一篇记叙文。文章主要讲述了法国大学生Emily 通过一次文化交流活动对中国传统 绘画产生兴趣，并在巴黎跟随张老师学习国画，最终通过自己的努力和分享，促进了中法文化交流 的故事。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "From this passage, we know that David Black is from ________.",
+   "opts": [
+    "Britain",
+    "America",
+    "Japan"
+   ],
+   "answer": "A",
+   "expl": "本文是David 给Paul 写的一封信。讲述了自己在中国拉萨市的学生交流项目的寄宿家庭 中的情况。尤其详细讲了父亲对他的影响。",
+   "_dup": false
+  }
+ ],
+ "matched": 43,
+ "total": 43
+}

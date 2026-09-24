@@ -1,0 +1,61 @@
+{
+ "title": "Unit 4 Section 2 Grammar（分层练习）.pdf",
+ "cat": "一课一练",
+ "pages": 18,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "My sister is ________ than me.",
+   "opts": [
+    "tall",
+    "taller",
+    "tallest",
+    "the tallest"
+   ],
+   "answer": "B",
+   "expl": "1. 句意：我的妹妹比我更高。考查形容词比较级的用法。根据“than”可知用形容词比较 级，tall 的比较级是taller。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "Nothing is ______ than health. Please keep on taking exercise every day.",
+   "opts": [
+    "very important",
+    "as important as",
+    "more important",
+    "the most important"
+   ],
+   "answer": "C",
+   "expl": "本文主要讲述了14 岁学生施源获得专利的故事，并介绍了专利的作用和申请类型。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "Fast walking is becoming ________ according to the recent survey.",
+   "opts": [
+    "popular and popular",
+    "more popular and more popular",
+    "popularer and popularer",
+    "more and more popular"
+   ],
+   "answer": "C",
+   "expl": "本文是一篇记叙文，文章讲述了Clara 意外打碎两个玻璃花瓶后，用碎片发明了放大文字 的眼镜，这成为了帮助视力不佳的Mrs. Lombardi 阅读的有用工具",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "This is ________ book I have ever read.",
+   "opts": [
+    "interesting",
+    "more interesting",
+    "most interesting",
+    "the most interesting"
+   ],
+   "answer": "C",
+   "expl": "本文是一篇记叙文。文章主要讲述了克拉克先生的儿子迈克对电灯的发明产生了兴趣，通 过提问“为什么爱迪生的父亲没有发明电灯”，反驳了父亲“父亲总是比儿子懂得多”的观点，体 现了孩子的好奇心和独特的思维方式",
+   "_dup": false
+  }
+ ],
+ "matched": 4,
+ "total": 4
+}

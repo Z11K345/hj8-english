@@ -1,0 +1,108 @@
+<string>:11: SyntaxWarning: invalid escape sequence '\/'
+<string>:28: SyntaxWarning: invalid escape sequence '\/'
+--- files with 答案/answer/Answer in name ---
+build_answercard.py
+build_answers.py
+exam-data\单元检测\Unit 1（基础卷）.answers.json
+exam-data\单元检测\Unit 1（提升卷）.answers.json
+exam-data\单元检测\Unit 2（基础卷）.answers.json
+exam-data\单元检测\Unit 2（提升卷）.answers.json
+exam-data\单元检测\Unit 3（基础卷）.answers.json
+exam-data\单元检测\Unit 3（提升卷）.answers.json
+exam-data\单元检测\Unit 4（基础卷）.answers.json
+exam-data\单元检测\Unit 4（提升卷）.answers.json
+exam-data\单元检测\Unit 5（基础卷）.answers.json
+exam-data\单元检测\Unit 5（提升卷）.answers.json
+exam-data\单元检测\Unit 6（基础卷）.answers.json
+exam-data\单元检测\Unit 6（提升卷）.answers.json
+exam-data\单元检测\Unit 7（基础卷）.answers.json
+exam-data\单元检测\Unit 7（提升卷）.answers.json
+exam-data\单元检测\Unit 8（基础卷）.answers.json
+exam-data\单元检测\Unit 8（提升卷）.answers.json
+resources\一课一练\Unit 1 Section 1 Reading（解析版）.pdf
+resources\单元检测\Unit 1（基础卷）（解析版）.pdf
+resources\单元检测\Unit 1（提升卷）（解析版）.pdf
+resources\单元检测\Unit 2（基础卷）（解析版）.pdf
+resources\单元检测\Unit 2（提升卷）（解析版）.pdf
+resources\单元检测\Unit 3（基础卷）（解析版）.pdf
+resources\单元检测\Unit 3（提升卷）（解析版）.pdf
+resources\单元检测\Unit 4（基础卷）（解析版）.pdf
+resources\单元检测\Unit 4（提升卷）（解析版）.pdf
+resources\单元检测\Unit 5（基础卷）（解析版）.pdf
+resources\单元检测\Unit 5（提升卷）（解析版）.pdf
+resources\单元检测\Unit 6（基础卷）（解析版）.pdf
+resources\单元检测\Unit 6（提升卷）（解析版）.pdf
+resources\单元检测\Unit 7（基础卷）（解析版）.pdf
+resources\单元检测\Unit 7（提升卷）（解析版）.pdf
+resources\单元检测\Unit 8（基础卷）（解析版）.pdf
+resources\单元检测\Unit 8（提升卷）（解析版）.pdf
+resources\听力音频\Unit 1 Section 1-3 五 回答问题 听力音频.mp3
+resources\听力音频\Unit 1 Section 1-3 六 信息转述 听力音频.mp3
+resources\听力音频\Unit 1 Section 1-3 四 听选信息 听力音频.mp3
+resources\听力音频\Unit 2 Section 1-3 七 信息转述 听力音频.mp3
+resources\听力音频\Unit 2 Section 1-3 五 听选信息 听力音频.mp3
+resources\听力音频\Unit 2 Section 1-3 六 回答问题 听力音频.mp3
+resources\听力音频\Unit 3 Section 1-3 五 回答问题 听力音频.mp3
+resources\听力音频\Unit 3 Section 1-3 六 信息转述 听力音频.mp3
+resources\听力音频\Unit 3 Section 1-3 四 听选信息 听力音频.mp3
+resources\听力音频\Unit 5 Section 1-3 七 信息转述 听力音频.MP3
+resources\听力音频\Unit 5 Section 1-3 五 听选信息 听力音频.MP3
+resources\听力音频\Unit 5 Section 1-3 六 回答问题 听力音频.MP3
+resources\听力音频\Unit 6 Section 1-3 五 回答问题 听力音频.mp3
+resources\听力音频\Unit 6 Section 1-3 六 信息转述 听力音频.mp3
+resources\听力音频\Unit 6 Section 1-3 四 听选信息 听力音频.mp3
+resources\听力音频\Unit 7 Section 1-3 五 回答问题 听力音频.mp3
+resources\听力音频\Unit 7 Section 1-3 六 信息转述 听力音频.mp3
+resources\听力音频\Unit 7 Section 1-3 四 听选信息 听力音频.mp3
+resources\听力音频\Unit 8 Section 1-3 六 信息转述 听力音频.mp3
+resources\听力音频\Unit 8 Section 1-3 四 听选信息 听力音频.mp3
+
+--- manifest answer fields sample ---
+一课一练 papers 40 answers 0 answerPdf 1
+单元检测 papers 16 answers 16 answerPdf 16
+专项练习 papers 30 answers 0 answerPdf 0
+知识梳理 papers 15 answers 0 answerPdf 0
+知识点总结 papers 12 answers 0 answerPdf 0
+
+answers.json count: 16
+sample: exam-data\单元检测\Unit 1（基础卷）.answers.json
+{
+ "answers": {
+  "1": "B",
+  "2": "C",
+  "3": "B",
+  "4": "A",
+  "5": "B",
+  "6": "A",
+  "7": "C",
+  "8": "D",
+  "9": "A",
+  "10": "D",
+  "11": "B",
+  "12": "D",
+  "13": "A",
+  "14": "C",
+  "15": "C",
+  "16": "B",
+  "17": "C",
+  "18": "B",
+  "19": "D",
+  "20": "B",
+  "21": "B",
+  "22": "C",
+  "23": "C",
+  "24": "B",
+  "25": "D",
+  "26": "C",
+  "27": "C",
+  "28": "A",
+  "29": "A",
+  "30": "D",
+  "31": "A",
+  "32": "B",
+  "33": "B",
+  "34": "D",
+  "35": "C",
+  "36": "C",
+  "37": "A",
+  "38": "B",

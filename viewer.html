@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>在线看题 · 做笔记</title>
+<style>
+:root{ --bg:#f5f7fa; --card:#ffffff; --primary:#2b6cb0; --primary-soft:#ebf3fb;
+       --text:#1a202c; --muted:#66788a; --border:#e3e8ef; --warn:#b7791f; }
+*{box-sizing:border-box;}
+body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;}
+.top{position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--border);
+  padding:10px 16px;display:flex;align-items:center;gap:12px;z-index:5;}
+.top h1{margin:0;font-size:16px;font-weight:700;flex:1 1 auto;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.top button{border:none;background:var(--primary);color:#fff;border-radius:8px;
+  padding:8px 16px;font-size:14px;cursor:pointer;flex:0 0 auto;}
+.wrap{max-width:1000px;margin:0 auto;padding:14px 14px 30px;}
+.audio-zone{background:var(--primary-soft);border:1px solid var(--border);border-radius:10px;
+  padding:12px 14px;margin-bottom:14px;}
+.audio-zone .az-title{font-weight:700;color:var(--primary);font-size:14px;margin-bottom:8px;}
+.audio-item{margin:8px 0;}
+.audio-item .ai-label{font-size:13.5px;color:var(--text);margin-bottom:3px;}
+.audio-item audio{width:100%;}
+.pdf-frame{width:100%;height:78vh;border:1px solid var(--border);border-radius:10px;background:#fff;}
+.note-zone{margin-top:16px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;}
+.note-zone .nz-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.note-zone .nz-head b{font-size:15px;color:var(--primary);}
+.note-zone .nz-head .tip{font-size:12px;color:var(--muted);}
+.note-zone textarea{width:100%;min-height:160px;resize:vertical;border:1px solid var(--border);
+  border-radius:8px;padding:10px 12px;font-family:inherit;font-size:14.5px;line-height:1.6;}
+.note-zone .nz-btns{margin-top:10px;display:flex;gap:10px;}
+.note-zone .nz-btns button{border:none;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;}
+.note-zone .save{background:var(--primary);color:#fff;}
+.note-zone .clear{background:#eef2f7;color:var(--text);}
+.saved-flash{color:#2f855a;font-size:12px;margin-left:8px;opacity:0;transition:opacity .3s;}
+@media(max-width:760px){ .pdf-frame{height:65vh;} }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1 id="vt">在线看题</h1>
+  <button onclick="goBack()">返回</button>
+</div>
+<div class="wrap">
+  <div class="audio-zone" id="audioZone" style="display:none;">
+    <div class="az-title">🎧 听力音频（对应下方试卷题目，按顺序播放）</div>
+    <div id="audioList"></div>
+  </div>
+  <iframe class="pdf-frame" id="pdf" title="试卷"></iframe>
+  <div class="note-zone">
+    <div class="nz-head">
+      <b>✏️ 答题笔记</b>
+      <span class="tip">内容只存在本机浏览器，关掉页面不丢<span class="saved-flash" id="savedFlash">已保存</span></span>
+    </div>
+    <textarea id="note" placeholder="在这里写答案、草稿或标记，例如：一、1. ...&#10;（会自动保存在这台设备）"></textarea>
+    <div class="nz-btns">
+      <button class="save" onclick="saveNote(true)">保存</button>
+      <button class="clear" onclick="clearNote()">清空</button>
+    </div>
+  </div>
+</div>
+<script>
+function qs(name){ return new URLSearchParams(location.search).get(name); }
+function bname(p){ return decodeURIComponent(p.split('/').pop()); }
+// 从音频文件名提取组号+题型，如 "Unit 1 Section 1-3 四 听选信息 听力音频.mp3" -> "四 · 听选信息"
+function audioLabel(decodedPath){
+  let n = bname(decodedPath).replace(/\.mp3$/i,'').replace(/听力音频$/,'').trim();
+  n = n.replace(/^Unit\s*\d+\s*Section\s*1-3\s*/i,'').trim();
+  return n || '听力';
+}
+
+const file = qs('file');
+const title = qs('title') || '在线看题';
+const audioParam = qs('audio') || '';
+document.getElementById('vt').textContent = title;
+document.title = title + ' · 在线看题';
+if(file){ document.getElementById('pdf').src = file; }
+
+// 音频
+if(audioParam){
+  const zone = document.getElementById('audioZone');
+  const list = document.getElementById('audioList');
+  zone.style.display = 'block';
+  audioParam.split('|').forEach(function(u){
+    if(!u) return;
+    const decoded = decodeURIComponent(u);
+    const lab = audioLabel(decoded);
+    const item = document.createElement('div');
+    item.className = 'audio-item';
+    const l = document.createElement('div');
+    l.className = 'ai-label';
+    l.textContent = '▶ ' + lab;
+    const a = document.createElement('audio');
+    a.controls = true; a.preload = 'none'; a.src = decoded;
+    item.appendChild(l); item.appendChild(a);
+    list.appendChild(item);
+  });
+}
+
+// 笔记（按试卷路径存本地）
+const NOTE_KEY = 'note:' + (file || title);
+const ta = document.getElementById('note');
+ta.value = localStorage.getItem(NOTE_KEY) || '';
+let timer = null;
+ta.addEventListener('input', function(){
+  clearTimeout(timer);
+  timer = setTimeout(function(){ saveNote(false); }, 600);
+});
+function saveNote(manual){
+  localStorage.setItem(NOTE_KEY, ta.value);
+  const f = document.getElementById('savedFlash');
+  f.style.opacity = '1';
+  setTimeout(function(){ f.style.opacity = '0'; }, 1200);
+  if(manual){ /* 已在自动保存基础上提示 */ }
+}
+function clearNote(){
+  if(confirm('确定清空这份笔记？')){ ta.value=''; localStorage.removeItem(NOTE_KEY); }
+}
+function goBack(){ if(history.length>1){ history.back(); } else { window.close(); } }
+</script>
+</body>
+</html>

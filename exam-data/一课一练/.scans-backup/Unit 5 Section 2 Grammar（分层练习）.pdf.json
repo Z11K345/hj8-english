@@ -1,0 +1,462 @@
+{
+ "title": "Unit 5 Section 2 Grammar（分层练习）.pdf",
+ "cat": "一课一练",
+ "pages": 21,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "—Does Jack know the change of the meeting time?—Yes. I ________ him about it.",
+   "opts": [
+    "will tell",
+    "was telling",
+    "tell",
+    "have told"
+   ],
+   "answer": "D",
+   "expl": "句意：——Jack 知道会议时间改了吗？——知道。我已经告诉过他了。 考查现在完成时。根据答句“Yes”可知Jack 知道会议时间改了，说明“我”已经告诉过他了，句子应 用现在完成时。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "—Why not take a taxi home? It’s too far away from here.—Because I ________ all my money.",
+   "opts": [
+    "spend",
+    "have spent",
+    "was spending",
+    "am spending"
+   ],
+   "answer": "B",
+   "expl": "句意：——为什么不打车回家？这里离你家太远了。——因为我已经花光了所有的钱。 考查现在完成时。根据语境可知，回答者表示“已经花光钱”对现在造成的影响是“无法打车”，强调 过去动作对现在的影响，需用现在完成时(have spent)。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "I ________ in Xuzhou since I was born. I love Xuzhou!",
+   "opts": [
+    "am living",
+    "will live",
+    "was living",
+    "have lived"
+   ],
+   "answer": "D",
+   "expl": "句意：我从出生起就住在徐州。我爱徐州！",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "—I see you’re doing great in your studies lately!—Thanks. Our school ________ new online tools. They make learning more fun and interactive.",
+   "opts": [
+    "will introduce",
+    "has introduced",
+    "introduces",
+    "introduced"
+   ],
+   "answer": "B",
+   "expl": "句意：——我看你最近学习很好！——谢谢。我们学校引入了新的在线工具。它们使学 习更加有趣和互动。 考查时态。根据“I see you’re doing great in your studies lately!”可知，学校引入新工具的动作已经完 成，即工具已投入使用，且对现在造成了影响，应用现在完成时。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "Miss Gao isn’t here. She _______ to the bus station to meet Mr. Brown.",
+   "opts": [
+    "go",
+    "has gone",
+    "has been",
+    "would go"
+   ],
+   "answer": "B",
+   "expl": "”have been to” 去过某地(在说话的地方) have gone to 去了某地，(不再说话的地方) 所以本题用have gone to",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "Amon ____________ his ship in a big storm when a giant fish came out of the sea.",
+   "opts": [
+    "will sail",
+    "is sailing",
+    "was sailing",
+    "has sailed"
+   ],
+   "answer": "C",
+   "expl": "句意：阿蒙驾船在暴风雨中航行时，一条大鱼从海里游了出来。考查动词时态辨析。本句 是when 引导的时间状语从句，时态遵循主过从过；根据when a giant fish came out of the sea. 可知 遇到大雨时阿蒙正在航行，主句需用过去进行时，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "---Hurry up!---One moment. I ______ my e-mail and then I’m ready to go.",
+   "opts": [
+    "read",
+    "am reading",
+    "was reading",
+    "have read"
+   ],
+   "answer": "B",
+   "expl": "句意：——快点！——马上，我在读电子邮件，我准备走了。根据read 一般现在时态的 结构，am reading 现在进行时态的结构，was reading 过去进行时态的结构，have read 现在完成时 态的结构；根据One moment. 和then I’m ready to go. 可知是我正在读，现在进行时态；故选B。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "---I’ve never seen Mr. Taylor before.---Don’t worry. I ______ him to you before the meeting.",
+   "opts": [
+    "will introduce",
+    "introduced",
+    "have introduced",
+    "had introduced"
+   ],
+   "answer": "A",
+   "expl": "句意：——以前我从来没见过Taylor 先生。——不要担心，开会前我会把他介绍给你的。 根据will introduce 一般将来时态的结构，introduced 一般过去时态的结构，have introduced 现在完 成时态的结构，had introduced 过去完成时态的结构；根据Don’t worry. 和before the meeting. 可知 是将来时态；故选A。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "---Linda, Dad has finished his work and we ___________ to the gym to pick you up.---Thank you, Mum.",
+   "opts": [
+    "drive",
+    "drove",
+    "have driven",
+    "are driving"
+   ],
+   "answer": "D",
+   "expl": "句意：——Linda，爸爸下班了，我们就要开车去健身房接你。——谢谢你们，妈妈。考 查现在进行时。A. drive 驾驶、开车，动词原形；B. drove 过去式；C. have driven 现在完成时；D. are driving 现在进行时。根据Linda, Dad has finished his work and we _____ to the gym to pick you up. 可 知，前半句用的是现在完成时，表示动作发生在过去，对现在造成的影响，即爸爸的工作已完成， 那么现在的话就是要开车去接你，所以这里应该是“就要开车去接你”；drive 可以用现在进行时 形式表示将来。故答案选D。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "I ______ up at 6:30 every morning.",
+   "opts": [
+    "get",
+    "got",
+    "will get",
+    "gets"
+   ],
+   "answer": "A",
+   "expl": "句意：我每天早上6：30 起床。根据时间状语every morning 可以判断是一般现在时态， 主语为第一人称单数形式，所以选择动词原形。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "—Look! Someone ________ the lights.—Well, it wasn’t me. I didn’t do it.",
+   "opts": [
+    "turns off",
+    "is turning off",
+    "will turn off",
+    "has turned off"
+   ],
+   "answer": "D",
+   "expl": "句意：——看！有人把灯关了。——不是我，我没关。 考查时态。根据“it wasn’t me. I didn’t do it”可知是动作已经发生，现在的结果是灯灭了，强调过去 的动作对现在造成的影响，所以用现在完成时态，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "—Do you know if he_______ to play football with us?—I think he will come if he ______ free tomorrow.",
+   "opts": [
+    "comes; is",
+    "comes; will be",
+    "will come; is",
+    "will come; will be"
+   ],
+   "answer": "C",
+   "expl": "考查宾语从句和条件状语从句的时态。问句中if 引导的是宾语从句，由于主句为一般现 在时，宾语从句的时态根据实际情况确定，根据问句句意“你知道他是否要来和我们一起踢球？”",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "—Mum, I want to watch the news about our school. Change the channel, please!—What a pity! It is eight o’clock now. It___________ for a while.",
+   "opts": [
+    "has been over",
+    "was over",
+    "has finished",
+    "finished"
+   ],
+   "answer": "A",
+   "expl": "句意：——妈妈，我想看我们学校的新闻。请换频道！——真遗憾！现在是八点钟。它已 经结束一段时间了。 考查动词时态。has been over 已经结束了，现在完成时；was over 结束了，一般过去时；has finished 已经结束了，现在完成时；finished 结束，一般过去时。根据语境可知，学校新闻已经结束了，这 件事对“现在不能观看了”产生了影响，故应为现在完成时，故排除B、D 两项。另句中for a while 表示一段时间，与现在完成时连用时，应用延续性动词，而动词finish 为瞬时性动词，不能在现在 完成时中与一段时间连用，故排除C 项。be over 表示延续性动作，可在现在完成时中与时间段连 用，即has been over。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "— The room is very clean. Who __________?",
+   "opts": [
+    "cleaned",
+    "have cleaned",
+    "has cleaned",
+    "will clean"
+   ],
+   "answer": "C",
+   "expl": "现在完成时的基本用法：表示过去的动作对现在产生的结果或影响。“房间很干净，”这 是现在的结果。是由“clean”这个动作产生的。Clean 这个动作是过去发生的，但结果是现在房间 是干净的。所以要用现在完成时态。考查现在完成时最基本的定义。Who 做主语，用单数。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "Harry Potter is a very nice film. I__________ it twice.",
+   "opts": [
+    "will see",
+    "have seen",
+    "seen",
+    "see"
+   ],
+   "answer": "B",
+   "expl": "现在完成时的基本用法：表示过去的动作对现在产生的结果或影响。",
+   "_dup": false
+  },
+  {
+   "no": 16,
+   "stem": "— Has he______ used one?— No, he hasn’t. He has ______ used a mobile phone.",
+   "opts": [
+    "ever; ever",
+    "never; never",
+    "ever; never",
+    "never; ever"
+   ],
+   "answer": "C",
+   "expl": "ever 曾经，never 从不，常与现在完成时连用。",
+   "_dup": false
+  },
+  {
+   "no": 17,
+   "stem": "Yesterday Mom________ me some money to buy a dictionary.",
+   "opts": [
+    "gives",
+    "gave",
+    "has given",
+    "was giving"
+   ],
+   "answer": "B",
+   "expl": "句意：昨天妈妈给了我一些钱买字典。 考查时态。gives 给，动词三单；gave 给，过去式；has given 给，现在完成时；was giving 给，过 去进行时；根据句意理解及句中的时间yesterday 可知，动作是发生在过去的，所以应该用一般过 去时，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 18,
+   "stem": "---Have you finished your homework_______?---Yes，I have ______ finished it.Can I watch TV now, Mum?",
+   "opts": [
+    "already, already",
+    "yet, already",
+    "yet, yet",
+    "already, yet"
+   ],
+   "answer": "B",
+   "expl": "already 已经常用现在完成时态肯定句中。, yet 用于现在完成时态否定句与疑问句中。故 选B",
+   "_dup": false
+  },
+  {
+   "no": 19,
+   "stem": "—How long have you been in Qingdao?—_______ five years ago.",
+   "opts": [
+    "When",
+    "While",
+    "Since",
+    "For"
+   ],
+   "answer": "C",
+   "expl": "句意：——你在青岛多久了？——从五年前开始。 考查词汇辨析。When 当……时；While 当……时；Since 自从；For 达，计。how long 提问的问句 询问一段时间，用“for+时间段”或“since+时间点/从句/一段时间+ago”回答，“five years ago”是“一段 时间+ago”，用since。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 20,
+   "stem": "—Have you _________ visited the Great Wall?—No, _________.",
+   "opts": [
+    "already; ever",
+    "ever; never",
+    "never; ever",
+    "ever; yet"
+   ],
+   "answer": "B",
+   "expl": "句意：——你曾经参观过长城吗？——没有，从来没有。 考查副词辨析。ever 曾经，用于否定句和疑问句中，放句中；already 早已，已经，用于肯定句中； never 从不；yet 仍，还，用于否定句中，用于句末。因为上句为疑问句，故可排除A。又因为第二 个空前为“No”，可推测空后要表达从没去过，即用never。故选B。 三、用括号内所给单词的适当形式填空。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "A. little",
+   "opts": [
+    "a little",
+    "few",
+    "a few"
+   ],
+   "answer": "B",
+   "expl": "：她是一名来自伦敦的欧洲交换生。根据空后“European exchange student”可知，此处是指 一名欧洲交换生，应用不定冠词表泛指；“European”是以辅音音素开头的单词，应用a 修饰。故填 a。 2. 句意：自从她来到这里后，她改变了很多。根据“since she came here”可知，句子时态为现在完 成时，其结构为have/has done；主语为“She”，助动词应用has，动词change 的过去分词为changed。 故填has changed。 3. 句意：现在让我来给你大致介绍一下她的变化。根据空前“a general”可知，此处应用动词introduce 的名词形式introduction“介绍”，可数名词；前有不定冠词“a”，这里应用名词单数形式。故填 introduction。 4. 句意：当她在公共场合发言时，她的脸会变红。分析句子结构可知，此处应用when“当……的 时候”引导时间状语从句。故填when。 5. 句意：即使她知道问题的答案，她也不敢举手。根据空前“didn’t dare”可知，此处考查dare to do sth. “敢做某事”，应用动词不定式to put 作宾语。故填to put。 6. 句意：她从不缺课。根据空前“wasn’t”可知，此处应用名词absence 的形容词形式absent“缺勤的， 缺席的”作表语，be absent from“缺席”，形容词短语。故填absent。 7. 句意：她告诉我她想提升自己，并且对中国的语言和文化感兴趣。根据空前“she wanted to improve”可知，此处是指她想提升她自己，应用人称代词宾格her 的反身代词herself“她自己”。故 填herself。 8. 句意：这正是她父母想看到的。分析句子结构可知，此处应用形容词exact 的副词形式exactly“恰 好”作状语。故填exactly。 9. 句意：她已经克服了害羞和沉默。根据空前“dealt”可知，此处考查deal with“安排, 处理”，动词 短语。故填with。 10. 句意：她变成了一个外向、幽默且乐于助人的女孩。根据“an outgoing, … and helpful girl”可知， 此处应用名词humor 的形容词形式humorous“幽默的”，在句中作定语，修饰名词“girl”。故填",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A. to make",
+   "opts": [
+    "making",
+    "make",
+    "made"
+   ],
+   "answer": "A",
+   "expl": "判断题。根据“Here is a two-way student exchange in action in our program. Fred spent last year in Germany with George’s family. In return, George’s son Mike spent a year in Fred’s home in America. ”可知，这是一个正在进行的双向学生交流活动，19 岁的弗雷德去年与乔治的家人在德国 度过；作为回报，乔治的儿子迈克在弗雷德在美国的家中度过了一年。由此可知，这两个男孩来自 德国和美国，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A. a",
+   "opts": [
+    "an",
+    "the",
+    "/"
+   ],
+   "answer": "A",
+   "expl": "判断题。根据“As for school, he said it was quite different from that in America. When the teacher went into the classroom, students all stood up. In the USA, students learn six subjects while in Germany they took fourteen. Outside activities aren’t nearly organized. ”和“In Germany we did nothing but study. But in the USA, there are so many outside activities. ”可知，这些区别是关于学校生活、户外 活动和家庭生活的，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "A. talking",
+   "opts": [
+    "to talk",
+    "talk",
+    "talks"
+   ],
+   "answer": "D",
+   "expl": "判断题。根据“All activities were around the family. Germans regard their families as the center all the time. ”可知，所有的活动都围绕着家庭，德国人一直以家庭为中心，由此推知德国人认为家 庭是最重要的，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "A. quick",
+   "opts": [
+    "quickly",
+    "quicker",
+    "quickest"
+   ],
+   "answer": "B",
+   "expl": "判断题。本文主要介绍了一交换生计划，并介绍了美国的教育方式和的德国的教育方式的 区别。所以报社记者最有可能写这篇文章。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A. speak",
+   "opts": [
+    "to speak",
+    "speaking",
+    "spoken"
+   ],
+   "answer": "C",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "A. but",
+   "opts": [
+    "because",
+    "so",
+    "or"
+   ],
+   "answer": "A",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "A. much big",
+   "opts": [
+    "bigger",
+    "biggest",
+    "more big"
+   ],
+   "answer": "C",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A. different",
+   "opts": [
+    "difference",
+    "differently",
+    "differences"
+   ],
+   "answer": "A",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A. wouldn’t",
+   "opts": [
+    "won’t",
+    "needn’t",
+    "shouldn’t"
+   ],
+   "answer": "C",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "A. these",
+   "opts": [
+    "it",
+    "them",
+    "him"
+   ],
+   "answer": "B",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "A. anything",
+   "opts": [
+    "everything",
+    "nothing",
+    "something"
+   ],
+   "answer": "A",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "A. on",
+   "opts": [
+    "with",
+    "for",
+    "of"
+   ],
+   "answer": "B",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "A. As",
+   "opts": [
+    "Before",
+    "If",
+    "Because"
+   ],
+   "answer": "C",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "A. kept",
+   "opts": [
+    "keeping",
+    "to keep",
+    "keep"
+   ],
+   "answer": "B",
+   "expl": "1. B 考查词的用法。句意：在我到之前，我有点紧张。A little 可以修饰形容词。其他单词 都不可以修饰形容词。答案选B",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "How many students are chosen to be exchange students according to the passage?",
+   "opts": [
+    "2,300.",
+    "1,300.",
+    "3,600.",
+    "4,000."
+   ],
+   "answer": "C",
+   "expl": "本文主要介绍了交换生计划，并介绍了美国的教育方式和的德国的教育方式的区别。",
+   "_dup": false
+  }
+ ],
+ "matched": 36,
+ "total": 36
+}

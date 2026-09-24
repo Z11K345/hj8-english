@@ -1,0 +1,572 @@
+{
+ "title": "Unit 3（基础卷）.pdf",
+ "cat": "单元检测",
+ "pages": 25,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "Mrs. Black warned her son ________ in the sea alone.",
+   "opts": [
+    "never to swim",
+    "don’t swim",
+    "to not swim",
+    "not swim"
+   ],
+   "answer": "A",
+   "expl": "句意：布莱克夫人警告她的儿子不要独自在大海里游泳。 考查非谓语动词。warn sb. not/never to do sth.意为“警告某人不要做某事”，动词短语。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "The course of life never runs ______ since it is full of ups and downs.",
+   "opts": [
+    "smooth",
+    "proper",
+    "smoothly",
+    "properly"
+   ],
+   "answer": "C",
+   "expl": "句意：人生的道路从来不会一帆风顺，因为它充满了起起落落。 考查形容词副词辨析。smooth 平稳的；proper 适当的；smoothly 平稳地；properly 适当地。根据句 子结构，空格处修饰动词run，需要用副词。再根据“full of ups and downs”可知，此处强调人生道 路不会平稳地进行。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "You needn’t _____ all the new words in the dictionary while you’re reading an article.",
+   "opts": [
+    "look for",
+    "look up",
+    "look at",
+    "look after"
+   ],
+   "answer": "B",
+   "expl": "句意：当阅读文章的时候，你不需要在字典里查所有的新单词。 考查动词短语的词义辨析。look for 寻找；look up(在字典中)查找；look at 看；look after 照顾。 根据“all the new words in the dictionary”可知“查字典”可用look up 来表示。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "Although my grandpa is in his eighties, he still grows vegetables ________ in his garden.",
+   "opts": [
+    "in surprise",
+    "in person",
+    "in return",
+    "in silence"
+   ],
+   "answer": "B",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "—I think it’s necessary to learn how to work in groups.—I quite agree. Sometimes it’s even ________ than grades.",
+   "opts": [
+    "much important",
+    "more important",
+    "the more important",
+    "the most important"
+   ],
+   "answer": "B",
+   "expl": "句意：——我认为学会如何小组合作是必须的。——我相当同意。有时它比分数更重要。 考查比较级。much important 错误写法；more important 比较级；the more important 比较级；the most important 最高级。根据“even”后加比较级，比较级前无the，所以是more important。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "The place is too expensive to hold our party. We should find a ________ one.",
+   "opts": [
+    "cheap",
+    "cheaper",
+    "cheapest",
+    "the cheapest"
+   ],
+   "answer": "B",
+   "expl": "句意：这个地方太贵了，不能举办我们的聚会。我们应该找一个便宜点的。 考查比较级的用法。根据“The place is too expensive to hold our party”可知这个地方太贵了，要找一 个便宜一点的，故此处应用形容词的比较级cheaper 作定语。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "________ drivers are on the road, ________ traffic accidents there will be.",
+   "opts": [
+    "The more careful; the fewer",
+    "The more carefully; the less",
+    "The more carefully; the fewer",
+    "The more careful; the less"
+   ],
+   "answer": "A",
+   "expl": "句意：司机在路上越小心，交通事故就越少。 考查形容词的用法以及形容词辨析。fewer 更少的，修饰可数名词复数；less 更少，修饰不可数名 词。第一个空作be 动词的表语用形容词careful；第二个空后是可数名词复数，用fewer 修饰。故 选A。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "In the future, smart homes will make our lives ________ and more comfortable.",
+   "opts": [
+    "easy",
+    "easier",
+    "easiest",
+    "the easiest"
+   ],
+   "answer": "B",
+   "expl": "句意：在未来，智能家居将使我们的生活更便捷、更舒适。 考查形容词比较级。easy 简单的，形容词；easier 更简单，比较级；easiest 最简单；the easiest 最简 单，最高级。根据“and more comfortable”可知，“and”连接两个并列的成分，为保持结构一致，此 处也应用比较级。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "—China is over 5,000 years old. It's one of ________ countries in the world.—Yes. It has a much ________ history than the USA．",
+   "opts": [
+    "the oldest; the longer",
+    "older; longer",
+    "the oldest; longer",
+    "old; long"
+   ],
+   "answer": "C",
+   "expl": "句意：——中国有5000 多年的历史了。它是世界上最古老的国家之一。——是的。它的 历史比美国悠久得多。 考查形容词比较级和最高级。“one of + the + 形容词最高级+ 可数名词复数”是固定结构，意为 “最……之一”，因此第一空应用old 的最高级形式the oldest；根据第二空后的“than”可知，此处应 用long 的比较级形式longer，且比较级前不加定冠词the。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "—Which river is ________, the Yangtze River or the Yellow River?",
+   "opts": [
+    "longer; long",
+    "longest; long",
+    "longest; longer",
+    "longer; longest"
+   ],
+   "answer": "D",
+   "expl": "句意：——长江和黄河哪条河更长？——长江。它是世界上第三长的河流。 考查形容词的比较级和最高级。根据“the Yangtze River or the Yellow River?”可知，第一空是比较两 条河，填比较级longer；根据“It is the third…river in the world.”可知，此处应该填最高级longest。 故选D。 二、语法选择(本大题共10 小题，每小题1 分，满分10 分) 请通读下面短文，掌握其大意，根据语法和上下文连贯的要求，从每小题4 个选项中选出一个最佳 的答案，并将答题卡对应题目所选的选项涂黑。 Imagine—you are running to catch a train, only to find that you forgot your ID card! You cannot get on the train without it. Don’t worry. In the near future, you will just need 11 digital ID on your smartphone. Recently, Chinese government say they will introduce a digital version (版本) of the national ID cards this year. One of its purposes is to 12 meet the basic living needs of more than 100 million people who live away from their hometowns. These people have to go to school or work at different 13. Sometimes in order to prove that “I am who I am”, they have to run back home to get 14 ID information. It wastes time, money and manpower. But Digital ID cards can allow people to get their personal information through a simple scan (扫描) with a smartphone. This way, everything 15 in just several seconds and people can get a lot of convenience. Meanwhile, the government will think about people who do not use smartphones, especially old people. They are trying to come up with some ways 16 them. Also, people’s personal information will be protected 17 they don’t need to worry that others get their personal information. In fact, China 18 the early try of digital IDs since 2018. It allowed people in Quzhou, Hangzhou and Fuzhou to get them on Alipay. Digital IDs could be 19 used to open bank accounts, check into hotels and buy high-speed railway tickets and so on. China’s first ID card came out 20 1984. The present ID card is the second-generation version. With the development of science, we believe more and more new technologies will appear in life.",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "A．a",
+   "opts": [
+    "an",
+    "the",
+    "/"
+   ],
+   "answer": "A",
+   "expl": "：在不久的将来，你只需要在智能手机上安装一张数字ID。 a 不定冠词，用于辅音音素开头的单词前，表泛指；an 不定冠词，用于元音音素开头的单词前，表 泛指；the 定冠词，表特指；/不填。根据“digital ID”可知，digital 是以辅音音素开头的单词，此处 应填不定冠词a。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "A．good",
+   "opts": [
+    "well",
+    "better",
+    "best"
+   ],
+   "answer": "C",
+   "expl": "：其宗旨之一是更好地满足1 亿多异乡人的基本生活需求。 good好的；well好地；better更好地；best最好的。根据“One of its purposes is to … meet the basic living” 可知，是更好地满足人的基本需求。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "A．place",
+   "opts": [
+    "places",
+    "place’s",
+    "places’"
+   ],
+   "answer": "B",
+   "expl": "：这些人必须去不同的学校或在不同的地方工作。 place 地方；places 地方，复数形式；place’s 地方的，单数名词所有格；places’ 地方的，复数名词 所有格。根据“different”可知，此处应填复数形式places。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "A．they",
+   "opts": [
+    "them",
+    "their",
+    "theirs"
+   ],
+   "answer": "C",
+   "expl": "：有时为了证明“我就是我”，他们不得不跑回家去拿身份证。 they 他们，主格；them 他们，宾格；their 他们的，形容词性物主代词；theirs 他们的，名词性物主 代词。根据“ID information”可知，此处需填形容词性物主代词their 来修饰ID information，表示“他 们的身份证信息”。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "A．did",
+   "opts": [
+    "will do",
+    "was done",
+    "will be done"
+   ],
+   "answer": "D",
+   "expl": "：这样一来，一切只需几秒钟做完，人们就能获得很多便利。 did 做，过去式；will do 做，一般将来时；was done 被做，一般过去时的被动语态；will be done 一 般将来时的被动语态。根据上下文，此处表示“一切将在几秒钟内完成”，应用一般将来时的被动语 态will be done。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 16,
+   "stem": "A．help",
+   "opts": [
+    "to help",
+    "helping",
+    "helped"
+   ],
+   "answer": "B",
+   "expl": "：他们正在尝试想出一些方法帮助他们。 help 帮助，动词原形；to help 帮助，动词不定式；helping 帮助，现在分词或动名词；helped 帮助， 过去式或过去分词。根据“They are trying to come up with some ways … them.”可知，此处需填动词 不定式来表示“想办法帮助他们”，不定式形式to help 作目的状语。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 17,
+   "stem": "A．because",
+   "opts": [
+    "so",
+    "although",
+    "but"
+   ],
+   "answer": "B",
+   "expl": "：此外，人们的个人信息将受到保护，因此他们不必担心其他人会获得他们的个人信息。",
+   "_dup": false
+  },
+  {
+   "no": 18,
+   "stem": "A．starts",
+   "opts": [
+    "started",
+    "will start",
+    "has started"
+   ],
+   "answer": "D",
+   "expl": "：事实上，自2018 年以来，中国开始早期尝试使用数字身份。 starts 开始，第三人称单数形式；started 开始，动词过去式；will start 开始，一般将来时；has started 开始，现在完成时。根据时间状语“since 2018”可知，此处应该使用现在完成时“has started”。故选 D。 19．句意：句意：数字身份证可广泛用于开设银行账户、入住酒店、购买高铁票等。 wide 宽的；width 宽度，广度；widely 广泛地；widen 加宽。根据“used to open bank accounts, check into hotels and buy high-speed railway tickets and so on”可知数字身份证会被广泛应用，副词修饰动词 used。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 19,
+   "stem": "A．wide",
+   "opts": [
+    "width",
+    "widely",
+    "widen"
+   ],
+   "answer": "C",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 20,
+   "stem": "A．at",
+   "opts": [
+    "on",
+    "by",
+    "in"
+   ],
+   "answer": "D",
+   "expl": "：1984 年，中国第一张身份证问世。 at 在，用于具体时刻；on 在，用于具体的某一天；by 通过；in 在，用于月，季节，年之前。根据 时间状语“1984”可知，此处应填介词in。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 21,
+   "stem": "A．found",
+   "opts": [
+    "realized",
+    "challenged",
+    "changed"
+   ],
+   "answer": "D",
+   "expl": "：其中一项发展是无现金支付，它改变了我们的生活和购物方式。 found 发现；realized 意识到；challenged 挑战；changed 改变。根据“One of the developments is cashless payment (无现金支付), which has... the way we live and shop.”可知，无现金支付改变了我们生活和购 物的方式。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 22,
+   "stem": "A．last",
+   "opts": [
+    "next",
+    "second",
+    "first"
+   ],
+   "answer": "D",
+   "expl": "：中国并不是第一个拥有无现金支付的国家。 last 最后的；next 下一个；second 第二；first 第一。根据“I used a debit card (借记卡) to... things without cash for years in the US.”可知，作者在美国就使用过无现金支付，所以中国不是第一个拥有无现金 支付的国家。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 23,
+   "stem": "A．take off",
+   "opts": [
+    "turn on",
+    "pay for",
+    "depend on"
+   ],
+   "answer": "C",
+   "expl": "：在美国的几年里，我用借记卡买东西，不用现金。 take off 起飞；turn on 打开；pay for 支付；depend on 依靠。根据“I used a debit card (借记卡) to... things without cash for years in the US.”可知，此处指用借记卡支付东西。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 24,
+   "stem": "A．convenient B．relaxing",
+   "opts": [
+    "different",
+    "correct"
+   ],
+   "answer": "A",
+   "expl": "：它超级简单和方便。 convenient 方便的；relaxing 令人放松的；different 不同的；correct 正确的。根据“But now I can use my phone instead. It’s super easy and...”可知，用手机支付超级简单和方便。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 25,
+   "stem": "A．wisely",
+   "opts": [
+    "directly",
+    "secretly",
+    "safely"
+   ],
+   "answer": "B",
+   "expl": "：我最喜欢的一件事是，我可以直接与朋友收发钱。 wisely 明智地；directly 直接地；secretly 秘密地；safely 安全地。根据“One of the things I like most is that I can send and receive money... to and from my friends.”可知，可以直接与朋友收发钱。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 26,
+   "stem": "A．experiences B．secrets",
+   "opts": [
+    "problems",
+    "causes"
+   ],
+   "answer": "C",
+   "expl": "：但就像所有技术一样，无现金支付也有一些问题。 experiences 经历；secrets 秘密；problems 问题；causes 原因。根据“What happens if your phone gets lost or stolen? There are also times when your phone’s mobile Internet connection,... the store’s Internet connection, might not work.”可知，此处指无现金支付也有一些问题。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 27,
+   "stem": "A．and",
+   "opts": [
+    "but",
+    "for",
+    "or"
+   ],
+   "answer": "D",
+   "expl": "：有时你的手机移动网络连接或商店的互联网连接可能无法工作。 and 和；but 但是；for 为了；or 或者。根据“There are also times when your phone’s mobile Internet connection,... the store’s Internet connection, might not work.”可知，此处指手机移动网络连接或商店 的互联网连接可能无法工作，表选择关系，应用or。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 28,
+   "stem": "A．get",
+   "opts": [
+    "accept",
+    "need",
+    "ask"
+   ],
+   "answer": "B",
+   "expl": "：但当我到达那里时，我发现商店的无现金支付系统无法工作，他们只能接受现金。 get 得到；accept 接受；need 需要；ask 问。根据“But when I got there, I found that the store’s cashless payment system didn’t work and they could only... cash.”可知，商店的无现金支付系统无法工作，所 以只能接受现金。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 29,
+   "stem": "A．turn off",
+   "opts": [
+    "make up",
+    "pass on",
+    "give up"
+   ],
+   "answer": "D",
+   "expl": "：我身上没有现金，所以我不得不放弃，没有买任何零食就离开了。 turn off 关闭；make up 编造；pass on 传递；give up 放弃。根据“I didn’t have any cash with me, so I had to... and leave without any snacks.”可知，因为没有现金，所以不得不放弃买零食。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 30,
+   "stem": "A．never",
+   "opts": [
+    "hardly",
+    "always",
+    "seldom"
+   ],
+   "answer": "C",
+   "expl": "：所以，尽管无现金支付很方便，但你应该总是随身携带一些现金，以避免任何可能的不 便。 never 从不；hardly 几乎不；always 总是；seldom 很少。根据“So although cashless payment is convenient, you should... carry a bit of cash in order to avoid any possible inconvenience.”可知，应该总是随身携带 一些现金，以避免任何可能的不便。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 31,
+   "stem": "What was Zhao Shengliang’s talk about?",
+   "opts": [
+    "The use of Digital Technology.",
+    "The history of the Mogao Grottoes.",
+    "The importance of Shenzhen Book City.",
+    "The achievements of Dunhuang Research Centre."
+   ],
+   "answer": "A",
+   "expl": "理解题。根据“The talk was about how digital technology can help protect traditional culture.” 可知，赵圣亮的演讲与数字技术的应用有关。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 32,
+   "stem": "Why is making Dunhuang relics digital important?",
+   "opts": [
+    "Because it makes Dunhuang popular.",
+    "Because it improves traditional culture.",
+    "Because it connects the East and the West.",
+    "Because it keeps relics from Dunhuang safe."
+   ],
+   "answer": "D",
+   "expl": "理解题。根据“Making the relics digital is very important because it can keep the old things from Dunhuang safe for always.”可知，文物数字化是非常重要的，是因为它可以永远保护敦煌古老的东 西。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 33,
+   "stem": "Which one can replace the word “explore” in Paragraph 3?",
+   "opts": [
+    "create",
+    "celebrate",
+    "study",
+    "advise"
+   ],
+   "answer": "C",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 34,
+   "stem": "What can tourists do in the Mogao Grottoes Digital Center?",
+   "opts": [
+    "Take pictures with a real deer.",
+    "Make picture with digital tools.",
+    "Design an AR map by themselves.",
+    "Experience virtual tours to ancient times."
+   ],
+   "answer": "D",
+   "expl": "理解题。根据“in the Mogao Grottoes Digital Tour Center, tourists can explore the Mogao Grottoes through virtual tours, where tourists can ‘travel back’ to the caves in ancient times.”可知，游客 可以在莫高窟数字中心体验古代虚拟之旅。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 35,
+   "stem": "In which part of a newspaper can we read this passage?",
+   "opts": [
+    "Culture",
+    "Nature",
+    "Education",
+    "Business"
+   ],
+   "answer": "A",
+   "expl": "判断题。通读全文并根据“The talk was about how digital technology can help protect traditional culture.”可知，本文主要介绍了数字技术可以帮助保护传统文化，又介绍了数字敦煌项目，与文化 有关，可能在报纸的文化板块看到这篇文章。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 36,
+   "stem": "What’s the worst problem in the first passage?",
+   "opts": [
+    "Children can’t make things themselves.",
+    "Children make too many friends online.",
+    "Children don’t want to communicate with others.",
+    "Children don’t like helping mum cook meals at home."
+   ],
+   "answer": "C",
+   "expl": "理解题。根据第1 段“And worst of all, they seem to be losing interest in communicating with others.”可知，他们似乎失去了与他人交流的兴趣，故第一段中最糟糕的问题是孩子们不想和别人 交流。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 37,
+   "stem": "According to Colin Kinney, which of the following is TRUE?",
+   "opts": [
+    "Teachers don’t notice that young pupils have few skills to make things.",
+    "Many parents are very happy that their kids can use digital technology.",
+    "Many teachers don’t care if young pupils can play computers or tablets.",
+    "Some parents are worried that their kids use digital technology too much."
+   ],
+   "answer": "B",
+   "expl": "判断题。根据“Many pupils can’t communicate with other pupils but their parents are glad to see the skills of their children to use a computer or a smart phone.”可知家长们谈起自家孩子使用电脑和手 机的能力很自豪，所以推断家长因此很高兴。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 38,
+   "stem": "What does the underlined word “blame” mean in Chinese?",
+   "opts": [
+    "表扬",
+    "原谅",
+    "评价",
+    "责怪"
+   ],
+   "answer": "D",
+   "expl": "猜测题。根据“We should help them make right choices”可知，应是帮助他们做出正确选择， 而不是责备他们。划线单词“blame”意为“责怪”。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 39,
+   "stem": "The passage is probably a ________.",
+   "opts": [
+    "notice",
+    "magazine",
+    "diary",
+    "report"
+   ],
+   "answer": "D",
+   "expl": "判断题。通读全文可知，本文主要介绍了现在越来越多的孩子似乎迷失在“数字科技的海 洋”中。我们不应该责怪孩子，而是应该帮助他们做出正确的选择，鼓励他们发展社交能力。故推 测这篇文章可能是一篇报道。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 40,
+   "stem": "What does the writer mainly want to tell us?",
+   "opts": [
+    "It’s very important for children to have social skills.",
+    "It’s very helpful for children to do some housework.",
+    "It’s necessary for parents to learn to use digital technology.",
+    "It’s difficult for teachers to make right choices for their pupils."
+   ],
+   "answer": "A",
+   "expl": "大意题。通读全文可知，本文主要介绍了现在越来越多的孩子似乎迷失在“数字科技的海 洋”中。我们不应该责怪孩子，而是应该帮助他们做出正确的选择，鼓励他们发展社交能力。故作 者主要想告诉我们拥有社交技能是非常重要的。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 41,
+   "stem": "What might people not do in the smart cities mentioned in the passage?",
+   "opts": [
+    "Booking a taxi with their phones.",
+    "Using the Internet without paying at any place.",
+    "Using digital technologies to make a better plan for the city.",
+    "Using a phone to check the arrival times of the buses."
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“When you want to take a taxi, you can book one with your phone.”“a smart city is a city that uses digital technologies (数字科技)such as the Internet to improve city planning”“the phone immediately shows all bus lines that serve the stop as well as their arrival times”可知，你想坐出租",
+   "_dup": false
+  },
+  {
+   "no": 42,
+   "stem": "The underlined word “ convenient ” is the closest to the meaning of ________.",
+   "opts": [
+    "useful",
+    "normal",
+    "suitable",
+    "easy"
+   ],
+   "answer": "D",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 43,
+   "stem": "According to the passage, which of the following is TRUE?",
+   "opts": [
+    "Digital technologies are only used in smart phones.",
+    "An English company first raised the idea of a smart city.",
+    "The smart water meters can help to reduce the water waste.",
+    "A smart city is still an idea and hasn’t come into being."
+   ],
+   "answer": "C",
+   "expl": "判断题。根据“They can detect (探测)water waste and leakage and send data (数据)to let the house owner know.”可知，智能水表能减少水的浪费。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 44,
+   "stem": "The example of Santander shows the use of smart systems in some aspects(方面)EXCEPT ______.",
+   "opts": [
+    "business",
+    "health care",
+    "traffic controlling",
+    "public transportation"
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“The government organized a research team and provided an app (应用程序) that collects data on almost everything: light, temperature, and the movements of cars and people. Opening the app near a supermarket provides immediate information on special.”可知，没有提到智能系 统在健康管理方面的应用。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 45,
+   "stem": "What is the main idea of the passage?",
+   "opts": [
+    "Digital technologies help improve city planning.",
+    "Smart cities will make our future life better and smarter.",
+    "Smart cities are very common in both Dubuque and Santander.",
+    "Spain and the USA take the leading position in building smart cities."
+   ],
+   "answer": "B",
+   "expl": "大意题。根据全文可知，本文以Dubuque 和Santander 为例介绍了智能城市运用数字科技 改善城市规格，在各方面给人们的生活带来便捷，故文章的主题应该是“智能城市会使我们未来的 生活更好更智慧”。故选B。",
+   "_dup": false
+  }
+ ],
+ "matched": 45,
+ "total": 45
+}

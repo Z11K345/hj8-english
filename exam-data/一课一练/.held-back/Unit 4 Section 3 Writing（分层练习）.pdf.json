@@ -1,0 +1,34 @@
+{
+ "title": "Unit 4 Section 3 Writing（分层练习）.pdf",
+ "cat": "一课一练",
+ "pages": 18,
+ "questions": [
+  {
+   "no": 5,
+   "stem": "______ Judy loves cooking. However,on summer days, food easily goes bad, soshe uses a kind of equipment to keep itfresh.",
+   "opts": [
+    "Television",
+    "Personal Computer",
+    "Air-conditioner",
+    "Microwave Oven (微波炉)"
+   ],
+   "answer": "C",
+   "expl": "本文是一篇说明文，主要讲述了一种可以在炎热的天气里给人们降温的T 恤，介绍了它 的工作原理及未来的发展方向。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "A．person",
+   "opts": [
+    "family",
+    "guest",
+    "relative"
+   ],
+   "answer": "A",
+   "expl": "本文丰要介绍了Tim Love 拥有一家意大利餐厅，要求顾客吃饭时把手机放进包里，目的 是创造一个可以让人们关注朋友、用餐环境和美食的地方。",
+   "_dup": false
+  }
+ ],
+ "matched": 2,
+ "total": 2
+}

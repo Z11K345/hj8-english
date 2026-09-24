@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<link rel="icon" href="data:,">
+<title>在线做题 · 沪教八上英语</title>
+<style>
+:root{
+  --bg:#f5f7fa; --card:#fff; --primary:#2b6cb0; --primary-soft:#ebf3fb;
+  --text:#1a202c; --muted:#66788a; --border:#e3e8ef;
+  --ok:#1f8a4c; --ok-soft:#e7f6ec; --bad:#c0392b; --bad-soft:#fdecea; --na:#b7791f; --na-soft:#fff7ed;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.7; font-size:16px;
+}
+.topbar{
+  position:sticky; top:0; z-index:20; background:var(--card);
+  border-bottom:1px solid var(--border); padding:6px 12px;
+  box-shadow:0 1px 6px rgba(0,0,0,.04);
+  display:flex; flex-wrap:wrap; gap:6px 12px; align-items:center;
+}
+.controls{display:flex; flex-wrap:wrap; gap:7px; align-items:center;}
+.controls label{font-size:13px; color:var(--muted); margin-right:2px;}
+.topbar-status{display:flex; align-items:center; gap:12px; margin-left:auto; flex-wrap:wrap;}
+#examStatus{display:flex; align-items:center; gap:10px;}
+select{
+  font-family:inherit; font-size:14px; padding:6px 9px; border:1px solid var(--border);
+  border-radius:8px; background:#fff; color:var(--text); max-width:44vw;
+}
+select:focus{outline:none; border-color:var(--primary);}
+.wrap{max-width:1040px; margin:0 auto; padding:8px 12px 16px;}
+@media(min-width:641px){
+  .wrap{max-width:1600px; padding:8px 14px 10px;}
+}
+#paperTitle{font-size:13.5px; font-weight:700; color:var(--primary); margin:0;}
+#summary{
+  display:none; margin:10px 0 14px; padding:12px 16px; border-radius:10px;
+  background:var(--primary-soft); border:1px solid #cfe2f5; font-size:15px;
+}
+#summary b{color:var(--primary); font-size:20px;}
+.summary-row{display:flex; gap:18px; flex-wrap:wrap; align-items:center;}
+.summary-row .stat{display:flex; flex-direction:column;}
+.summary-row .stat span{font-size:12px; color:var(--muted);}
+.summary-row .stat b{font-size:18px; color:var(--text);}
+.filterbar{display:none; margin:8px 0; font-size:14px; color:var(--muted);}
+.filterbar label{cursor:pointer; user-select:none;}
+
+.qcard{
+  background:var(--card); border:1px solid var(--border); border-radius:12px;
+  padding:14px 16px; margin-bottom:14px; box-shadow:0 1px 2px rgba(0,0,0,.03);
+}
+.qhead{display:flex; align-items:center; gap:8px; margin-bottom:8px;}
+.qno{
+  flex:0 0 auto; background:var(--primary); color:#fff; font-size:13px; font-weight:700;
+  min-width:30px; height:24px; padding:0 8px; border-radius:7px; display:flex; align-items:center; justify-content:center;
+}
+.stem{font-size:16px; white-space:pre-wrap; word-break:break-word; margin:2px 0 12px;}
+.opts{display:flex; flex-direction:column; gap:8px;}
+.opt{
+  display:flex; align-items:flex-start; gap:10px; padding:9px 12px; border:1.5px solid var(--border);
+  border-radius:9px; cursor:pointer; transition:background .12s, border-color .12s;
+}
+.opt:hover{background:var(--bg);}
+.opt input{position:absolute; opacity:0; width:0; height:0;}
+.opt .ltr{
+  flex:0 0 auto; width:24px; height:24px; border-radius:50%; border:1.5px solid var(--border);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:var(--muted);
+}
+.opt .otext{white-space:pre-wrap; word-break:break-word; flex:1 1 auto;}
+.opt.chosen{border-color:var(--primary);}
+.opt.chosen .ltr{border-color:var(--primary); color:var(--primary);}
+.opt.correct{border-color:var(--ok); background:var(--ok-soft);}
+.opt.correct .ltr{background:var(--ok); border-color:var(--ok); color:#fff;}
+.opt.wrong{border-color:var(--bad); background:var(--bad-soft);}
+.opt.wrong .ltr{background:var(--bad); border-color:var(--bad); color:#fff;}
+.opt.disabled{cursor:default;}
+.result{display:none; margin-top:12px; padding:8px 12px; border-radius:8px; font-size:14.5px; font-weight:600;}
+.result.ok{background:var(--ok-soft); color:var(--ok);}
+.result.bad{background:var(--bad-soft); color:var(--bad);}
+.result.na{background:var(--na-soft); color:var(--na);}
+.expl{display:none; margin-top:8px; padding:10px 13px; background:#f8fafc; border-left:3px solid var(--primary);
+  border-radius:0 8px 8px 0; font-size:14px; color:#33424f; white-space:pre-wrap; word-break:break-word;}
+.expl .et{font-weight:700; color:var(--primary); margin-right:6px;}
+
+/* 提交/进度/剩余时间：并入顶栏右侧（原底部条已取消，省出竖向空间） */
+/* 提交按钮：低调描边，不抢眼（仍清晰可点） */
+#submitBtn{
+  border:1px solid var(--border); background:#fff; color:var(--text);
+  border-radius:8px; padding:6px 16px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;
+}
+#submitBtn:hover{ background:#f3f6fa; }
+/* 剩余时间 / 已答进度：弱化显示 */
+#timer{ font-weight:600; color:var(--muted); font-size:13px; min-width:auto; }
+#countdown{ font-size:12px; color:var(--muted); opacity:.85; }
+.btn{
+  border:none; border-radius:10px; padding:12px 28px; font-size:16px; font-weight:700; cursor:pointer;
+  background:var(--primary); color:#fff; font-family:inherit;
+}
+.btn:hover{filter:brightness(1.05);}
+.btn.ghost{background:#eef2f7; color:var(--text);}
+.countdown{font-size:13px; color:var(--muted); align-self:center;}
+
+#loading,#fatal{padding:40px 16px; text-align:center; color:var(--muted);}
+#fatal{color:var(--bad);}
+.pdf-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 2px 10px;}
+.tbtn{display:inline-block;border:1px solid var(--border);background:var(--card);color:var(--primary);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer;text-decoration:none;font-family:inherit;white-space:nowrap;}
+.tbtn:hover{background:var(--primary-soft);}
+/* 题号导航条：点击题号跳到试卷对应题目（当前按用户要求隐藏，只保留答题卡内跳转） */
+#qnoNav{display:none !important;margin:4px 2px 10px;}
+#qnoNav .qn-tip{font-size:13px;color:var(--muted);margin-bottom:6px;}
+#qnoChips{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;padding-bottom:4px;}
+#qnoChips::-webkit-scrollbar{height:6px;}
+#qnoChips::-webkit-scrollbar-thumb{background:#cbd5e0;border-radius:3px;}
+.qno-chip{flex:0 0 auto;min-width:30px;height:30px;padding:0 6px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;transition:background .12s,border-color .12s,color .12s;}
+.qno-chip:hover{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);}
+.qno-chip:active{background:var(--primary);color:#fff;}
+/* PDF 渲染区：灰底居中，逐页显示为真实试卷白页（带阴影） */
+.pdf-viewer{width:100%; min-height:400px; height:calc(100vh - 250px); background:#525659; border-radius:10px; padding:0; overflow:auto; display:flex; flex-direction:column; align-items:flex-start; gap:12px; box-sizing:border-box; scroll-behavior:smooth;}
+@media(min-width:641px){
+  .pdf-viewer{height:calc(100vh - 96px); padding:0;}
+}
+/* 默认：试卷按适中尺寸显示，一屏能看到更多页高（点顶栏「原始大小」可切真实像素、左右拖动看细节） */
+.pdf-viewer canvas{background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.35); width:100%; height:auto; max-width:min(720px,94vw); margin:0 auto; display:block;}
+.pdf-viewer.native canvas{width:auto; height:auto; max-width:none;}
+.pdf-loading{color:#e2e8f0; padding:30px; font-size:14px; text-align:center;}
+/* 听力音频播放器：仅带音频的试卷出现，悬浮在试卷底部，不额外占一行高度 */
+.pdf-col{position:relative;}
+#audioBar{position:absolute; left:50%; bottom:12px; transform:translateX(-50%); z-index:15; display:flex; align-items:center; gap:8px; background:rgba(17,24,39,.92); color:#fff; padding:6px 12px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.4); max-width:94%; box-sizing:border-box;}
+#audioBar select{border:none; border-radius:8px; padding:4px 8px; font-size:13px; max-width:200px; background:#fff; color:#1a202c;}
+.au-btn{border:none; background:#2b6cb0; color:#fff; width:34px; height:34px; border-radius:50%; font-size:14px; cursor:pointer; flex:0 0 auto; line-height:1; display:flex; align-items:center; justify-content:center; padding:0;}
+.au-btn:hover{filter:brightness(1.1);}
+.au-time{font-size:12px; color:#cbd5e1; white-space:nowrap; font-variant-numeric:tabular-nums;}
+.au-seek{width:150px; accent-color:#7cb3e8;}
+@media(max-width:640px){ #audioBar{left:8px; right:8px; transform:none; max-width:none; bottom:8px; justify-content:center;} .au-seek{width:90px;} }
+/* 防止浏览器把家长码/AI密码识别为登录密码而提示保存 */
+.code-mask{-webkit-text-security:disc;}
+/* 原卷 PDF + 答题区：平板/桌面端左右分栏（答题卡尽量并排），640px 以下才上下堆叠 */
+@media(min-width:641px){
+  #pdfWrap.pdf-split{display:flex;gap:14px;align-items:flex-start;}
+  #pdfWrap.pdf-split .pdf-col{flex:1 1 auto;min-width:0;}
+  /* 答题区放在原卷右侧：DOM 顺序（pdf-col 在前、answerPadWrap 在后）即右栏，原卷居中靠左占满其余空间 */
+  #pdfWrap.pdf-split #answerPadWrap{flex:0 0 248px;position:sticky;top:74px;max-height:calc(100vh - 92px);overflow:auto;margin-top:0;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  /* 答题区收起：只留标题栏，PDF 占满全宽 */
+  #answerPadWrap.collapsed{flex:0 0 auto !important;background:transparent;border:none;padding:0;box-shadow:none;}
+  #answerPadWrap.cardmode{flex:0 0 280px !important;}
+}
+@media(min-width:900px){
+  #pdfWrap.pdf-split #answerPadWrap{flex:0 0 300px;}
+  #answerPadWrap.cardmode{flex:0 0 300px !important;}
+}
+@media(max-width:640px){
+  #answerPadWrap{position:sticky;bottom:0;background:var(--card);border-top:1px solid var(--border);padding-top:10px;box-shadow:0 -2px 10px rgba(0,0,0,.06);}
+  #answerPadWrap.cardmode{position:static !important;box-shadow:none;max-height:none !important;overflow:visible !important;margin-top:14px;}
+}
+/* 答题区收起：只留标题栏，PDF 占满全宽 */
+#answerPadWrap.collapsed .pad-body{display:none;}
+#answerPadWrap.collapsed{padding-bottom:0;}
+#answerPadWrap.collapsed .pad-head{margin-bottom:0;}
+@media(max-width:600px){
+  select{max-width:42vw; font-size:14px;}
+  .wrap{padding-bottom:110px;}
+  .stem{font-size:15.5px;}
+}
+/* ===== 正式答题卡（依据原卷生成题号，左侧看卷、右侧作答） ===== */
+.card-sec{margin:0 0 10px;}
+.card-sec-title{font-size:13px;font-weight:700;color:var(--primary);margin:2px 0 4px;padding-bottom:3px;border-bottom:2px solid var(--primary-soft);}
+.card-row{display:flex;gap:6px;align-items:flex-start;padding:4px 0;border-bottom:1px dashed #eef1f5;}
+.card-no{flex:0 0 28px;height:22px;background:var(--primary);color:#fff;font-size:12px;font-weight:700;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-top:2px;cursor:pointer;transition:filter .15s,box-shadow .15s;}
+.card-no:hover{filter:brightness(1.1);box-shadow:0 0 0 2px var(--primary-soft);}
+.card-body{flex:1 1 auto;min-width:0;}
+.mc-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.chip{width:28px;height:28px;border-radius:8px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;font-size:13px;color:var(--muted);user-select:none;background:#fff;transition:background .12s,border-color .12s,color .12s;}
+.chip:hover{background:var(--bg);}
+.chip.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+/* 提交后自动批改标记 */
+.chip.g-ok{background:var(--ok)!important;color:#fff!important;border-color:var(--ok)!important;}
+.chip.g-bad{background:var(--bad)!important;color:#fff!important;border-color:var(--bad)!important;}
+.chip.g-answer{border-color:var(--ok)!important;box-shadow:0 0 0 2px var(--ok-soft) inset;color:var(--ok)!important;}
+.blank-ref{font-size:12px;color:var(--ok);margin-top:3px;font-weight:600;word-break:break-word;white-space:pre-wrap;}
+.blank-input{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+.blank-input:focus{outline:none;border-color:var(--primary);}
+.blank-input.g-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);}
+.blank-input.g-bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);}
+.essay-row{margin:4px 0;}
+.essay-ta{width:100%;min-height:170px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:15px;line-height:1.7;resize:vertical;box-sizing:border-box;}
+.essay-ta:focus{outline:none;border-color:var(--primary);}
+.card-tip{font-size:12px;color:var(--muted);margin:2px 0 4px;}
+/* 答题卡模式：隐藏原自由文本框的头与体，显示结构化答题卡 */
+#answerPadWrap.cardmode .pad-head{display:none !important;}
+#answerPadWrap.cardmode .pad-body{display:none !important;}
+#answerPadWrap.cardmode #cardWrap{display:block;}
+#cardWrap{display:none;}
+/* 答题卡整体收起：右栏隐藏，试卷占满全宽，右侧悬浮竖条可重新唤出 */
+#answerPadWrap.card-collapsed{display:none !important;}
+#cardTab{position:fixed; right:0; top:50%; transform:translateY(-50%); writing-mode:vertical-rl; cursor:pointer; font-weight:700; font-size:14px; color:#fff; background:var(--primary); padding:16px 6px; border-radius:10px 0 0 10px; box-shadow:-2px 2px 8px rgba(0,0,0,.18); z-index:60; user-select:none; letter-spacing:2px; display:none;}
+#cardTab.show{display:block;}
+#cardTab:hover{background:var(--primary-dark, #1f5fbf);}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+<div class="topbar">
+  <div class="controls">
+    <span><label>分类</label><select id="catSel"></select></span>
+    <span><label>试卷</label><select id="paperSel"></select></span>
+    <button type="button" class="tbtn" id="pdfOpenBtn" style="display:none;">打开原卷</button>
+    <button type="button" class="tbtn" id="pdfZoomBtn" style="display:none;">原始大小</button>
+    <a class="tbtn" id="pdfDlBtn" download style="display:none;">下载原卷</a>
+    <button type="button" class="tbtn" id="cardReopenBtn" style="display:none;">展开答题卡</button>
+    <button type="button" id="cropBtn" class="tbtn" title="框选题目截图，直接去 AI 提问">截题问AI</button>
+  </div>
+  <div class="topbar-status">
+    <span id="paperTitle" style="display:none;"></span>
+    <span id="examStatus" style="display:none;">
+      <button class="btn" id="submitBtn">提交试卷</button>
+      <span class="countdown" id="timer"></span>
+      <span class="countdown" id="countdown"></span>
+    </span>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="loading">正在加载试卷清单…</div>
+  <div id="fatal" style="display:none;"></div>
+  <div id="startPanel" style="display:none; text-align:center; padding:42px 16px 30px;">
+    <div style="font-size:18px; font-weight:700; color:var(--primary); margin-bottom:8px;" id="startTitle"></div>
+    <div style="font-size:14px; color:var(--muted); margin-bottom:22px;">点「开始答题」后设置考试时间，时间到自动交卷；交卷后自动批改答题卡（✓绿/✗红），答案与解析需家长码解锁后查看。</div>
+    <button class="btn" id="startBtn">开始答题</button>
+    <div id="timeInputArea" style="display:none; margin-top:20px;">
+      <div style="font-size:14px; color:var(--text); margin-bottom:8px;">设置考试时间（分钟）：</div>
+      <div style="display:flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap;">
+        <input id="minutesInput" type="number" min="1" max="600" value="30" style="font-size:16px; padding:9px 12px; border:1px solid var(--border); border-radius:8px; width:120px;">
+        <button class="btn" id="confirmTimeBtn" style="padding:9px 22px; font-size:15px;">确定</button>
+        <button class="btn ghost" id="cancelTimeBtn" style="padding:9px 22px; font-size:15px;">取消</button>
+      </div>
+      <div id="timeMsg" style="font-size:13px; color:var(--bad); margin-top:8px;"></div>
+    </div>
+  </div>
+  <div id="summary"></div>
+  <div id="unlockPanel" style="display:none; margin:12px 0; padding:14px 16px; border:1px dashed var(--primary); border-radius:10px; background:#fff;">
+    <div style="font-size:14px; color:var(--primary); font-weight:700; margin-bottom:8px;">答案与解析已锁定，需家长确认后查看。</div>
+    <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+      <input id="codeInput" type="text" class="code-mask" autocomplete="off" inputmode="numeric" maxlength="12" placeholder="输入家长码" style="font-size:15px; padding:9px 12px; border:1px solid var(--border); border-radius:8px; width:150px;">
+      <button class="btn" id="unlockBtn" style="padding:9px 20px; font-size:15px;">解锁</button>
+      <span id="codeMsg" style="font-size:13px; color:var(--bad);"></span>
+    </div>
+  </div>
+  <div class="filterbar" id="filterbar"><label><input type="checkbox" id="onlyWrong"> 只看错题</label></div>
+  <div id="list"></div>
+  <div id="pdfWrap" style="display:none;">
+    <div class="pdf-col">
+      <div id="qnoNav" style="display:none;">
+        <div class="qn-tip">点击题号跳到试卷对应题目：</div>
+        <div id="qnoChips"></div>
+      </div>
+      <div id="pdfViewer" class="pdf-viewer"></div>
+      <div id="audioBar" style="display:none;">
+        <button type="button" id="auPlay" class="au-btn" title="播放 / 暂停">▶</button>
+        <select id="auSel" title="选择听力音频"></select>
+        <span id="auTime" class="au-time">0:00 / 0:00</span>
+        <input type="range" id="auSeek" class="au-seek" min="0" max="1000" value="0" title="拖动调整进度">
+      </div>
+      <audio id="auEl" preload="none"></audio>
+    </div>
+    <div id="answerPadWrap" style="margin-top:14px;">
+      <div class="pad-head" style="display:flex;justify-content:space-between;align-items:center;margin:6px 2px 8px;">
+        <div style="font-size:14px;font-weight:700;color:var(--primary);">我的答题区（自动保存，关掉页面也不丢）</div>
+        <button type="button" class="tbtn" id="padToggleBtn" style="padding:6px 12px;">收起</button>
+      </div>
+      <div class="pad-body">
+        <div style="display:flex;gap:6px;align-items:center;margin:0 2px 6px;flex-wrap:wrap;">
+          <span style="font-size:13px;color:var(--muted);">大题：</span>
+          <select id="sectionSel" style="padding:6px 8px;font-size:14px;"></select>
+          <button type="button" class="tbtn" id="sectionAddBtn">＋新增大题</button>
+          <button type="button" class="tbtn" id="padAutoBtn">自动编号：开</button>
+          <span style="font-size:13px;color:var(--muted);">小题空行：</span>
+          <input id="subLines" type="number" min="1" max="60" value="10" style="width:56px;padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-size:14px;">
+          <button type="button" class="tbtn" id="subGenBtn">生成</button>
+        </div>
+        <textarea id="answerPad" placeholder="先在上方选好「大题」（一、二、三…），再在每行写小题答案（已自动编号）。&#10;例如：&#10;B&#10;C&#10;A" style="width:100%;min-height:170px;padding:10px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:15px;line-height:1.7;resize:vertical;box-sizing:border-box;"></textarea>
+        <div style="font-size:12px;color:var(--muted);margin:6px 2px 0;">交卷后自动批改答题卡（✓绿/✗红），答案与解析需家长码解锁；本答题区内容仅存本机浏览器。</div>
+      </div>
+      <div id="cardWrap">
+        <div class="card-head" style="display:flex;justify-content:space-between;align-items:center;margin:6px 2px 8px;">
+          <div style="font-size:14px;font-weight:700;color:var(--primary);">答题卡</div>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <button type="button" class="tbtn" id="cardCollapseBtn" style="padding:6px 10px;font-size:13px;">收起答题卡</button>
+            <button type="button" class="tbtn" id="cardPdfToggle" style="padding:6px 10px;font-size:13px;">隐藏试卷</button>
+          </div>
+        </div>
+        <div id="cardBody"></div>
+      </div>
+    </div>
+    <div id="cardTab">答题卡</div>
+  </div>
+  <div id="ansWrap" style="display:none;margin-top:14px;">
+    <div style="font-size:14px;font-weight:700;color:var(--primary);margin:6px 2px 10px;">解析版（答案与解析）</div>
+    <div class="pdf-tools">
+      <button type="button" class="tbtn" id="ansOpenBtn">在新窗口打开解析版（可复制 / 打印 / 保存）</button>
+      <a class="tbtn" id="ansDlBtn" download>下载解析版 PDF</a>
+    </div>
+    <div id="ansViewer" class="pdf-viewer"></div>
+  </div>
+</div>
+
+<script>
+const $ = s => document.querySelector(s);
+// 家长码：孩子提交试卷后，正确答案与解析默认锁定，需输入此码才能查看。改成你自己的数字即可。
+const PARENT_CODE = '8888';
+let manifest = null, paper = null, curCi = 0, curPi = 0, submitted = false, answersLocked = true, paperIsPdf = false, paperHasCard = false, curStudentPdf = '', curAnswerPdf = '';
+let curCard = null, curCardKey = '';   // 当前答题卡结构与 localStorage key
+let curAnswers = null, curSaved = {}, lastMin = 30;   // 当前答案（用于自动批改）/ 已存作答 / 上次考试时长
+let curPositions = {};   // 题号在学生版试卷上的位置 {题号:[页码,纵向比例]}，用于点击题号跳转（考试/浏览时用，最准）
+let curAnswerPositions = {};   // 题号在解析版试卷上的位置（仅含答题卡的卷从 answers.json 取），解锁解析版后用
+let viewingAnswer = false;     // 当前 #pdfViewer 显示的是否为解析版（决定跳转用哪套位置）
+let ALL_POS = null;            // 全部试卷的题号位置表（positions.json）
+let curPdfDoc = null;          // 当前已加载的 PDF 文档（供点击题号时实时检索题号位置）
+let runtimePos = {};           // 运行时检索到的题号位置缓存（按当前试卷）
+let navNumbers = null;         // 运行时从 PDF 文本扫描出的题号全集（用于导航条，比离线更全）
+let examStarted = false, examEndTime = 0, timerInterval = null;
+let curPadKey = '';   // 当前试卷的答题区 localStorage key
+let padAuto = true;   // 答题区自动编号开关（默认开）
+let curSections = ['一、'];   // 大题列表（中文数字 + 、）
+let curSectionIdx = 0;       // 当前选中的大题序号
+let sectionTexts = {};       // 各小题答题内容 {idx: text}
+let renderedStudentKey = ''; // 已渲染的原卷 PDF 标记，避免同一份重复渲染
+const LETTERS = "ABCDEFGH";
+
+// ===== PDF.js：把原卷/解析版渲染成居中真实试卷页 =====
+const PDFJS_VER = '3.11.174';
+function initPdfJs(){
+  if(!window.pdfjsLib) return false;
+  window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/' + PDFJS_VER + '/pdf.worker.min.js';
+  return true;
+}
+async function renderPdf(el, url){
+  el.innerHTML = '<div class="pdf-loading">正在加载试卷…</div>';
+  runtimePos = {}; navNumbers = null;   // 切卷/解锁解析版：清空运行时缓存
+  if(!initPdfJs()){ el.innerHTML = '<div class="pdf-loading">PDF 组件未加载（可能离线），请用上方「新窗口打开」按钮查看原卷。</div>'; return; }
+  let pdf;
+  try{ pdf = await window.pdfjsLib.getDocument({url}).promise; }
+  catch(e){ el.innerHTML = '<div class="pdf-loading">试卷加载失败：' + (e.message||e) + '</div>'; return; }
+  curPdfDoc = pdf;   // 保存文档引用，供点击题号时实时检索位置
+  el.innerHTML = '';
+  for(let i=1;i<=pdf.numPages;i++){
+    try{
+      const page = await pdf.getPage(i);
+      const vp = page.getViewport({scale:1.6});
+      const canvas = document.createElement('canvas');
+      canvas.width = vp.width; canvas.height = vp.height;
+      const ctx = canvas.getContext('2d');
+      await page.render({canvasContext:ctx, viewport:vp}).promise;
+      el.appendChild(canvas);
+    }catch(e){ const d=document.createElement('div'); d.className='pdf-loading'; d.textContent='第'+i+'页渲染失败'; el.appendChild(d); }
+  }
+  // rebuildNavAsync(); // 当前隐藏顶部题号导航条，不再实时扫描刷新
+}
+
+function showFatal(msg){ $('#loading').style.display='none'; const f=$('#fatal'); f.style.display='block'; f.textContent=msg; }
+
+async function init(){
+  try{
+    const r = await fetch('exam-data/manifest.json?v=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    manifest = await r.json();
+  }catch(e){
+    showFatal('无法加载试卷清单（exam-data/manifest.json）。请通过网站访问本页面，不要直接用浏览器打开本地文件。');
+    return;
+  }
+  // 载入题号位置表（点击题号跳转到试卷对应题目）
+  try{
+    const pr = await fetch('exam-data/positions.json?v=' + Date.now(), {cache:'no-store'});
+    if(pr.ok) ALL_POS = await pr.json();
+  }catch(e){ ALL_POS = null; }
+  $('#loading').style.display='none';
+  const catSel = $('#catSel'), paperSel = $('#paperSel');
+  manifest.cats.forEach((c, ci)=>{
+    const o = document.createElement('option'); o.value = ci; o.textContent = c.label; catSel.appendChild(o);
+  });
+  catSel.addEventListener('change', ()=>{ curCi = +catSel.value; populatePapers(); loadPaper(0); });
+  paperSel.addEventListener('change', ()=>{ curPi = +paperSel.value; loadPaper(curPi); });
+  populatePapers();
+  loadPaper(0);
+}
+
+function populatePapers(){
+  const paperSel = $('#paperSel'); paperSel.innerHTML='';
+  manifest.cats[curCi].papers.forEach((p, pi)=>{
+    const o = document.createElement('option'); o.value = pi;
+    o.textContent = p.label + (p.count != null ? '（' + p.count + '）' : '');
+    paperSel.appendChild(o);
+  });
+}
+
+async function loadPaper(pi){
+  curPi = pi; submitted = false; examStarted = false;
+  if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+  $('#pdfWrap').style.display='none';
+  $('#ansWrap').style.display='none';
+  const p = manifest.cats[curCi].papers[pi];
+  $('#paperTitle').style.display='inline';
+  $('#paperTitle').textContent = p.label;
+  $('#list').innerHTML = '';
+  $('#summary').style.display='none';
+  $('#filterbar').style.display='none';
+  $('#unlockPanel').style.display='none';
+  $('#codeInput').value='';
+  $('#codeMsg').textContent='';
+  answersLocked = true;
+  $('#examStatus').style.display='none';
+  $('#timer').textContent='';
+  // PDF 原卷模式：直接呈现试卷 PDF，不解析题目
+  paperIsPdf = !!p.pdf;
+  paperHasCard = !!p.card;
+  // 题号位置：先用学生版位置（考试/浏览阶段最准）；解析版位置在 buildCard 里单独载入
+  const posKey = (p.cat || (manifest.cats[curCi].name || '')) + '||' + p.label;
+  curPositions = (ALL_POS && ALL_POS[posKey]) ? ALL_POS[posKey] : {};
+  curAnswerPositions = {};
+  viewingAnswer = false;
+  curPdfDoc = null; runtimePos = {}; navNumbers = null;
+  $('#qnoNav').style.display = 'none';   // 非 PDF 或切换时先隐藏，render() 里按需显示
+  // 切换试卷时清掉上一套的答题卡状态
+  $('#answerPadWrap').classList.remove('cardmode');
+  $('#cardBody') && ($('#cardBody').innerHTML = '');
+  curCard = null; curCardKey = '';
+  if(paperIsPdf){
+    $('#pdfWrap').style.display='none';
+    $('#ansWrap').style.display='none';
+    $('#pdfViewer').innerHTML='';
+    $('#ansViewer').innerHTML='';
+    renderedStudentKey = '';
+    $('#answerPadWrap').style.display='none';
+    $('#answerPad').value='';
+    curPadKey = '';
+    // 纯浏览原卷（知识梳理/知识点总结等无答题卡结构）：打开即显示 PDF，不进入计时/交卷考试流
+    // 有答题卡结构（一课一练/专项等）无论是否 readOnly 都进入考试流，可作答、提交、批改
+    if(p.readOnly && !paperHasCard){
+      $('#startPanel').style.display='none';
+      render();
+      return;
+    }
+    showStartPanel(p.label);
+    return;
+  }
+  try{
+    const r = await fetch('exam-data/' + p.file + '?v=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    paper = await r.json();
+  }catch(e){
+    showFatal('无法加载试卷：' + p.label + '（' + e.message + '）');
+    return;
+  }
+  showStartPanel(p.label);
+}
+
+function setupPdfTools(){
+  const so=$('#pdfOpenBtn'), sd=$('#pdfDlBtn'), zb=$('#pdfZoomBtn');
+  if(curStudentPdf){ so.style.display='inline-block'; so.onclick=()=>window.open(curStudentPdf,'_blank'); sd.style.display='inline-block'; sd.href=curStudentPdf; if(zb) zb.style.display='inline-block'; }
+  else { so.style.display='none'; sd.style.display='none'; if(zb) zb.style.display='none'; }
+  const ao=$('#ansOpenBtn'), ad=$('#ansDlBtn');
+  if(curAnswerPdf){ ao.style.display='inline-block'; ao.onclick=()=>window.open(curAnswerPdf,'_blank'); ad.style.display='inline-block'; ad.href=curAnswerPdf; }
+  else { ao.style.display='none'; ad.style.display='none'; }
+}
+
+// 显示「开始答题」面板（选卷后先不进题）
+function showStartPanel(label){
+  $('#startPanel').style.display='block';
+  $('#startTitle').textContent = label;
+  $('#startBtn').style.display='inline-block';
+  $('#timeInputArea').style.display='none';
+  $('#timeMsg').textContent='';
+  $('#minutesInput').value='30';
+  $('#list').innerHTML='';
+}
+
+// 开始考试：设置时长后进入倒计时
+function beginExam(min){
+  lastMin = min;
+  examStarted = true;
+  $('#startPanel').style.display='none';
+  $('#examStatus').style.display='flex';
+  try { render(); } catch(e){ console.error('render 失败', e); }
+  updateCountdown();
+  examEndTime = Date.now() + min*60000;
+  updateTimer();
+  if(timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(updateTimer, 1000);
+}
+
+function updateTimer(){
+  if(!examStarted) return;
+  const remain = examEndTime - Date.now();
+  if(remain <= 0){
+    if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+    $('#timer').textContent = '时间到';
+    submit(true); // 自动交卷
+    return;
+  }
+  const s = Math.floor(remain/1000);
+  const mm = String(Math.floor(s/60)).padStart(2,'0');
+  const ss = String(s%60).padStart(2,'0');
+  $('#timer').textContent = '剩余 ' + mm + ':' + ss;
+}
+
+function render(){
+  // PDF 原卷模式：呈现试卷 PDF（完整原文），不渲染单选题卡片
+  if(paperIsPdf){
+    $('#list').style.display='none';
+    $('#pdfWrap').style.display='block';
+    viewingAnswer = false;   // 进入试卷即学生版视图
+    const p = manifest.cats[curCi].papers[curPi];
+    curStudentPdf = p.pdf || '';
+    curAnswerPdf = p.answerPdf || '';
+    setupPdfTools();
+    setupAudio(p);   // 带听力音频的试卷 → 显示底部音频播放条
+    // 渲染原卷 PDF（真实试卷一页页居中显示）；同一份不重复渲染
+    if(curStudentPdf && curStudentPdf !== renderedStudentKey){
+      renderPdf($('#pdfViewer'), encodeURI(curStudentPdf));
+      renderedStudentKey = curStudentPdf;
+    }
+    // 有答题卡结构 → 渲染「正式答题卡」；否则用原有的自由文本框
+    if(paperHasCard){
+      $('#answerPadWrap').classList.add('cardmode');
+      buildCard(p);
+    } else {
+      $('#answerPadWrap').classList.remove('cardmode');
+      loadPadForPaper(p);
+    }
+    $('#pdfWrap').classList.add('pdf-split');
+    // 每次切卷重置答题卡收起/悬浮竖条状态，避免上一份卷的收起态残留
+    $('#answerPadWrap').classList.remove('card-collapsed');
+    $('#cardTab').classList.remove('show');
+    const _rb = $('#cardReopenBtn'); if(_rb) _rb.style.display = '';
+    const pdfCol = document.querySelector('#pdfWrap .pdf-col');
+    if(pdfCol) pdfCol.style.display = '';
+    if(cardPdfToggle) cardPdfToggle.textContent = '隐藏试卷';
+    if(pdfZoomBtn){ pdfZoomBtn.textContent = '原始大小'; $('#pdfViewer').classList.remove('native'); }
+    // 纯浏览卷且无答题卡结构（知识梳理/知识点总结等）→ 收起并彻底隐藏入口，避免看到自由记事本
+    if(p.readOnly && !paperHasCard){ collapseCard(); $('#cardTab').classList.remove('show'); const rb=$('#cardReopenBtn'); if(rb) rb.style.display='none'; }
+    // 不设置 inline display，让 CSS 媒体查询决定 flex（桌面/平板左右分栏）还是 block（超窄屏堆叠）
+    $('#pdfWrap').style.display='';
+    $('#answerPadWrap').style.display='block';
+    buildQnoNav();   // 渲染题号导航条（试卷 PDF 全部题号可点击跳转）
+    return;
+  }
+  // 非 PDF（JSON 选择题）模式：隐藏答题区与原卷，收起顶部原卷工具
+  $('#pdfWrap').classList.remove('pdf-split');
+  $('#answerPadWrap').style.display='none';
+  $('#pdfOpenBtn').style.display='none';
+  $('#pdfDlBtn').style.display='none';
+  const _zb=$('#pdfZoomBtn'); if(_zb) _zb.style.display='none';
+  setupAudio(null);
+  const list = $('#list'); list.innerHTML='';
+  paper.questions.forEach((q, idx)=>{
+    const card = document.createElement('div');
+    card.className = 'qcard'; card.dataset.idx = idx;
+    const optsHtml = (q.opts||[]).map((t, i)=>{
+      const L = LETTERS[i] || ('?'+i);
+      return `<label class="opt" data-letter="${L}">
+        <input type="radio" name="q${idx}" value="${L}">
+        <span class="ltr">${L}</span>
+        <span class="otext"></span></label>`;
+    }).join('');
+    card.innerHTML = `
+      <div class="qhead"><span class="qno">${idx+1}</span></div>
+      <div class="stem"></div>
+      <div class="opts">${optsHtml}</div>
+      <div class="result"></div>
+      <div class="expl"><span class="et">解析</span><span class="expl-body"></span></div>`;
+    // 用 textContent 防注入
+    card.querySelector('.stem').textContent = q.stem || '';
+    (q.opts||[]).forEach((t,i)=>{
+      const ot = card.querySelectorAll('.opt .otext')[i];
+      if(ot) ot.textContent = t;
+    });
+    card.querySelector('.expl-body').textContent = q.expl || '';
+    // 绑定点击
+    card.querySelectorAll('.opt').forEach(opt=>{
+      opt.addEventListener('click', e=>{
+        if(submitted) return;
+        const inp = opt.querySelector('input');
+        inp.checked = true;
+        card.querySelectorAll('.opt').forEach(o=>o.classList.remove('chosen'));
+        opt.classList.add('chosen');
+      });
+    });
+    list.appendChild(card);
+  });
+  $('#examStatus').style.display='flex';
+  updateCountdown();
+}
+
+function updateCountdown(){
+  const cd = $('#countdown');
+  if(paperIsPdf){
+    // PDF 原卷模式：依据答题卡结构 + 已存作答，精确统计每题作答情况
+    if(!curCard){ cd.textContent = ''; return; }
+    let total = 0, done = 0;
+    curCard.sections.forEach((sec, si)=>{
+      if(sec.type === 'essay'){
+        total += 1;
+        if((curSaved['essay_'+si]||'').trim()) done++;
+      } else {
+        (sec.nos||[]).forEach(no=>{
+          total += 1;
+          const k = (sec.type === 'mc' ? 'm_' : 'b_') + si + '_' + no;
+          if((curSaved[k]||'').trim()) done++;
+        });
+      }
+    });
+    cd.textContent = submitted ? '' : ('已作答 ' + done + ' / ' + total);
+    return;
+  }
+  if(!paper) return;
+  const total = paper.questions.length;
+  let done = 0;
+  document.querySelectorAll('.qcard').forEach(c=>{
+    if(c.querySelector('input[type=radio]:checked')) done++;
+  });
+  cd.textContent = submitted ? '' : ('已作答 ' + done + ' / ' + total);
+}
+
+// 提交后：把主视图原卷 PDF 换成「解析版」（含答案与解析），便于直接对照
+function showAnswerPdf(){
+  const p = manifest.cats[curCi].papers[curPi];
+  if(!p.answerPdf) return;
+  viewingAnswer = true;                 // 解析版视图：跳转改用解析版题号位置
+  curStudentPdf = p.answerPdf;          // 让「新窗口打开/下载」也指向解析版
+  curAnswerPdf = p.answerPdf;
+  setupPdfTools();
+  renderPdf($('#pdfViewer'), encodeURI(p.answerPdf));
+  renderedStudentKey = p.answerPdf;     // 标记已渲染，避免切卷逻辑误重渲染
+}
+
+function normalizeBlank(s){
+  return String(s || '').toLowerCase()
+    .replace(/[.,!?;:'"()\[\]{}]/g, ' ')
+    .replace(/[\n\r\t]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+function blankMatches(input, answer){
+  const inp = normalizeBlank(input);
+  if(!inp) return false;
+  const alts = String(answer || '').split('/').map(a => normalizeBlank(a)).filter(Boolean);
+  return alts.some(alt => alt === inp);
+}
+// 提交后：依据 answers.json 自动批改答题卡（选择题 ✓/✗，填空标色并显示参考答案，作文不统计）
+function gradeCard(){
+  const body = $('#cardBody');
+  if(!body) return {correct:0, wrong:0, unans:0, total:0, blankN:0, blankCorrect:0, essayN:0};
+  let correct=0, wrong=0, unans=0, total=0;
+  let blankN=0, blankCorrect=0, blankWrong=0, blankUnans=0, blankGraded=0;
+  let essayN = 0;
+  if(curCard && curCard.sections){
+    curCard.sections.forEach(sec => { if(sec.type === 'essay') essayN++; });
+  }
+  body.querySelectorAll('.mc-chips').forEach(chips=>{
+    const no = chips.dataset.no;
+    const si = chips.dataset.si;
+    const k = 'm_' + si + '_' + no;
+    const chosen = (curSaved[k] || '').toUpperCase();
+    // 优先按「板块下标_题号」(si_no) 查答案，兼容单元检测旧版全局 no
+    const ans = curAnswers ? (curAnswers[si + '_' + no] || curAnswers[String(no)] || curAnswers[no] || '') : '';
+    const ansL = String(ans).trim().toUpperCase();
+    const isLetter = /^[A-F]$/.test(ansL);
+    chips.querySelectorAll('.chip').forEach(c=>{
+      c.classList.remove('g-ok','g-bad','g-answer');
+      c.style.pointerEvents = 'none';   // 批改后锁定，防止误改
+    });
+    if(isLetter){
+      total++;   // 仅统计可批改（答案为单字母）的选择题
+      const right = chips.querySelector('.chip[data-l="'+ansL+'"]');
+      if(right) right.classList.add('g-answer');   // 无论对错，标出正确选项
+      const pick = chips.querySelector('.chip[data-l="'+chosen+'"]');
+      if(chosen && chosen === ansL){ correct++; if(pick) pick.classList.add('g-ok'); }
+      else if(chosen){ if(pick) pick.classList.add('g-bad'); wrong++; }
+      else { unans++; }
+    }
+    // 非单字母答案（提取缺失或本就为单词作答）：不计入错对，由解析版对照
+  });
+  body.querySelectorAll('.blank-input').forEach(inp=>{
+    blankN++;
+    const no = inp.dataset.no;
+    const si = inp.dataset.si;
+    // 优先按「板块下标_题号」(si_no) 查答案，兼容单元检测旧版全局 no
+    const ans = curAnswers ? (curAnswers[si + '_' + no] || curAnswers[String(no)] || curAnswers[no] || '') : '';
+    inp.readOnly = true;
+    let ref = inp.parentElement.querySelector('.blank-ref');
+    if(!ref){ ref = document.createElement('div'); ref.className = 'blank-ref'; inp.parentElement.appendChild(ref); }
+    ref.textContent = '参考答案：' + (ans || '（暂无）');
+    const val = (inp.value || '').trim();
+    inp.classList.remove('g-ok','g-bad');
+    if(String(ans).trim()){
+      blankGraded++;
+      if(!val){ blankUnans++; }
+      else if(blankMatches(val, ans)){ blankCorrect++; inp.classList.add('g-ok'); }
+      else { blankWrong++; inp.classList.add('g-bad'); }
+    }
+  });
+  correct += blankCorrect; wrong += blankWrong; unans += blankUnans; total += blankGraded;
+  return {correct, wrong, unans, total, blankN, blankCorrect, blankWrong, blankUnans, essayN};
+}
+
+function submit(auto){
+  if((!paper && !paperIsPdf) || submitted) return;
+  if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+  examStarted = false;
+  // PDF 原卷模式：无单选题评分，交卷后由家长码解锁解析版
+  if(paperIsPdf){
+    submitted = true;
+    answersLocked = true;             // 交卷后答案与解析默认锁定，需家长码解锁
+    $('#submitBtn').textContent = '重新作答';
+    $('#submitBtn').onclick = redo;
+    $('#timer').textContent = auto ? '时间到，已自动交卷' : '';
+    $('#countdown').textContent = '';
+    // 自动批改答题卡（如有），在右侧答题卡上直接标出 ✓/✗ 与正确项、填空附参考答案
+    let stats = {correct:0, wrong:0, unans:0, total:0, blankN:0};
+    if(paperHasCard){ stats = gradeCard(); reopenCard(); }
+    // 交卷后保留学生卷与已批改的答题卡；解析版保持锁定，由家长码解锁后才显示
+    $('#unlockPanel').style.display = 'block';
+    $('#codeInput').value=''; $('#codeMsg').textContent='';
+    // 结果汇总
+    const s = $('#summary');
+    s.style.display='block';
+    if(paperHasCard && stats.total > 0){
+      const pct = stats.total ? Math.round(stats.correct/stats.total*100) : 0;
+      const blankTxt = stats.blankN ? `填空 对 ${stats.blankCorrect}/${stats.blankN}` : '';
+      const essayTxt = stats.essayN ? `作文 ${stats.essayN} 篇（不统计）` : '';
+      const extraTxt = [blankTxt, essayTxt].filter(Boolean).join('，');
+      s.innerHTML = `<div class="summary-row">
+        <div class="stat"><span>得分（选择+填空）</span><b>${stats.correct} / ${stats.total}</b></div>
+        <div class="stat"><span>正确率</span><b>${pct}%</b></div>
+        <div class="stat"><span>答错</span><b style="color:var(--bad)">${stats.wrong}</b></div>
+        <div class="stat"><span>未作答</span><b style="color:var(--na)">${stats.unans}</b></div>
+        <div class="stat"><span>填空/作文</span><b>${extraTxt || '—'}</b></div>
+      </div>
+      <div style="font-size:13px;color:var(--muted);margin-top:6px;">答题卡已自动批改（✓绿/✗红，正确选项已标出；填空绿色=对、红色=错，均附参考答案）。答案与解析已锁定，需家长输入家长码后查看；点顶部「展开答题卡」或右侧竖条可重新对照检查。</div>`;
+    } else {
+      s.innerHTML = '<div class="summary-row"><div class="stat"><span>状态</span><b>已交卷</b></div></div>'
+        + '<div style="font-size:13px;color:var(--muted);margin-top:6px;">答案与解析已锁定，需家长输入家长码后查看。</div>';
+    }
+    try{ $('#summary').scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){}
+    return;
+  }
+  // 手动提交时提醒：还有未作答的题
+  if(!auto){
+    let unansCount = 0;
+    document.querySelectorAll('.qcard').forEach(c=>{ if(!c.querySelector('input[type=radio]:checked')) unansCount++; });
+    if(unansCount > 0){
+      if(!confirm('还有 '+unansCount+' 题未作答，确定提交吗？\n（提交后只显示对错，答案与解析需家长码解锁）')) return;
+    }
+  }
+  let correct=0, wrong=0, unans=0;
+  document.querySelectorAll('.qcard').forEach(card=>{
+    const q = paper.questions[+card.dataset.idx];
+    if(!q) return;
+    const checked = card.querySelector('input[type=radio]:checked');
+    const chosen = checked ? checked.value.toUpperCase() : null;
+    const ans = (q.answer||'').trim().toUpperCase();
+    const isOk = chosen && chosen === ans;
+    card.querySelectorAll('.opt').forEach(opt=>{
+      const L = opt.dataset.letter.toUpperCase();
+      opt.classList.add('disabled');
+      opt.querySelector('input').disabled = true;
+      // 错误选项标红（孩子能知道自己选错），正确选项暂不标绿
+      if(chosen && L === chosen && !isOk) opt.classList.add('wrong');
+    });
+    const res = card.querySelector('.result');
+    if(isOk){ correct++; res.className='result ok'; res.textContent='✓ 回答正确'; }
+    else if(chosen){ wrong++; res.className='result bad'; res.textContent='✗ 回答错误'; }
+    else { unans++; res.className='result na'; res.textContent='– 未作答'; }
+    res.style.display='block';
+    // 答案与解析先锁定，不显示
+    card.classList.add('done');
+    if(isOk) card.classList.add('ok');
+  });
+  const total = paper.questions.length;
+  const pct = total ? Math.round(correct/total*100) : 0;
+  const s = $('#summary');
+  s.style.display='block';
+  s.innerHTML = `<div class="summary-row">
+    <div class="stat"><span>得分（正确）</span><b>${correct} / ${total}</b></div>
+    <div class="stat"><span>正确率</span><b>${pct}%</b></div>
+    <div class="stat"><span>答错</span><b style="color:var(--bad)">${wrong}</b></div>
+    <div class="stat"><span>未作答</span><b style="color:var(--na)">${unans}</b></div>
+  </div>`;
+  $('#filterbar').style.display='block';
+  submitted = true;
+  $('#submitBtn').textContent = '重新作答';
+  $('#countdown').textContent = '';
+  $('#timer').textContent = auto ? '时间到，已自动交卷' : '';
+  $('#submitBtn').onclick = redo;
+  // 显示家长解锁面板（答案与解析锁定）
+  answersLocked = true;
+  $('#unlockPanel').style.display='block';
+  $('#codeInput').value='';
+  $('#codeMsg').textContent='';
+  try{ $('#codeInput').focus(); }catch(e){}
+  try{ $('#summary').scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){}
+}
+
+// 家长码解锁：揭示正确答案（标绿）与解析
+function unlockAnswers(){
+  if(!submitted || !answersLocked) return;
+  const v = ($('#codeInput').value||'').trim();
+  if(v !== PARENT_CODE){ $('#codeMsg').textContent='家长码不正确，请重试'; $('#codeInput').value=''; try{$('#codeInput').focus();}catch(e){} return; }
+  $('#codeMsg').textContent='';
+  $('#unlockPanel').style.display='none';
+  answersLocked = false;
+  // PDF 原卷模式：把解析版 PDF 替换到原学生卷位置（同一处、版面不变），答题卡保持可见
+  if(paperIsPdf){
+    $('#ansWrap').style.display='none';
+    showAnswerPdf();
+    return;
+  }
+  document.querySelectorAll('.qcard').forEach(card=>{
+    const q = paper.questions[+card.dataset.idx];
+    if(!q) return;
+    const checked = card.querySelector('input[type=radio]:checked');
+    const chosen = checked ? checked.value.toUpperCase() : null;
+    const ans = (q.answer||'').trim().toUpperCase();
+    const isOk = chosen && chosen === ans;
+    // 标绿正确选项
+    card.querySelectorAll('.opt').forEach(opt=>{
+      const L = opt.dataset.letter.toUpperCase();
+      if(L === ans) opt.classList.add('correct');
+    });
+    // 补全结果行，显示正确答案
+    const res = card.querySelector('.result');
+    if(isOk){ /* 已显示“回答正确” */ }
+    else if(chosen){ res.textContent='✗ 你的答案：'+chosen+'　｜　正确答案：'+ans; }
+    else { res.textContent='– 未作答　｜　正确答案：'+ans; }
+    // 显示解析
+    if(q.expl){ card.querySelector('.expl').style.display='block'; }
+  });
+}
+
+function redo(){
+  submitted = false; examStarted = false; answersLocked = false;
+  if(timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+  $('#summary').style.display='none';
+  $('#filterbar').style.display='none';
+  $('#onlyWrong').checked = false;
+  $('#examStatus').style.display='none';
+  $('#timer').textContent='';
+  $('#unlockPanel').style.display='none';
+  $('#codeInput').value='';
+  $('#codeMsg').textContent='';
+  $('#ansWrap').style.display='none';
+  $('#ansViewer').innerHTML='';
+  // 清除答题卡批改标记并恢复可编辑（render 会重建，这里兜底）
+  const body = $('#cardBody');
+  if(body){
+    body.querySelectorAll('.chip').forEach(c=>{ c.classList.remove('g-ok','g-bad','g-answer'); c.style.pointerEvents=''; });
+    body.querySelectorAll('.blank-input').forEach(inp=>{ inp.readOnly=false; inp.classList.remove('g-ok','g-bad'); const r=inp.parentElement.querySelector('.blank-ref'); if(r) r.remove(); });
+  }
+  // 重置提交按钮为「提交试卷」并恢复提交行为，再重新进入考试（沿用上次时长），render 会重新渲染原卷与答题卡
+  $('#submitBtn').textContent = '提交试卷';
+  $('#submitBtn').onclick = submit;
+  beginExam(lastMin || 30);
+}
+
+$('#onlyWrong').addEventListener('change', ()=>{
+  const only = $('#onlyWrong').checked;
+  document.querySelectorAll('.qcard').forEach(c=>{
+    if(!submitted) return;
+    c.style.display = (only && c.classList.contains('ok')) ? 'none' : '';
+  });
+});
+$('#submitBtn').onclick = submit;
+$('#unlockBtn').onclick = unlockAnswers;
+$('#codeInput').addEventListener('keydown', e=>{ if(e.key==='Enter') unlockAnswers(); });
+
+// ===== 分层答题区：大题（一、二、三…）+ 小题（1、2、3…） =====
+function cnNum(n){
+  const d=['零','一','二','三','四','五','六','七','八','九','十'];
+  if(n<=10) return d[n];
+  if(n<20) return '十'+(n%10?d[n%10]:'');
+  if(n<100){ const t=Math.floor(n/10), o=n%10; return d[t]+'十'+(o?d[o]:''); }
+  return String(n);
+}
+const padEl = $('#answerPad');
+function savePad(){
+  if(!curPadKey) return;
+  const data = { sections: curSections, idx: curSectionIdx, texts: sectionTexts, auto: padAuto };
+  try{ localStorage.setItem(curPadKey, JSON.stringify(data)); }catch(e){}
+}
+function loadPadForPaper(p){
+  curPadKey = 'anspad::' + p.label;
+  let data = null;
+  try{ data = JSON.parse(localStorage.getItem(curPadKey) || 'null'); }catch(e){}
+  curSections = (data && Array.isArray(data.sections) && data.sections.length) ? data.sections : ['一、'];
+  sectionTexts = (data && data.texts) ? data.texts : {};
+  curSectionIdx = (data && typeof data.idx === 'number' && data.idx < curSections.length) ? data.idx : 0;
+  padAuto = (data && typeof data.auto === 'boolean') ? data.auto : true;
+  const ab = $('#padAutoBtn'); if(ab) ab.textContent = '自动编号：' + (padAuto ? '开' : '关');
+  renderSectionSel();
+  loadSectionIntoPad();
+}
+function renderSectionSel(){
+  const sel = $('#sectionSel'); sel.innerHTML='';
+  curSections.forEach((label, i)=>{
+    const o=document.createElement('option'); o.value=i; o.textContent=label; sel.appendChild(o);
+  });
+  sel.value = String(curSectionIdx);
+}
+function loadSectionIntoPad(){
+  const ta = $('#answerPad');
+  let val = sectionTexts[curSectionIdx] || '';
+  if(padAuto && val === ''){ val = '1. '; sectionTexts[curSectionIdx] = '1. '; }
+  ta.value = val;
+}
+function switchSection(newIdx){
+  if(newIdx === curSectionIdx) return;
+  sectionTexts[curSectionIdx] = padEl.value;
+  curSectionIdx = newIdx;
+  savePad();
+  $('#sectionSel').value = String(curSectionIdx);
+  loadSectionIntoPad();
+}
+function addSection(){
+  sectionTexts[curSectionIdx] = padEl.value; // 保存当前大题
+  curSections.push(cnNum(curSections.length + 1) + '、');
+  curSectionIdx = curSections.length - 1;
+  sectionTexts[curSectionIdx] = '';
+  savePad();
+  renderSectionSel();
+  loadSectionIntoPad();
+}
+if(padEl){
+  padEl.addEventListener('input', ()=>{ sectionTexts[curSectionIdx] = padEl.value; savePad(); });
+  // 回车自动补下一小题编号（仅在自动编号开启时）
+  padEl.addEventListener('keydown', e=>{
+    if(e.key !== 'Enter' || !padAuto) return;
+    e.preventDefault();
+    const s = padEl.selectionStart, en = padEl.selectionEnd;
+    const before = padEl.value.slice(0, s), after = padEl.value.slice(en);
+    const num = padEl.value.split('\n').length + 1;
+    const ins = '\n' + num + '. ';
+    padEl.value = before + ins + after;
+    const pos = before.length + ins.length;
+    padEl.selectionStart = padEl.selectionEnd = pos;
+    sectionTexts[curSectionIdx] = padEl.value; savePad();
+  });
+}
+// 自动编号开关
+const padAutoBtn = $('#padAutoBtn');
+if(padAutoBtn){
+  padAutoBtn.onclick = ()=>{
+    padAuto = !padAuto;
+    padAutoBtn.textContent = '自动编号：' + (padAuto ? '开' : '关');
+    savePad();
+  };
+}
+// 大题选择
+const sectionSel = $('#sectionSel');
+if(sectionSel){ sectionSel.onchange = ()=>{ switchSection(parseInt(sectionSel.value,10)); }; }
+// 新增大题
+const sectionAddBtn = $('#sectionAddBtn');
+if(sectionAddBtn){ sectionAddBtn.onclick = addSection; }
+// 生成小题空行（当前大题内，从末小题续填，不覆盖已有内容）
+const subGenBtn = $('#subGenBtn');
+if(subGenBtn){
+  subGenBtn.onclick = ()=>{
+    const n = Math.max(1, Math.min(60, parseInt($('#subLines').value, 10) || 0));
+    const cur = padEl.value;
+    let start = cur.trim() === '' ? 1 : (cur.split('\n').length + 1);
+    let add = (cur && !cur.endsWith('\n')) ? '\n' : '';
+    for(let i=start;i<start+n;i++) add += i + '. \n';
+    padEl.value = cur + add;
+    sectionTexts[curSectionIdx] = padEl.value; savePad();
+  };
+}
+// 收起/展开答题卡：收起时试卷占满全宽（解析版看得更清楚），右侧悬浮竖条 + 顶部「展开答题卡」按钮均可重新唤出
+function collapseCard(){
+  const w = $('#answerPadWrap'); if(!w) return;
+  w.classList.add('card-collapsed');
+  $('#pdfWrap').classList.remove('pdf-split');
+  $('#cardTab').classList.add('show');
+  const rb = $('#cardReopenBtn'); if(rb) rb.style.display = 'inline-block';
+}
+function reopenCard(){
+  const w = $('#answerPadWrap'); if(!w) return;
+  w.classList.remove('card-collapsed');
+  $('#pdfWrap').classList.add('pdf-split');
+  $('#cardTab').classList.remove('show');
+  const rb = $('#cardReopenBtn'); if(rb) rb.style.display = '';
+  const pdfCol = document.querySelector('#pdfWrap .pdf-col');
+  if(pdfCol) pdfCol.style.display = '';
+  const cpt = $('#cardPdfToggle'); if(cpt) cpt.textContent = '隐藏试卷';
+}
+const padToggleBtn = $('#padToggleBtn');
+if(padToggleBtn){ padToggleBtn.onclick = collapseCard; }
+
+// ===== 正式答题卡：依据 card.json 渲染（MC 选项块 / 填空行 / 作文框），自动保存 =====
+function noBadge(no){
+  const b = document.createElement('div'); b.className = 'card-no'; b.textContent = no; b.title = '点击跳到试卷该题';
+  b.style.cursor = 'pointer'; b.style.pointerEvents = 'auto';
+  b.addEventListener('click', ()=>{ jumpToQuestion(no); });
+  return b;
+}
+
+// 找到真正可滚动的容器（iframe 文档或嵌套的 overflow 元素），保证跳转一定能滚到
+function findScroller(el){
+  let n = el;
+  while(n && n !== document.documentElement && n !== document.body){
+    const s = getComputedStyle(n);
+    const ov = s.overflowY || s.overflow;
+    if((ov === 'auto' || ov === 'scroll') && n.scrollHeight > n.clientHeight + 2) return n;
+    n = n.parentElement;
+  }
+  return window;
+}
+function scrollToY(scroller, y){
+  if(scroller === window) window.scrollTo({top:y, behavior:'smooth'});
+  else scroller.scrollTo({top:y, behavior:'smooth'});
+}
+// 在已加载的 PDF 文本里检索题号 no 的精确位置（行首数字），返回 {pageIdx, yFrac}
+async function searchPdfForQuestion(no){
+  if(!curPdfDoc) return null;
+  const sNo = String(no);
+  for(let i=1;i<=curPdfDoc.numPages;i++){
+    let page, tc;
+    try{ page = await curPdfDoc.getPage(i); tc = await page.getTextContent(); }
+    catch(e){ continue; }
+    const v = page.getViewport({scale:1});
+    const pageH = v.height || 1;
+    // 把文本项按 y（PDF 坐标，自下而上）聚类成行，取每行最左侧文本判断是否为行首题号
+    const lines = {};
+    for(const it of tc.items){
+      if(!it.str || !it.str.trim()) continue;
+      const y = it.transform ? it.transform[5] : 0;
+      const key = Math.round(y/3)*3;
+      (lines[key] = lines[key] || []).push(it);
+    }
+    const ys = Object.keys(lines).map(Number).sort((a,b)=>b-a);   // 自上而下
+    for(const y of ys){
+      const row = lines[y].sort((a,b)=>(a.transform?a.transform[4]:0)-(b.transform?b.transform[4]:0));
+      const lead = (row[0].str||'').trim();
+      const m = lead.match(/^\s*[（(]?\s*(\d{1,3})(?:[\．.、）)\s]|$)/);
+      if(m && m[1] === sNo){
+        const yFrac = 1 - y/pageH;   // 转成「距顶部比例」，与 positions.json 约定一致
+        if(yFrac < 0.04 || yFrac > 0.95) continue;   // 跳过页眉/页脚行
+        const rest = lead.slice(m[0].length).trim();
+        if(!rest && parseInt(m[1],10) > 99 && m[0] === sNo) continue; // 纯数字(无标点)且数值大：标题/水印，跳过
+        return {pageIdx:i, yFrac: Math.max(0, Math.min(1, yFrac))};
+      }
+    }
+  }
+  return null;
+}
+// 取得题号 no 的位置：优先运行时缓存/精确检索，其次离线 positions.json 兜底
+async function findQuestion(no){
+  const sNo = String(no);
+  if(runtimePos[sNo]) return runtimePos[sNo];
+  if(curPdfDoc){
+    const pos = await searchPdfForQuestion(no);
+    if(pos){ runtimePos[sNo] = pos; return pos; }
+  }
+  if(viewingAnswer && curAnswerPositions[sNo]) return curAnswerPositions[sNo];
+  return curPositions[sNo] || null;
+}
+// 点击答题卡题号 / 题号导航条 → 实时检索并滚动到试卷对应题目（学生版/解析版均可）
+async function jumpToQuestion(no){
+  const pos = await findQuestion(no);
+  if(!pos) return;
+  const pageIdx = pos.pageIdx, yFrac = (typeof pos.yFrac === 'number') ? pos.yFrac : 0;
+  const v = $('#pdfViewer');
+  if(!v) return;
+  const canvases = v.querySelectorAll('canvas');
+  if(!canvases.length) return;
+  const c = canvases[pageIdx - 1];
+  if(!c) return;
+  const scroller = findScroller(c);
+  const rect = c.getBoundingClientRect();
+  let base;
+  if(scroller === window){ base = rect.top + window.scrollY; }
+  else { const sr = scroller.getBoundingClientRect(); base = rect.top - sr.top + scroller.scrollTop; }
+  const target = base + yFrac * rect.height - 12;
+  scrollToY(scroller, Math.max(0, target));
+  // 短暂高亮该题号所在画布，便于定位
+  c.style.transition = 'box-shadow .2s'; c.style.boxShadow = '0 0 0 3px var(--primary)';
+  setTimeout(()=>{ c.style.boxShadow = ''; }, 1200);
+}
+// 从已渲染 PDF 的文本实时扫描「行首题号」，得到当前试卷题号全集（比离线更全，含重排/填空等）
+async function collectQuestionNumbers(){
+  if(!curPdfDoc) return [];
+  const nums = new Set();
+  for(let i=1;i<=curPdfDoc.numPages;i++){
+    let page, tc;
+    try{ page = await curPdfDoc.getPage(i); tc = await page.getTextContent(); }
+    catch(e){ continue; }
+    const v = page.getViewport({scale:1}); const pageH = v.height || 1;
+    const lines = {};
+    for(const it of tc.items){
+      if(!it.str || !it.str.trim()) continue;
+      const y = it.transform ? it.transform[5] : 0;
+      const key = Math.round(y/3)*3;
+      (lines[key] = lines[key] || []).push(it);
+    }
+    const ys = Object.keys(lines).map(Number).sort((a,b)=>b-a);
+    for(const y of ys){
+      const row = lines[y].sort((a,b)=>(a.transform?a.transform[4]:0)-(b.transform?b.transform[4]:0));
+      const lead = (row[0].str||'').trim();
+      const m = lead.match(/^\s*[（(]?\s*(\d{1,3})(?:[\．.、）)\s]|$)/);
+      if(m){
+        const yFrac = 1 - y/pageH;
+        if(yFrac < 0.04 || yFrac > 0.95) continue;   // 跳过页眉/页脚
+        const rest = lead.slice(m[0].length).trim();
+        const n = parseInt(m[1],10);
+        if(!(1<=n && n<=300)) continue;
+        if(!rest && n > 99 && m[0] === String(n)) continue;   // 纯数字(无标点)且数值大：标题/水印，跳过
+        nums.add(n);
+      }
+    }
+  }
+  return [...nums].sort((a,b)=>a-b);
+}
+// 渲染完成后异步刷新题号导航条（用实时扫描得到的全集，更准确更全）
+async function rebuildNavAsync(){
+  const nums = await collectQuestionNumbers();
+  if(nums && nums.length){ navNumbers = nums; buildQnoNav(); }
+}
+// 题号导航条：把当前试卷的全部题号渲染成可点击 chip（覆盖所有 PDF 试卷，含无答题卡的纯浏览卷）
+function buildQnoNav(){
+  const nav = $('#qnoNav'), chips = $('#qnoChips');
+  if(!nav || !chips) return;
+  chips.innerHTML = '';
+  const src = (navNumbers && navNumbers.length) ? navNumbers : Object.keys(curPositions).map(n=>parseInt(n,10));
+  const nos = src.filter(n=>!isNaN(n)).sort((a,b)=>a-b);
+  if(!nos.length){ nav.style.display='none'; return; }
+  nos.forEach(no=>{
+    const c = document.createElement('button');
+    c.type = 'button'; c.className = 'qno-chip'; c.textContent = no;
+    c.title = '跳到第 ' + no + ' 题';
+    c.addEventListener('click', ()=>{ jumpToQuestion(no); });
+    chips.appendChild(c);
+  });
+  nav.style.display = 'block';
+}
+function saveCard(saved){
+  if(!curCardKey) return;
+  try{ localStorage.setItem(curCardKey, JSON.stringify(saved)); }catch(e){}
+  updateCountdown();
+}
+
+// ===== 截题问 AI：框选试卷区域截图，直接送到父窗口的 AI 提问 =====
+(function(){
+  const btn = $('#cropBtn');
+  if(!btn) return;
+  btn.addEventListener('click', startCrop);
+
+  function startCrop(){
+    const host = document.querySelector('#pdfWrap .pdf-col') || $('#pdfViewer');
+    if(!host) return;
+    if(!host.querySelectorAll('canvas').length){ alert('当前没有可截取的试卷页面，请先打开一份试卷'); return; }
+    if(document.getElementById('cropLayer')) document.getElementById('cropLayer').remove();
+    const hr = host.getBoundingClientRect();
+    const layer = document.createElement('div');
+    layer.id = 'cropLayer';
+    Object.assign(layer.style, {
+      position:'fixed', left:hr.left+'px', top:hr.top+'px', width:hr.width+'px', height:hr.height+'px',
+      zIndex:60, cursor:'crosshair', background:'rgba(20,30,50,.10)', boxSizing:'border-box'
+    });
+    document.body.appendChild(layer);
+    const tip = document.createElement('div');
+    tip.textContent = '按住拖动框选要问的题目，松手即截取；按 Esc 取消';
+    tip.style.cssText = 'position:fixed;left:50%;top:12px;transform:translateX(-50%);background:rgba(0,0,0,.72);color:#fff;font-size:12px;padding:6px 12px;border-radius:8px;z-index:61;pointer-events:none;';
+    document.body.appendChild(tip);
+
+    let sx=0, sy=0, dragging=false, rect=null;
+    const pos = e => { const p = (e.touches && e.touches[0]) ? e.touches[0] : e; return { x:p.clientX, y:p.clientY }; };
+    function down(e){
+      e.preventDefault();
+      const pp = pos(e); dragging = true; sx = pp.x; sy = pp.y;
+      rect = document.createElement('div');
+      Object.assign(rect.style, { position:'absolute', border:'2px solid #2b6cff', background:'rgba(43,108,255,.12)', left:'0px', top:'0px', width:'0px', height:'0px' });
+      layer.appendChild(rect);
+    }
+    function move(e){
+      if(!dragging) return;
+      if(e.cancelable) e.preventDefault();
+      const pp = pos(e);
+      const x = Math.min(sx, pp.x), y = Math.min(sy, pp.y), w = Math.abs(pp.x - sx), h = Math.abs(pp.y - sy);
+      rect.style.left = (x - hr.left) + 'px'; rect.style.top = (y - hr.top) + 'px';
+      rect.style.width = w + 'px'; rect.style.height = h + 'px';
+    }
+    function up(e){
+      if(!dragging) return; dragging = false;
+      const pp = pos(e.changedTouches ? e.changedTouches[0] : e);
+      const x = Math.min(sx, pp.x), y = Math.min(sy, pp.y), w = Math.abs(pp.x - sx), h = Math.abs(pp.y - sy);
+      cleanup();
+      if(w < 12 || h < 12) return;   // 太小视为取消
+      const url = captureRegion(x, y, w, h);
+      if(!url) return;
+      try{ window.parent.postMessage({ type:'exam-screenshot', image:url }, '*'); }catch(err){}
+      const fb = document.createElement('div');
+      fb.textContent = '已截取，去 AI 提问 →';
+      fb.style.cssText = 'position:fixed;left:50%;top:12px;transform:translateX(-50%);background:#2b6cff;color:#fff;font-size:13px;padding:8px 14px;border-radius:8px;z-index:80;';
+      document.body.appendChild(fb);
+      setTimeout(()=>{ fb.remove(); }, 1600);
+    }
+    function onKey(e){ if(e.key === 'Escape') cleanup(); }
+    function cleanup(){
+      if(layer.parentNode) layer.remove(); if(tip.parentNode) tip.remove();
+      document.removeEventListener('mousemove', move);
+      document.removeEventListener('mouseup', up);
+      document.removeEventListener('touchmove', move, { passive:false });
+      document.removeEventListener('touchend', up);
+      document.removeEventListener('keydown', onKey);
+    }
+    layer.addEventListener('mousedown', down);
+    layer.addEventListener('touchstart', down, { passive:false });
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', up);
+    document.addEventListener('touchmove', move, { passive:false });
+    document.addEventListener('touchend', up);
+    document.addEventListener('keydown', onKey);
+  }
+
+  function captureRegion(vx, vy, vw, vh){
+    const host = document.querySelector('#pdfWrap .pdf-col') || $('#pdfViewer');
+    const canvases = host.querySelectorAll('canvas');
+    const slices = [];
+    canvases.forEach(c=>{
+      const r = c.getBoundingClientRect();
+      const ix = Math.max(vx, r.left), iy = Math.max(vy, r.top);
+      const ix2 = Math.min(vx+vw, r.right), iy2 = Math.min(vy+vh, r.bottom);
+      if(ix2 <= ix || iy2 <= iy) return;
+      slices.push({
+        c, iy,
+        sx:(ix - r.left) * (c.width / r.width), sy:(iy - r.top) * (c.height / r.height),
+        sw:(ix2 - ix) * (c.width / r.width), sh:(iy2 - iy) * (c.height / r.height)
+      });
+    });
+    if(!slices.length) return null;
+    slices.sort((a,b)=> a.iy - b.iy);
+    const outW = Math.max(1, Math.round(Math.max.apply(null, slices.map(s=>s.sw))));
+    const out = document.createElement('canvas');
+    out.width = outW;
+    out.height = Math.max(1, Math.round(slices.reduce((h2,s)=> h2 + s.sh, 0)));
+    const ctx = out.getContext('2d');
+    ctx.fillStyle = '#fff'; ctx.fillRect(0,0,out.width,out.height);
+    let dy = 0;
+    slices.forEach(s=>{
+      const dw = s.sw, dh = s.sh, dx = (out.width - dw) / 2;
+      try{ ctx.drawImage(s.c, s.sx, s.sy, s.sw, s.sh, dx, dy, dw, dh); }catch(e){}
+      dy += dh;
+    });
+    return out.toDataURL('image/png');
+  }
+})();
+async function buildCard(p){
+  const body = $('#cardBody');
+  body.innerHTML = '<div class="card-tip">正在加载答题卡…</div>';
+  curCardKey = 'anscard::' + p.label;
+  let card;
+  try{
+    const r = await fetch(p.card + '?v=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    card = await r.json();
+  }catch(e){
+    body.innerHTML = '<div class="card-tip">答题卡加载失败：' + (e.message || e) + '</div>';
+    return;
+  }
+  curCard = card;
+  let saved = {};
+  try{ saved = JSON.parse(localStorage.getItem(curCardKey) || '{}') || {}; }catch(e){ saved = {}; }
+  curSaved = saved;
+  // 载入答案与解析版题号位置（提交后自动批改用；解析版位置单独存，不覆盖学生版位置）
+  curAnswers = {}; curAnswerPositions = {};
+  if(p.answers){
+    try{
+      const ar = await fetch(p.answers + '?v=' + Date.now(), {cache:'no-store'});
+      if(ar.ok){ const aj = await ar.json(); curAnswers = (aj && aj.answers) || {}; curAnswerPositions = (aj && aj.positions) || {}; }
+    }catch(e){ curAnswers = {}; curAnswerPositions = {}; }
+  }
+  body.innerHTML = '';
+  card.sections.forEach((sec, si)=>{
+    const secDiv = document.createElement('div'); secDiv.className = 'card-sec';
+    const t = document.createElement('div'); t.className = 'card-sec-title'; t.textContent = sec.title;
+    secDiv.appendChild(t);
+    if(sec.type === 'essay'){
+      const row = document.createElement('div'); row.className = 'essay-row';
+      const ta = document.createElement('textarea'); ta.className = 'essay-ta'; ta.placeholder = '在此写作文…';
+      const k = 'essay_' + si;
+      if(saved[k] != null) ta.value = saved[k];
+      ta.addEventListener('input', ()=>{ saved[k] = ta.value; saveCard(saved); });
+      row.appendChild(ta); secDiv.appendChild(row);
+    } else if(sec.type === 'blank'){
+      sec.nos.forEach(no=>{
+        const row = document.createElement('div'); row.className = 'card-row';
+        row.appendChild(noBadge(no));
+        const bd = document.createElement('div'); bd.className = 'card-body';
+        const inp = document.createElement('input'); inp.className = 'blank-input'; inp.type = 'text';
+        inp.placeholder = '第 ' + no + ' 题';
+        inp.dataset.si = si; inp.dataset.no = no;
+        const k = 'b_' + si + '_' + no;
+        if(saved[k] != null) inp.value = saved[k];
+        inp.addEventListener('input', ()=>{ saved[k] = inp.value; saveCard(saved); });
+        bd.appendChild(inp); row.appendChild(bd); secDiv.appendChild(row);
+      });
+    } else { // mc：选字母
+      const optN = sec.opts || 4;
+      sec.nos.forEach(no=>{
+        const row = document.createElement('div'); row.className = 'card-row';
+        row.appendChild(noBadge(no));
+        const bd = document.createElement('div'); bd.className = 'card-body';
+        const chips = document.createElement('div'); chips.className = 'mc-chips';
+        chips.dataset.si = si; chips.dataset.no = no;
+        const k = 'm_' + si + '_' + no;
+        let chosen = saved[k] || '';
+        for(let i=0;i<optN;i++){
+          const L = LETTERS[i];
+          const c = document.createElement('div'); c.className = 'chip' + (L === chosen ? ' on' : ''); c.textContent = L;
+          c.dataset.l = L;
+          c.addEventListener('click', ()=>{
+            chips.querySelectorAll('.chip').forEach(x=>x.classList.remove('on'));
+            if(L === chosen){ chosen = ''; c.classList.remove('on'); }
+            else { chosen = L; c.classList.add('on'); }
+            saved[k] = chosen; saveCard(saved);
+          });
+          chips.appendChild(c);
+        }
+        bd.appendChild(chips); row.appendChild(bd); secDiv.appendChild(row);
+      });
+    }
+    body.appendChild(secDiv);
+  });
+  updateCountdown();   // 载入已存作答时即显示正确进度
+}
+// 答题卡模式下：隐藏/显示左侧试卷，便于专注作答
+const cardPdfToggle = $('#cardPdfToggle');
+if(cardPdfToggle){
+  cardPdfToggle.onclick = ()=>{
+    const pdfCol = document.querySelector('#pdfWrap .pdf-col');
+    if(!pdfCol) return;
+    const hidden = pdfCol.style.display === 'none';
+    pdfCol.style.display = hidden ? '' : 'none';
+    $('#pdfWrap').classList.toggle('pdf-split', hidden);
+    cardPdfToggle.textContent = hidden ? '隐藏试卷' : '显示试卷';
+  };
+}
+// 收起答题卡：右栏整体隐藏、试卷占满全宽，右侧悬浮「答题卡」竖条 + 顶部「展开答题卡」按钮可重新唤出
+const cardCollapseBtn = $('#cardCollapseBtn');
+if(cardCollapseBtn){ cardCollapseBtn.onclick = collapseCard; }
+const cardTab = $('#cardTab');
+if(cardTab){ cardTab.onclick = reopenCard; }
+const cardReopenBtn = $('#cardReopenBtn');
+if(cardReopenBtn){ cardReopenBtn.onclick = reopenCard; }
+// 原卷缩放：默认撑满栏宽；点「原始大小」按真实像素显示、可左右拖动
+const pdfZoomBtn = $('#pdfZoomBtn');
+if(pdfZoomBtn){
+  pdfZoomBtn.onclick = ()=>{
+    const v = $('#pdfViewer');
+    const native = v.classList.toggle('native');
+    pdfZoomBtn.textContent = native ? '适应宽度' : '原始大小';
+  };
+}
+
+// ===== 听力音频播放器：仅带 audio 的试卷显示（悬浮在试卷底部）=====
+let auList = [], auIndex = 0;
+function auFmt(s){ if(!isFinite(s) || s < 0) s = 0; const m = Math.floor(s/60), x = Math.floor(s%60); return m + ':' + String(x).padStart(2,'0'); }
+function loadAudio(i){
+  auIndex = i;
+  const el = $('#auEl');
+  el.src = encodeURI(auList[i].src);
+  const p = $('#auPlay'); if(p) p.textContent = '▶';
+  const sk = $('#auSeek'); if(sk) sk.value = 0;
+  const tm = $('#auTime'); if(tm) tm.textContent = '0:00 / 0:00';
+}
+function setupAudio(p){
+  const bar = $('#audioBar'), el = $('#auEl');
+  if(el){ try{ el.pause(); }catch(e){} }
+  auList = (p && p.audio) || [];
+  if(!auList.length){ if(bar) bar.style.display = 'none'; auIndex = 0; return; }
+  const sel = $('#auSel');
+  sel.innerHTML = '';
+  auList.forEach((a, i)=>{
+    const o = document.createElement('option'); o.value = i; o.textContent = a.label || ('音频 ' + (i+1));
+    sel.appendChild(o);
+  });
+  sel.value = '0';
+  loadAudio(0);
+  if(bar) bar.style.display = 'flex';
+}
+(function(){
+  const el = $('#auEl'); if(!el) return;
+  $('#auPlay').addEventListener('click', ()=>{ if(el.paused){ el.play().catch(()=>{}); } else { el.pause(); } });
+  el.addEventListener('play', ()=>{ $('#auPlay').textContent = '⏸'; });
+  el.addEventListener('pause', ()=>{ $('#auPlay').textContent = '▶'; });
+  el.addEventListener('ended', ()=>{ $('#auPlay').textContent = '▶'; });
+  el.addEventListener('loadedmetadata', ()=>{ $('#auTime').textContent = auFmt(el.currentTime) + ' / ' + auFmt(el.duration); });
+  el.addEventListener('timeupdate', ()=>{
+    $('#auTime').textContent = auFmt(el.currentTime) + ' / ' + auFmt(el.duration);
+    if(el.duration) $('#auSeek').value = Math.round(el.currentTime / el.duration * 1000);
+  });
+  $('#auSeek').addEventListener('input', ()=>{ if(el.duration) el.currentTime = $('#auSeek').value / 1000 * el.duration; });
+  $('#auSel').addEventListener('change', ()=>{ loadAudio(parseInt($('#auSel').value,10) || 0); el.play().catch(()=>{}); });
+})();
+
+// 开始答题：先输入考试时间
+$('#startBtn').addEventListener('click', ()=>{
+  $('#startBtn').style.display='none';
+  $('#timeInputArea').style.display='block';
+  $('#timeMsg').textContent='';
+  try{ $('#minutesInput').focus(); }catch(e){}
+});
+$('#cancelTimeBtn').addEventListener('click', ()=>{
+  $('#startBtn').style.display='inline-block';
+  $('#timeInputArea').style.display='none';
+  $('#timeMsg').textContent='';
+});
+$('#confirmTimeBtn').addEventListener('click', ()=>{
+  const v = parseInt($('#minutesInput').value, 10);
+  if(!v || v <= 0){ $('#timeMsg').textContent='请输入大于 0 的分钟数'; return; }
+  if(v > 600){ $('#timeMsg').textContent='最长 600 分钟'; return; }
+  $('#timeInputArea').style.display='none';
+  beginExam(v);
+});
+$('#minutesInput').addEventListener('keydown', e=>{ if(e.key==='Enter') $('#confirmTimeBtn').click(); });
+
+init();
+</script>
+</body>
+</html>

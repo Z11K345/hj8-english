@@ -1,0 +1,12 @@
+############ student seg 4 | 完成句子 | cardcount=9 ############
+  len=1010 ; first 600 chars:
+  四、用词的适当形式填空\n1. She not only loves music but also has a m_________ talent for playing the piano, and she hopes to\nbecome a famous ___________ one day.(music)\n2. The ______ created a useful________ and planned _________ more things in the future.( invent)\n3. She shows great ________ in math, and her________ answers always surprise the teacher. (intelligent)\n4. She has a natural ________for painting, and everyone agrees she is a ________ artist. (talent)\n5. The ______ created an amazing piece of________that impressed everyone at the gallery.(art)\n6. The _________ loves _________ and studies stars
+  underscore-runs=20
+############ student seg 5 | 短文填空 | cardcount=9 ############
+  len=1072 ; first 600 chars:
+  五、完成句子\n1.她在钢琴演奏方面很有天赋，经常在学校活动中表演。\nShe _____ ____ _____ _______the piano and often performs at school events.\n2. Deepseek 在解决数学题方面展现出极高的智慧，常常比其他软件更快找到解法\nDeepseek ____ _____ ______ ______ solving math problems, often finding solutions faster than other\n\nUnit 1 Section 1 Reading 分层练习（学生版）\n第3 页共23 页\n微信公众号：瑾言教育资料库\nsoftwares.\n3. 他的咳嗽与寒冷天气有关。\nHis cough _____ _____ _______ the cold weather.\n4.到现在为止，要么医生，要么护士们已经检查了病人的基本情况。\nSo far，______the nurses_______ the doctor _____ ________ the patient’s basic situation.\n5.阿尔伯特・爱因斯坦改变了人们理解时间、空间和引力的方式。\nAlbert Einstein ______ ______ _________ people understood time,
+  underscore-runs=33
+############ student seg 9 | 阅读理解 | cardcount=4 ############
+  len=1761 ; first 600 chars:
+  九、完形填空\nWhile bad things are going on in the world every day, it is important to remember helping others can\nmake the world better. And whenever you are ___1___, try to pay it forward. The following is a story of\nmine.\nIn 1999, I was on my first ___2__ to Europe alone on a bus tour through Munich when I became\nvery ill and had to be taken to a hospital. While I was sitting in the waiting room, feeling ___3___ and\npainful, a male nurse walked up to me.\nHe ___4__ himself as Detmar, knowing I was a foreigner and an Australian, he asked if there was\nanything he could do for me. It turns out Detmar 
+  underscore-runs=20

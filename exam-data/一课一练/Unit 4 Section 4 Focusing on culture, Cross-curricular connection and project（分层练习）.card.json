@@ -1,0 +1,55 @@
+{
+ "title": "Unit 4 Section 4 Focusing on culture, Cross-curricular connection and project（分层练习）.pdf",
+ "sections": [
+  {
+   "title": "阅读短文并回答下列问题。",
+   "type": "blank",
+   "nos": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "title": "阅读还原。",
+   "type": "mc",
+   "nos": [
+    1,
+    2,
+    3,
+    4,
+    5
+   ],
+   "opts": 6
+  },
+  {
+   "title": "阅读理解。",
+   "type": "mc",
+   "nos": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "opts": 4
+  },
+  {
+   "title": "完形填空。",
+   "type": "mc",
+   "nos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "opts": 4
+  }
+ ]
+}

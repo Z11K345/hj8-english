@@ -1,0 +1,6 @@
+【沪教】八上英语期末完成句子119题.pdf marker_pos=14830
+  extracted_total=119 returned=119
+  sample 33='Big\nchanges\nwill\ncome with\nthe\nhelp' 34='be\nfull\nof\nsmart\ndevices' 35='easily\ngo\nwrong\nlead\nto' 98='Either\nor\nhas' 100='challenged\nto\nsucceeded' 119='keep\nin\ntouch\nwith'
+【沪教】八上英语期末用单词的适当形式填空70题.pdf marker_pos=6253
+  extracted_total=70 returned=70
+  sample 21='basis' 22='basic\nbased' 23='arrival\narrived' 24='Germany\nGerman' 25='weight\nweigh' 26='social\nsociety'

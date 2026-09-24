@@ -1,0 +1,49 @@
+{
+ "title": "Unit 6 Section 2 Grammar（分层练习）.pdf",
+ "sections": [
+  {
+   "title": "补全对话",
+   "type": "blank",
+   "nos": [
+    1
+   ]
+  },
+  {
+   "title": "短文填词",
+   "type": "blank",
+   "nos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+   ]
+  },
+  {
+   "title": "语法选择",
+   "type": "blank",
+   "nos": [
+    1
+   ]
+  },
+  {
+   "title": "阅读理解",
+   "type": "mc",
+   "nos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "opts": 4
+  }
+ ]
+}

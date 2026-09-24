@@ -1,0 +1,1080 @@
+{
+ "generated": "2026-09-23",
+ "totalPapers": 113,
+ "totalQuestions": 0,
+ "cats": [
+  {
+   "name": "一课一练",
+   "label": "一课一练（分层练习）",
+   "papers": [
+    {
+     "pdf": "resources/一课一练/Unit 1 Section 1 Reading（学生版）.pdf",
+     "answerPdf": "resources/一课一练/Unit 1 Section 1 Reading（解析版）.pdf",
+     "label": "Unit 1 Section 1 Reading（原卷·完整版）",
+     "count": "原卷",
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 1 Section 1 Reading（学生版）.card.json",
+     "answers": "exam-data/一课一练/Unit 1 Section 1 Reading（解析版）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 1 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 1 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 1 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 1 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 1 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "label": "Unit 1 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "audio": [
+      {
+       "label": "四 听选信息",
+       "src": "resources/听力音频/Unit 1 Section 1-3 四 听选信息 听力音频.mp3"
+      },
+      {
+       "label": "五 回答问题",
+       "src": "resources/听力音频/Unit 1 Section 1-3 五 回答问题 听力音频.mp3"
+      },
+      {
+       "label": "六 信息转述",
+       "src": "resources/听力音频/Unit 1 Section 1-3 六 信息转述 听力音频.mp3"
+      }
+     ],
+     "card": "exam-data/一课一练/Unit 1 Section 1-3 Listening and Speaking（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 1 Section 1-3 Listening and Speaking（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 1 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 1 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 1 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 1 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 1 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 1 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 1 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "label": "Unit 1 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 1 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 1 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 2 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 2 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 2 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 2 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 2 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "label": "Unit 2 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "audio": [
+      {
+       "label": "五 听选信息",
+       "src": "resources/听力音频/Unit 2 Section 1-3 五 听选信息 听力音频.mp3"
+      },
+      {
+       "label": "六 回答问题",
+       "src": "resources/听力音频/Unit 2 Section 1-3 六 回答问题 听力音频.mp3"
+      },
+      {
+       "label": "七 信息转述",
+       "src": "resources/听力音频/Unit 2 Section 1-3 七 信息转述 听力音频.mp3"
+      }
+     ],
+     "card": "exam-data/一课一练/Unit 2 Section 1-3 Listening and Speaking（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 2 Section 1-3 Listening and Speaking（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 2 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 2 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 2 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 2 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 2 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 2 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 2 Section 3 Writing（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 2 Section 3 Writing（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 2 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "label": "Unit 2 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 2 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 2 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 3 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 3 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 3 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 3 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 3 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "label": "Unit 3 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "audio": [
+      {
+       "label": "四 听选信息",
+       "src": "resources/听力音频/Unit 3 Section 1-3 四 听选信息 听力音频.mp3"
+      },
+      {
+       "label": "五 回答问题",
+       "src": "resources/听力音频/Unit 3 Section 1-3 五 回答问题 听力音频.mp3"
+      },
+      {
+       "label": "六 信息转述",
+       "src": "resources/听力音频/Unit 3 Section 1-3 六 信息转述 听力音频.mp3"
+      }
+     ],
+     "card": "exam-data/一课一练/Unit 3 Section 1-3 Listening and Speaking（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 3 Section 1-3 Listening and Speaking（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 3 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 3 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 3 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 3 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 3 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 3 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 3 Section 4 Focusing on culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "label": "Unit 3 Section 4 Focusing on culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 3 Section 4 Focusing on culture,Cross-curricular connection,Project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 3 Section 4 Focusing on culture,Cross-curricular connection,Project（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 4 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 4 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 4 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 4 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 4 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 4 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 4 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 4 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 4 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 4 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 4 Section 3 Writing（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 4 Section 3 Writing（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 4 Section 4 Focusing on culture, Cross-curricular connection and project（分层练习）.pdf",
+     "label": "Unit 4 Section 4 Focusing on culture, Cross-curricular connection and project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 4 Section 4 Focusing on culture, Cross-curricular connection and project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 4 Section 4 Focusing on culture, Cross-curricular connection and project（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 5 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 5 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 5 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 5 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 5 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "label": "Unit 5 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "audio": [
+      {
+       "label": "五 听选信息",
+       "src": "resources/听力音频/Unit 5 Section 1-3 五 听选信息 听力音频.MP3"
+      },
+      {
+       "label": "六 回答问题",
+       "src": "resources/听力音频/Unit 5 Section 1-3 六 回答问题 听力音频.MP3"
+      },
+      {
+       "label": "七 信息转述",
+       "src": "resources/听力音频/Unit 5 Section 1-3 七 信息转述 听力音频.MP3"
+      }
+     ],
+     "card": "exam-data/一课一练/Unit 5 Section 1-3 Listening and Speaking（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 5 Section 1-3 Listening and Speaking（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 5 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 5 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 5 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 5 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 5 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 5 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 5 Section 3 Writing（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 5 Section 3 Writing（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 5 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "label": "Unit 5 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 5 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 5 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 6 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 6 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 6 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 6 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 6 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "label": "Unit 6 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "audio": [
+      {
+       "label": "四 听选信息",
+       "src": "resources/听力音频/Unit 6 Section 1-3 四 听选信息 听力音频.mp3"
+      },
+      {
+       "label": "五 回答问题",
+       "src": "resources/听力音频/Unit 6 Section 1-3 五 回答问题 听力音频.mp3"
+      },
+      {
+       "label": "六 信息转述",
+       "src": "resources/听力音频/Unit 6 Section 1-3 六 信息转述 听力音频.mp3"
+      }
+     ],
+     "card": "exam-data/一课一练/Unit 6 Section 1-3 Listening and Speaking（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 6 Section 1-3 Listening and Speaking（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 6 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 6 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 6 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 6 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 6 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 6 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 6 Section 3 Writing（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 6 Section 3 Writing（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 6 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "label": "Unit 6 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 6 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 6 Section 4 Focusing culture,Cross-curricular connection,Project（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 7 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 7 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 7 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 7 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 7 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "label": "Unit 7 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "audio": [
+      {
+       "label": "四 听选信息",
+       "src": "resources/听力音频/Unit 7 Section 1-3 四 听选信息 听力音频.mp3"
+      },
+      {
+       "label": "五 回答问题",
+       "src": "resources/听力音频/Unit 7 Section 1-3 五 回答问题 听力音频.mp3"
+      },
+      {
+       "label": "六 信息转述",
+       "src": "resources/听力音频/Unit 7 Section 1-3 六 信息转述 听力音频.mp3"
+      }
+     ],
+     "card": "exam-data/一课一练/Unit 7 Section 1-3 Listening and Speaking（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 7 Section 1-3 Listening and Speaking（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 7 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 7 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 7 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 7 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 7 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 7 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 7 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.pdf",
+     "label": "Unit 7 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 7 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 7 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 8 Section 1 Reading（分层练习）.pdf",
+     "label": "Unit 8 Section 1 Reading（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 8 Section 1 Reading（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 8 Section 1 Reading（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 8 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "label": "Unit 8 Section 1-3 Listening and Speaking（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "audio": [
+      {
+       "label": "四 听选信息",
+       "src": "resources/听力音频/Unit 8 Section 1-3 四 听选信息 听力音频.mp3"
+      },
+      {
+       "label": "六 信息转述",
+       "src": "resources/听力音频/Unit 8 Section 1-3 六 信息转述 听力音频.mp3"
+      }
+     ],
+     "card": "exam-data/一课一练/Unit 8 Section 1-3 Listening and Speaking（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 8 Section 1-3 Listening and Speaking（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 8 Section 2 Grammar（分层练习）.pdf",
+     "label": "Unit 8 Section 2 Grammar（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 8 Section 2 Grammar（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 8 Section 2 Grammar（分层练习）.answers.json"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 8 Section 3 Writing（分层练习）.pdf",
+     "label": "Unit 8 Section 3 Writing（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练"
+    },
+    {
+     "pdf": "resources/一课一练/Unit 8 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.pdf",
+     "label": "Unit 8 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "一课一练",
+     "card": "exam-data/一课一练/Unit 8 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.card.json",
+     "answers": "exam-data/一课一练/Unit 8 Section 4 Focusing culture, Cross-curricular connection, Project（分层练习）.answers.json"
+    }
+   ]
+  },
+  {
+   "name": "单元检测",
+   "label": "单元检测（基础/提升卷）",
+   "papers": [
+    {
+     "pdf": "resources/单元检测/Unit 1（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 1（基础卷）（解析版）.pdf",
+     "label": "Unit 1（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 1（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 1（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 1（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 1（提升卷）（解析版）.pdf",
+     "label": "Unit 1（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 1（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 1（提升卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 2（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 2（基础卷）（解析版）.pdf",
+     "label": "Unit 2（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 2（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 2（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 2（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 2（提升卷）（解析版）.pdf",
+     "label": "Unit 2（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 2（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 2（提升卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 3（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 3（基础卷）（解析版）.pdf",
+     "label": "Unit 3（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 3（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 3（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 3（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 3（提升卷）（解析版）.pdf",
+     "label": "Unit 3（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 3（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 3（提升卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 4（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 4（基础卷）（解析版）.pdf",
+     "label": "Unit 4（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 4（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 4（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 4（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 4（提升卷）（解析版）.pdf",
+     "label": "Unit 4（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 4（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 4（提升卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 5（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 5（基础卷）（解析版）.pdf",
+     "label": "Unit 5（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 5（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 5（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 5（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 5（提升卷）（解析版）.pdf",
+     "label": "Unit 5（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 5（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 5（提升卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 6（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 6（基础卷）（解析版）.pdf",
+     "label": "Unit 6（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 6（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 6（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 6（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 6（提升卷）（解析版）.pdf",
+     "label": "Unit 6（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 6（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 6（提升卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 7（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 7（基础卷）（解析版）.pdf",
+     "label": "Unit 7（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 7（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 7（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 7（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 7（提升卷）（解析版）.pdf",
+     "label": "Unit 7（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 7（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 7（提升卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 8（基础卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 8（基础卷）（解析版）.pdf",
+     "label": "Unit 8（基础卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 8（基础卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 8（基础卷）.answers.json"
+    },
+    {
+     "pdf": "resources/单元检测/Unit 8（提升卷）（学生版）.pdf",
+     "answerPdf": "resources/单元检测/Unit 8（提升卷）（解析版）.pdf",
+     "label": "Unit 8（提升卷）（原卷·完整版）",
+     "count": "原卷",
+     "cat": "单元检测",
+     "card": "exam-data/单元检测/Unit 8（提升卷）.card.json",
+     "answers": "exam-data/单元检测/Unit 8（提升卷）.answers.json"
+    }
+   ]
+  },
+  {
+   "name": "专项练习",
+   "label": "专项练习（题型专练）",
+   "papers": [
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语书面表达16篇.pdf",
+     "label": "书面表达16篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语信息匹配11篇.pdf",
+     "label": "信息匹配11篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语信息匹配11篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语信息匹配11篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语单项选择100题.pdf",
+     "label": "单项选择100题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语单项选择100题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语单项选择100题.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语完形填空17篇.pdf",
+     "label": "完形填空17篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语完形填空17篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语完形填空17篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语完成句子37题.pdf",
+     "label": "完成句子37题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语完成句子37题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语完成句子37题.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末书面表达15篇.pdf",
+     "label": "期末书面表达15篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末书面表达15篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末书面表达15篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末单句首字母填空70题.pdf",
+     "label": "期末单句首字母填空70题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末单句首字母填空70题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末单句首字母填空70题.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末单项选择161题.pdf",
+     "label": "期末单项选择161题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末单项选择161题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末单项选择161题.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末复习单元写作通用表达&范文背诵.pdf",
+     "label": "期末复习单元写作通用表达&范文背诵.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末复习单元写作通用表达&范文背诵.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末复习单元写作通用表达&范文背诵.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末复习重点短语及句型.pdf",
+     "label": "期末复习重点短语及句型.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末复习重点词汇及词性转换.pdf",
+     "label": "期末复习重点词汇及词性转换.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末完形填空20篇.pdf",
+     "label": "期末完形填空20篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末完形填空20篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末完形填空20篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末完成句子119题.pdf",
+     "label": "期末完成句子119题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末完成句子119题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末完成句子119题.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末用单词的适当形式填空70题.pdf",
+     "label": "期末用单词的适当形式填空70题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末用单词的适当形式填空70题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末用单词的适当形式填空70题.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末短文填空36篇.pdf",
+     "label": "期末短文填空36篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末短文填空36篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末短文填空36篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末语法选择19篇.pdf",
+     "label": "期末语法选择19篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末语法选择19篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末语法选择19篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末阅读理解应用文21篇.pdf",
+     "label": "期末阅读理解应用文21篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末阅读理解应用文21篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末阅读理解应用文21篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末阅读理解记叙文17篇.pdf",
+     "label": "期末阅读理解记叙文17篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末阅读理解记叙文17篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末阅读理解记叙文17篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末阅读理解说明文21篇.pdf",
+     "label": "期末阅读理解说明文21篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末阅读理解说明文21篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末阅读理解说明文21篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语期末阅读还原20篇.pdf",
+     "label": "期末阅读还原20篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语期末阅读还原20篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语期末阅读还原20篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语短文语法填空21篇.pdf",
+     "label": "短文语法填空21篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语短文语法填空21篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语短文语法填空21篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语语法选择14篇.pdf",
+     "label": "语法选择14篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语语法选择14篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语语法选择14篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语语篇填词8篇.pdf",
+     "label": "语篇填词8篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语语篇填词8篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语语篇填词8篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语适当形式填词40题.pdf",
+     "label": "适当形式填词40题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语适当形式填词40题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语适当形式填词40题.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语阅读理解之应用文12篇.pdf",
+     "label": "阅读理解之应用文12篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语阅读理解之应用文12篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语阅读理解之应用文12篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语阅读理解之记叙文18篇.pdf",
+     "label": "阅读理解之记叙文18篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语阅读理解之记叙文18篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语阅读理解之记叙文18篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语阅读理解之说明文17篇.pdf",
+     "label": "阅读理解之说明文17篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语阅读理解之说明文17篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语阅读理解之说明文17篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语阅读还原五选五14篇.pdf",
+     "label": "阅读还原五选五14篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语阅读还原五选五14篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语阅读还原五选五14篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语阅读还原六选五12篇.pdf",
+     "label": "阅读还原六选五12篇.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语阅读还原六选五12篇.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语阅读还原六选五12篇.answers.json"
+    },
+    {
+     "pdf": "resources/专项练习/【沪教】八上英语首字母填词50题.pdf",
+     "label": "首字母填词50题.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "专项练习",
+     "card": "exam-data/专项练习/【沪教】八上英语首字母填词50题.card.json",
+     "answers": "exam-data/专项练习/【沪教】八上英语首字母填词50题.answers.json"
+    }
+   ]
+  },
+  {
+   "name": "知识梳理",
+   "label": "知识梳理（单元核心）",
+   "papers": [
+    {
+     "pdf": "resources/知识梳理/Unit 1（核心知识）.pdf",
+     "label": "Unit 1（核心知识）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 1（知识梳理）.pdf",
+     "label": "Unit 1（知识梳理）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 2（核心知识）.pdf",
+     "label": "Unit 2（核心知识）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 2（知识梳理）.pdf",
+     "label": "Unit 2（知识梳理）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 3（核心知识）.pdf",
+     "label": "Unit 3（核心知识）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 3（知识梳理） .pdf",
+     "label": "Unit 3（知识梳理） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 4（核心知识）.pdf",
+     "label": "Unit 4（核心知识）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 4（知识梳理）.pdf",
+     "label": "Unit 4（知识梳理）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 5（核心知识） .pdf",
+     "label": "Unit 5（核心知识） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 5（知识梳理） .pdf",
+     "label": "Unit 5（知识梳理） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 6（核心知识） .pdf",
+     "label": "Unit 6（核心知识） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 6（知识梳理） .pdf",
+     "label": "Unit 6（知识梳理） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 7（核心知识） .pdf",
+     "label": "Unit 7（核心知识） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 7（知识梳理） .pdf",
+     "label": "Unit 7（知识梳理） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    },
+    {
+     "pdf": "resources/知识梳理/Unit 8（知识梳理） .pdf",
+     "label": "Unit 8（知识梳理） .pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识梳理"
+    }
+   ]
+  },
+  {
+   "name": "知识点总结",
+   "label": "知识点总结（背诵）",
+   "papers": [
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语不规则动词表（背诵版）.pdf",
+     "label": "不规则动词表（背诵版）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语不规则动词表（默写版）.pdf",
+     "label": "不规则动词表（默写版）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语单词表.pdf",
+     "label": "单词表.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语单词表默写.pdf",
+     "label": "单词表默写.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语单词表（汉译英默写，不带音标）.pdf",
+     "label": "单词表（汉译英默写，不带音标）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语单词表（背诵版，带音标）.pdf",
+     "label": "单词表（背诵版，带音标）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语单词表（英译汉默写，带音标）.pdf",
+     "label": "单词表（英译汉默写，带音标）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语必背范文.pdf",
+     "label": "必背范文.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语短语归纳.pdf",
+     "label": "短语归纳.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语词性转换（背诵版）.pdf",
+     "label": "词性转换（背诵版）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语词性转换（默写版）.pdf",
+     "label": "词性转换（默写版）.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    },
+    {
+     "pdf": "resources/知识点总结/【沪教】八上英语词汇拓展背诵.pdf",
+     "label": "词汇拓展背诵.pdf",
+     "count": null,
+     "readOnly": true,
+     "cat": "知识点总结"
+    }
+   ]
+  }
+ ]
+}

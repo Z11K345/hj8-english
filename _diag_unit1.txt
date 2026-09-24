@@ -1,0 +1,22 @@
+=== total 【答案】 count in atext: 23
+=== CN_SEC headers (pos, roman, title) ===
+213 | 二 | 单项选择
+4018 | 三 | 根据首字母或者完成单词
+4985 | 四 | 用词的适当形式填空
+6212 | 五 | 完成句子
+7484 | 六 | 短文填空
+9833 | 七 | 阅读还原
+12244 | 八 | 语法选择
+16668 | 九 | 完形填空
+20492 | 十 | 阅读理解
+=== 10 segments (incl leading pre-header) ===
+--- seg 0 (len=213): 【答案】1.was unusually talented in\n2.was born\n3.in the countryside\n4.showed great intelligence\n5. think about\n6.be related to\n7.come from\n8.com
+--- seg 1 (len=3805): 二、单项选择\n1.— The boy's ______ surprised everyone when he solved the difficult math problem in just two minutes.\nA. talent\nB. intelligence\nC. c
+--- seg 2 (len=967): 三、根据首字母或者完成单词\n1._________(恐龙)lived on the earth a long time ago.\n2. I write new English words in my _________（笔记本）every day.\n3. _________（可能
+--- seg 3 (len=1227): 四、用词的适当形式填空\n1. She not only loves music but also has a m_________ talent for playing the piano, and she hopes to\nbecome a famous ___________
+--- seg 4 (len=1272): 五、完成句子\n1.她在钢琴演奏方面很有天赋，经常在学校活动中表演。\nShe _____ ____ _____ _______the piano and often performs at school events.\n2. Deepseek 在解决数学题方面展现出极高的智慧，常常
+--- seg 5 (len=2349): 六、短文填空\nA 短文填词\nThomas Edison was born in the US in 1847. From an early age, he showed great intelligence in\nscience. He was talented in solvi
+--- seg 6 (len=2411): 七、阅读还原\nA dictionary is very useful for the people who are learning English. People will use a dictionary for\nhelp when they have difficulty 
+--- seg 7 (len=4424): 八、语法选择\nTim Berners Lee is not the most famous inventor in the world. But\n1\ninvention has\nchanged our lives.\nTim\n2\nin London, England\n3\nJune 
+--- seg 8 (len=3824): 九、完形填空\nWhile bad things are going on in the world every day, it is important to remember helping others can\nmake the world better. And whene
+--- seg 9 (len=6321): 十、阅读理解\nA\nFoxes with nine tails, animals with human faces and fish bodies, turtles with bird heads and snake\ntails...these magical animals ar

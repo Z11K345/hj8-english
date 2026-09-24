@@ -1,0 +1,113 @@
+seg 0 | card=翻译下面短语(12,type=blank) | 【答案】=1 | mc_letters=0 | plain_items=12
+   plain sample: was unusually talented in || was born || in the countryside
+seg 1 | card=单项选择(12,type=mc) | 【答案】=12 | mc_letters=12 | plain_items=12
+   plain sample: — The boy's ______ surprised everyone when he solved the difficult math problem in just two minutes.
+A. talent
+B. intelligence
+C. courage
+D. patience
+【答案】B || _______ she will join the school art club, but she hasn't decided yet.
+A. Certainly
+B. Finally
+C. Luckily
+D. Perhaps
+【答案】D || The city plans to reduce traffic jams by encouraging people to use public _____ like buses and subways.
+A. roads
+B. signals
+C. rules
+D. vehicles
+【答案】D
+seg 2 | card=根据首字母或者完成单词(12,type=blank) | 【答案】=1 | mc_letters=0 | plain_items=24
+   plain sample: _________(恐龙)lived on the earth a long time ago. || I write new English words in my _________（笔记本）every day. || _________（可能）he forgot to bring his homework to school.
+seg 3 | card=用词的适当形式填空(10,type=blank) | 【答案】=1 | mc_letters=0 | plain_items=20
+   plain sample: She not only loves music but also has a m_________ talent for playing the piano, and she hopes to
+become a famous ___________ one day.(music) || The ______ created a useful________ and planned _________ more things in the future.( invent) || She shows great ________ in math, and her________ answers always surprise the teacher. (intelligent)
+seg 4 | card=完成句子(9,type=blank) | 【答案】=1 | mc_letters=0 | plain_items=19
+   plain sample: 她在钢琴演奏方面很有天赋，经常在学校活动中表演。
+She _____ ____ _____ _______the piano and often performs at school events. || Deepseek 在解决数学题方面展现出极高的智慧，常常比其他软件更快找到解法
+Deepseek ____ _____ ______ ______ solving math problems, often finding solutions faster than other
+softwares. || 他的咳嗽与寒冷天气有关。
+His cough _____ _____ _______ the cold weather.
+seg 5 | card=短文填空(9,type=blank) | 【答案】=2 | mc_letters=0 | plain_items=32
+   plain sample: From an early age, he showed great intelligence in
+science. He was talented in solving problems and learned to do experiments by himself. || P________ his
+most famous || i__________ is the light bulb, which
+seg 6 | card=阅读还原(1,type=mc) | 【答案】=1 | mc_letters=0 | plain_items=10
+   plain sample: C || D || E
+seg 7 | card=语法选择(15,type=mc) | 【答案】=1 | mc_letters=0 | plain_items=47
+   plain sample: When he was a child, he enjoyed
+playing with electrical things. Later, he studied science at Oxford University. He made his
+4
+computer from an old television at the age of || Tim started working on early computers. At that time, they were much
+5
+than now. Tim
+was really
+6
+in two things, computers and how the brain works. How could the brain
+7
+so many facts so quickly? He had to work with people all over the world. And they shared
+8
+information about computers. It was hard to manage all the information. He answered
+9
+same
+questions again and again. It was even difficult for computers in the same office
+10
+information.
+There was Internet already but it was difficult to use. In 1989, Tim
+11
+the World Wide
+Web (WWW) all by himself. This had a special language that helped computers talk to each other on the
+Internet. Tim doesn’t think he did
+12
+special. He says that all of the ideas about the Internet
+
+Unit 1 Section 1 Reading 分层练习（解析版）
+第16 页共23 页
+微信公众号：瑾言教育资料库
+were already there. All he did was to put them together. He says that many
+13
+people worked
+together to make the Internet what it is today.
+Most inventors want to become rich.
+14
+, Tim gave away the World Wide Web for nothing.
+He helps people share technology and wants the Internet to be free for everyone to use. Maybe he is
+15
+but least famous inventor in the world today! || A. he
+B. him
+C. his
+D. himself
+seg 8 | card=完形填空(10,type=mc) | 【答案】=1 | mc_letters=1 | plain_items=20
+   plain sample: A. troubled
+B. helped
+C. heard
+D. ordered || A. trip
+B. flight
+C. business
+D. experience || A. angry
+B. surprised
+C. helpless
+D. excited
+seg 9 | card=阅读理解(4,type=mc) | 【答案】=2 | mc_letters=0 | plain_items=26
+   plain sample: Why did the writer talk about the strange animals in Paragraph 1?
+A. To answer some questions.
+B. To give some examples.
+C. To interest the readers.
+D. To make a conclusion. || The underlined word “inspired” in Paragraph 1 has similar meaning to the underlined word in _______.
+A. We need someone to inspire the team.
+
+Unit 1 Section 1 Reading 分层练习（解析版）
+第21 页共23 页
+微信公众号：瑾言教育资料库
+B. He inspired many young people to take up basketball.
+C. His driving hardly inspires confidence (信心).
+D. His book was inspired by the story of a little girl. || Which of the following can you find in Shan Hai Jing?
+①states
+②mountains
+③rivers
+④plants
+⑤monsters
+A. ①②③④
+B. ①②③⑤
+C. ②③④⑤
+D. ①③④⑤.

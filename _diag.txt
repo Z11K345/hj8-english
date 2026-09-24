@@ -1,0 +1,66 @@
+
+### 专项练习/【沪教】八上英语单项选择100题.pdf
+  card sections: 1 | card total Q=100 | answer blocks=100 | answer total=0
+    sec1: [mc] 全卷 nq=100
+    answer block sizes: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+### 专项练习/【沪教】八上英语阅读理解之记叙文18篇.pdf
+  card sections: 1 | card total Q=5 | answer blocks=18 | answer total=81
+    sec1: [mc] 全卷 nq=5
+    answer block sizes: [5, 4, 5, 4, 5, 4, 4, 5, 4, 5, 4, 5, 4, 5, 5, 4, 5, 4]
+
+### 专项练习/【沪教】八上英语完形填空17篇.pdf
+  card sections: 1 | card total Q=10 | answer blocks=17 | answer total=170
+    sec1: [blank] 全卷 nq=10
+    answer block sizes: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
+
+### 专项练习/【沪教】八上英语完成句子37题.pdf
+  card sections: 1 | card total Q=37 | answer blocks=37 | answer total=0
+    sec1: [blank] 全卷 nq=37
+    answer block sizes: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+### 一课一练/Unit 1 Section 2 Grammar（分层练习）.pdf
+  card sections: 16 | card total Q=142 | answer blocks=22 | answer total=112
+    sec1: [mc] 单项选择 nq=14
+    sec2: [blank] 用some 或any 填空 nq=2
+    sec3: [blank] 用复合不定代词填空 nq=10
+    sec4: [blank] 根据括号中的提示翻译下列句子 nq=8
+    sec5: [mc] 根据句意，从方框中选择合适的复合不定代词填空 nq=10
+    sec6: [blank] 语法填空 nq=1
+    sec7: [mc] 语法选择 nq=15
+    sec8: [mc] 阅读理解 nq=5
+    sec9: [mc] 单项选择 nq=14
+    sec10: [blank] 用some 或any 填空 nq=5
+    sec11: [blank] 用复合不定代词填空 nq=10
+    sec12: [blank] 根据括号中的提示翻译下列句子 nq=8
+    sec13: [mc] 根据句意，从方框中选择合适的复合不定代词填空 nq=10
+    sec14: [blank] 语法填空 nq=10
+    sec15: [mc] 语法选择 nq=15
+    sec16: [mc] 阅读理解 nq=5
+    answer block sizes: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 15, 18, 18, 10, 26, 15, 5, 5]
+
+### 一课一练/Unit 1 Section 1 Reading（分层练习）.pdf
+  card sections: 20 | card total Q=193 | answer blocks=23 | answer total=124
+    sec1: [blank] 翻译下面短语 nq=12
+    sec2: [mc] 单项选择 nq=12
+    sec3: [blank] 根据首字母或者完成单词 nq=12
+    sec4: [blank] 用词的适当形式填空 nq=10
+    sec5: [blank] 完成句子 nq=9
+    sec6: [blank] 短文填空 nq=9
+    sec7: [mc] 阅读还原 nq=1
+    sec8: [mc] 语法选择 nq=15
+    sec9: [mc] 完形填空 nq=10
+    sec10: [mc] 阅读理解 nq=4
+    sec11: [blank] 翻译下面短语 nq=12
+    sec12: [mc] 单项选择 nq=12
+    sec13: [blank] 根据首字母或者完成单词 nq=12
+    sec14: [blank] 用词的适当形式填空 nq=10
+    sec15: [blank] 完成句子 nq=9
+    sec16: [blank] 短文填空 nq=10
+    sec17: [mc] 阅读还原 nq=5
+    sec18: [mc] 语法选择 nq=15
+    sec19: [mc] 完形填空 nq=10
+    sec20: [mc] 阅读理解 nq=4
+    answer block sizes: [13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 19, 17, 15, 10, 5, 15, 0, 4, 4]
+
+NOTE: if card_total != answer total, or block sizes reset per passage, numbered alignment fails.

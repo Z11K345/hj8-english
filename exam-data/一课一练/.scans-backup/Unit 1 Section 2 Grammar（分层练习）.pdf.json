@@ -1,0 +1,476 @@
+{
+ "title": "Unit 1 Section 2 Grammar（分层练习）.pdf",
+ "cat": "一课一练",
+ "pages": 20,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "—I want to write an essay. Can you suggest some AI apps for it?—Em..., deepseek, doubao, kimi, Qwen, etc. You can choose _____ of them.",
+   "opts": [
+    "either",
+    "any",
+    "every",
+    "both"
+   ],
+   "answer": "B",
+   "expl": "句意：我想写一篇论文。你能推荐一些AI 应用程序吗？……DeepSeek、豆包、Kimi、Qwen 等。你可以选择它们中的任何一个。 考查不定代词用法：any 用于三者或以上的选择，符合语境中提到的多个AI 应用。either(两者 选一)、both(两者都)和every(强调整体中的每个个体)均不符合题意。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "Would you like _______ tea?No, I don’t like ______ tea, but I would like ______ cakes.",
+   "opts": [
+    "any, any, some",
+    "some, any, any",
+    "some, any, some",
+    "any, some, any"
+   ],
+   "answer": "C",
+   "expl": "句意：你想喝点茶吗？不，我不喜欢任何茶，但我想要一些蛋糕。 考查不定代词用法：Would you like... 表示委婉请求，用some；否定句don’t like 用any；最后一 句想要一些仍表请求，用some。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "There isn’t ____ water in the bottle. Could you please get me _____?",
+   "opts": [
+    "any; some",
+    "some; any",
+    "any; any",
+    "some; some"
+   ],
+   "answer": "A",
+   "expl": "句意：瓶子里没有任何水了。你能给我拿一些吗？ 考查不定代词用法：否定句用any；请求建议句(Could you...)用some 表委婉语气。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "—Listen! ___ is ringing the doorbell. Would you mind opening the door, Bill?— Of course not, Dad. I will do it right now.",
+   "opts": [
+    "Everybody",
+    "Somebody",
+    "Anybody",
+    "Nobody"
+   ],
+   "answer": "B",
+   "expl": "句意：听！有人在按门铃。你介意开下门吗，比尔？ 考查不定代词用法：somebody(某人)用于肯定句，符合有人正在按门铃的语境。everybody(所 有人)、anybody(任何人，常用于否定/ 疑问句)和nobody(没人)均不符。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "When our teacher heard of the news, he was too angry to say _______.",
+   "opts": [
+    "everything",
+    "nothing",
+    "something",
+    "anything"
+   ],
+   "answer": "D",
+   "expl": "句意：当老师听到这个消息时，他太生气了以至于说不出任何话。 考查不定代词用法：too...to... 结构表否定，用anything(用于否定句)。everything(一切)、nothing (双重否定错误)和something(用于肯定句)均不符合语法。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "—Do you have ______ to do this morning?—Yes. I want to take some photos of my dog.",
+   "opts": [
+    "interesting anything",
+    "anything interesting",
+    "interesting something",
+    "something interesting"
+   ],
+   "answer": "B",
+   "expl": "句意：我现在帮不了你。问其他人来帮你吧。 考查不定代词用法：somebody else(其他人)是固定搭配，else 后置修饰不定代词。anybody other 和somebody other 结构错误，else somebody 语序错误。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "can’t help you now. Ask ________ to help you.",
+   "opts": [
+    "somebody other",
+    "else somebody",
+    "somebody else",
+    "anybody other"
+   ],
+   "answer": "B",
+   "expl": "句意：教室里一个人也没有。所有的学生都在操场上体育课。 考查复合不定代词辨析。somebody 某人；anybody 任何人；nobody 没有人；everybody 每个人。根 据“All the students are having a PE lesson in the playground.”可知，教室里没有人，此处是否定句，故 选B。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "There isn’t ________ in the classroom. All the students are having a PE lesson in the playground.A somebody",
+   "opts": [
+    "anybody",
+    "nobody",
+    "everybody"
+   ],
+   "answer": "C",
+   "expl": "句意：我们到处找些吃的东西。但是房子里什么也没有。 考查复合不定代词。something 某事，某物，多用于肯定句；anything 任何东西，多用于否定句或 疑问句；everything 所有东西；nothing 什么也没有。第一空为肯定句，且根据句意可知，此处指的 是找一些吃的东西，用something，排除A 和B；第二空根据转折连词but 可知，此处指的是什么 也没有，用nothing，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "We looked everywhere for ______ to eat. But there was ______ in the house.",
+   "opts": [
+    "anything; nothing",
+    "everything; nothing",
+    "something; nothing",
+    "something; anything"
+   ],
+   "answer": "D",
+   "expl": "】句意：——这个星期天你愿意和我一起去看机器人表演吗？——听起来很棒，我相信未 来对于机器人来说没有什么是难的。 考查不定代词。something 某些事；everything 每件事；anything 任何事；nothing 没有什么。根据“will be difficult for robots in the future”可知，此处表达“没有什么是困难的”，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "—Would you like to watch the robot(机器人) show with me this Sunday?—Sounds great. I believe ________ will be difficult for robots in the future(将来).",
+   "opts": [
+    "something",
+    "everything",
+    "anything",
+    "nothing"
+   ],
+   "answer": "B",
+   "expl": "句意：——明天你和谁一起去大理？——没有人。我将独自去那儿。 考查不定代词辨析。Somebody 某人；Nobody 没有人；Anybody 任何人；Everybody 每个人。根 据“I'll go there alone(独自).”可知，没有人和我一起去。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "—Who will you go to Dali with tomorrow?—_________. I’ll go there alone(独自).",
+   "opts": [
+    "Somebody",
+    "Nobody",
+    "Anybody",
+    "Everybody"
+   ],
+   "answer": "C",
+   "expl": "句意：我们不能为家乡曲靖做所有的事情。但是我们可以做一些事情让它变成更美的地方。 考查不定代词辨析。nothing 没有事情，表示否定；anything 任何事情；everything 一切事情；something 某件事情。根据后句“But we can do something to make it a better place.”可推知，前句应是：我们不 能为家乡曲靖做所有的事情。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "We can’t do ________ for Qujing, my hometown. But we can do something to make it a better place.",
+   "opts": [
+    "nothing",
+    "anything",
+    "everything",
+    "something"
+   ],
+   "answer": "A",
+   "expl": "句意：我饿了，你能给我点好吃的吗？ 考查复合不定代词的用法。something 某物，用于肯定句或表示请求/建议的疑问句中；anything 任 何东西，用于否定句或疑问句中；nothing 没有什么；由“would you please give me”可知，该句是 表示请求的疑问句，要用something；delicious 美味的，形容词，修饰不定代词要放在不定代词后， 故选A。",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "I’m hungry, would you please give me ________ to eat?",
+   "opts": [
+    "something delicious",
+    "anything delicious",
+    "delicious something",
+    "nothing delicious"
+   ],
+   "answer": "D",
+   "expl": "句意：——你想吃点什么？——不了，谢谢。我太饱了，吃不下任何东西了。 考查不定代词。anything 任何东西，用于否定或疑问句；nothing 没有什么东西；something 某样东 西，用于肯定句，或者表示请求或建议的疑问句中；everything 每样东西。根据“Would you like”可 知，表达的是客气的询问，表示建议，用不定代词something；第二空，意为我太饱了什么也吃不 下，用anything 表示，故选D。 二、用some 或any 填空",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "—Would you like ________ to eat?—No, thank you. I am too full to eat ________.",
+   "opts": [
+    "something; nothing",
+    "anything; everything",
+    "anything; nothing",
+    "something; anything"
+   ],
+   "answer": "B",
+   "expl": "：它是如此珍贵，以至于受到很好的保护。 very 非常；so 如此，修饰形容词/副词；quite 很，相当；such 这么，修饰名词。根据“...precious that it is well protected.”可知，本句是so+形容词+that 从句，表示“如此……以至于……”，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "A. design",
+   "opts": [
+    "designs",
+    "designed",
+    "designing"
+   ],
+   "answer": "C",
+   "expl": "：他们有一个聚会，每个人都玩得很开心。根据They had a party and ____ had a good time.可知，句意为“他们有一个聚会，每个人都玩得很开心。”“每个人”everyone，故答案填everyone。 2. 句意：爱丽丝从不和任何人谈论她的家庭。根据Alice never talks about her family with ____.可知， 句意为“爱丽丝从不和任何人谈论她的家庭。”句中有否定词never，所以“任何人”用anyone，故答 案填anyone。 3. 句意：听！有人在教室里唱歌。根据Listen! ____ is singing in the classroom.可知，句意为“听！ 有人在教室里唱歌。”本句为肯定陈述句，“有人”用someone，因其位于句首，需要第一个字母大 写，故答案填Someone。 4. 句意：——今天大家都来了吗？——是的，都来了。根据—Is ____ here today?—Yes, we’re all here. 可知，此处是问“今天大家都来了吗？”“大家”也就是“每个人”，所以用everyone“每个人、人人”。 Is everyone here？一般被用来询问出勤情况。故答案填everyone。 5. 句意：这是我第一次来北京，所以对我来说一切都很有趣。根据This is my first time to Beijing, so ____ is interesting for me.可知，句意为“这是我第一次来北京，所以对我来说一切都很有趣。”“一切、 每件事情”everything，故答案填everything。 6. 句意：你想吃点什么吗？根据Would you like ____ to eat?可知，句意为“你想吃点什么吗？”这里 是用于征求对方意见或建议的疑问句，所以用something，故答案填something。 7. 句意：他们昨天去购物，但是什么也没买。根据They went shopping yesterday, but bought ____. 可知，句意为“：他们昨天去购物，但是什么也没买。”“什么也没有”nothing，故答案填nothing。 8. 句意：商店里有很多东西，但没有找到我喜欢的东西。根据but I didn’t find ____ I liked.联系前 面语境，可知句意为“但没有找到我喜欢的东西。”本句为否定句，所以应用anything，意思是“任 何事(物)”，故答案填anything。 9. 句意：——你有什么要说的吗？——不，我没有什么可说的。根据—Do you have ____ to say for yourself?—No, I have ____ to say.可知，句意为“——你有什么要说的吗？——不，我没有什么可说",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A. famous",
+   "opts": [
+    "more famous",
+    "most famous",
+    "the most famous"
+   ],
+   "answer": "D",
+   "expl": "：谁画了世界上著名的画之一？ famous 著名的；more famous 更著名的；most famous 最著名的；the most famous 最著名的，定冠词 the+最高级。本句是固定句型one of the+形容词最高级+复数名词“最……之一”，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A. to",
+   "opts": [
+    "of",
+    "for",
+    "from"
+   ],
+   "answer": "A",
+   "expl": "：所有这些问题都有一个答案——列奥纳多·达·芬奇·达·芬奇。 to 属于，归于；of……的；for 为了；from 从。根据“an answer...all these questions”可知，此处指问 题的答案，用介词to，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "A. a",
+   "opts": [
+    "the",
+    "an",
+    "/"
+   ],
+   "answer": "C",
+   "expl": "：他是公元1500 年左右的意大利画家、发明家和科学家，但是他的许多发明在今天看来都 很现代。 a 不定冠词，表泛指，修饰以辅音音素开头的单词前；the 定冠词，表特质；an 不定冠词，表泛指， 修饰以元音音素开头的单词前；/不填。空处表示泛指，且空后Italian 首字母发元音音素，所以用 不定冠词an 修饰，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "A. invention",
+   "opts": [
+    "inventions",
+    "invent",
+    "invented"
+   ],
+   "answer": "B",
+   "expl": "：他是公元1500 年左右的意大利画家、发明家和科学家，但是他的许多发明在今天看来都 很现代。 invention 发明，单数名词；inventions 发明，复数名词；invent 发明，动词原形；invented 发明，过 去式/过去分词。many of 后跟名词复数，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A. makes",
+   "opts": [
+    "to make",
+    "made",
+    "make"
+   ],
+   "answer": "D",
+   "expl": "：当然，他不可能用他现有的东西造一架直升机。 makes 制造，三单形式；to make 不定式；made 过去式；make 原形。情态动词couldn’t 后跟动词 原形，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "A. However",
+   "opts": [
+    "But",
+    "Or",
+    "Because"
+   ],
+   "answer": "A",
+   "expl": "：然而，列奥纳多不仅仅是一位发明家。 However 然而；But 但是；Or 或者；Because 因为。空前空后在句意上是转折关系，且空后有逗号， 所以空处用however，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "A. Before",
+   "opts": [
+    "Since",
+    "As",
+    "After"
+   ],
+   "answer": "C",
+   "expl": "：随着年龄的增长，他变得更加有名了。 Before 在……以前；Since 自从；As 随着；After 在……以后。根据“...he got older, he became...more famous.”可知，应是随着年龄的增长变得更有名了，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A. very",
+   "opts": [
+    "much",
+    "hardly",
+    "little"
+   ],
+   "answer": "B",
+   "expl": "：随着年龄的增长，他变得更加有名了。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A. we",
+   "opts": [
+    "us",
+    "our",
+    "ours"
+   ],
+   "answer": "B",
+   "expl": "：列奥纳多的许多优秀画作至今仍与我们同在。 we 我们，主格；us 我们，宾格；our 我们的，形容词性物主代词；ours 我们的，名词性物主代词。 介词with 后跟宾格作宾语，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "A. smile",
+   "opts": [
+    "smiled",
+    "smiling",
+    "smiles"
+   ],
+   "answer": "C",
+   "expl": "：你可能知道他最著名的画作之一一位微笑的女人——《蒙娜丽莎》。 smile 微笑，原形；smiled 过去式/过去分词；smiling 微笑的；smiles 三单形式。空处作定语修饰名 词woman，指“微笑的女人”，所以用形容词smiling。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "A. and",
+   "opts": [
+    "to",
+    "in",
+    "into"
+   ],
+   "answer": "A",
+   "expl": "：这幅画创作于1503 年至1519 年之间，当时达·芬奇住在佛罗伦萨，现在挂在卢浮宫博 物馆，背景是远处的风景。 and 和；to 到；in 在……里；into 到……里面。between...and...“……和……之间”，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "A. protected",
+   "opts": [
+    "to protect",
+    "protect",
+    "protecting"
+   ],
+   "answer": "B",
+   "expl": "：从那时起，博物馆已经下令更多的警卫来保护它。 protected 保护，过去式；to protect 不定式；protect 原形；protecting 现在分词/动名词。“ordered more guards”的目的是为了“保护它”，所以空处用动词不定式作目的状语，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "How many kinds of encyclopedias are mentioned?",
+   "opts": [
+    "Three.",
+    "Four.",
+    "Five.",
+    "Six."
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“The Columbia Encyclopedia (Sixth Edition)”、“Medical encyclopedias”、 “Computer encyclopedias”和“Science encyclopedias”可知文中一共提到种百科全书。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "Medical encyclopedias are for the follow EXCEPT ________.",
+   "opts": [
+    "doctors",
+    "educators",
+    "scientists",
+    "students"
+   ],
+   "answer": "C",
+   "expl": "理解题。根据“Online medical encyclopedias are for doctors, educators, and students.”可知，在 线医学百科全书是为医生、教育工作者和学生准备的。没有提到科学家。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "Maria is a student and she wants to learn something about computer science. Which of the followingcan she choose?",
+   "opts": [
+    "The Columbia encyclopedias.",
+    "Computer encyclopedias.",
+    "Medical encyclopedias.",
+    "Science encyclopedias."
+   ],
+   "answer": "B",
+   "expl": "判断题。根据“The computer encyclopedias include topics like computer science, computer science and engineering, and computer science and technology.”可知，计算机百科全书包括计算机科学、 计算机科学与工程以及计算机科学与技术等主题。因此Mary 作为学生想要学习有关计算机科学， 可以选择计算机百科全书。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "The underlined word “covers” mean “________” in English.",
+   "opts": [
+    "includes",
+    "opens",
+    "turns",
+    "ﬁnds"
+   ],
+   "answer": "A",
+   "expl": "大意题。根据“All these will promote (促进)the city’s development.”可知，所有这些都将促 进城市的发展，故此段在讲青岛以后的发展，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "Where does the passage probably come from?",
+   "opts": [
+    "A magazine.",
+    "A school website.",
+    "A storybook.",
+    "A diary."
+   ],
+   "answer": "B",
+   "expl": "本文主要介绍了可供在在线图书馆阅读的一些百科全书。",
+   "_dup": false
+  },
+  {
+   "no": 1,
+   "stem": "What are the new plans Qingdao is making mainly about?",
+   "opts": [
+    "The development of travel.",
+    "The development of culture.",
+    "The development of traffic.",
+    "The development of high technology."
+   ],
+   "answer": "D",
+   "expl": "理解题。根据“Qingdao, a beautiful beach city in Shandong Province, is making its new plans about the Internet and some other new high-tech skills.”可知，青岛正在制定关于互联网和其他一些新 的高科技技能的新计划。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "What does the underlined word “renowned” in the third paragraph mean?",
+   "opts": [
+    "Famous.",
+    "Useful.",
+    "Strong.",
+    "Ordinary."
+   ],
+   "answer": "A",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "How many Qingdao’s brands did the writer talk about in the passage?",
+   "opts": [
+    "One.",
+    "Two.",
+    "Three.",
+    "Four."
+   ],
+   "answer": "C",
+   "expl": "理解题。根据“Qingdao is known for its worlds renowned brands, such as China’s leading home appliance makers Haier and Hisense and the world’s fifth-largest beer-making factory Tsingtao.”可知，青 岛以其世界知名品牌而闻名，如中国领先的家电制造商海尔和海信，以及世界第五大啤酒制造厂青 岛。故作者介绍了3 个知名品牌，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "What’s the main purpose of the fourth paragraph?",
+   "opts": [
+    "To introduce the city’s development.",
+    "To tell us the city’s future plans.",
+    "To tell us the city’s problems now.",
+    "To discuss the city’s possible challenges."
+   ],
+   "answer": "B",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "What does the passage mainly tell us?",
+   "opts": [
+    "Qingdao will hold many activities to get people’s attention.",
+    "Qingdao became a “Famous Software City” last year.",
+    "Qingdao has many well-known brands in China.",
+    "Qingdao will take some steps to develop its high-tech skills."
+   ],
+   "answer": "D",
+   "expl": "本文是一篇说明文。文章向我们介绍了美丽的海滨城市青岛，他将采取措施发展成为高科 技城市。",
+   "_dup": false
+  }
+ ],
+ "matched": 37,
+ "total": 37
+}

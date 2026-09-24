@@ -1,0 +1,8 @@
+LS num=18 @378 ctx='ing\n18. connected\n19. e'
+LS num=19 @392 ctx='ted\n19. easier\n20. them'
+LS num=20 @403 ctx='ier\n20. themselves\n21. '
+LS num=21 @418 ctx='ves\n21. basis\n44. basic'
+LS num=23 @444 ctx='sed\n23. arrival\narrived'
+LS num=24 @464 ctx='ved\n24. Germany\nGerman '
+LS num=26 @500 ctx='igh\n26. social\nsociety\n'
+---- raw around 22 in tail ----

@@ -1,0 +1,7 @@
+【沪教】八上英语期末完成句子119题.pdf find '98' -> repr='ame.\n98 汤姆还小，爸爸或妈妈不得'
+   match-from-idx: '98 '
+【沪教】八上英语期末完成句子119题.pdf find '100' -> repr='was!\n100 在英语周中，我挑战了一'
+   match-from-idx: '100 '
+【沪教】八上英语期末用单词的适当形式填空70题.pdf find '22' -> repr='sic）\n22. Our _______'
+   match-from-idx: '22. '
+TEST crafted: matches=[('98', 4)]

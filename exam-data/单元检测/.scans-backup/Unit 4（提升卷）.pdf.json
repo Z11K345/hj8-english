@@ -1,0 +1,502 @@
+{
+ "title": "Unit 4（提升卷）.pdf",
+ "cat": "单元检测",
+ "pages": 25,
+ "questions": [
+  {
+   "no": 1,
+   "stem": "A．put",
+   "opts": [
+    "puts",
+    "to put",
+    "putting"
+   ],
+   "answer": "A",
+   "expl": "：他喜欢把东西拆开，然后把它们重新组装起来。 put 放，原形/过去式；puts 三单形式；to put 不定式；putting 动名词/现在分词。此空与“loved”并列 谓语，因此需用一般过去时，动词用过去式，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 2,
+   "stem": "A．or",
+   "opts": [
+    "so",
+    "and",
+    "but"
+   ],
+   "answer": "D",
+   "expl": "：他通常成功了，但有时也失败了。 or 或者；so 所以；and 和；but 但是。“成功了”与“失败了”是转折关系，需用but 连接，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 3,
+   "stem": "A．to stir",
+   "opts": [
+    "stirred",
+    "stirs",
+    "stirring"
+   ],
+   "answer": "D",
+   "expl": "：一天，当他看妈妈做饭时，他注意到妈妈搅拌酱汁有困难。 to stir 不定式；stirred 过去式；stirs 三单形式；stirring 动名词/现在分词。have trouble (in) doing sth. 是固定搭配，意为“做某事有困难”，需用动名词作宾语，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 4,
+   "stem": "A．nothing",
+   "opts": [
+    "something",
+    "anything",
+    "everything"
+   ],
+   "answer": "B",
+   "expl": "：他想一定还有其他办法，于是决定发明一个更好的。 nothing 没有东西；something 某物(一般用于肯定句)；anything 任何事物(一般用于否定句或疑 问句)；everything 一切。根据“He thought there must be another way”可知是指决定发明一个更好的 东西，此处为肯定句，需用something，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "A．busy",
+   "opts": [
+    "busily",
+    "busier",
+    "busiest"
+   ],
+   "answer": "A",
+   "expl": "：经过一个忙碌的下午，Ted 创造了一个新发明。 busy 忙碌的，形容词；busily 忙碌地，副词；busier 更忙碌的，形容词比较级；busiest 最忙碌的， 形容词最高级。此处需用形容词修饰名词afternoon，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 6,
+   "stem": "A．so",
+   "opts": [
+    "if",
+    "before",
+    "though"
+   ],
+   "answer": "B",
+   "expl": "：它能自己搅拌东西，如果它从电动机获得动力。 so 所以；if 如果；before 在……之前；though 尽管。根据“He took apart a broken wood mixer (搅拌 器) and then connected it to a motor (电动机). It was able to stir things by itself…it got power from the motor.”可知是指如果它从电动机获得动力，它能自己搅拌东西。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 7,
+   "stem": "A．could",
+   "opts": [
+    "need",
+    "must",
+    "should"
+   ],
+   "answer": "A",
+   "expl": "：它非常方便，任何人都能轻易地搅拌酱汁。 could 能；need 需要；must 必须；should 应该。根据“It was so convenient that anyone…stir the sauce easily”可知任何人都能轻易地搅拌酱汁。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 8,
+   "stem": "A．he",
+   "opts": [
+    "him",
+    "his",
+    "himself"
+   ],
+   "answer": "C",
+   "expl": "：第二天，他把自己的发明展示给妈妈看，妈妈很惊讶，并鼓励他改进。 he 他，主格；him 他，宾格；his 他的，形容词性物主代词；himself 他自己，反身代词。根据“he showed…invention to his mother”可知需用形容词性物主代词修饰，表示“他的发明”，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 9,
+   "stem": "A．good",
+   "opts": [
+    "better",
+    "best",
+    "the best"
+   ],
+   "answer": "B",
+   "expl": "：Ted 继续工作，最后加了一个定时器，使它变得更好了。",
+   "_dup": false
+  },
+  {
+   "no": 10,
+   "stem": "A．With",
+   "opts": [
+    "About",
+    "Without",
+    "Against"
+   ],
+   "answer": "A",
+   "expl": "：在妈妈的支持下，他把它介绍给了同学。 With 有；About 关于；Without 没有；Against 反对。with one’s support“在某人的支持上”，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 11,
+   "stem": "A．hundred of B．hundreds of",
+   "opts": [
+    "a hundred of",
+    "a hundreds of"
+   ],
+   "answer": "B",
+   "expl": "：后来，他成百上千的同学们都去看了。 hundred of 结构错误；hundreds of 成百上千的；a hundred of 错误结构；a hundreds of 结构错误。此 处表示数量很多，需用hundreds of 表示“成百上千的”，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 12,
+   "stem": "A．mix",
+   "opts": [
+    "mixed",
+    "mixing",
+    "to mix"
+   ],
+   "answer": "D",
+   "expl": "：他们用它来搅拌饮料和酱汁，而且很容易清洗。 mix 搅拌，原形；mixed 过去式；mixing 动名词/现在分词；to mix 不定式。“use sth. to do sth.”表示 “使用某物去做某事”，故选D。",
+   "_dup": false
+  },
+  {
+   "no": 13,
+   "stem": "A．/",
+   "opts": [
+    "a",
+    "an",
+    "the"
+   ],
+   "answer": "C",
+   "expl": "：在学校科学节上，Ted 因其创造力而获得了一个奖项。 a 一个，用以辅音音素开头的单词；an 一个，用以元音音素开头的单词；the 表特指。award“奖项” 以元音音素开头，可数名词单数，此处需用不定冠词an 修饰，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 14,
+   "stem": "A．invent",
+   "opts": [
+    "invented",
+    "has invented",
+    "have invented"
+   ],
+   "answer": "C",
+   "expl": "：从那时起，他发明了许多帮助人们过上更好生活的发明。 invent 发明，原形；invented 过去式；has invented 现在完成时；have invented 现在完成时。结合“Since then”可知此处需用现在完成时，主语是he，需用结构has done。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 15,
+   "stem": "A．interest",
+   "opts": [
+    "interested",
+    "interesting",
+    "interestingly"
+   ],
+   "answer": "A",
+   "expl": "：找出你感兴趣的东西并坚持下去是很有意义的。 interest 兴趣，名词；interested 感兴趣的，形容词(通常用于人)；interesting 有趣的，形容词(通 常用于物)；interestingly 有趣地，副词。have an interest in“对……感兴趣”，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 16,
+   "stem": "A．was bought B．was printed",
+   "opts": [
+    "was written",
+    "was returned"
+   ],
+   "answer": "B",
+   "expl": "：我们所拥有的最早的书籍印刷于868 年，在敦煌的一个洞穴中被发现。 was bought 被买；was printed 被印刷；was written 被写；was returned 被返回。根据“The earliest book that we have ”可知，最早的书籍印刷于868 年，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 17,
+   "stem": "A．page",
+   "opts": [
+    "letter",
+    "paper",
+    "line"
+   ],
+   "answer": "A",
+   "expl": "：木版印刷花了很长时间，因为书的每一页都需要新的木版。 page 页；letter 信；paper 纸；line 线。根据“in a book”可知，在一本书里，应是一页，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 18,
+   "stem": "A．marked",
+   "opts": [
+    "added",
+    "included",
+    "placed"
+   ],
+   "answer": "C",
+   "expl": "：其中包括孔子的思想书籍、字典和数学书籍。 marked 做记号；added 增加；included 包括；placed 放置。根据“By the 11th century printed books appeared all over China”及“books of Confucius’ thoughts, dictionaries, and books on maths”可知，此处 介绍被印制的书里包括的书本类型，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 19,
+   "stem": "A．types",
+   "opts": [
+    "factories",
+    "tastes",
+    "colours"
+   ],
+   "answer": "D",
+   "expl": "：在1340 年，书籍可以用两种颜色印刷，黑色和红色。 types 类型；factories 工厂；tastes 味道；colours 颜色。根据“black and red”可知，此处表示颜色， 故选D。",
+   "_dup": false
+  },
+  {
+   "no": 20,
+   "stem": "A．new",
+   "opts": [
+    "early",
+    "young",
+    "slow"
+   ],
+   "answer": "B",
+   "expl": "：虽然中国人很早就学会了印刷术，但印刷术几百年来一直没有传入世界其他地方。 new 新的；early 早的；young 年轻的；slow 缓慢的。根据“Wood-block(木版)printing was invented sometime between the 4th and the 7th century in China”可知，此处表示很早中国人就学会了木版印刷 术，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 21,
+   "stem": "A．stored",
+   "opts": [
+    "controlled",
+    "visited",
+    "wrote"
+   ],
+   "answer": "C",
+   "expl": "：据说伟大的意大利旅行家马可·波罗在13 世纪访问中国时看到了印刷书籍。 stored 储存；controlled 控制；visited 参观；wrote 写。根据“Marco Polo … China”及“he saw printed books”可知，他参观中国时看到了印刷书籍，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 22,
+   "stem": "A．tool",
+   "opts": [
+    "machine",
+    "book",
+    "technology"
+   ],
+   "answer": "D",
+   "expl": "：马可·波罗有可能把这种技术带到了欧洲。",
+   "_dup": false
+  },
+  {
+   "no": 23,
+   "stem": "A．until",
+   "opts": [
+    "while",
+    "after",
+    "since"
+   ],
+   "answer": "A",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 24,
+   "stem": "A．forward",
+   "opts": [
+    "later",
+    "back",
+    "ago"
+   ],
+   "answer": "B",
+   "expl": "：24 年后的1474 年，一位名叫William Caxton 的英国人出版了第一本英文印刷书籍。 forward 向前；later 以后；back 向后；ago 以前。根据“But printed books did not come to Europe…1450 ” 可知印刷书籍直到1450 年才来到欧洲，根据“in 1474, an Englishman called William Caxton printed the…printed book in English”可知1474 年，一位名叫威廉·卡克斯顿的英国人出版了第一本英文印刷 书籍，因此是在24 年以后，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 25,
+   "stem": "A．same",
+   "opts": [
+    "exciting",
+    "first",
+    "last"
+   ],
+   "answer": "C",
+   "expl": "：24 年后的1474 年，一位名叫William Caxton 的英国人出版了第一本英文印刷书籍。 same 同样的；exciting 令人兴奋的；first 第一；last 最后的，根据后文的“His second book was about the game of chess”可知，此处是指第一本书，故选C。",
+   "_dup": false
+  },
+  {
+   "no": 26,
+   "stem": "Who invented silk in ancient China?",
+   "opts": [
+    "Leizu.",
+    "The kings.",
+    "Zhang Qian.",
+    "The Yellow Emperor."
+   ],
+   "answer": "A",
+   "expl": "理解题。根据“People believed that silk was first invented by Leizu, the wife of the Yellow Emperor. ”可知丝绸是嫘祖发明的。故选A。",
+   "_dup": false
+  },
+  {
+   "no": 27,
+   "stem": "What was spread from China to the West according to paragraph 3?",
+   "opts": [
+    "Silk and gold.",
+    "Tea and papermaking.",
+    "Spices and silver.",
+    "New ideas of science."
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“From China, people sold silk and tea. In return, they received treasures such as spices, gold and silver from the West. ”和“For example, Chinese inventions like papermaking were spread to the West,”可知丝绸、茶叶和造纸从中国运到西方。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 28,
+   "stem": "What is the right order of the following facts from the passage?①Zhang Qian traveled west with silk.②Art and language were shared along the Silk Road.③Traders from China and the West exchanged things.④The Chinese were ordered to keep the secret of making silk.",
+   "opts": [
+    "①→④→③→②",
+    "①→③→④→②",
+    "④→①→③→②",
+    "④→③→②→①"
+   ],
+   "answer": "C",
+   "expl": "理解题。根据第一段“Following kings’ orders, the Chinese kept the secret of making silk for centuries.”可知丝绸制作方法一直是保密的，即④，直到后来“During the Han Dynasty, the brave",
+   "_dup": false
+  },
+  {
+   "no": 29,
+   "stem": "What does the underlined word “distinctive” mean in paragraph 4?",
+   "opts": [
+    "Special.",
+    "Public.",
+    "Popular.",
+    "Strong."
+   ],
+   "answer": "A",
+   "expl": null,
+   "_dup": false
+  },
+  {
+   "no": 30,
+   "stem": "What does the story of the Silk Road mainly tell us?",
+   "opts": [
+    "The change of world trade.",
+    "The introduction of silk cloth.",
+    "The influence of technology in history.",
+    "The importance of cross-cultural communication."
+   ],
+   "answer": "D",
+   "expl": "判断题。根据“The story of the Silk Road tells us how people from faraway lands could become friends through trade and shared ideas.”可知丝绸之路的故事告诉我们以前的人们会通过贸易和分享 成为朋友，因此介绍了跨文化交流的重要性。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 31,
+   "stem": "Which scene can be seen at the event in Wuhan?",
+   "opts": [
+    "",
+    "",
+    "",
+    ""
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“In a clear tank of water, fish are swimming happily. Wait a second, take a closer look at that blue one. It is actually a robot! This scene happened at an event... in Wuhan”可知，展会上能 看到机器鱼在水箱里游动的场景。故选B。",
+   "_dup": false
+  },
+  {
+   "no": 32,
+   "stem": "What makes the bionic fish move fast and easily?",
+   "opts": [
+    "Different colors.",
+    "Special water tanks.",
+    "Lifelike length.",
+    "Body joints."
+   ],
+   "answer": "D",
+   "expl": "理解题。根据“The joints in their heads and tails were made in a special way to let the fish move fast and easily.”可知，头部和尾部的特殊关节让机器鱼能快速灵活地移动。故选D。",
+   "_dup": false
+  },
+  {
+   "no": 33,
+   "stem": "What can we know about swarming in fish?",
+   "opts": [
+    "Swarming can keep fish free from any danger.",
+    "Swarming makes it harder for fish to feed themselves.",
+    "Swarming helps scientists learn about the habits of fish.",
+    "Swarming may change the living environment of fish."
+   ],
+   "answer": "C",
+   "expl": "理解题。根据“swarming in fish means they swim together in large groups... Learning about swarming helps us understand how fish live”可知，研究集群行为能帮助科学家了解鱼类的生活习性。 故选C。",
+   "_dup": false
+  },
+  {
+   "no": 34,
+   "stem": "Which goal may be achieved with bionic fish?",
+   "opts": [
+    "The quality of the Yangtze River’s water will be improved.",
+    "More bridges over the Yangtze River have been built.",
+    "Bionic fish take the place of fish in the Yangtze River.",
+    "More ships begin to travel along the Yangtze River."
+   ],
+   "answer": "A",
+   "expl": "判断题。根据“The fish are already helping in the study of the Yangtze River’s water to help protect the environment.”可知，仿生鱼助力长江水质研究和环境保护，可能带来长江水质的改善。 故选A。",
+   "_dup": false
+  },
+  {
+   "no": 35,
+   "stem": "What might be the best title for the passage?",
+   "opts": [
+    "Look! They’re dancing.",
+    "Wait, that’s no fish!",
+    "Stop! Don’t feed them.",
+    "Hey, let’s try fishing!"
+   ],
+   "answer": "B",
+   "expl": "标题题。文章开头通过“看似是鱼，实则是机器人”的悬念引入，核心是介绍“仿生机器鱼” 。 故选B。",
+   "_dup": false
+  },
+  {
+   "no": 36,
+   "stem": "In which SECTION of the newspaper can we read the news?",
+   "opts": [
+    "EDUCATION.",
+    "ENVIRONMENT.",
+    "AMUSEMENT.",
+    "CULTURE."
+   ],
+   "answer": "B",
+   "expl": "判断题。通读全文可知，文章内容都与环保、资源回收、节能等“环境”话题相关，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 37,
+   "stem": "What is the main use of the solar backpack?",
+   "opts": [
+    "To keep sunlight to make light.",
+    "To give gifts to city students.",
+    "To win a design competition.",
+    "To build new schools in Kenya."
+   ],
+   "answer": "A",
+   "expl": "理解题。根据“It uses sunlight to charge (充电) and can provide light for up to 12 hours.”可知， 这个背包的主要用途是利用阳光进行充电，以提供照明，故选A。",
+   "_dup": false
+  },
+  {
+   "no": 38,
+   "stem": "How does the “E-Cycle” app encourage recycling?",
+   "opts": [
+    "By fixing up old phones.",
+    "By offering coupons for old electronics.",
+    "By using more workers to collect trash.",
+    "By educating people about recycling."
+   ],
+   "answer": "B",
+   "expl": "理解题。根据“Users can exchange old electronics (电子设备), such as phones or computers, for coupons (优惠券).”可知，该应用通过用旧电子产品兑换优惠券来鼓励回收，故选B。",
+   "_dup": false
+  },
+  {
+   "no": 39,
+   "stem": "What is the best heading for the third piece of news?",
+   "opts": [
+    "California’s Food Shortage Dangers",
+    "Cameras on Robots Help Environment",
+    "Robot Farmers Help Grow Vegetables",
+    "New Challenges in Farming"
+   ],
+   "answer": "C",
+   "expl": "标题题。根据“A farm in California uses smart robots to grow vegetables. These robots have cameras to find pests and wild grass. The pesticide (杀虫剂) use drops by 70% and crop harvests rise a lot.”可知，第三则新闻重点介绍在加州的农场使用机器人种植蔬菜，减少杀虫剂用量并提高产量， 因此最佳标题是C 项。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 40,
+   "stem": "What does the above news focus on?",
+   "opts": [
+    "Technology competitions in modern life.",
+    "Green solutions for real problems.",
+    "Government decisions on weather changes.",
+    "Development plans for a better life."
+   ],
+   "answer": "B",
+   "expl": "大意题。通读全文可知，三则新闻都关注环保和可持续发展，即用绿色技术解决实际问题， 故选B。",
+   "_dup": false
+  }
+ ],
+ "matched": 40,
+ "total": 40
+}

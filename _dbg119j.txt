@@ -1,0 +1,12 @@
+tail len=8077
+raw: contains 98? True
+raw: contains 100? True
+jiexi: contains 98? False
+jiexi: contains 100? False
+header: contains 98? True
+header: contains 100? True
+body len=3027
+DELIM_LS count=116, has 98? False has 100? False
+DELIM_ANY count=117, has 98? False has 100? False
+body find 98 at -1 ctx='NONE'
+body find 100 at -1 ctx='NONE'

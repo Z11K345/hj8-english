@@ -1,0 +1,52 @@
+{
+ "title": "Unit 4 Section 1 Reading（分层练习）.pdf",
+ "cat": "一课一练",
+ "pages": 15,
+ "questions": [
+  {
+   "no": 3,
+   "stem": "______There are many kinds of dogs and most of them are useful to us. A sheep dog can help thefarmers. A watch dog can keep our houses safe. 4. ______And a guide dog can help blind people walk.Pet dogs are our favorites. They are really cute and bring us much fun.Dogs are great animals. 5. ______",
+   "opts": [
+    "Dogs can help us a lot.",
+    "Why do we like them so much ?",
+    "A police dog can help the police with their work.",
+    "We should love them.",
+    "Dogs are faithful (忠诚的) and friendly to us"
+   ],
+   "answer": "B",
+   "expl": "理解题。根据第一段\"Following kings’ orders,the Chinese kept the secret of making silk for centuries. \"可知丝绸制作方法一直是保密的，即④,直到后来“During the Han Dynasty,the brave officer Zhang Qian traveled west as far as Central Asia and brought silk there. \"张骞把丝绸带去西方，即①,然 后开始有丝绸之路。故选C。",
+   "_dup": false
+  },
+  {
+   "no": 5,
+   "stem": "联系上下文的描述可知，丹尼尔用发明得来的钱上了大学，同时在大学里也得到了许多奖金，故应选D. 考点：科普环保类短文阅读In ancient China, there was a story about the invention of silk. People believed that silk was firstinvented by Leizu, the wife of the Yellow Emperor. Leizu learned how to make cocoons (蚕茧) into softand strong cloth. This cloth became known as “silk”.During the Han Dynasty, a brave officer Zhang Qian traveled west to Central Asia and brought silkthere. As years passed by, silk became so important that the trade road from Europe to China got its name—the Silk Road.The Silk Road became a busy highway for traders who carried things across deserts and mountains. FromChina, people sold silk and tea. In return, they received treasures such as spices (香料), gold and silverfrom the West. At the very beginning, it was mainly about trade; then people began to share ideas,technologies and cultures. For example, Chinese inventions like paper making were spread to the West,while new ideas about math and science came to China.Most importantly, the Silk Road helped different cultures learn from each other. Art, music and evenlanguage were shared along this ancient road. In places like the Dunhuang Grottoes (敦煌石窟) in China,you can see how art combined (融合) Eastern and Western styles into something distinctive. It can not beseen anywhere else.The story of the Silk Road tells us how people from faraway lands could become friends throughtrade and shared ideas. The Silk Road shows us how important it is to learn about and respect each other’straditions, and that different cultures can work together to create amazing things.()1. Who invented silk in ancient China?",
+   "opts": [
+    "Leizu.",
+    "The kings.",
+    "Zhang Qian.",
+    "The Yellow Emperor.",
+    "Silk and gold.",
+    "Tea and paper making.",
+    "Spices and silver.",
+    "New ideas of science.",
+    "①→④→③→②",
+    "①→③→④→②",
+    "④→①→③→②",
+    "④→③→②→①",
+    "Special.",
+    "Public.",
+    "Popular.",
+    "Strong.",
+    "The change of world trade.",
+    "The introduction of silk cloth.",
+    "The influence of technology in history.",
+    "The importance of cross-cultural communication."
+   ],
+   "answer": "A",
+   "expl": "判断题。根据“The story of the Silk Road tells us how people from faraway lands could become friends through trade and shared ideas. ”可知丝绸之路的故事告诉我们以前的人们会通过贸易和分享 成为朋友，因此介绍了跨文化交流的重要性。故选D。",
+   "_dup": false
+  }
+ ],
+ "matched": 2,
+ "total": 2
+}
