@@ -45,6 +45,7 @@ body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI
 .ai-input textarea{flex:1 1 auto;resize:none;height:44px;border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:14px;line-height:1.5;}
 .ai-input button{border:none;background:var(--primary);color:#fff;border-radius:8px;padding:0 16px;font-size:14px;cursor:pointer;}
 .ai-input button:disabled{opacity:.5;cursor:default;}
+.ai-input button.stop{background:var(--bad);}
 .ai-input button.img-btn{font-size:18px;padding:0 12px;line-height:1;}
 /* 待发送图片预览条 */
 #imgPrev{display:none;flex-wrap:wrap;gap:8px;padding:8px 10px 0;background:var(--card);}
@@ -76,7 +77,7 @@ body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI
 <body>
 <div class="wrap">
   <div class="main">
-    <iframe class="exam-frame" src="exam.html?v=20260924b" title="在线做题"></iframe>
+    <iframe class="exam-frame" src="exam.html?v=20260924d" title="在线做题"></iframe>
   </div>
 </div>
 <button class="chat-fab" id="chatFab" title="AI 答疑">💬</button>
@@ -92,7 +93,7 @@ body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI
       <div class="msg" id="aiPwdMsg"></div>
     </div>
     <div class="ai-body" id="chatBody" style="display:none;">
-      <div class="msg sys">我是这本教材的辅导老师，有疑问就在下方聊天框输入，或粘贴/上传题目截图，我来为你解答。</div>
+      <div class="msg sys">我是你的英语辅导老师，任何年级、任何英语问题都能问（单词、语法、时态、阅读、写作、听力都行）。直接在下方输入，或粘贴/上传题目截图。</div>
     </div>
     <div class="ai-model" id="aiModelRow" style="display:none;">
       <span>模型</span>
@@ -100,9 +101,10 @@ body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI
     </div>
     <div id="imgPrev"></div>
     <div class="ai-input" id="aiInput" style="display:none;">
-      <textarea id="chatInput" placeholder="就课文提问，或粘贴/上传题目图片"></textarea>
+      <textarea id="chatInput" placeholder="问任何英语问题，或粘贴/上传题目图片"></textarea>
       <button id="chatImgBtn" class="img-btn" title="上传/粘贴图片" type="button">🖼️</button>
       <button id="chatSend">发送</button>
+      <button id="chatStop" class="stop" type="button" style="display:none;">停止</button>
       <input type="file" id="chatImgInput" accept="image/*" multiple hidden>
     </div>
   </div>
@@ -124,12 +126,12 @@ body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI
 </div>
 <script>
 
-const SYSTEM_PROMPT = '你是沪教·英语 八年级上册（全国版·2025版）的辅导老师，面向初二学生。规则：\n'
- + '1) 只围绕这本教材答疑（词汇、语法、阅读、写作、听力、发音、单元主题），不跑题、不引入教材外话题；\n'
- + '2) 不编造教材没有的内容；涉及教材外知识时明确标注“需核实”；\n'
- + '3) 解释通俗、适合初中生，多用例子；\n'
- + '4) 一切为了考试：重点讲时态、重点单词/短语、句型结构、考点；\n'
- + '5) 可用中文回答，必要时穿插英文例句。';
+const SYSTEM_PROMPT = `你是英语辅导老师，服务对象以初中生为主（也兼顾小学高年级与高中基础）。规则：
+1) 任何年级、任何英语问题都正常回答：词汇、语法、时态、句型、阅读、写作、听力、发音、翻译等，不因“超出某册教材”而拒答；
+2) 优先贴合沪教·英语八年级上册（全国版·2025版）的考点，但七上/七下/八下、乃至高中基础问题也要讲清楚，并说明它属于哪个阶段、与八上考点有何关系；
+3) 不编造；不确定或需核实的（如最新考纲、有争议的用法）明确标注“需核实”，不硬答；
+4) 解释循序渐进、由浅入深，多用例子；例子尽量覆盖不同形式（如动词的 am/is/are/was/were、单复数、时态变化），并配中文翻译，讲清“为什么、要注意什么”；
+5) 可用中文讲解，英文例句给出中文翻译；回答简洁、直击要点，不啰嗦。`;
 
 const CLOUD_CFG = {endpoint: "https://hj8-english.app.workbuddy.host", publishableKey: "wbpk_9qIMV7q3yKetV5njz3ea2G_y20o9SesGLDsQhd0xO2fQgybLltRLeoc"};
 
@@ -139,6 +141,7 @@ const AI_PASSWORD = '8888';
 const body = document.getElementById('chatBody');
 const ta = document.getElementById('chatInput');
 const sendBtn = document.getElementById('chatSend');
+const stopBtn = document.getElementById('chatStop');
 const gear = document.getElementById('chatGear');
 const modal = document.getElementById('cfgModal');
 const imgBtn = document.getElementById('chatImgBtn');
@@ -148,6 +151,7 @@ const imgPrev = document.getElementById('imgPrev');
 let history = [];
 let generating = false;
 let controller = null;
+let userAborted = false;   // 用户点了「停止」
 let conversationId = '';
 let aiUnlocked = false;   // 仅内存：页面刷新/重开即重置，需重新输密码
 let selectedModelId = localStorage.getItem('chatModelId') || '';  // 用户自选模型，空=默认
@@ -298,10 +302,13 @@ async function callCloudLLM(messages){
 async function callLocalLLM(messages){
   const cfg = getLocalCfg();
   if(!cfg || !cfg.base || !cfg.key) throw new Error('NO_BACKEND');
+  if(controller) controller.abort();
+  controller = new AbortController();
   const r = await fetch(cfg.base.replace(/\/$/,'') + '/chat/completions', {
     method: 'POST',
     headers: {'Content-Type':'application/json','Authorization':'Bearer '+cfg.key},
-    body: JSON.stringify({model: cfg.model||'gpt-4o-mini', messages, stream:false, temperature:0.6})
+    body: JSON.stringify({model: cfg.model||'gpt-4o-mini', messages, stream:false, temperature:0.6}),
+    signal: controller.signal
   });
   if(!r.ok){ const t = await r.text(); throw new Error('HTTP '+r.status+' '+t.slice(0,200)); }
   const j = await r.json();
@@ -332,7 +339,7 @@ async function send(){
   history.push({role:'user', content});
   pendingImages = []; renderImgPrev();
   const bot = addMsg('正在思考…','bot');
-  generating=true; sendBtn.disabled=true;
+  generating=true; userAborted=false; sendBtn.disabled=true; if(stopBtn) stopBtn.style.display='';
   const messages = [{role:'system', content: SYSTEM_PROMPT}].concat(history.slice(-12));
   try{
     // 优先用云端；若云端不可达且有本地 Key，则自动回退本地，避免静默失败
@@ -340,6 +347,7 @@ async function send(){
     if(cloudReady){
       try{ ans = await callCloudLLM(messages); }
       catch(e){
+        if(userAborted) throw e;   // 用户主动停止，不再回退本地
         if(getLocalCfg()){ ans = await callLocalLLM(messages); addMsg('云端暂不可用，已自动切换本地 AI。','sys'); }
         else throw e;
       }
@@ -350,12 +358,13 @@ async function send(){
     history.push({role:'assistant', content: ans || ''});
   }catch(e){
     bot.className='msg sys';
-    bot.textContent = friendlyError(e);
+    bot.textContent = userAborted ? '（已停止）' : friendlyError(e);
   }finally{
-    generating=false; sendBtn.disabled=false; controller=null; body.scrollTop=body.scrollHeight;
+    generating=false; userAborted=false; sendBtn.disabled=false; if(stopBtn) stopBtn.style.display='none'; controller=null; body.scrollTop=body.scrollHeight;
   }
 }
 sendBtn.onclick = send;
+if(stopBtn) stopBtn.onclick = ()=>{ userAborted=true; if(controller){ try{ controller.abort(); }catch(e){} } };
 ta.addEventListener('keydown', e=>{ if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); send(); } });
 
 // 图片：点击按钮选文件 + 在输入框粘贴截图

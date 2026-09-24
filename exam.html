@@ -240,6 +240,20 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-ext-out{margin-top:12px;font-size:14px;white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;min-height:60px;}
 .know-ext-out.know-ext-ok{background:#eef6ff;border-color:#bcdcff;}
 .know-ext-out.know-ext-fallback{background:#fff7ed;border-color:#fde2c0;color:var(--warn);}
+/* 用一用 · 本地例句库展示 */
+.kb-head{font-size:19px;font-weight:800;color:var(--text);margin-bottom:2px;}
+.kb-forms{font-size:13px;color:var(--primary);background:var(--primary-soft);border-radius:8px;padding:5px 10px;margin:8px 0;display:block;line-height:1.7;}
+.kb-tip{font-size:14px;color:var(--text);background:#fffbeb;border-left:3px solid #f0b429;border-radius:6px;padding:8px 11px;margin:10px 0 14px;line-height:1.7;}
+.kb-ex{background:#fff;border:1px solid var(--border);border-radius:10px;padding:11px 13px;margin-bottom:9px;}
+.kb-ex .kb-n{display:inline-block;min-width:20px;font-weight:800;color:var(--primary);font-size:13px;}
+.kb-ex .kb-en{font-size:15.5px;font-weight:600;color:var(--text);line-height:1.65;}
+.kb-ex .kb-zh{font-size:14px;color:#4b5563;margin-top:3px;line-height:1.6;}
+.kb-ex .kb-note{font-size:13px;color:var(--muted);margin-top:5px;padding-top:5px;border-top:1px dashed var(--border);line-height:1.6;}
+.kb-foot{font-size:12px;color:var(--muted);margin-top:10px;}
+@media(max-width:640px){
+ .kb-head{font-size:17px;}
+ .kb-ex .kb-en{font-size:15px;}
+}
 /* 知识互动：顶部常驻工具栏（背一背/测一测/用一用/看原卷），点击即在原卷与互动间切换 */
 #knowBar{display:none;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:12px;}
 #knowBar .know-bar-label{font-size:13px;color:var(--muted);margin-right:2px;}
@@ -302,6 +316,7 @@ select:focus{outline:none; border-color:var(--primary);}
     <a class="tbtn" id="pdfDlBtn" download style="display:none;">下载原卷</a>
     <button type="button" class="tbtn" id="cardReopenBtn" style="display:none;">展开答题卡</button>
     <button type="button" id="cropBtn" class="tbtn" title="框选题目截图，直接去 AI 提问">截题问AI</button>
+    <button type="button" id="reportBtn" class="tbtn" title="看学习时长与测验情况（给家长）">学习报告</button>
   </div>
   <div class="topbar-status">
     <span id="paperTitle" style="display:none;"></span>
@@ -399,8 +414,14 @@ select:focus{outline:none; border-color:var(--primary);}
   </div>
 </div>
 
+<script src="learn-track.js"></script>
 <script>
 const $ = s => document.querySelector(s);
+// 学习记录：只存本机浏览器，不上传。报告页 report.html 读取同一份数据。
+function LT(){ return window.LearnTrack || null; }
+function trackStart(cat, item){ try{ const t=LT(); if(t) t.start(cat, item); }catch(e){} }
+function trackQuiz(o){ try{ const t=LT(); if(t) t.trackQuiz(o); }catch(e){} }
+let curCatName = '', curPaperLabel = '';   // 当前分类/试卷名，供学习记录归类
 // 家长码：孩子提交试卷后，正确答案与解析默认锁定，需输入此码才能查看。改成你自己的数字即可。
 const PARENT_CODE = '8888';
 let manifest = null, paper = null, curCi = 0, curPi = 0, submitted = false, answersLocked = true, paperIsPdf = false, paperHasCard = false, paperHasKnowledge = false, curStudentPdf = '', curAnswerPdf = '';
@@ -494,6 +515,10 @@ async function loadPaper(pi){
   $('#pdfWrap').style.display='none';
   $('#ansWrap').style.display='none';
   const p = manifest.cats[curCi].papers[pi];
+  flushRec();   // 换卷前先把上一份的抽背自查累计记下
+  curCatName = manifest.cats[curCi].label || manifest.cats[curCi].name || '';
+  curPaperLabel = p.label || '';
+  trackStart(curCatName, curPaperLabel);   // 学习记录：从这一刻开始给这份材料计时
   $('#paperTitle').style.display='inline';
   $('#paperTitle').textContent = p.label;
   $('#list').innerHTML = '';
@@ -830,6 +855,8 @@ function submit(auto){
     // 自动批改答题卡（如有），在右侧答题卡上直接标出 ✓/✗ 与正确项、填空附参考答案
     let stats = {correct:0, wrong:0, unans:0, total:0, blankN:0};
     if(paperHasCard){ stats = gradeCard(); reopenCard(); }
+    // 学习记录：交卷成绩（只统计可批改的选择+填空）
+    if(stats.total > 0) trackQuiz({src:'card', mod:curPaperLabel || '答题卡', right:stats.correct, wrong:stats.wrong, unans:stats.unans, total:stats.total});
     // 交卷后保留学生卷与已批改的答题卡；解析版保持锁定，由家长码解锁后才显示
     $('#unlockPanel').style.display = 'block';
     $('#codeInput').value=''; $('#codeMsg').textContent='';
@@ -890,6 +917,8 @@ function submit(auto){
   });
   const total = paper.questions.length;
   const pct = total ? Math.round(correct/total*100) : 0;
+  // 学习记录：选择题提交成绩
+  trackQuiz({src:'card', mod:curPaperLabel || '选择题', right:correct, wrong:wrong, unans:unans, total:correct+wrong});
   const s = $('#summary');
   s.style.display='block';
   s.innerHTML = `<div class="summary-row">
@@ -1538,6 +1567,8 @@ $('#minutesInput').addEventListener('keydown', e=>{ if(e.key==='Enter') $('#conf
 let knowData=null, knowCfg=null, knowOrder=null, knowIdx=0, knowMode='flash', knowSub='cn2en', knowScore={right:0,wrong:0}, knowFlipped=false;
 const KNOW_CLOUD_CFG = {endpoint: "https://hj8-english.app.workbuddy.host", publishableKey: "wbpk_9qIMV7q3yKetV5njz3ea2G_y20o9SesGLDsQhd0xO2fQgybLltRLeoc"};
 let knowCloud=null, knowCloudReady=false, knowModels=null, knowCloudInit=false;
+// 本地例句库（离线秒查，避免每次联网等待）
+let exKb=null, exKbTried=false;
 
 function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 // 知识自测判分：答案里用 / 、 、 分隔的都算正确（如 was, were 任意一个即可）
@@ -1574,9 +1605,14 @@ function setupKnowBar(p){
   bar.querySelectorAll('[data-mode]').forEach(b=> b.onclick=()=> showKnowInteract(b.dataset.mode));
   const pb=$('#knowPdfBtn'); if(pb) pb.onclick=showKnowPdf;
 }
+function knowModeLabel(mode){
+  return mode==='flash' ? '背一背' : (mode==='test' ? '测一测' : (mode==='extend' ? '用一用' : '看原卷'));
+}
 function showKnowInteract(mode){
   if(!knowData){ return; }
+  flushRec();   // 换模式前先把抽背自查的累计记下
   knowMode=mode; knowFlipped=false;
+  trackStart(curCatName, curPaperLabel + '｜' + knowModeLabel(mode));   // 学习记录：细分到背/测/用
   const wrap=$('#pdfWrap'), pdfCol=document.querySelector('#pdfWrap .pdf-col'), panel=$('#knowPanel');
   if(pdfCol) pdfCol.style.display='none';
   panel.style.display='block';
@@ -1585,6 +1621,7 @@ function showKnowInteract(mode){
   renderKnowPanel();
 }
 function showKnowPdf(){
+  trackStart(curCatName, curPaperLabel);   // 学习记录：回到看原卷
   const wrap=$('#pdfWrap'), pdfCol=document.querySelector('#pdfWrap .pdf-col'), panel=$('#knowPanel');
   if(pdfCol) pdfCol.style.display='block';
   panel.style.display='none';
@@ -1675,7 +1712,7 @@ function knowExtendHtml(){
   const word=knowExtendWord(item);
   return `<div class="know-ext-word">当前词：${escapeHtml(word)}</div>
   <div class="know-btns"><button id="knowExtGen" class="primary">生成例句 ▶</button></div>
-  <div class="know-ext-out" id="knowExtendOut">点上方按钮，AI 帮你造个简单句子并翻译，学会“举一反三”。\n（仅 WorkBuddy 云端版可用；GitHub 版会提示改用 AI 答疑）</div>`;
+  <div class="know-ext-out" id="knowExtendOut">点上方按钮，立刻看到这个词的 3 个例句（由浅入深，配中文翻译和用法要点）。\n常用词为本地例句库，秒出、不联网；未收录的词才会联网生成。</div>`;
 }
 // ===== text 型（知识梳理 / 必背范文 / 词汇拓展 等散文类）=====
 function renderTextBlockHtml(text){
@@ -1791,6 +1828,19 @@ function markRec(i, ok){
   const btns=$('#recb'+i); if(btns) btns.innerHTML='<span class="know-rec-done">'+(ok?'✓ 记住':'✗ 没记住')+'</span>';
   const res=$('#knowTestResult');
   if(res){ res.className='know-result '+(ok?'ok':'bad'); res.textContent='已记住 '+knowScore.right+' · 没记住 '+knowScore.wrong; }
+  // 学习记录：抽背自查先累计，离开这张卡时再汇总成一条，避免刷出几百条记录
+  if(!recAcc) recAcc={mod:curPaperLabel || '知识互动', right:0, wrong:0};
+  if(ok) recAcc.right++; else recAcc.wrong++;
+}
+// 抽背自查累计 → 汇总上报（切材料/离开页面时触发）
+let recAcc = null;
+function flushRec(){
+  try{
+    if(recAcc && (recAcc.right || recAcc.wrong)){
+      trackQuiz({src:'rec', mod:recAcc.mod, right:recAcc.right, wrong:recAcc.wrong, unans:0, total:recAcc.right+recAcc.wrong});
+    }
+  }catch(e){}
+  recAcc = null;
 }
 function knowExtendHtmlText(){
   const blocks=knowData.blocks||[];
@@ -1839,16 +1889,20 @@ function knowShuffle(){
 }
 function knowGrade(){
   const inputs=document.querySelectorAll('.know-inp');
-  let allOk=true;
+  let allOk=true, right=0, wrong=0, unans=0, answered=0;
   inputs.forEach(inp=>{
     const ans=decodeURIComponent(inp.dataset.ans||'');
+    const val=(inp.value||'').trim();
     const ok=knowMatch(inp.value, ans);
     inp.classList.toggle('g-ok', ok); inp.classList.toggle('g-bad', !ok);
     if(!ok) allOk=false;
+    if(!val){ unans++; } else { answered++; if(ok) right++; else wrong++; }
   });
   knowScore[allOk?'right':'wrong']++;
   const res=$('#knowTestResult');
   if(res){ res.className='know-result '+(allOk?'ok':'bad'); res.textContent= allOk?'✓ 全对！继续保持' : '✗ 有错，看红色框里的正确答案，再记一遍～'; }
+  // 学习记录：测一测成绩（全部空着不算一次测验）
+  if(answered>0) trackQuiz({src:'know', mod:curPaperLabel || '知识互动', right:right, wrong:wrong, unans:unans, total:right+wrong});
 }
 function knowReveal(){
   document.querySelectorAll('.know-inp').forEach(inp=>{ inp.value=decodeURIComponent(inp.dataset.ans||''); inp.classList.remove('g-bad'); inp.classList.add('g-ok'); });
@@ -1874,13 +1928,62 @@ async function initKnowCloud(){
   catch(e){ knowCloudReady=false; }
 }
 function fallbackExtend(word){
-  return '当前网络不支持自动生成例句（需云端 AI，仅 WorkBuddy 版可用）。\n你可以：\n① 自己用「'+word+'」造个简单句子；\n② 点右下角 💬 在 AI 答疑里问：“请用 '+word+' 造个句子”。';
+  return '这个词还没收进本地例句库，且当前网络不支持联网生成。\n你可以：\n① 自己用「'+word+'」造个简单句；\n② 点右下角 💬 在 AI 答疑里问：“请用 '+word+' 造 3 个由浅入深的句子并翻译”。';
 }
 function fallbackExtendText(){
   return '当前网络不支持自动出题（需云端 AI，仅 WorkBuddy 版可用）。\n你可以点右下角 💬 在 AI 答疑里问：“请根据这份资料出几道小题”。';
 }
+// ===== 用一用：本地例句库（秒查） + 云端兜底 =====
+function kbEnOnly(s){ return String(s||'').replace(/[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]+/g,' ').replace(/[^A-Za-z' -]+/g,' ').replace(/\s+/g,' ').trim(); }
+function kbPosFix(s){ return String(s||'').replace(/([A-Za-z]{2})((?:n|v|vt|vi|adj|adv|prep|conj|pron|num|art|int|interj)\.)/g,'$1 $2'); }
+function kbCode(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9']/g,''); }
+// 例句库键：与生成脚本 _gen_kb.js 中的规则保持一致，改动需同步两边
+function knowExtendKeyItem(item){
+  if(knowCfg.kind==='verb') return kbCode(item['原形']||'');
+  if(knowCfg.kind==='vocab') return kbCode(item['英文']||'');
+  const t=(kbEnOnly(kbPosFix(item[knowCfg.promptKey]||'')).split(' ')[0]||'').toLowerCase();
+  return t;
+}
+async function ensureExKb(){
+  if(exKbTried) return exKb;
+  exKbTried=true;
+  try{
+    const r=await fetch('knowledge-data/例句库.json',{cache:'no-store'});
+    if(r.ok){ const j=await r.json(); exKb=(j&&j.entries)||null; }
+  }catch(e){ exKb=null; }
+  return exKb;
+}
+function kbEntryHtml(e, word){
+  const pre=(s,tag)=>{ s=String(s||'').trim(); return /^(注意|切记|记住|要点|提示|用法要点|易错)/.test(s) ? s : tag+s; };
+  const exs=(e.ex||[]).map((x,i)=>
+    `<div class="kb-ex"><div class="kb-en"><span class="kb-n">${i+1}</span>${escapeHtml(x.en)}</div>`
+    +`<div class="kb-zh">${escapeHtml(x.zh)}</div>`
+    +(x.note?`<div class="kb-note">${escapeHtml(pre(x.note,'要点：'))}</div>`:'')
+    +`</div>`).join('');
+  return `<div class="kb-head">${escapeHtml(e.head||word)}</div>`
+    +(e.forms?`<span class="kb-forms">${escapeHtml(e.forms)}</span>`:'')
+    +(e.tip?`<div class="kb-tip">${escapeHtml(pre(e.tip,'注意：'))}</div>`:'')
+    +exs
+    +`<div class="kb-foot">共 ${(e.ex||[]).length} 句 · 本地例句库（离线秒出）</div>`;
+}
 async function knowExtendGen(){
-  let word, sysC, usrC;
+  const out=$('#knowExtendOut');
+  let word;
+  // ① 非文本型：先查本地例句库，命中就秒出，不联网
+  if(knowCfg.kind!=='text'){
+    const item=knowData.items[knowOrder[knowIdx]];
+    word=knowExtendWord(item);
+    out.className='know-ext-out'; out.textContent='查询中…';
+    const kb=await ensureExKb();
+    const hit=kb && kb[knowExtendKeyItem(item)];
+    if(hit && (hit.ex||[]).length){
+      out.className='know-ext-out know-ext-ok';
+      out.innerHTML=kbEntryHtml(hit, word);
+      return;
+    }
+  }
+  // ② 未命中的词条 / 文本资料：走云端 AI
+  let sysC, usrC;
   if(knowCfg.kind==='text'){
     const blocks=knowData.blocks||[];
     const ctx=blocks.map(b=>(b.title?('【'+b.title+'】\n'):'')+(b.text||'')).join('\n\n');
@@ -1888,13 +1991,10 @@ async function knowExtendGen(){
     sysC='你是初中英语辅导老师。下面是一份初二英语复习资料。请基于资料出 3 道小题（含答案），题型可以是单词拼写、短语翻译或语法填空，适合初二学生。输出格式：每题一行，先写题目再写「答案：…」。不要任何多余文字。';
     usrC='资料内容：\n'+ctx+'\n\n请基于上面资料出 3 道小题并附答案。';
   } else {
-    const item=knowData.items[knowOrder[knowIdx]];
-    word=knowExtendWord(item);
-    sysC='你是初中英语辅导老师。请只用一个英文单词或短语造一个适合初二学生的简单例句，并给出中文翻译。输出严格两行：第一行英文例句，第二行中文翻译。不要任何多余文字。';
-    usrC='请用英文单词「'+word+'」造一个简单例句并翻译。';
+    sysC='你是初中英语老师，为学生制作例句。要求：① 一次给 3 个例句，必须由浅入深（第1句最短最基础，第2句贴近日常，第3句稍长或含常见搭配/时态变化）；② 若该词条有形态变化，先单独一行列出全部形态（动词：原形/第三人称单数/过去式/过去分词/现在分词），并让例句尽量体现不同形态；③ 每句英文下一行紧跟中文翻译；④ 最后用一行说明用法要点或易错点。不要任何多余文字。';
+    usrC='词条：'+word+'\n（若英文有粘连或夹杂中文释义、词性标注，请先还原成正确英文，再举例。）';
   }
-  const out=$('#knowExtendOut');
-  out.className='know-ext-out'; out.textContent='生成中…（联网调用云端 AI）';
+  out.className='know-ext-out'; out.textContent='未收录，正在联网生成…';
   const ok = await ensureKnowCloud();
   if(!ok || !knowCloudReady || !knowCloud){ out.className='know-ext-out know-ext-fallback'; out.textContent= knowCfg.kind==='text'? fallbackExtendText() : fallbackExtend(word); return; }
   try{
@@ -1919,6 +2019,13 @@ async function knowExtendGen(){
     out.textContent= knowCfg.kind==='text'? fallbackExtendText() : fallbackExtend(word);
   }
 }
+
+// 学习报告入口（给家长看学习时长与测验情况）
+(function(){
+  const rb = $('#reportBtn');
+  if(rb) rb.onclick = ()=>{ flushRec(); try{ window.open('report.html','_blank'); }catch(e){ location.href='report.html'; } };
+  window.addEventListener('pagehide', flushRec);
+})();
 
 init();
 </script>

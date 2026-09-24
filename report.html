@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>学习报告 · 沪教八上英语学习助手</title>
+<style>
+:root{ --bg:#f5f7fa; --card:#fff; --primary:#2b6cb0; --primary-soft:#ebf3fb;
+       --text:#1a202c; --muted:#66788a; --border:#e3e8ef; --ok:#2f9e6d; --warn:#b7791f; --bad:#c0392b; --na:#8a94a6; }
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;
+  font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;}
+.wrap{max-width:980px;margin:0 auto;padding:18px 14px 60px;}
+h1{font-size:22px;margin:0 0 4px;}
+.sub{font-size:13px;color:var(--muted);margin-bottom:16px;}
+.bar-top{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:16px;}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:9px;overflow:hidden;background:#fff;}
+.seg button{border:0;background:#fff;padding:7px 15px;font-size:14px;cursor:pointer;color:var(--muted);font-family:inherit;}
+.seg button.on{background:var(--primary);color:#fff;font-weight:600;}
+.tbtn{border:1px solid var(--border);background:#fff;border-radius:8px;padding:7px 14px;font-size:13.5px;cursor:pointer;color:var(--text);font-family:inherit;}
+.tbtn:hover{border-color:var(--primary);color:var(--primary);}
+.tbtn.danger:hover{border-color:var(--bad);color:var(--bad);}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.card h2{font-size:15.5px;margin:0 0 12px;color:var(--primary);}
+.card h2 .tip{font-size:12.5px;color:var(--muted);font-weight:400;margin-left:8px;}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;}
+.stat{background:var(--bg);border-radius:11px;padding:12px 14px;}
+.stat .k{font-size:12.5px;color:var(--muted);}
+.stat .v{font-size:24px;font-weight:800;line-height:1.3;margin-top:2px;}
+.stat .v small{font-size:13px;font-weight:600;color:var(--muted);margin-left:2px;}
+.stat .x{font-size:12px;color:var(--muted);}
+/* 柱状图 */
+.chart{display:flex;align-items:flex-end;gap:6px;height:150px;padding:8px 2px 0;border-bottom:1px solid var(--border);}
+.col{flex:1 1 0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0;}
+.col .bar{width:100%;max-width:52px;background:linear-gradient(180deg,#5b9bd5,var(--primary));border-radius:6px 6px 0 0;min-height:3px;transition:height .3s;}
+.col .bar.empty{background:#e8edf3;}
+.col .v{font-size:11.5px;color:var(--muted);margin-bottom:4px;white-space:nowrap;}
+.chart-x{display:flex;gap:6px;padding-top:6px;}
+.chart-x div{flex:1 1 0;text-align:center;font-size:11.5px;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+/* 横条 */
+.hrow{margin-bottom:11px;}
+.hrow .t{display:flex;justify-content:space-between;font-size:13.5px;gap:10px;}
+.hrow .t b{font-weight:600;}
+.hrow .t span{color:var(--muted);font-size:12.5px;white-space:nowrap;}
+.hrow .track{height:9px;background:#eef2f7;border-radius:6px;overflow:hidden;margin-top:5px;}
+.hrow .fill{height:100%;background:var(--primary);border-radius:6px;}
+.hrow .fill.low{background:#e0793a;}
+.hrow .fill.ok{background:var(--ok);}
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th,td{text-align:left;padding:8px 8px;border-bottom:1px solid var(--border);}
+th{color:var(--muted);font-weight:600;font-size:12.5px;}
+td.num,th.num{text-align:right;white-space:nowrap;}
+.badge{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:6px;background:var(--primary-soft);color:var(--primary);font-weight:600;}
+.badge.card{background:#eefaf3;color:var(--ok);}
+.badge.rec{background:#fdf3e7;color:var(--warn);}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:1px 8px;border-radius:20px;}
+.pill.good{background:#e8f7f0;color:var(--ok);}
+.pill.mid{background:#fdf3e7;color:var(--warn);}
+.pill.bad{background:#fdecea;color:var(--bad);}
+.note{font-size:13px;color:var(--muted);line-height:1.75;}
+.empty{text-align:center;padding:34px 16px;color:var(--muted);font-size:14.5px;}
+.empty b{display:block;font-size:16px;color:var(--text);margin-bottom:8px;}
+.warnbox{background:#fff7ed;border:1px solid #fde2c0;border-radius:11px;padding:12px 14px;font-size:13.5px;color:var(--warn);margin-top:10px;}
+@media(max-width:640px){
+  .stat .v{font-size:20px;}
+  .chart{height:120px;}
+  .card{padding:13px 13px;}
+  th,td{padding:7px 5px;font-size:12.5px;}
+}
+@media print{
+  body{background:#fff;} .bar-top,.no-print{display:none !important;}
+  .card{break-inside:avoid;box-shadow:none;border-color:#ccc;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>学习报告</h1>
+  <div class="sub">数据只保存在这台设备的浏览器里，不会上传，也不需要联网。报告读取的是孩子平时在这个应用里的使用记录。</div>
+
+  <div class="bar-top no-print">
+    <div class="seg" id="rangeSeg">
+      <button data-d="7" class="on">近 7 天</button>
+      <button data-d="14">近 14 天</button>
+      <button data-d="30">近 30 天</button>
+    </div>
+    <button class="tbtn" id="btnPrint">打印 / 存成 PDF</button>
+    <button class="tbtn" id="btnExport">导出数据</button>
+    <button class="tbtn danger" id="btnClear">清空记录</button>
+  </div>
+
+  <div id="content"></div>
+
+  <div class="note" style="margin-top:18px;">
+    说明：只有页面真的打开着、并且有操作时才计时；切到后台或超过 3 分钟没动作会自动暂停，所以数字反映的是「实际学习时间」，不是页面挂着的时间。
+  </div>
+</div>
+
+<script src="learn-track.js"></script>
+<script>
+var $ = function(s){ return document.querySelector(s); };
+function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]; }); }
+function fmtSec(sec){
+  sec = Math.max(0, Math.round(sec||0));
+  var h = Math.floor(sec/3600), m = Math.round((sec%3600)/60);
+  if(h > 0) return h + '<small>小时</small>' + (m ? m + '<small>分</small>' : '');
+  if(m > 0) return m + '<small>分钟</small>';
+  return sec + '<small>秒</small>';
+}
+function fmtDur(sec){
+  sec = Math.max(0, Math.round(sec||0));
+  var h = Math.floor(sec/3600), m = Math.round((sec%3600)/60);
+  if(h > 0) return h + ' 小时 ' + m + ' 分';
+  if(m > 0) return m + ' 分钟';
+  return sec + ' 秒';
+}
+function ratePill(r){
+  if(r === null || r === undefined) return '<span class="pill mid">未判分</span>';
+  var cls = r >= 85 ? 'good' : (r >= 70 ? 'mid' : 'bad');
+  return '<span class="pill ' + cls + '">' + r + '%</span>';
+}
+var SRC_NAME = { know:'测一测', rec:'抽背自查', card:'答题卡' };
+var DAYS = 7;
+
+function render(){
+  var host = $('#content');
+  var t = window.LearnTrack;
+  if(!t){ host.innerHTML = '<div class="card"><div class="empty">记录模块未加载。</div></div>'; return; }
+  var r = t.report(DAYS);
+
+  var hasAny = r.range.sec > 0 || r.range.quiz > 0 || r.totalDays > 0;
+  if(!hasAny){
+    host.innerHTML = '<div class="card"><div class="empty">'
+      + '<b>还没有学习记录</b>'
+      + '让孩子打开学习助手，随便看一份试卷或用「背一背 / 测一测 / 用一用」互动一下，<br>回到这里刷新就能看到数据了。'
+      + '</div></div>';
+    return;
+  }
+
+  var html = '';
+
+  // ---------- 总览 ----------
+  html += '<div class="card"><h2>总览</h2><div class="stats">'
+    + '<div class="stat"><div class="k">今天学习</div><div class="v">' + fmtSec(r.today.sec) + '</div>'
+    +   '<div class="x">打开材料 ' + r.today.visits + ' 次 · 测验 ' + r.today.quiz + ' 次</div></div>'
+    + '<div class="stat"><div class="k">近 ' + r.range.days + ' 天累计</div><div class="v">' + fmtSec(r.range.sec) + '</div>'
+    +   '<div class="x">平均每天 ' + Math.round(r.range.sec / r.range.days / 60) + ' 分钟</div></div>'
+    + '<div class="stat"><div class="k">连续学习</div><div class="v">' + r.streak + '<small>天</small></div>'
+    +   '<div class="x">一天满 1 分钟即算</div></div>'
+    + '<div class="stat"><div class="k">近 ' + r.range.days + ' 天正确率</div><div class="v">'
+    +   (r.range.rate === null ? '—' : r.range.rate + '<small>%</small>') + '</div>'
+    +   '<div class="x">共 ' + r.range.quiz + ' 次测验，答对 ' + r.range.right + ' 题</div></div>'
+    + '</div>';
+  if(r.range.quiz === 0){
+    html += '<div class="warnbox">这段时间只看了资料，还没有做过测验（测一测 / 答题卡交卷）。光看不练很难判断有没有真正掌握，建议做一次「测一测」。</div>';
+  }
+  html += '</div>';
+
+  // ---------- 每日时长 ----------
+  html += '<div class="card"><h2>每天学多久<span class="tip">柱高=时长；柱下数字是当天测验正确率</span></h2>';
+  html += '<div class="chart">';
+  r.series.forEach(function(s){
+    var hrs = s.sec / 3600;
+    var h = Math.max(s.sec > 0 ? 4 : 0, s.pct);
+    var label = s.sec > 0 ? (s.sec >= 3600 ? (s.sec/3600).toFixed(1) + 'h' : Math.round(s.sec/60) + 'm') : '';
+    html += '<div class="col" title="' + s.label + '：' + fmtDur(s.sec) + (s.rate !== null ? '，正确率 ' + s.rate + '%' : '') + '">'
+      + '<div class="v">' + label + '</div>'
+      + '<div class="bar' + (s.sec > 0 ? '' : ' empty') + '" style="height:' + h + '%"></div></div>';
+  });
+  html += '</div><div class="chart-x">';
+  r.series.forEach(function(s){
+    html += '<div title="' + s.label + '">' + s.label + (s.rate !== null ? '<br>' + s.rate + '%' : '') + '</div>';
+  });
+  html += '</div></div>';
+
+  // ---------- 时长去向 ----------
+  // 过滤：先去掉不足 1 秒的噪音行，再优先只留 ≥5 秒的；如果全都很短就保留前 3 条
+  function trimNoise(arr, minSec){
+    var any = arr.filter(function(x){ return x.sec >= 1; });
+    var kept = any.filter(function(x){ return x.sec >= minSec; });
+    if(!kept.length) kept = any.slice(0, 3);
+    return kept;
+  }
+  var cats = trimNoise(r.byCat, 5);
+  if(cats.length){
+    html += '<div class="card"><h2>时间花在哪<span class="tip">按试卷分类统计</span></h2>';
+    var catTotal = r.byCat.reduce(function(s, x){ return s + x.sec; }, 0);
+    cats.forEach(function(c){
+      var pct = catTotal ? Math.round(c.sec / catTotal * 100) : 0;
+      html += '<div class="hrow"><div class="t"><b>' + esc(c.cat) + '</b><span>' + fmtDur(c.sec) + ' · ' + pct + '%</span></div>'
+        + '<div class="track"><div class="fill" style="width:' + Math.max(2, pct) + '%"></div></div></div>';
+    });
+    html += '</div>';
+  }
+  var items = trimNoise(r.byItem, 5);
+  if(items.length){
+    var itemMax = items[0].sec || 1;
+    html += '<div class="card"><h2>花时间最多的材料</h2>' + items.map(function(x){
+      var pct = Math.round(x.sec / itemMax * 100);
+      var name = String(x.item).replace('｜', ' · ');
+      return '<div class="hrow"><div class="t"><b>' + esc(name) + '</b><span>' + fmtDur(x.sec) + '</span></div>'
+        + '<div class="track"><div class="fill" style="width:' + Math.max(2, pct) + '%"></div></div></div>';
+    }).join('') + '</div>';
+  }
+
+  // ---------- 掌握情况 ----------
+  if(r.mods.length){
+    html += '<div class="card"><h2>掌握情况<span class="tip">按正确率从低到高排，排前面的就是最该复习的</span></h2>';
+    r.mods.forEach(function(m){
+      var w = m.rate === null ? 0 : m.rate;
+      html += '<div class="hrow"><div class="t"><b>' + esc(m.mod) + '</b><span>' + ratePill(m.rate)
+        + ' · 对 ' + m.right + ' / 错 ' + m.wrong + (m.unans ? ' / 未答 ' + m.unans : '') + '</span></div>'
+        + '<div class="track"><div class="fill ' + (w >= 70 ? 'ok' : 'low') + '" style="width:' + Math.max(2, w) + '%"></div></div></div>';
+    });
+    if(r.watch.length){
+      var lowSample = r.watch.every(function(m){ return m.judged < 3; });
+      html += '<div class="warnbox"><b>需要重点复习：</b>'
+        + r.watch.map(function(m){ return esc(m.mod) + '（正确率 ' + m.rate + '%，做了 ' + m.judged + ' 题）'; }).join('、')
+        + '<br>建议先回到「背一背」过一遍，再用「测一测」重做一次。'
+        + (lowSample ? '<br>这几项题量还少，结论仅供参考；多测几次会更准。' : '') + '</div>';
+    } else if(r.mods.some(function(m){ return m.rate !== null; })){
+      html += '<div class="warnbox" style="background:#eefaf3;border-color:#c9eddc;color:#2f9e6d;">做过测验的内容正确率都在 70% 以上，掌握得不错。</div>';
+    }
+    html += '</div>';
+  }
+
+  // ---------- 最近测验明细 ----------
+  if(r.recent.length){
+    html += '<div class="card"><h2>最近测验明细<span class="tip">最多显示 20 条</span></h2>'
+      + '<table><thead><tr><th>时间</th><th>来源</th><th>材料</th><th class="num">对</th><th class="num">错</th><th class="num">未答</th><th class="num">正确率</th></tr></thead><tbody>';
+    r.recent.forEach(function(q){
+      var cls = q.src === 'card' ? 'card' : (q.src === 'rec' ? 'rec' : '');
+      html += '<tr><td>' + esc(q.day.slice(5)) + ' ' + esc(q.time) + '</td>'
+        + '<td><span class="badge ' + cls + '">' + esc(SRC_NAME[q.src] || q.src) + '</span></td>'
+        + '<td>' + esc(q.mod) + '</td>'
+        + '<td class="num">' + q.right + '</td><td class="num">' + q.wrong + '</td><td class="num">' + q.unans + '</td>'
+        + '<td class="num">' + ratePill(q.rate) + '</td></tr>';
+    });
+    html += '</tbody></table></div>';
+  }
+
+  // ---------- 努力 vs 效果 ----------
+  var hours = r.range.sec / 3600;
+  html += '<div class="card"><h2>努力与效果</h2><div class="note">';
+  html += '近 ' + r.range.days + ' 天累计学习 <b>' + fmtDur(r.range.sec) + '</b>（平均每天 ' + Math.round(r.range.sec / r.range.days / 60) + ' 分钟），';
+  if(r.range.rate === null) html += '期间没有做测验，暂时无法判断掌握程度。';
+  else {
+    html += '测验正确率 <b>' + r.range.rate + '%</b>。';
+    if(r.range.rate >= 85 && hours >= 3) html += '时长达标、正确率也高，状态很好。';
+    else if(r.range.rate >= 85) html += '正确率不错，但学习时间偏少，可以适当增加一点。';
+    else if(r.range.rate < 70 && hours >= 5) html += '时间花了不少但正确率偏低——这通常说明是「看得多、记得少」：建议减少一次性的浏览时长，把时间挪到「测一测」上，做错的当场重做一遍。';
+    else if(r.range.rate < 70) html += '正确率偏低，建议放慢一点节奏，一个模块弄懂再进下一个。';
+    else html += '整体正常，继续保持。';
+  }
+  html += '</div></div>';
+
+  host.innerHTML = html;
+}
+
+// ---- 交互 ----
+$('#rangeSeg').addEventListener('click', function(e){
+  var b = e.target.closest('button[data-d]');
+  if(!b) return;
+  DAYS = +b.dataset.d;
+  Array.prototype.forEach.call(this.querySelectorAll('button'), function(x){ x.classList.toggle('on', x === b); });
+  render();
+});
+$('#btnPrint').onclick = function(){ window.print(); };
+$('#btnExport').onclick = function(){
+  var t = window.LearnTrack; if(!t) return;
+  var blob = new Blob([t.exportJson()], { type:'application/json' });
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = '学习记录_' + new Date().toISOString().slice(0,10) + '.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
+};
+$('#btnClear').onclick = function(){
+  if(!confirm('确定清空全部学习记录吗？\n清空后时长与测验成绩都无法恢复。')) return;
+  if(!confirm('再确认一次：这会把所有记录永久删除，确定继续吗？')) return;
+  var t = window.LearnTrack; if(t) t.clear();
+  render();
+};
+
+render();
+// 页面重新获得焦点时刷新，避免边学边看时数字不动
+document.addEventListener('visibilitychange', function(){ if(document.visibilityState === 'visible') render(); });
+</script>
+</body>
+</html>
