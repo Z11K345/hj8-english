@@ -1,2 +1,0 @@
-checked papers=59  sections=874  questions=3835  covered=3835
-ALL ANSWERS COVERED

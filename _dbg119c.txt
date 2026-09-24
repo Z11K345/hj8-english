@@ -1,6 +1,0 @@
-has 118. : True
-has 119. : True
-line 118 count: 1
-line 119 count: 1
-after header-strip count: 117
-item 64 = 'make\nup\na\nstory'

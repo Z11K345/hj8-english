@@ -1,2 +1,0 @@
-﻿done
-RAN rc=0
