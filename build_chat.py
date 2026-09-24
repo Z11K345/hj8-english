@@ -13,7 +13,7 @@ BASE = r"C:\Users\GFQH-GF-ZK\WorkBuddy\2026-09-20-12-23-11\学习助手"
 OUT = os.path.join(BASE, "chat-app", "index.html")
 
 BOOK_TITLE = "沪教·英语 八年级上册（全国版·2025版）"
-CACHE_BUSTER = "20260926a"
+CACHE_BUSTER = "20260922a"
 
 css = """
 :root{ --bg:#f5f7fa; --card:#ffffff; --primary:#2b6cb0; --primary-soft:#ebf3fb;

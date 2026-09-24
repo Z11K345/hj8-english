@@ -240,6 +240,29 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-ext-out{margin-top:12px;font-size:14px;white-space:pre-wrap;word-break:break-word;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px;min-height:60px;}
 .know-ext-out.know-ext-ok{background:#eef6ff;border-color:#bcdcff;}
 .know-ext-out.know-ext-fallback{background:#fff7ed;border-color:#fde2c0;color:var(--warn);}
+/* 知识互动：顶部常驻工具栏（背一背/测一测/用一用/看原卷），点击即在原卷与互动间切换 */
+#knowBar{display:none;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;padding:10px 12px;background:var(--card);border:1px solid var(--border);border-radius:12px;}
+#knowBar .know-bar-label{font-size:13px;color:var(--muted);margin-right:2px;}
+#knowBar .know-bar-btn{border:1px solid var(--border);background:#fff;color:var(--text);border-radius:9px;padding:8px 16px;font-size:14px;cursor:pointer;font-family:inherit;font-weight:600;}
+#knowBar .know-bar-btn:hover{background:var(--primary-soft);}
+#knowBar .know-bar-btn.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+#pdfWrap.knowmode{display:block !important;}
+#pdfWrap.knowmode #knowPanel{display:block;position:static;max-height:none;overflow:visible;flex:none;}
+/* text 型（阅读 / 抽背 / AI） */
+.know-read-card{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:12px;white-space:pre-wrap;word-break:break-word;line-height:1.9;font-size:15px;}
+.know-t-h{font-weight:700;color:var(--primary);margin-bottom:6px;font-size:14px;}
+.know-read-tools{display:flex;gap:8px;margin-bottom:12px;}
+.know-rec-card{border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:12px;background:var(--card);}
+.know-rec-card.rec-ok{border-color:var(--ok);background:var(--ok-soft);}
+.know-rec-card.rec-no{border-color:var(--bad);background:var(--bad-soft);}
+.know-rec-title{font-weight:700;color:var(--primary);font-size:14px;margin-bottom:6px;}
+.know-rec-prompt{color:var(--muted);font-size:14px;}
+.know-rec-ans{white-space:pre-wrap;word-break:break-word;line-height:1.85;font-size:15px;margin-top:8px;}
+.know-rec-btns{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;}
+.know-rec-btns button{border:1px solid var(--border);background:#fff;color:var(--text);border-radius:8px;padding:6px 14px;font-size:13px;cursor:pointer;font-family:inherit;}
+.know-rec-btns button.know-rec-ok{background:var(--ok);color:#fff;border-color:var(--ok);}
+.know-rec-btns button.know-rec-no{background:var(--bad);color:#fff;border-color:var(--bad);}
+.know-rec-done{font-size:13px;font-weight:700;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
@@ -293,6 +316,7 @@ select:focus{outline:none; border-color:var(--primary);}
   <div class="filterbar" id="filterbar"><label><input type="checkbox" id="onlyWrong"> 只看错题</label></div>
   <div id="list"></div>
   <div id="pdfWrap" style="display:none;">
+    <div id="knowBar" style="display:none;"></div>
     <div class="pdf-col">
       <div id="qnoNav" style="display:none;">
         <div class="qn-tip">点击题号跳到试卷对应题目：</div>
@@ -574,6 +598,8 @@ function render(){
       loadPadForPaper(p);
     }
     $('#pdfWrap').classList.add('pdf-split');
+    $('#pdfWrap').classList.remove('knowmode','kp-active');
+    const _kb=$('#knowBar'); if(_kb) _kb.style.display='none';
     // 每次切卷重置答题卡收起/悬浮竖条状态，避免上一份卷的收起态残留
     $('#answerPadWrap').classList.remove('card-collapsed');
     $('#cardTab').classList.remove('show');
@@ -588,8 +614,11 @@ function render(){
     $('#pdfWrap').style.display='';
     if(paperHasKnowledge){
       $('#answerPadWrap').style.display='none';
-      $('#knowPanel').style.display='block';
-      loadKnowledge(p.knowledgeData);
+      $('#knowPanel').style.display='none';
+      $('#pdfWrap').classList.add('knowmode');
+      setupKnowBar(p);
+      loadKnowledge(p.knowledgeData);   // 后台载入数据；默认先看原卷，点工具栏切换互动
+      showKnowPdf();
     } else if(p.cat==='知识梳理' || p.cat==='知识点总结'){
       $('#answerPadWrap').style.display='none';
       $('#knowPanel').style.display='block';
@@ -1487,12 +1516,13 @@ let knowCloud=null, knowCloudReady=false, knowModels=null, knowCloudInit=false;
 function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 // 知识自测判分：答案里用 / 、 、 分隔的都算正确（如 was, were 任意一个即可）
 function knowMatch(input, answer){
-  const inp = normalizeBlank(input);
+  const inp = normalizeBlank(input).replace(/\s+/g,'');
   if(!inp) return false;
-  const alts = String(answer||'').split(/[\/,，、]/).map(a=>normalizeBlank(a)).filter(Boolean);
+  const alts = String(answer||'').split(/[\/,，、]/).map(a=>normalizeBlank(a).replace(/\s+/g,'')).filter(Boolean);
   return alts.some(a=> a===inp );
 }
 function buildKnowCfg(d){
+  if(d.type==='text') return {kind:'text'};
   const cols = d.columns||[];
   if(cols.indexOf('原形')>=0) return {kind:'verb'};
   if(cols.indexOf('英文')>=0) return {kind:'vocab'};
@@ -1506,6 +1536,39 @@ function showKnowPlaceholder(p){
     + '<br><br>右侧的「背一背 / 测一测 / 用一用」互动正在陆续接入（目前不规则动词表、单词表已可用）。'
     + '<br><br>想即时提问、或让 AI 照着这份 PDF 出几道小题练手，点右下角 💬 打开 AI 答疑即可。</div>';
 }
+// 顶部常驻互动工具栏：点击「背一背/测一测/用一用」直接把试卷 PDF 换成互动区；「看原卷」换回 PDF
+function setupKnowBar(p){
+  const bar=$('#knowBar'); if(!bar) return;
+  bar.style.display='flex';
+  bar.innerHTML='<span class="know-bar-label">互动：</span>'
+    + '<button class="know-bar-btn" data-mode="flash">背一背</button>'
+    + '<button class="know-bar-btn" data-mode="test">测一测</button>'
+    + '<button class="know-bar-btn" data-mode="extend">用一用</button>'
+    + '<button class="know-bar-btn" data-pdf="1" id="knowPdfBtn">看原卷</button>';
+  bar.querySelectorAll('[data-mode]').forEach(b=> b.onclick=()=> showKnowInteract(b.dataset.mode));
+  const pb=$('#knowPdfBtn'); if(pb) pb.onclick=showKnowPdf;
+}
+function showKnowInteract(mode){
+  if(!knowData){ return; }
+  knowMode=mode; knowFlipped=false;
+  const wrap=$('#pdfWrap'), pdfCol=document.querySelector('#pdfWrap .pdf-col'), panel=$('#knowPanel');
+  if(pdfCol) pdfCol.style.display='none';
+  panel.style.display='block';
+  wrap.classList.add('kp-active');
+  setKnowBarActive(mode);
+  renderKnowPanel();
+}
+function showKnowPdf(){
+  const wrap=$('#pdfWrap'), pdfCol=document.querySelector('#pdfWrap .pdf-col'), panel=$('#knowPanel');
+  if(pdfCol) pdfCol.style.display='block';
+  panel.style.display='none';
+  wrap.classList.remove('kp-active');
+  setKnowBarActive(null);
+}
+function setKnowBarActive(mode){
+  document.querySelectorAll('#knowBar [data-mode]').forEach(b=> b.classList.toggle('on', b.dataset.mode===mode));
+  const pb=$('#knowPdfBtn'); if(pb) pb.classList.toggle('on', !mode);
+}
 
 async function loadKnowledge(url){
   try{
@@ -1517,7 +1580,7 @@ async function loadKnowledge(url){
     return;
   }
   knowCfg = buildKnowCfg(knowData);
-  knowOrder = knowData.items.map((_,i)=>i);
+  knowOrder = (knowData.items||[]).map((_,i)=>i);
   knowIdx = 0; knowScore = {right:0,wrong:0}; knowMode='flash'; knowFlipped=false;
   renderKnowPanel();
 }
@@ -1538,8 +1601,7 @@ function knowExtendWord(item){
 }
 function renderKnowPanel(){
   const p=$('#knowPanel');
-  const tabs=[['flash','背一背'],['test','测一测'],['extend','用一用']];
-  const tabHtml=tabs.map(t=>`<button class="know-tab ${knowMode===t[0]?'on':''}" data-mode="${t[0]}">${t[1]}</button>`).join('');
+  if(!knowData){ p.innerHTML='<div style="padding:20px;color:var(--muted);">知识数据加载中…</div>'; return; }
   let sub='';
   if(knowCfg.kind==='vocab' && knowMode==='test'){
     sub=`<div class="know-sub"><button class="know-tab ${knowSub==='cn2en'?'on':''}" data-sub="cn2en">中文→英文</button><button class="know-tab ${knowSub==='en2cn'?'on':''}" data-sub="en2cn">英文→中文</button></div>`;
@@ -1548,10 +1610,11 @@ function renderKnowPanel(){
   if(knowMode==='flash') body=knowFlashHtml();
   else if(knowMode==='test') body=knowTestHtml();
   else body=knowExtendHtml();
-  p.innerHTML=`<div class="know-head"><div class="know-title">${escapeHtml(knowData.title||'知识互动')}</div><div class="know-tabs">${tabHtml}</div></div>${sub}<div class="know-body">${body}</div>`;
+  p.innerHTML=`<div class="know-body">${body}</div>`;
   bindKnow();
 }
 function knowFlashHtml(){
+  if(knowCfg.kind==='text') return knowFlashHtmlText();
   const item=knowData.items[knowOrder[knowIdx]];
   const front=knowFrontText(item), back=knowBackText(item);
   return `<div class="know-prog">第 ${knowIdx+1} / ${knowData.items.length}</div>
@@ -1560,6 +1623,7 @@ function knowFlashHtml(){
   <div class="know-hint">点卡片或「翻到背面」看答案</div>`;
 }
 function knowTestHtml(){
+  if(knowCfg.kind==='text') return knowTestHtmlText();
   const item=knowData.items[knowOrder[knowIdx]];
   let prompt, inputs=[];
   if(knowCfg.kind==='verb'){
@@ -1580,11 +1644,50 @@ function knowTestHtml(){
   <div class="know-result" id="knowTestResult"></div>`;
 }
 function knowExtendHtml(){
+  if(knowCfg.kind==='text') return knowExtendHtmlText();
   const item=knowData.items[knowOrder[knowIdx]];
   const word=knowExtendWord(item);
   return `<div class="know-ext-word">当前词：${escapeHtml(word)}</div>
   <div class="know-btns"><button id="knowExtGen" class="primary">生成例句 ▶</button></div>
   <div class="know-ext-out" id="knowExtendOut">点上方按钮，AI 帮你造个简单句子并翻译，学会“举一反三”。\n（仅 WorkBuddy 云端版可用；GitHub 版会提示改用 AI 答疑）</div>`;
+}
+// ===== text 型（知识梳理 / 必背范文 / 词汇拓展 等散文类）=====
+function knowFlashHtmlText(){
+  const blocks=knowData.blocks||[];
+  let html='';
+  blocks.forEach((b,i)=>{
+    const title=b.title?`<div class="know-t-h">${escapeHtml(b.title)}</div>`:'';
+    html+=`<div class="know-read-card" data-i="${i}">${title}<div class="know-read-t">${escapeHtml(b.text||'')}</div></div>`;
+  });
+  return `<div class="know-read-tools"><button id="knowReadHide" class="primary">遮住全部</button><button id="knowReadShow">显示全部</button></div>`+html;
+}
+function knowTestHtmlText(){
+  const blocks=knowData.blocks||[];
+  let html='<div class="know-prog">抽背自查：点「显示」看原文，再点「记住 / 没记住」</div>';
+  blocks.forEach((b,i)=>{
+    const title=b.title?`<div class="know-rec-title">${escapeHtml(b.title)}</div>`:'';
+    const prompt=(b.text||'').replace(/\s+/g,' ').slice(0,22);
+    html+=`<div class="know-rec-card" data-i="${i}">${title}`
+      +`<div class="know-rec-prompt" id="recp${i}">${escapeHtml(prompt)}…</div>`
+      +`<div class="know-rec-ans" id="reca${i}" style="display:none;">${escapeHtml(b.text||'')}</div>`
+      +`<div class="know-rec-btns" id="recb${i}"><button class="know-rec-show" data-i="${i}">显示</button></div></div>`;
+  });
+  html+='<div class="know-result" id="knowTestResult"></div>';
+  return html;
+}
+function markRec(i, ok){
+  const card=document.querySelector('.know-rec-card[data-i="'+i+'"]');
+  if(!card) return;
+  card.classList.add(ok?'rec-ok':'rec-no');
+  const btns=$('#recb'+i); if(btns) btns.innerHTML='<span class="know-rec-done">'+(ok?'✓ 记住':'✗ 没记住')+'</span>';
+  const res=$('#knowTestResult');
+  if(res){ res.className='know-result '+(ok?'ok':'bad'); res.textContent='已记住 '+knowScore.right+' · 没记住 '+knowScore.wrong; }
+}
+function knowExtendHtmlText(){
+  const blocks=knowData.blocks||[];
+  return `<div class="know-ext-word">把这份资料交给 AI，照着出几道小题练手或讲解难点：</div>
+  <div class="know-btns"><button id="knowExtGen" class="primary">AI 出小题 ▶</button></div>
+  <div class="know-ext-out" id="knowExtendOut">点上方按钮，AI 会照着这份资料出 3 道小题并附答案（需云端 AI，仅 WorkBuddy 版可用；GitHub 版会提示改用 AI 答疑）。</div>`;
 }
 function bindKnow(){
   const p=$('#knowPanel');
@@ -1599,6 +1702,17 @@ function bindKnow(){
   const reveal=$('#knowReveal'); if(reveal) reveal.onclick=knowReveal;
   const next2=$('#knowNext2'); if(next2) next2.onclick=()=>knowNav(1);
   const ext=$('#knowExtGen'); if(ext) ext.onclick=knowExtendGen;
+  // text 型：阅读遮罩 / 抽背显示与自查
+  const rh=document.getElementById('knowReadHide'); if(rh) rh.onclick=()=>{ document.querySelectorAll('.know-read-t').forEach(e=> e.style.display='none'); };
+  const rs=document.getElementById('knowReadShow'); if(rs) rs.onclick=()=>{ document.querySelectorAll('.know-read-t').forEach(e=> e.style.display=''); };
+  document.querySelectorAll('.know-rec-show').forEach(b=> b.onclick=()=>{
+    const i=b.dataset.i;
+    const a=$('#reca'+i); if(a) a.style.display='block';
+    const pr=$('#recp'+i); if(pr) pr.style.display='none';
+    $('#recb'+i).innerHTML='<button class="know-rec-ok" data-i="'+i+'">记住了</button><button class="know-rec-no" data-i="'+i+'">没记住</button>';
+  });
+  document.querySelectorAll('.know-rec-ok').forEach(b=> b.onclick=()=>{ knowScore.right++; markRec(b.dataset.i,true); });
+  document.querySelectorAll('.know-rec-no').forEach(b=> b.onclick=()=>{ knowScore.wrong++; markRec(b.dataset.i,false); });
 }
 function knowToggleFlip(){
   knowFlipped=!knowFlipped;
@@ -1653,13 +1767,27 @@ async function initKnowCloud(){
 function fallbackExtend(word){
   return '当前网络不支持自动生成例句（需云端 AI，仅 WorkBuddy 版可用）。\n你可以：\n① 自己用「'+word+'」造个简单句子；\n② 点右下角 💬 在 AI 答疑里问：“请用 '+word+' 造个句子”。';
 }
+function fallbackExtendText(){
+  return '当前网络不支持自动出题（需云端 AI，仅 WorkBuddy 版可用）。\n你可以点右下角 💬 在 AI 答疑里问：“请根据这份资料出几道小题”。';
+}
 async function knowExtendGen(){
-  const item=knowData.items[knowOrder[knowIdx]];
-  const word=knowExtendWord(item);
+  let word, sysC, usrC;
+  if(knowCfg.kind==='text'){
+    const blocks=knowData.blocks||[];
+    const ctx=blocks.map(b=>(b.title?('【'+b.title+'】\n'):'')+(b.text||'')).join('\n\n');
+    word='这份资料';
+    sysC='你是初中英语辅导老师。下面是一份初二英语复习资料。请基于资料出 3 道小题（含答案），题型可以是单词拼写、短语翻译或语法填空，适合初二学生。输出格式：每题一行，先写题目再写「答案：…」。不要任何多余文字。';
+    usrC='资料内容：\n'+ctx+'\n\n请基于上面资料出 3 道小题并附答案。';
+  } else {
+    const item=knowData.items[knowOrder[knowIdx]];
+    word=knowExtendWord(item);
+    sysC='你是初中英语辅导老师。请只用一个英文单词或短语造一个适合初二学生的简单例句，并给出中文翻译。输出严格两行：第一行英文例句，第二行中文翻译。不要任何多余文字。';
+    usrC='请用英文单词「'+word+'」造一个简单例句并翻译。';
+  }
   const out=$('#knowExtendOut');
   out.className='know-ext-out'; out.textContent='生成中…（联网调用云端 AI）';
   const ok = await ensureKnowCloud();
-  if(!ok || !knowCloudReady || !knowCloud){ out.className='know-ext-out know-ext-fallback'; out.textContent=fallbackExtend(word); return; }
+  if(!ok || !knowCloudReady || !knowCloud){ out.className='know-ext-out know-ext-fallback'; out.textContent= knowCfg.kind==='text'? fallbackExtendText() : fallbackExtend(word); return; }
   try{
     const model=(knowModels||[]).find(m=>!m.disabled) || (knowModels||[])[0];
     if(!model) throw new Error('NO_MODEL');
@@ -1667,8 +1795,8 @@ async function knowExtendGen(){
     for await(const c of knowCloud.llm.chat.completions.create({
       model: model.id,
       messages:[
-        {role:'system', content:'你是初中英语辅导老师。请只用一个英文单词或短语造一个适合初二学生的简单例句，并给出中文翻译。输出严格两行：第一行英文例句，第二行中文翻译。不要任何多余文字。'},
-        {role:'user', content:'请用英文单词「'+word+'」造一个简单例句并翻译。'}
+        {role:'system', content:sysC},
+        {role:'user', content:usrC}
       ],
       stream:true, temperature:0.6
     })){
@@ -1679,7 +1807,7 @@ async function knowExtendGen(){
     out.textContent=(text.trim()||'(未返回内容)');
   }catch(e){
     out.className='know-ext-out know-ext-fallback';
-    out.textContent=fallbackExtend(word);
+    out.textContent= knowCfg.kind==='text'? fallbackExtendText() : fallbackExtend(word);
   }
 }
 

@@ -1,0 +1,628 @@
+{
+ "title": "【沪教】八上英语词性转换",
+ "type": "generic",
+ "columns": [
+  "原词",
+  "转化"
+ ],
+ "items": [
+  {
+   "原词": "intelligence n. 才智；智慧",
+   "转化": "intelligent adj. 聪明的"
+  },
+  {
+   "原词": "talent n. 天赋；才能；天才",
+   "转化": "talented adj. 有天资的；有才能的"
+  },
+  {
+   "原词": "art n. 艺术；美术",
+   "转化": "artist n. 艺术家 / artistic adj. 艺术的；有美感的"
+  },
+  {
+   "原词": "prehistory n. 史前；史前史",
+   "转化": "prehistoric adj. 史前的"
+  },
+  {
+   "原词": "complete adj. 完整的；彻底的",
+   "转化": "completeness n. 完整；完全 / completely adv. 彻底地"
+  },
+  {
+   "原词": "suffer v. 遭受；忍受",
+   "转化": "suffering n. （内心或肉体的）痛苦，问题"
+  },
+  {
+   "原词": "diev. 死",
+   "转化": "dead adj. 无生命的；（人/动物）死亡的；（设备）不运行的；（电池）没电的 / died"
+  },
+  {
+   "原词": "（die的过去式）",
+   "转化": "died （die的过去分词） / dying （die的现在分词）"
+  },
+  {
+   "原词": "edit v. 编辑",
+   "转化": "editor n. （书籍的）编辑"
+  },
+  {
+   "原词": "organizev. 组织；使有系统化",
+   "转化": "organization n. 团体；机构；组织 / organizer n. 组织者"
+  },
+  {
+   "原词": "type n.类型；种类 / v. 打字",
+   "转化": "typical adj.典型的，有代表性的 / typist n. 打字员；打字者"
+  },
+  {
+   "原词": "relate v. 联系；涉及；关于",
+   "转化": "related adj. 相关的，有联系的"
+  },
+  {
+   "原词": "general adj. 总体的；一般的",
+   "转化": "generally adv. 笼统地；大概；通常"
+  },
+  {
+   "原词": "educatev. 教育；培养",
+   "转化": "educator n. 教育家 / education n. 教育；有教益的经历 / educational adj."
+  },
+  {
+   "原词": "long adj. 长的",
+   "转化": "length n. 长度"
+  },
+  {
+   "原词": "similar adj. 类似的；相像的",
+   "转化": "similarity n.相似性；相似点 / similarly adv. 相似地；同样"
+  },
+  {
+   "原词": "alphabet n. 字母表；基本要素",
+   "转化": "alphabetical adj. 按字母顺序的 / alphabetically adv. 照字母顺序"
+  },
+  {
+   "原词": "play v. 玩耍；戏弄",
+   "转化": "player n. 运动员；（乐器的）演奏者 / playful adj. 开玩笑的；幽默的"
+  },
+  {
+   "原词": "important adj. 重要的",
+   "转化": "importance n. 重要性 / importantly adv. 重要地"
+  },
+  {
+   "原词": "challenge v. 挑战，向……下战书",
+   "转化": "challenging adj. 富于挑战性的"
+  },
+  {
+   "原词": "silver n. 银",
+   "转化": "silvery adj. 银色的，似银的"
+  },
+  {
+   "原词": "hesitate v. 犹豫；迟疑",
+   "转化": "hesitation n. 犹豫，不情愿"
+  },
+  {
+   "原词": "wonder v.想知道；n. 奇观",
+   "转化": "wonderful adj. 极好的，精彩的 / wonderfully adv. 精彩地；极好地"
+  },
+  {
+   "原词": "agreev. 同意；赞成",
+   "转化": "disagree v. 不同意；不赞成 / agreement n. 同意；赞成"
+  },
+  {
+   "原词": "current adj. 当前的；现在的",
+   "转化": "currently adv. 目前；当前"
+  },
+  {
+   "原词": "sharp adj. 锋利的，尖的",
+   "转化": "sharpen v. （使）变锋利（尖锐，清晰） / sharply adv. 严厉地，尖锐"
+  },
+  {
+   "原词": "count v. 计数；数数",
+   "转化": "countable adj. 可数的 / uncountable adj. 不可数的"
+  },
+  {
+   "原词": "symbol n. 象征；标志；符号",
+   "转化": "symbolic adj. 有象征意义的 / symbolizev. 象征；用符号代表 /"
+  },
+  {
+   "原词": "represent v. 代表",
+   "转化": "representation n. 代理人，代表 / representative adj. 典型的，有代表性的"
+  },
+  {
+   "原词": "exact adj. 准确的；确切的",
+   "转化": "exactly adv. 精确地；确切地"
+  },
+  {
+   "原词": "schedule n. 计划（表），进度表",
+   "转化": "scheduler n. 计划员；时间调度员 / scheduled adj. 预先安排"
+  },
+  {
+   "原词": "price n. 价格",
+   "转化": "pricey adj. 高价的，过分昂贵的 / priceless adj. 无价的"
+  },
+  {
+   "原词": "tag n. 标签/ v. 给……加上标签",
+   "转化": "tagged （tag 的过去式） / tagged （tag 的过去分词）"
+  },
+  {
+   "原词": "moment n. 瞬间；片刻",
+   "转化": "momentary adj. 片刻的，短暂的"
+  },
+  {
+   "原词": "go v. 去，走",
+   "转化": "went （go 的过去式） / gone （go 的过去分词）"
+  },
+  {
+   "原词": "write v.书写;写字",
+   "转化": "wrote（write 的过去式） / written（write的过去分词） / writer n.作家；作者"
+  },
+  {
+   "原词": "expert n. 专家 / adj. 专业的；熟练的",
+   "转化": "expertise n. 专长，专门技能"
+  },
+  {
+   "原词": "（知识）",
+   "转化": "expertly adv. 熟练地；巧妙地"
+  },
+  {
+   "原词": "payv. 付费",
+   "转化": "payment n. 付款；支付  / paid （pay 的过去式） / paid （pay 的过去分词）"
+  },
+  {
+   "原词": "warn v. 警告",
+   "转化": "warning n. 警告；告示"
+  },
+  {
+   "原词": "treat v. 以……态度/方式对待",
+   "转化": "treatment n. 对待；待遇"
+  },
+  {
+   "原词": "flowv. 流动，流淌；（人，物）涌向",
+   "转化": "flowing adj. 流动的；平滑的；上涨的"
+  },
+  {
+   "原词": "smooth adj. 光滑的，平坦的；顺利的",
+   "转化": "smoothly adv. 平稳地，连续而流畅地"
+  },
+  {
+   "原词": "weigh v. 称……的重量",
+   "转化": "weight n. 重量"
+  },
+  {
+   "原词": "digital adj. 数字的；数码的",
+   "转化": "digitalization n. 数字化；[内科]洋地黄疗法"
+  },
+  {
+   "原词": "social adj. 社会的；社交的",
+   "转化": "society n. 社会"
+  },
+  {
+   "原词": "interview v. 采访",
+   "转化": "interviewer n. 采访者；面试官 / interviewee n. 接受面试者，受接见者"
+  },
+  {
+   "原词": "positive adj. 正面的；积极的",
+   "转化": "positively adv. 绝对地；乐观地"
+  },
+  {
+   "原词": "negative adj. 负面的；消极的",
+   "转化": "negatively adv. 消极地；否定地"
+  },
+  {
+   "原词": "effect n. 影响；作用",
+   "转化": "effective adj. 有效的；实际的 / effectively adv. 有效地；实际上"
+  },
+  {
+   "原词": "novel n. （长篇）小说",
+   "转化": "novelist n. 小说家 / novelty n. 新颖，新奇性"
+  },
+  {
+   "原词": "comment n. 评论；意见",
+   "转化": "commentary n. 现场解说，实况报道 / commentator n.现场解说员，"
+  },
+  {
+   "原词": "base n. 根基；底部",
+   "转化": "basis n. 基础，要素；基准 / basic adj. 最重要的，基本的"
+  },
+  {
+   "原词": "major adj. 主要的；重要的",
+   "转化": "majority n. 大多数；<英>多数票"
+  },
+  {
+   "原词": "electron n. 电子",
+   "转化": "electronic adj. 电子的，电子学的"
+  },
+  {
+   "原词": "connect v. （使）相连；连接",
+   "转化": "connection n. 关系；联系；连接 / connected adj. 连接的；相连"
+  },
+  {
+   "原词": "bring v. 带来；拿来",
+   "转化": "brought （bring 的过去式） / brought （bring 的过去分词）"
+  },
+  {
+   "原词": "big adj. 大的",
+   "转化": "bigger （big的比较级） / biggest （big 的最高级）"
+  },
+  {
+   "原词": "change v. 改变",
+   "转化": "changeable adj. 可改变的，变化无常的"
+  },
+  {
+   "原词": "takev. 携带，拿走；带去",
+   "转化": "took （take的过去式） / taken （take的过去分词）"
+  },
+  {
+   "原词": "example n. 例子；榜样",
+   "转化": "exampler n.<废>花样；样式；样本"
+  },
+  {
+   "原词": "person n. 人",
+   "转化": "personal adj. 个人的；亲自的 / personally adv. 就个人而言；亲自地 / personality"
+  },
+  {
+   "原词": "centre n. 中心",
+   "转化": "central adj. 中心的；中枢的"
+  },
+  {
+   "原词": "attach v. 系上，贴上，连接",
+   "转化": "attachment n. 附加设备，附属物 / attached adj. 附属的；连接的，"
+  },
+  {
+   "原词": "international adj. 国际的",
+   "转化": "internationalization n. 国际化"
+  },
+  {
+   "原词": "depend v. 依靠；依赖",
+   "转化": "dependence n. 依赖性 / independent adj. 独立的 / independence n. 独立；"
+  },
+  {
+   "原词": "doubt v. 怀疑；不确定",
+   "转化": "doubtful adj. 怀疑的 / doubtless adj. 无疑的；肯定的"
+  },
+  {
+   "原词": "person n. 人",
+   "转化": "personal adj. 个人的；亲自的 / personally adv. 就个人而言；亲自地 / personality n."
+  },
+  {
+   "原词": "predict v. 预测",
+   "转化": "prediction n. 预言；预测"
+  },
+  {
+   "原词": "statev. 陈述；说明 / n. 状态，状况",
+   "转化": "statement n. 声明，报告；说明"
+  },
+  {
+   "原词": "benefit n. 好处；益处",
+   "转化": "beneficial adj. 有好处的，有益的"
+  },
+  {
+   "原词": "distance n. 距离；远处",
+   "转化": "distant adj. 遥远的，久远的"
+  },
+  {
+   "原词": "avoid v. 避开；躲避",
+   "转化": "avoidance n. 避免，避开；废止 / avoidable adj. 可避免的 / unavoidable"
+  },
+  {
+   "原词": "noticev. 注意到",
+   "转化": "noticeable adj. 显而易见的；显著的"
+  },
+  {
+   "原词": "mix v. 混合",
+   "转化": "mixture n. 混合物"
+  },
+  {
+   "原词": "press v. 压，挤，推",
+   "转化": "pressure n. 压力"
+  },
+  {
+   "原词": "metal n. 金属",
+   "转化": "metallic adj. 含金属的，金属制的"
+  },
+  {
+   "原词": "trade v. 贸易；交易",
+   "转化": "trader n. 交易者；商人"
+  },
+  {
+   "原词": "print v. 打印；印刷",
+   "转化": "printer n. 打印机；印刷商"
+  },
+  {
+   "原词": "fun n. 乐趣；玩笑",
+   "转化": "funny adj. 有趣的；滑稽的"
+  },
+  {
+   "原词": "nervous adj. 紧张的；焦虑的",
+   "转化": "nervousness n. 神经质；[心理] 神经过敏 / nervously adv. 神经质"
+  },
+  {
+   "原词": "grateful adj. 感激的",
+   "转化": "gratefully adv. 感激地；感谢地"
+  },
+  {
+   "原词": "tour n. 旅行；旅游",
+   "转化": "tourist n. 旅客；游客 / tourism n. 旅游业；观光业"
+  },
+  {
+   "原词": "depend v. 依靠；依赖",
+   "转化": "dependence n. 依赖性 / independent adj. 独立的 / independence n. 独立；"
+  },
+  {
+   "原词": "feel v. 感觉，认为",
+   "转化": "felt （feel 的过去式） / felt （feel 的过去分词） / feeling （feel 的现在"
+  },
+  {
+   "原词": "shock n.震惊；令人震惊的事",
+   "转化": "shocked adj. 吃惊的，震惊的 / shocking adj. 令人震惊的"
+  },
+  {
+   "原词": "foreign adj. 外国的，来自国外的",
+   "转化": "foreigner n. 外国人"
+  },
+  {
+   "原词": "confuse v. 使糊涂，使迷惑；混淆",
+   "转化": "confused adj. 糊涂的；迷惑的"
+  },
+  {
+   "原词": "anxious adj. 忧虑的；焦虑的",
+   "转化": "anxiousness n. 焦急 / anxiously adv. 不安地，忧虑地"
+  },
+  {
+   "原词": "familiar adj. 熟悉的；常见的，普通的",
+   "转化": "unfamiliar adj. 陌生的；不熟悉的"
+  },
+  {
+   "原词": "lonely adj. 孤独的（主观情感：感到孤单）",
+   "转化": "alone adj. 独自的；单独的；孤独的（客观状态："
+  },
+  {
+   "原词": "deal v. 应对；处理 n. 交易",
+   "转化": "dealt（deal 的过去式） / dealt（deal 的过去分词） / dealer n. 商"
+  },
+  {
+   "原词": "expect v. 要求；期望",
+   "转化": "expectation n. 期待；期望"
+  },
+  {
+   "原词": "accept v. 接受（建议、邀请等）",
+   "转化": "acceptance n. 接受；认可；许可"
+  },
+  {
+   "原词": "adapt v. 适应；调整",
+   "转化": "adaptation n. 改编本，改写本 / adaptive adj. 适应的，有适应能力的"
+  },
+  {
+   "原词": "host v. 主持",
+   "转化": "hostess n. 女主人；女东道主；女主持人"
+  },
+  {
+   "原词": "culture n. 文化",
+   "转化": "cultural adj. 文化的；教养的"
+  },
+  {
+   "原词": "home n. 家",
+   "转化": "homeless adj. 无家可归的"
+  },
+  {
+   "原词": "locatev. 确定……的位置",
+   "转化": "location n. 位置；地点"
+  },
+  {
+   "原词": "victory n. 胜利；成功",
+   "转化": "victorious adj. 胜利的；获胜的"
+  },
+  {
+   "原词": "joke n. 玩笑",
+   "转化": "joker n. 爱开玩笑的人；（纸牌中的）百搭牌，王牌"
+  },
+  {
+   "原词": "hidev. 隐藏",
+   "转化": "hid （hide的过去式） / hidden （hide的过去分词）"
+  },
+  {
+   "原词": "secret adj. 秘密的",
+   "转化": "secretly adv. 秘密地 / secretary n. 秘书；书记员，干事"
+  },
+  {
+   "原词": "success n. 成功；成就",
+   "转化": "successful adj. 成功的  / successfully adv. 成功地；圆满地 / succeed v."
+  },
+  {
+   "原词": "trick n. 计谋",
+   "转化": "tricky adj. 难对付的，棘手的"
+  },
+  {
+   "原词": "fight v. 斗争；打斗",
+   "转化": "fighter n. 战斗者 / fought（fight 的过去式） / fought （fight 的过去分词）"
+  },
+  {
+   "原词": "beat v. 敲打；打败（某人）",
+   "转化": "beat （beat 的过去式） / beaten （beat 的过去分词）"
+  },
+  {
+   "原词": "attack n. 袭击；攻击",
+   "转化": "attacker n. 攻击者；进攻者"
+  },
+  {
+   "原词": "fog n. 雾",
+   "转化": "foggy adj. 有雾的，雾气茫茫的"
+  },
+  {
+   "原词": "makev. 制造；制定，拟定",
+   "转化": "made （make 的过去式） / made （make 的过去分词）"
+  },
+  {
+   "原词": "full adj. 充满的",
+   "转化": "fully adv. 充分地，完全地"
+  },
+  {
+   "原词": "regular adj. 通常的；平常的",
+   "转化": "irregular adj. 无规律的，不定期的 / regularly adv. 定期地，有规"
+  },
+  {
+   "原词": "repeat v. 重复",
+   "转化": "repetition n. 重复 / repetitive adj. 重复的"
+  },
+  {
+   "原词": "visual adj. 视觉的",
+   "转化": "visualizev. 想象，使形象化；使可见，使显现 / visualization n. 形象化；清"
+  },
+  {
+   "原词": "楚地呈现在心",
+   "转化": "visually adv. 形象化地；外表上；看得见地"
+  },
+  {
+   "原词": "mental adj. 思考的；精神的，思想的",
+   "转化": "mentally adv. 精神上，智力上，思想上"
+  },
+  {
+   "原词": "especial adj. 特殊的，特别的",
+   "转化": "especially adv. 尤其"
+  },
+  {
+   "原词": "diet n. 日常饮食",
+   "转化": "dietary adj. 饮食的"
+  },
+  {
+   "原词": "maintain v. 维持；保持",
+   "转化": "maintainer n. 维修工；保持器"
+  },
+  {
+   "原词": "relax v. 休息",
+   "转化": "relaxation n. 休息；消遣"
+  },
+  {
+   "原词": "normal adj. 正常的",
+   "转化": "unnormal adj. 不正常的；反常的 / normally adv. 通常，平常；正常地"
+  },
+  {
+   "原词": "context n. 上下文；语境",
+   "转化": "contextual adj. 上下文的，与语境相关的"
+  },
+  {
+   "原词": "sense n. 理解力；判断力",
+   "转化": "nonsense n. 胡说；愚蠢的行为 / sensation n. 直觉；知觉；轰动 /"
+  },
+  {
+   "原词": "sensational adj. 轰动的；极好的",
+   "转化": "senseless adj. 无意义的；无知觉的 / sensitive adj. 体贴的；敏感"
+  },
+  {
+   "原词": "summary n. 总结；概括",
+   "转化": "summarize v. 总结，概述"
+  },
+  {
+   "原词": "contain v. 包含；容纳",
+   "转化": "container n. 容器；集装箱，货柜"
+  },
+  {
+   "原词": "particular adj. 特指的；专指的",
+   "转化": "particularly adv. 非常，尤其"
+  },
+  {
+   "原词": "chemistry n. 化学",
+   "转化": "chemist n. 化学家 / chemical adj. 化学的；与化学有关的；& n. 化学品，化"
+  },
+  {
+   "原词": "nature n. 自然界；大自然",
+   "转化": "natural adj. 自然的；天然的"
+  },
+  {
+   "原词": "faith n. 信任；忠诚",
+   "转化": "faithful adj. 忠实的；忠诚的"
+  },
+  {
+   "原词": "hold v. 使保持（在某位置）",
+   "转化": "held （hold 的过去式） / held （hold 的过去分词）"
+  },
+  {
+   "原词": "responsible adj. 负责任的",
+   "转化": "responsibility n. 责任；负责 / irresponsible adj. 不负责任的 /"
+  },
+  {
+   "原词": "wake v.醒来",
+   "转化": "woke（wake的过去式） /  woken（wake 的过去分词） / awake adj. 醒着的"
+  },
+  {
+   "原词": "choose v. 选择",
+   "转化": "choice n. 选择；选择权  / chose （choose 的过去式） / chosen （choose 的"
+  },
+  {
+   "原词": "advice n. 忠告；建议",
+   "转化": "advisev. 劝告；建议"
+  },
+  {
+   "原词": "complain v. 发牢骚；投诉",
+   "转化": "complaint n. 投诉；抱怨"
+  },
+  {
+   "原词": "likely adj. 可能发生的",
+   "转化": "unlikely adj. 不大可能发生的"
+  },
+  {
+   "原词": "magic n. 魔术；魔法",
+   "转化": "magical adj. 魔法的，魔术的 / magically adv. 用魔法地；如魔法般地 /"
+  },
+  {
+   "原词": "relieve v. 缓解；减轻",
+   "转化": "relief n. 宽慰，轻松"
+  },
+  {
+   "原词": "wealth n. 财富；富裕",
+   "转化": "wealthy adj. 富有的"
+  },
+  {
+   "原词": "serve v. 服务；招待",
+   "转化": "service n. 服务 / servant n. 仆人，佣人"
+  },
+  {
+   "原词": "pride n. 自豪；骄傲",
+   "转化": "proud adj. 自豪的，得意的"
+  },
+  {
+   "原词": "grow v. 成长；长大",
+   "转化": "growth n. 成长 / grew（grow的过去式） / grown （grow 的过去分词）"
+  },
+  {
+   "原词": "carev. 关心；照顾",
+   "转化": "careful adj. 仔细的，小心的  / carefully adv. 小心谨慎地 / careless adj."
+  },
+  {
+   "原词": "short adj. 短的；不足的",
+   "转化": "shorten v. 缩短；变短 / shortage n. 短缺；不足 / shortly adv. 不久，"
+  },
+  {
+   "原词": "run v. 跑步",
+   "转化": "ran （run 的过去式） / run （run的过去分词）"
+  },
+  {
+   "原词": "free adj. 自由的；免费的",
+   "转化": "freedom n. 自由"
+  },
+  {
+   "原词": "liev. 撒谎",
+   "转化": "lied （lie的过去式） / lied （lie的过去分词） / lying （lie的现在分词）"
+  },
+  {
+   "原词": "liev. 平躺；位于；坐落于",
+   "转化": "lay （lie的过去式） / lain （lie的过去分词） / lying （lie的现"
+  },
+  {
+   "原词": "lay v. 下蛋；放置",
+   "转化": "laid （lay 的过去式） / laid （lay 的过去分词） / laying （lay 的现在分"
+  },
+  {
+   "原词": "addition n. 增加；加法",
+   "转化": "additional adj. 附加的，额外的"
+  },
+  {
+   "原词": "catch v. 抓住；赶上",
+   "转化": "caught （catch 的过去式） / caught （catch 的过去分词）"
+  }
+ ],
+ "quizModes": [
+  {
+   "id": "w2d",
+   "name": "看原词，写转化",
+   "prompt": "原词",
+   "answerKeys": [
+    "转化"
+   ]
+  }
+ ]
+}
