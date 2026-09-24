@@ -273,10 +273,21 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-read-line.phrase-line{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 22px;}
 .know-read-item{display:inline-flex;align-items:baseline;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 13px;margin:2px 0;white-space:nowrap;max-width:100%;}
 .know-read-tools{position:sticky;top:0;z-index:2;display:flex;gap:8px;margin-bottom:16px;padding:10px 0;background:rgba(255,255,255,0.95);backdrop-filter:blur(4px);}
+.know-vocab-row{display:flex;flex-wrap:wrap;gap:12px;margin:1em 0;align-items:flex-start;}
+.know-vocab{display:inline-flex;flex-wrap:wrap;align-items:baseline;gap:8px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:11px 15px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.know-vocab .v-word{font-weight:700;font-size:16px;color:var(--text);}
+.know-vocab .v-phon{color:#6b7280;font-style:italic;font-size:15px;white-space:nowrap;}
+.know-vocab .v-pos{color:var(--primary);font-size:13px;background:var(--primary-soft);border-radius:6px;padding:2px 9px;font-weight:600;white-space:nowrap;}
+.know-vocab .v-mean{color:var(--text);font-size:15px;}
+.know-num{font-weight:800;color:var(--primary);font-size:1.05em;}
 @media(max-width:640px){
   .know-read-card{padding:16px 16px;margin-bottom:14px;border-radius:12px;}
   .know-read-t{font-size:15px;line-height:2.0;}
   .know-read-item{padding:6px 10px;}
+  .know-vocab-row{gap:10px;}
+  .know-vocab{padding:9px 12px;}
+  .know-vocab .v-word{font-size:15px;}
+  .know-vocab .v-phon{font-size:14px;}
 }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -1671,28 +1682,84 @@ function renderTextBlockHtml(text){
   if(!text) return '';
   const lines = String(text).split(/\n/).map(s=>s.trim()).filter(Boolean);
   if(!lines.length) return '';
-  const body = lines.map(line=>formatTextLine(line)).join('');
-  return `<div class="know-read-t">${body}</div>`;
+  const out = [];
+  for(let i=0;i<lines.length;i++){
+    let line = lines[i];
+    // 词汇行（含音标 /.../）若末尾释义被换行截断，则把下一行纯中文并入同一词条
+    if(/\/[^\/]+\//.test(line) && /[A-Za-z]/.test(line)){
+      const entries = parseVocabLine(line);
+      const last = entries[entries.length-1];
+      if(last && !last.mean){
+        const nx = lines[i+1];
+        if(nx && !/\/[^\/]+\//.test(nx) && /^[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef\s]+$/.test(nx)){
+          line = line + ' ' + nx;
+          i++;
+        }
+      }
+    }
+    out.push(formatTextLine(line));
+  }
+  return `<div class="know-read-t">${out.join('')}</div>`;
+}
+// 把一行词汇拆成「单词 / 音标 / 词性 / 解释」四段
+function parseVocabLine(line){
+  const entries = [];
+  const re = /([A-Za-z][\w'’.-]*)\s*\/([^/]+)\/\s*([\s\S]*?)(?=\s+[A-Za-z][\w'’.-]*\s*\/|$)/g;
+  let m;
+  while((m = re.exec(line)) !== null){
+    const word = m[1].trim();
+    const phon = m[2].trim();
+    const rest = m[3].trim();
+    let pos='', mean='';
+    const pm = rest.match(/^([a-z][a-z.\s]*?\.)\s*([\u4e00-\u9fa5][\s\S]*)?$/i);
+    if(pm){ pos = pm[1].trim(); mean = pm[2] ? pm[2].trim() : ''; }
+    else if(/^[\u4e00-\u9fa5]/.test(rest)){ mean = rest; }
+    else { pos = rest; }
+    entries.push({word, phon, pos, mean});
+  }
+  return entries;
+}
+function vocabChipHtml(e){
+  const parts = [];
+  if(e.word) parts.push(`<span class="v-word">${escapeHtml(e.word)}</span>`);
+  if(e.phon) parts.push(`<span class="v-phon">/${escapeHtml(e.phon)}/</span>`);
+  if(e.pos)  parts.push(`<span class="v-pos">${escapeHtml(e.pos)}</span>`);
+  if(e.mean) parts.push(`<span class="v-mean">${escapeHtml(e.mean)}</span>`);
+  return `<span class="know-vocab">${parts.join('')}</span>`;
+}
+function vocabLineHtml(s){
+  const entries = parseVocabLine(s);
+  if(!entries.length) return `<p class="know-read-line">${escapeHtml(s)}</p>`;
+  return `<div class="know-vocab-row">${entries.map(vocabChipHtml).join('')}</div>`;
 }
 function formatTextLine(line){
   const s = line.trim();
   if(!s) return '';
+  // 词汇行：含音标 /.../ 且含拉丁字母，拆成四段（单词 / 音标 / 词性 / 解释）
+  if(/\/[^\/]+\//.test(s) && /[A-Za-z]/.test(s)){
+    return vocabLineHtml(s);
+  }
+  // 行首题号/序号加粗（1. / （一） / (1) 等）
+  const lm = s.match(/^(（?[0-9]+[.、)）]?|（[一二三四五六七八九十]+）|\(\d+\))\s*/);
+  let label='', rest=s;
+  if(lm){ label = lm[1]; rest = s.slice(lm[0].length); }
+  const labelHtml = label ? `<b class="know-num">${escapeHtml(label)}</b> ` : '';
   // 把“中文+英文”成对出现的短语/词汇行拆成独立小标签，避免一行挤多个条目
-  const tokens = s.match(/[\u4e00-\u9fa5；，、]+|[^\s\u4e00-\u9fa5；，、]+/g) || [s];
+  const tokens = rest.match(/[\u4e00-\u9fa5；，、]+|[^\s\u4e00-\u9fa5；，、]+/g) || [rest];
   const cjk = tokens.filter(t=>/[\u4e00-\u9fa5]/.test(t));
   const latin = tokens.filter(t=>/[A-Za-z]/.test(t));
   if(cjk.length>=2 && latin.length>=2){
     const items=[];
     const re=/([\u4e00-\u9fa5；，、]+)\s*([^\u4e00-\u9fa5；，、]+)|([^\u4e00-\u9fa5；，、]+)\s*([\u4e00-\u9fa5；，、]+)/g;
-    let m; while((m=re.exec(s))!==null){
+    let m; while((m=re.exec(rest))!==null){
       const item=(m[1]!==undefined)?(m[1]+' '+m[2]):(m[3]+' '+m[4]);
       items.push(item.trim().replace(/\s+/g,' '));
     }
     if(items.length>=2){
-      return `<div class="know-read-line phrase-line">${items.map(it=>`<span class="know-read-item">${escapeHtml(it)}</span>`).join('')}</div>`;
+      return `<div class="know-read-line phrase-line">${labelHtml}${items.map(it=>`<span class="know-read-item">${escapeHtml(it)}</span>`).join('')}</div>`;
     }
   }
-  return `<p class="know-read-line">${escapeHtml(s)}</p>`;
+  return `<p class="know-read-line">${labelHtml}${escapeHtml(rest)}</p>`;
 }
 function knowFlashHtmlText(){
   const blocks=knowData.blocks||[];
