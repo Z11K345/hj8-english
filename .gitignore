@@ -1,0 +1,9 @@
+# temporary debug / deploy scripts and logs
+_*
+deploy*
+*.log
+*.out
+
+# local editor / OS cruft
+.DS_Store
+Thumbs.db
