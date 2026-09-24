@@ -995,7 +995,8 @@
      "label": "不规则动词表（背诵版）.pdf",
      "count": null,
      "readOnly": true,
-     "cat": "知识点总结"
+     "cat": "知识点总结",
+     "knowledgeData": "knowledge-data/知识点总结/【沪教】八上英语不规则动词表（背诵版）.json"
     },
     {
      "pdf": "resources/知识点总结/【沪教】八上英语不规则动词表（默写版）.pdf",
@@ -1009,7 +1010,8 @@
      "label": "单词表.pdf",
      "count": null,
      "readOnly": true,
-     "cat": "知识点总结"
+     "cat": "知识点总结",
+     "knowledgeData": "knowledge-data/知识点总结/【沪教】八上英语单词表.json"
     },
     {
      "pdf": "resources/知识点总结/【沪教】八上英语单词表默写.pdf",
@@ -1030,7 +1032,8 @@
      "label": "单词表（背诵版，带音标）.pdf",
      "count": null,
      "readOnly": true,
-     "cat": "知识点总结"
+     "cat": "知识点总结",
+     "knowledgeData": "knowledge-data/知识点总结/【沪教】八上英语单词表.json"
     },
     {
      "pdf": "resources/知识点总结/【沪教】八上英语单词表（英译汉默写，带音标）.pdf",
