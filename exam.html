@@ -10,15 +10,22 @@
 <title>在线做题 · 沪教八上英语</title>
 <style>
 :root{
-  --bg:#f5f7fa; --card:#fff; --primary:#2b6cb0; --primary-soft:#ebf3fb;
-  --text:#1a202c; --muted:#66788a; --border:#e3e8ef;
-  --ok:#1f8a4c; --ok-soft:#e7f6ec; --bad:#c0392b; --bad-soft:#fdecea; --na:#b7791f; --na-soft:#fff7ed;
+  /* 纸感中性色：暖白底 + 墨黑字 + 暖发丝线。冷灰蓝的底色最像「后台管理系统」，换成带暖调的纸色更接近教辅印刷品 */
+  --bg:#f4f2ed; --card:#fff;
+  --primary:#1d4a6b; --primary-soft:#eef2f5; --primary-line:#c9d6e0; --primary-dark:#153a52;
+  --text:#1a1d21; --muted:#6d7580; --border:#dedad2;
+  --ok:#1c6b45; --ok-soft:#eaf3ee; --bad:#9e2f26; --bad-soft:#fbecea; --na:#8a5a18; --na-soft:#faf4e8;
+  /* 强调色只留一支赭石，专给「要点／注意」用：原来蓝+绿+橙三色并列，是典型的模板味 */
+  --accent:#8a5a18;
+  --radius:3px;   /* 统一小圆角：接近印刷品的直角，比大圆角稳重 */
   /* 字体体系：界面用无衬线，阅读正文用衬线（印刷/课本感，指标更稳） */
   --font-ui:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
   --font-read:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",Georgia,"Times New Roman",serif;
   --font-en:Georgia,"Times New Roman","Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
-  --ink:#232a33; --ink-soft:#5b6674; --rule:#dfe4ea;
+  --ink:#1a1d21; --ink-soft:#596069; --rule:#dedad2;
 }
+/* 数字统一等宽：页码、题数、计时、进度都不跳字，是「正规资料」的细节信号 */
+.tnum,#timer,#countdown,.know-prog,.kb-n,.kb-foot,.au-time{font-variant-numeric:tabular-nums;}
 *{box-sizing:border-box;}
 html,body{margin:0;padding:0;}
 body{
@@ -38,7 +45,7 @@ body{
 #examStatus{display:flex; align-items:center; gap:10px;}
 select{
   font-family:inherit; font-size:14px; padding:6px 9px; border:1px solid var(--border);
-  border-radius:8px; background:#fff; color:var(--text); max-width:44vw;
+  border-radius:var(--radius); background:#fff; color:var(--text); max-width:44vw;
 }
 select:focus{outline:none; border-color:var(--primary);}
 .wrap{max-width:1040px; margin:0 auto; padding:8px 12px 16px;}
@@ -47,8 +54,8 @@ select:focus{outline:none; border-color:var(--primary);}
 }
 #paperTitle{font-size:13.5px; font-weight:700; color:var(--primary); margin:0;}
 #summary{
-  display:none; margin:10px 0 14px; padding:12px 16px; border-radius:10px;
-  background:var(--primary-soft); border:1px solid #cfe2f5; font-size:15px;
+  display:none; margin:10px 0 14px; padding:12px 16px; border-radius:var(--radius);
+  background:var(--primary-soft); border:1px solid var(--primary-line); font-size:15px;
 }
 #summary b{color:var(--primary); font-size:20px;}
 .summary-row{display:flex; gap:18px; flex-wrap:wrap; align-items:center;}
@@ -59,19 +66,19 @@ select:focus{outline:none; border-color:var(--primary);}
 .filterbar label{cursor:pointer; user-select:none;}
 
 .qcard{
-  background:var(--card); border:1px solid var(--border); border-radius:12px;
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
   padding:14px 16px; margin-bottom:14px; box-shadow:0 1px 2px rgba(0,0,0,.03);
 }
 .qhead{display:flex; align-items:center; gap:8px; margin-bottom:8px;}
 .qno{
   flex:0 0 auto; background:var(--primary); color:#fff; font-size:13px; font-weight:700;
-  min-width:30px; height:24px; padding:0 8px; border-radius:7px; display:flex; align-items:center; justify-content:center;
+  min-width:30px; height:24px; padding:0 8px; border-radius:var(--radius); display:flex; align-items:center; justify-content:center;
 }
 .stem{font-size:16px; white-space:pre-wrap; word-break:break-word; margin:2px 0 12px;}
 .opts{display:flex; flex-direction:column; gap:8px;}
 .opt{
   display:flex; align-items:flex-start; gap:10px; padding:9px 12px; border:1.5px solid var(--border);
-  border-radius:9px; cursor:pointer; transition:background .12s, border-color .12s;
+  border-radius:var(--radius); cursor:pointer; transition:background .12s, border-color .12s;
 }
 .opt:hover{background:var(--bg);}
 .opt input{position:absolute; opacity:0; width:0; height:0;}
@@ -87,63 +94,63 @@ select:focus{outline:none; border-color:var(--primary);}
 .opt.wrong{border-color:var(--bad); background:var(--bad-soft);}
 .opt.wrong .ltr{background:var(--bad); border-color:var(--bad); color:#fff;}
 .opt.disabled{cursor:default;}
-.result{display:none; margin-top:12px; padding:8px 12px; border-radius:8px; font-size:14.5px; font-weight:600;}
+.result{display:none; margin-top:12px; padding:8px 12px; border-radius:var(--radius); font-size:14.5px; font-weight:600;}
 .result.ok{background:var(--ok-soft); color:var(--ok);}
 .result.bad{background:var(--bad-soft); color:var(--bad);}
 .result.na{background:var(--na-soft); color:var(--na);}
-.expl{display:none; margin-top:8px; padding:10px 13px; background:#f8fafc; border-left:3px solid var(--primary);
-  border-radius:0 8px 8px 0; font-size:14px; color:#33424f; white-space:pre-wrap; word-break:break-word;}
+.expl{display:none; margin-top:8px; padding:10px 13px; background:var(--bg); border-left:3px solid var(--primary);
+  border-radius:0 var(--radius) var(--radius) 0; font-size:14px; color:var(--ink-soft); white-space:pre-wrap; word-break:break-word;}
 .expl .et{font-weight:700; color:var(--primary); margin-right:6px;}
 
 /* 提交/进度/剩余时间：并入顶栏右侧（原底部条已取消，省出竖向空间） */
 /* 提交按钮：低调描边，不抢眼（仍清晰可点） */
 #submitBtn{
   border:1px solid var(--border); background:#fff; color:var(--text);
-  border-radius:8px; padding:6px 16px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;
+  border-radius:var(--radius); padding:6px 16px; font-size:13px; font-weight:600; cursor:pointer; font-family:inherit;
 }
-#submitBtn:hover{ background:#f3f6fa; }
+#submitBtn:hover{ background:var(--primary-soft); }
 /* 剩余时间 / 已答进度：弱化显示 */
 #timer{ font-weight:600; color:var(--muted); font-size:13px; min-width:auto; }
 #countdown{ font-size:12px; color:var(--muted); opacity:.85; }
 .btn{
-  border:none; border-radius:10px; padding:12px 28px; font-size:16px; font-weight:700; cursor:pointer;
+  border:none; border-radius:var(--radius); padding:12px 28px; font-size:16px; font-weight:700; cursor:pointer;
   background:var(--primary); color:#fff; font-family:inherit;
 }
-.btn:hover{filter:brightness(1.05);}
-.btn.ghost{background:#eef2f7; color:var(--text);}
+.btn:hover{background:var(--primary-dark);}
+.btn.ghost{background:#eceae4; color:var(--text);}
 .countdown{font-size:13px; color:var(--muted); align-self:center;}
 
 #loading,#fatal{padding:40px 16px; text-align:center; color:var(--muted);}
 #fatal{color:var(--bad);}
 .pdf-tools{display:flex;gap:10px;flex-wrap:wrap;margin:0 2px 10px;}
-.tbtn{display:inline-block;border:1px solid var(--border);background:var(--card);color:var(--primary);border-radius:8px;padding:6px 10px;font-size:13px;cursor:pointer;text-decoration:none;font-family:inherit;white-space:nowrap;}
+.tbtn{display:inline-block;border:1px solid var(--border);background:var(--card);color:var(--primary);border-radius:var(--radius);padding:6px 10px;font-size:13px;cursor:pointer;text-decoration:none;font-family:inherit;white-space:nowrap;}
 .tbtn:hover{background:var(--primary-soft);}
 /* 题号导航条：点击题号跳到试卷对应题目（当前按用户要求隐藏，只保留答题卡内跳转） */
 #qnoNav{display:none !important;margin:4px 2px 10px;}
 #qnoNav .qn-tip{font-size:13px;color:var(--muted);margin-bottom:6px;}
 #qnoChips{display:flex;flex-wrap:nowrap;gap:6px;overflow-x:auto;padding-bottom:4px;}
 #qnoChips::-webkit-scrollbar{height:6px;}
-#qnoChips::-webkit-scrollbar-thumb{background:#cbd5e0;border-radius:3px;}
-.qno-chip{flex:0 0 auto;min-width:30px;height:30px;padding:0 6px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;transition:background .12s,border-color .12s,color .12s;}
+#qnoChips::-webkit-scrollbar-thumb{background:#c6c1b7;border-radius:3px;}
+.qno-chip{flex:0 0 auto;min-width:30px;height:30px;padding:0 6px;border:1.5px solid var(--border);border-radius:var(--radius);background:#fff;color:var(--text);font-weight:700;font-size:13px;cursor:pointer;font-family:inherit;transition:background .12s,border-color .12s,color .12s;}
 .qno-chip:hover{background:var(--primary-soft);border-color:var(--primary);color:var(--primary);}
 .qno-chip:active{background:var(--primary);color:#fff;}
 /* PDF 渲染区：灰底居中，逐页显示为真实试卷白页（带阴影） */
-.pdf-viewer{width:100%; min-height:400px; height:calc(100vh - 250px); background:#525659; border-radius:10px; padding:0; overflow:auto; display:flex; flex-direction:column; align-items:flex-start; gap:12px; box-sizing:border-box; scroll-behavior:smooth;}
+.pdf-viewer{width:100%; min-height:400px; height:calc(100vh - 250px); background:#4b4e52; border-radius:var(--radius); padding:0; overflow:auto; display:flex; flex-direction:column; align-items:flex-start; gap:12px; box-sizing:border-box; scroll-behavior:smooth;}
 @media(min-width:641px){
   .pdf-viewer{height:calc(100vh - 96px); padding:0;}
 }
 /* 默认：试卷按适中尺寸显示，一屏能看到更多页高（点顶栏「原始大小」可切真实像素、左右拖动看细节） */
 .pdf-viewer canvas{background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.35); width:100%; height:auto; max-width:min(720px,94vw); margin:0 auto; display:block;}
 .pdf-viewer.native canvas{width:auto; height:auto; max-width:none;}
-.pdf-loading{color:#e2e8f0; padding:30px; font-size:14px; text-align:center;}
+.pdf-loading{color:#ded9d0; padding:30px; font-size:14px; text-align:center;}
 /* 听力音频播放器：仅带音频的试卷出现，悬浮在试卷底部，不额外占一行高度 */
 .pdf-col{position:relative;}
 #audioBar{position:absolute; left:50%; bottom:12px; transform:translateX(-50%); z-index:15; display:flex; align-items:center; gap:8px; background:rgba(17,24,39,.92); color:#fff; padding:6px 12px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.4); max-width:94%; box-sizing:border-box;}
-#audioBar select{border:none; border-radius:8px; padding:4px 8px; font-size:13px; max-width:200px; background:#fff; color:#1a202c;}
-.au-btn{border:none; background:#2b6cb0; color:#fff; width:34px; height:34px; border-radius:50%; font-size:14px; cursor:pointer; flex:0 0 auto; line-height:1; display:flex; align-items:center; justify-content:center; padding:0;}
+#audioBar select{border:none; border-radius:var(--radius); padding:4px 8px; font-size:13px; max-width:200px; background:#fff; color:#1a202c;}
+.au-btn{border:none; background:var(--primary); color:#fff; width:34px; height:34px; border-radius:50%; font-size:14px; cursor:pointer; flex:0 0 auto; line-height:1; display:flex; align-items:center; justify-content:center; padding:0;}
 .au-btn:hover{filter:brightness(1.1);}
-.au-time{font-size:12px; color:#cbd5e1; white-space:nowrap; font-variant-numeric:tabular-nums;}
-.au-seek{width:150px; accent-color:#7cb3e8;}
+.au-time{font-size:12px; color:#ccc7bd; white-space:nowrap; font-variant-numeric:tabular-nums;}
+.au-seek{width:150px; accent-color:#7ea6c4;}
 @media(max-width:640px){ #audioBar{left:8px; right:8px; transform:none; max-width:none; bottom:8px; justify-content:center;} .au-seek{width:90px;} }
 /* 防止浏览器把家长码/AI密码识别为登录密码而提示保存 */
 .code-mask{-webkit-text-security:disc;}
@@ -152,7 +159,7 @@ select:focus{outline:none; border-color:var(--primary);}
   #pdfWrap.pdf-split{display:flex;gap:14px;align-items:flex-start;}
   #pdfWrap.pdf-split .pdf-col{flex:1 1 auto;min-width:0;}
   /* 答题区放在原卷右侧：DOM 顺序（pdf-col 在前、answerPadWrap 在后）即右栏，原卷居中靠左占满其余空间 */
-  #pdfWrap.pdf-split #answerPadWrap{flex:0 0 248px;position:sticky;top:74px;max-height:calc(100vh - 92px);overflow:auto;margin-top:0;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  #pdfWrap.pdf-split #answerPadWrap{flex:0 0 248px;position:sticky;top:74px;max-height:calc(100vh - 92px);overflow:auto;margin-top:0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:10px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
   /* 答题区收起：只留标题栏，PDF 占满全宽 */
   #answerPadWrap.collapsed{flex:0 0 auto !important;background:transparent;border:none;padding:0;box-shadow:none;}
   #answerPadWrap.cardmode{flex:0 0 280px !important;}
@@ -177,12 +184,12 @@ select:focus{outline:none; border-color:var(--primary);}
 /* ===== 正式答题卡（依据原卷生成题号，左侧看卷、右侧作答） ===== */
 .card-sec{margin:0 0 10px;}
 .card-sec-title{font-size:13px;font-weight:700;color:var(--primary);margin:2px 0 4px;padding-bottom:3px;border-bottom:2px solid var(--primary-soft);}
-.card-row{display:flex;gap:6px;align-items:flex-start;padding:4px 0;border-bottom:1px dashed #eef1f5;}
-.card-no{flex:0 0 28px;height:22px;background:var(--primary);color:#fff;font-size:12px;font-weight:700;border-radius:6px;display:flex;align-items:center;justify-content:center;margin-top:2px;cursor:pointer;transition:filter .15s,box-shadow .15s;}
+.card-row{display:flex;gap:6px;align-items:flex-start;padding:4px 0;border-bottom:1px dashed var(--rule);}
+.card-no{flex:0 0 28px;height:22px;background:var(--primary);color:#fff;font-size:12px;font-weight:700;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;margin-top:2px;cursor:pointer;transition:filter .15s,box-shadow .15s;}
 .card-no:hover{filter:brightness(1.1);box-shadow:0 0 0 2px var(--primary-soft);}
 .card-body{flex:1 1 auto;min-width:0;}
 .mc-chips{display:flex;flex-wrap:wrap;gap:5px;}
-.chip{width:28px;height:28px;border-radius:8px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;font-size:13px;color:var(--muted);user-select:none;background:#fff;transition:background .12s,border-color .12s,color .12s;}
+.chip{width:28px;height:28px;border-radius:var(--radius);border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-weight:700;font-size:13px;color:var(--muted);user-select:none;background:#fff;transition:background .12s,border-color .12s,color .12s;}
 .chip:hover{background:var(--bg);}
 .chip.on{background:var(--primary);color:#fff;border-color:var(--primary);}
 /* 提交后自动批改标记 */
@@ -190,12 +197,12 @@ select:focus{outline:none; border-color:var(--primary);}
 .chip.g-bad{background:var(--bad)!important;color:#fff!important;border-color:var(--bad)!important;}
 .chip.g-answer{border-color:var(--ok)!important;box-shadow:0 0 0 2px var(--ok-soft) inset;color:var(--ok)!important;}
 .blank-ref{font-size:12px;color:var(--ok);margin-top:3px;font-weight:600;word-break:break-word;white-space:pre-wrap;}
-.blank-input{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:8px;font-size:15px;font-family:inherit;box-sizing:border-box;}
+.blank-input{width:100%;padding:7px 9px;border:1px solid var(--border);border-radius:var(--radius);font-size:15px;font-family:inherit;box-sizing:border-box;}
 .blank-input:focus{outline:none;border-color:var(--primary);}
 .blank-input.g-ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok);}
 .blank-input.g-bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad);}
 .essay-row{margin:4px 0;}
-.essay-ta{width:100%;min-height:170px;padding:10px 12px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:15px;line-height:1.7;resize:vertical;box-sizing:border-box;}
+.essay-ta{width:100%;min-height:170px;padding:10px 12px;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:15px;line-height:1.7;resize:vertical;box-sizing:border-box;}
 .essay-ta:focus{outline:none;border-color:var(--primary);}
 .card-tip{font-size:12px;color:var(--muted);margin:2px 0 4px;}
 /* 答题卡模式：隐藏原自由文本框的头与体，显示结构化答题卡 */
@@ -207,7 +214,7 @@ select:focus{outline:none; border-color:var(--primary);}
 #answerPadWrap.card-collapsed{display:none !important;}
 #cardTab{position:fixed; right:0; top:50%; transform:translateY(-50%); writing-mode:vertical-rl; cursor:pointer; font-weight:700; font-size:14px; color:#fff; background:var(--primary); padding:16px 6px; border-radius:10px 0 0 10px; box-shadow:-2px 2px 8px rgba(0,0,0,.18); z-index:60; user-select:none; letter-spacing:2px; display:none;}
 #cardTab.show{display:block;}
-#cardTab:hover{background:var(--primary-dark, #1f5fbf);}
+#cardTab:hover{background:var(--primary-dark);}
 /* ===== 知识类 PDF 右侧学习互动面板（背一背 / 测一测 / 用一用）===== */
 #knowPanel{font-size:14px;}
 #pdfWrap.knowmode #knowPanel{padding:4px 0 40px;}
@@ -221,20 +228,25 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-title{font-family:var(--font-ui);font-size:13px;font-weight:600;color:var(--ink);letter-spacing:.04em;flex:1 1 auto;min-width:80px;}
 .know-tabs{display:flex;gap:4px;}
 .know-tab{border:1px solid var(--rule);background:#fff;color:var(--ink-soft);border-radius:3px;padding:5px 11px;font-size:13px;cursor:pointer;font-family:var(--font-ui);letter-spacing:.03em;}
-.know-tab.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+/* 选中态用「淡底 + 主色字」而不是实心大色块：少一块饱和色，观感立刻安静下来 */
+.know-tab.on{background:var(--primary-soft);color:var(--primary);border-color:var(--primary-line);font-weight:600;}
 .know-sub{display:flex;gap:4px;margin-bottom:12px;}
 .know-body{min-height:200px;}
 .know-prog{font-family:var(--font-ui);font-size:12px;color:var(--muted);letter-spacing:.06em;margin-bottom:12px;}
+/* 面板抬头：教材版本 + 资料名 + 条目数。低调一行，作用是「说清这是什么」 */
+.know-masthead{font-family:var(--font-ui);font-size:11.5px;color:var(--muted);letter-spacing:.06em;line-height:1.6;margin:0 0 16px;}
+.know-masthead .know-mh-sep{margin:0 6px;color:var(--border);}
 .know-card{background:#fff;border:1px solid var(--rule);border-radius:3px;padding:26px 20px;min-height:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;user-select:none;}
 .know-front{font-family:var(--font-read);font-size:22px;font-weight:600;color:var(--ink);white-space:pre-wrap;word-break:break-word;line-height:1.5;}
 .know-back{font-family:var(--font-read);font-size:16.5px;color:var(--primary);white-space:pre-wrap;text-align:left;word-break:break-word;line-height:1.8;}
 .know-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px;}
 .know-btns button{border:1px solid var(--rule);background:#fff;color:var(--ink-soft);border-radius:3px;padding:6px 16px;font-size:13.5px;cursor:pointer;font-family:var(--font-ui);letter-spacing:.04em;transition:background .12s,color .12s;}
-.know-btns button:hover{background:#f2f5f9;color:var(--ink);}
-.know-btns button.primary{background:var(--primary);color:#fff;border-color:var(--primary);}
+.know-btns button:hover{background:var(--primary-soft);color:var(--ink);}
+.know-btns button.primary{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600;letter-spacing:.08em;padding:7px 20px;}
+.know-btns button.primary:hover{background:var(--primary-dark);color:#fff;}
 .know-hint{font-family:var(--font-ui);font-size:12px;color:var(--muted);margin-top:10px;text-align:center;}
 .know-prompt{font-family:var(--font-read);font-size:19px;font-weight:600;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:0 0 12px;text-align:left;margin-bottom:16px;white-space:pre-wrap;word-break:break-word;line-height:1.6;}
-.know-inputs{display:flex;flex-direction:column;gap:12px;max-width:38em;}
+.know-inputs{display:flex;flex-direction:column;gap:12px;max-width:38rem;}
 .know-inputs label{font-family:var(--font-ui);font-size:12px;color:var(--muted);letter-spacing:.06em;}
 .know-inp{width:100%;padding:7px 2px;border:0;border-bottom:1px solid var(--rule);border-radius:0;background:transparent;font-size:16px;font-family:var(--font-en);color:var(--ink);}
 .know-inp:focus{outline:none;border-bottom-color:var(--primary);}
@@ -243,36 +255,45 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-result{font-family:var(--font-ui);font-size:13.5px;margin-top:14px;white-space:pre-wrap;word-break:break-word;line-height:1.8;}
 .know-result.ok{color:var(--ok);}
 .know-result.bad{color:var(--bad);}
-.know-ext-word{font-family:var(--font-ui);font-size:13.5px;color:var(--ink-soft);letter-spacing:.02em;margin-bottom:14px;word-break:break-word;max-width:46em;line-height:1.75;}
-.know-ext-out{margin-top:0;border-top:1px solid var(--rule);padding:16px 0 0;font-family:var(--font-read);font-size:15.5px;line-height:1.85;color:var(--ink);white-space:pre-wrap;word-break:break-word;background:none;border-radius:0;min-height:0;max-width:46em;}
+.know-ext-word{font-family:var(--font-ui);font-size:13.5px;color:var(--ink-soft);letter-spacing:.02em;margin-bottom:14px;word-break:break-word;max-width:100%;line-height:1.75;}
+/* 用一用 · 词条模式的词条头：原来只是一行 13.5px 灰字，读起来像提示语；
+   放大成衬线条目名 + 发丝线，一眼看到在练哪个词 */
+.know-term{font-family:var(--font-read);font-size:19px;font-weight:600;color:var(--ink);letter-spacing:.01em;margin:0;word-break:break-word;max-width:100%;line-height:1.45;}
+.know-ext-out{margin-top:0;border-top:1px solid var(--rule);padding:15px 0 0;font-family:var(--font-read);font-size:15.5px;line-height:1.85;color:var(--ink);white-space:pre-wrap;word-break:break-word;background:none;border-radius:0;min-height:0;max-width:100%;}
 .know-ext-out.know-ext-ok{background:none;}
-.know-ext-out.know-ext-fallback{background:none;border-top-color:var(--na);color:#8a5a00;padding-left:12px;border-left:3px solid var(--na);}
+.know-ext-out.know-ext-fallback{background:none;border-top-color:var(--na);color:var(--accent);padding-left:12px;border-left:3px solid var(--na);}
 /* 用一用 · 要点选择（一个核心知识里可以按「核心词汇 / 核心短语 / 重点句型 / 核心语法」分别练） */
-.know-scope{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px;max-width:46em;}
+.know-scope{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px;max-width:100%;}
 .know-scope .know-tab{max-width:22em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-/* 用一用 · 本地例句库展示 */
-.kb-head{font-family:var(--font-en);font-size:20px;font-weight:600;color:var(--ink);letter-spacing:.01em;margin-bottom:4px;}
-.kb-forms{font-family:var(--font-ui);font-size:13.5px;color:var(--ink-soft);border-left:2px solid var(--rule);padding:2px 0 2px 11px;margin:10px 0;display:block;line-height:1.75;}
-.kb-tip{font-family:var(--font-ui);font-size:13.5px;color:var(--ink-soft);background:none;border-left:2px solid var(--na);border-radius:0;padding:3px 0 3px 11px;margin:12px 0 18px;line-height:1.75;}
-.kb-ex{background:none;border:0;border-top:1px solid var(--rule);border-radius:0;padding:13px 0 3px;margin:0;}
-.kb-ex:first-of-type{border-top:0;padding-top:0;}
-.kb-ex .kb-n{display:inline-block;min-width:18px;font-family:var(--font-ui);font-weight:600;color:var(--muted);font-size:12px;font-variant-numeric:tabular-nums;}
+/* 用一用 · 本地例句库：例句按「悬挂式编号 + 右侧正文」排，和纸质练习册的题号排法一致 */
+.kb-forms{font-family:var(--font-ui);font-size:13px;color:var(--ink-soft);display:block;line-height:1.8;margin:0 0 10px;}
+.kb-tip{font-family:var(--font-ui);font-size:13px;color:var(--accent);background:none;border-left:2px solid var(--na);border-radius:0;padding:2px 0 2px 10px;margin:0 0 16px;line-height:1.8;}
+.kb-ex{display:grid;grid-template-columns:22px 1fr;column-gap:9px;border-top:1px solid var(--rule);padding:14px 0;margin:0;}
+.kb-ex:first-of-type{border-top:0;padding-top:2px;}
+.kb-ex .kb-n{grid-column:1;font-family:var(--font-en);font-weight:600;color:var(--muted);font-size:13.5px;line-height:1.65;text-align:right;}
+.kb-ex .kb-ex-body{grid-column:2;min-width:0;}
 .kb-ex .kb-en{font-family:var(--font-en);font-size:16.5px;font-weight:400;color:var(--ink);line-height:1.62;}
-.kb-ex .kb-zh{font-family:var(--font-read);font-size:14.5px;color:var(--ink-soft);margin-top:4px;line-height:1.7;}
-.kb-ex .kb-note{font-family:var(--font-ui);font-size:12.5px;color:var(--muted);margin-top:7px;padding-top:6px;border-top:1px dotted var(--rule);line-height:1.7;}
-.kb-foot{font-family:var(--font-ui);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:16px;}
+.kb-ex .kb-zh{font-family:var(--font-read);font-size:14.5px;color:var(--ink-soft);margin-top:5px;line-height:1.7;}
+.kb-ex .kb-note{font-family:var(--font-ui);font-size:12.5px;color:var(--accent);margin-top:7px;line-height:1.7;}
+.kb-foot{font-family:var(--font-ui);font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-top:18px;padding-top:10px;border-top:1px solid var(--rule);}
 @media(max-width:640px){
- .kb-head{font-size:18px;}
+ .know-term{font-size:18px;}
  .kb-ex .kb-en{font-size:16px;}
  .kb-ex .kb-zh{font-size:14px;}
 }
-/* 知识互动：顶部常驻工具栏（背一背/测一测/用一用/看原卷），点击即在原卷与互动间切换 */
-#knowBar{display:none;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 16px;padding:0 0 12px;background:none;border:0;border-bottom:1px solid var(--rule);border-radius:0;}
-#knowBar .know-bar-label{font-family:var(--font-ui);font-size:12px;color:var(--muted);letter-spacing:.08em;margin-right:2px;}
-#knowBar .know-bar-btn{border:1px solid var(--rule);background:#fff;color:var(--ink-soft);border-radius:3px;padding:6px 15px;font-size:13.5px;cursor:pointer;font-family:var(--font-ui);font-weight:500;letter-spacing:.04em;transition:background .12s,color .12s;}
-#knowBar .know-bar-btn:hover{background:#f2f5f9;color:var(--ink);}
-#knowBar .know-bar-btn.on{background:var(--primary);color:#fff;border-color:var(--primary);}
+/* 知识互动：顶部常驻工具栏（背一背/测一测/用一用/看原卷）
+   改成印刷目录式的下划线页签 —— 四个描边盒子按钮最像后台系统，也是「AI 味」的来源之一 */
+#knowBar{display:none;gap:0;flex-wrap:wrap;align-items:flex-end;margin:0 0 18px;padding:0;background:none;border:0;border-bottom:1px solid var(--rule);border-radius:0;}
+#knowBar .know-bar-label{font-family:var(--font-ui);font-size:11.5px;color:var(--muted);letter-spacing:.14em;margin:0 14px 10px 0;}
+#knowBar .know-bar-btn{border:0;border-bottom:2px solid transparent;background:none;color:var(--ink-soft);border-radius:0;padding:6px 14px 8px;margin-bottom:-1px;font-size:14px;cursor:pointer;font-family:var(--font-ui);font-weight:500;letter-spacing:.06em;transition:color .12s,border-color .12s;}
+#knowBar .know-bar-btn:hover{color:var(--ink);}
+#knowBar .know-bar-btn.on{color:var(--primary);border-bottom-color:var(--primary);font-weight:600;background:none;}
 #pdfWrap.knowmode{display:block !important;}
+/* 互动视图：把页签与正文收成一条居中的单栏（≈教材单栏宽度）。
+   原来各块分别按 em 限宽，而 em 基准随各自 font-size 变化（644 / 621 / 713px 参差），
+   又统统靠左，右半边留一大片空；改成在容器上统一定宽 + 居中，右侧留白变成对称版心 */
+#pdfWrap.knowmode > #knowBar,
+#pdfWrap.knowmode > #knowPanel{max-width:min(50rem,100%);margin-left:auto;margin-right:auto;}
 #pdfWrap.knowmode #knowPanel{display:block;position:static;max-height:none;overflow:visible;flex:none;}
 /* 抽背自查：靠左侧色条区分记住/没记住，不用大色块背景 */
 .know-rec-card{border:1px solid var(--rule);border-left:3px solid var(--rule);border-radius:3px;padding:14px 16px;margin-bottom:10px;background:#fff;}
@@ -283,12 +304,12 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-rec-ans{white-space:pre-wrap;word-break:break-word;line-height:1.85;font-size:15px;margin-top:8px;}
 .know-rec-btns{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}
 .know-rec-btns button{border:1px solid var(--rule);background:#fff;color:var(--ink-soft);border-radius:3px;padding:5px 14px;font-size:13px;cursor:pointer;font-family:var(--font-ui);letter-spacing:.04em;}
-.know-rec-btns button:hover{background:#f2f5f9;}
+.know-rec-btns button:hover{background:var(--primary-soft);}
 .know-rec-btns button.know-rec-ok{background:var(--ok);color:#fff;border-color:var(--ok);}
 .know-rec-btns button.know-rec-no{background:var(--bad);color:#fff;border-color:var(--bad);}
 .know-rec-done{font-size:13px;font-weight:600;}
 /* ===== text 型阅读：印刷品式排版（无卡片、无胶囊，靠字号/字族/对齐分层） ===== */
-.know-read-card{background:#fff;border:0;border-top:1px solid var(--rule);border-radius:0;padding:26px 0 10px;margin:0;max-width:46em;}
+.know-read-card{background:#fff;border:0;border-top:1px solid var(--rule);border-radius:0;padding:26px 0 10px;margin:0;max-width:100%;}
 .know-read-card:first-of-type{border-top:0;padding-top:8px;}
 .know-t-h{font-family:var(--font-ui);font-weight:600;color:var(--ink);margin:0 0 14px;font-size:16px;letter-spacing:.04em;padding:0 0 0 0;}
 .know-t-h::after{content:"";display:block;width:28px;height:2px;background:var(--primary);margin-top:8px;opacity:.85;}
@@ -308,7 +329,7 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-read-item{display:contents;}
 .know-read-tools{position:sticky;top:0;z-index:2;display:flex;gap:8px;margin:0 0 18px;padding:10px 0;background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule);}
 /* 词汇表：单词 / 音标 / 词性 / 释义 四列对齐 */
-.know-vocab-row{display:grid;grid-template-columns:minmax(0,17%) minmax(0,19%) minmax(0,8%) minmax(0,1fr);column-gap:16px;row-gap:8px;margin:1em 0;align-items:baseline;font-family:var(--font-ui);max-width:46em;}
+.know-vocab-row{display:grid;grid-template-columns:minmax(0,17%) minmax(0,19%) minmax(0,8%) minmax(0,1fr);column-gap:16px;row-gap:8px;margin:1em 0;align-items:baseline;font-family:var(--font-ui);max-width:100%;}
 .know-vocab{display:contents;}
 .know-vocab .v-word{font-family:var(--font-en);font-weight:600;font-size:16px;color:var(--ink);}
 .know-vocab .v-phon{font-family:var(--font-en);color:var(--ink-soft);font-style:italic;font-size:13.5px;white-space:nowrap;}
@@ -363,7 +384,7 @@ select:focus{outline:none; border-color:var(--primary);}
     <div id="timeInputArea" style="display:none; margin-top:20px;">
       <div style="font-size:14px; color:var(--text); margin-bottom:8px;">设置考试时间（分钟）：</div>
       <div style="display:flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap;">
-        <input id="minutesInput" type="number" min="1" max="600" value="30" style="font-size:16px; padding:9px 12px; border:1px solid var(--border); border-radius:8px; width:120px;">
+        <input id="minutesInput" type="number" min="1" max="600" value="30" style="font-size:16px; padding:9px 12px; border:1px solid var(--border); border-radius:var(--radius); width:120px;">
         <button class="btn" id="confirmTimeBtn" style="padding:9px 22px; font-size:15px;">确定</button>
         <button class="btn ghost" id="cancelTimeBtn" style="padding:9px 22px; font-size:15px;">取消</button>
       </div>
@@ -371,10 +392,10 @@ select:focus{outline:none; border-color:var(--primary);}
     </div>
   </div>
   <div id="summary"></div>
-  <div id="unlockPanel" style="display:none; margin:12px 0; padding:14px 16px; border:1px dashed var(--primary); border-radius:10px; background:#fff;">
+  <div id="unlockPanel" style="display:none; margin:12px 0; padding:14px 16px; border:1px dashed var(--primary); border-radius:var(--radius); background:#fff;">
     <div style="font-size:14px; color:var(--primary); font-weight:700; margin-bottom:8px;">答案与解析已锁定，需家长确认后查看。</div>
     <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-      <input id="codeInput" type="text" class="code-mask" autocomplete="off" inputmode="numeric" maxlength="12" placeholder="输入家长码" style="font-size:15px; padding:9px 12px; border:1px solid var(--border); border-radius:8px; width:150px;">
+      <input id="codeInput" type="text" class="code-mask" autocomplete="off" inputmode="numeric" maxlength="12" placeholder="输入家长码" style="font-size:15px; padding:9px 12px; border:1px solid var(--border); border-radius:var(--radius); width:150px;">
       <button class="btn" id="unlockBtn" style="padding:9px 20px; font-size:15px;">解锁</button>
       <span id="codeMsg" style="font-size:13px; color:var(--bad);"></span>
     </div>
@@ -409,10 +430,10 @@ select:focus{outline:none; border-color:var(--primary);}
           <button type="button" class="tbtn" id="sectionAddBtn">＋新增大题</button>
           <button type="button" class="tbtn" id="padAutoBtn">自动编号：开</button>
           <span style="font-size:13px;color:var(--muted);">小题空行：</span>
-          <input id="subLines" type="number" min="1" max="60" value="10" style="width:56px;padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-size:14px;">
+          <input id="subLines" type="number" min="1" max="60" value="10" style="width:56px;padding:6px 8px;border:1px solid var(--border);border-radius:var(--radius);font-size:14px;">
           <button type="button" class="tbtn" id="subGenBtn">生成</button>
         </div>
-        <textarea id="answerPad" placeholder="先在上方选好「大题」（一、二、三…），再在每行写小题答案（已自动编号）。&#10;例如：&#10;B&#10;C&#10;A" style="width:100%;min-height:170px;padding:10px;border:1px solid var(--border);border-radius:10px;font-family:inherit;font-size:15px;line-height:1.7;resize:vertical;box-sizing:border-box;"></textarea>
+        <textarea id="answerPad" placeholder="先在上方选好「大题」（一、二、三…），再在每行写小题答案（已自动编号）。&#10;例如：&#10;B&#10;C&#10;A" style="width:100%;min-height:170px;padding:10px;border:1px solid var(--border);border-radius:var(--radius);font-family:inherit;font-size:15px;line-height:1.7;resize:vertical;box-sizing:border-box;"></textarea>
         <div style="font-size:12px;color:var(--muted);margin:6px 2px 0;">交卷后自动批改答题卡（✓绿/✗红），答案与解析需家长码解锁；本答题区内容仅存本机浏览器。</div>
       </div>
       <div id="cardWrap">
@@ -1354,7 +1375,7 @@ function saveCard(saved){
     document.body.appendChild(layer);
     const tip = document.createElement('div');
     tip.textContent = '按住拖动框选要问的题目，松手即截取；按 Esc 取消';
-    tip.style.cssText = 'position:fixed;left:50%;top:12px;transform:translateX(-50%);background:rgba(0,0,0,.72);color:#fff;font-size:12px;padding:6px 12px;border-radius:8px;z-index:61;pointer-events:none;';
+    tip.style.cssText = 'position:fixed;left:50%;top:12px;transform:translateX(-50%);background:rgba(0,0,0,.72);color:#fff;font-size:12px;padding:6px 12px;border-radius:var(--radius);z-index:61;pointer-events:none;';
     document.body.appendChild(tip);
 
     let sx=0, sy=0, dragging=false, rect=null;
@@ -1385,7 +1406,7 @@ function saveCard(saved){
       try{ window.parent.postMessage({ type:'exam-screenshot', image:url }, '*'); }catch(err){}
       const fb = document.createElement('div');
       fb.textContent = '已截取，去 AI 提问 →';
-      fb.style.cssText = 'position:fixed;left:50%;top:12px;transform:translateX(-50%);background:#2b6cff;color:#fff;font-size:13px;padding:8px 14px;border-radius:8px;z-index:80;';
+      fb.style.cssText = 'position:fixed;left:50%;top:12px;transform:translateX(-50%);background:#2b6cff;color:#fff;font-size:13px;padding:8px 14px;border-radius:var(--radius);z-index:80;';
       document.body.appendChild(fb);
       setTimeout(()=>{ fb.remove(); }, 1600);
     }
@@ -1615,6 +1636,8 @@ const KNOW_CLOUD_CFG = {endpoint: "https://hj8-english.app.workbuddy.host", publ
 let knowCloud=null, knowCloudReady=false, knowModels=null, knowCloudInit=false;
 // 本地例句库（离线秒查，避免每次联网等待）
 let exKb=null, exKbTried=false;
+// 联网生成过的词条例句：翻页翻回来直接显示，不重复花额度
+const exAiCache={};
 // 本地出题库（text 型资料的小题，离线秒出）+ 生成结果缓存 / 进行中的请求
 let quizKb=null, quizKbTried=false;
 const quizCache={}, quizInflight={};
@@ -1710,7 +1733,7 @@ function showKnowPlaceholder(p){
   el.innerHTML='<div class="know-head"><div class="know-title">'+escapeHtml(p.label||'知识')+'</div></div>'
     + '<div class="know-body" style="font-size:13px;color:var(--muted);line-height:1.9;">这是一份单元核心知识 / 背诵资料 PDF。'
     + '<br><br>右侧的「背一背 / 测一测 / 用一用」互动正在陆续接入（目前不规则动词表、单词表已可用）。'
-    + '<br><br>想即时提问、或让 AI 照着这份 PDF 出几道小题练手，点右下角 💬 打开 AI 答疑即可。</div>';
+    + '<br><br>想即时提问、或让 AI 照着这份 PDF 出几道小题练手，点右下角「AI 答疑」即可。</div>';
 }
 // 顶部常驻互动工具栏：点击「背一背/测一测/用一用」直接把试卷 PDF 换成互动区；「看原卷」换回 PDF
 function setupKnowBar(p){
@@ -1796,9 +1819,18 @@ function renderKnowPanel(){
   if(knowMode==='flash') body=knowFlashHtml();
   else if(knowMode==='test') body=knowTestHtml();
   else body=knowExtendHtml();
-  p.innerHTML=`<div class="know-body">${body}</div>`;
+  p.innerHTML=knowMastheadHtml()+`<div class="know-body">${body}</div>`;
   bindKnow();
   hydrateExtendOut();   // 切回「用一用」时把已有/正在等的出题结果接回来
+}
+// 面板抬头：交代「这是什么资料」。可信感的第一步是有出处，不是一段无标识的网页
+function knowMastheadHtml(){
+  const doc=String(curPaperLabel||'').trim();
+  const items=Array.isArray(knowData.items)?knowData.items.length:0;
+  return `<div class="know-masthead">沪教·英语 八年级上册（全国版·2025版）`
+    + (doc?`<span class="know-mh-sep">·</span>${escapeHtml(doc)}`:'')
+    + (items?`<span class="know-mh-sep">·</span>${knowModeLabel(knowMode)} ${items} 条`:'')
+    + `</div>`;
 }
 function knowFlashHtml(){
   if(knowCfg.kind==='text') return knowFlashHtmlText();
@@ -1834,10 +1866,54 @@ function knowExtendHtml(){
   if(knowCfg.kind==='text') return knowExtendHtmlText();
   const item=knowData.items[knowOrder[knowIdx]];
   const word=knowExtendWord(item);
-  return `<div class="know-ext-word">当前词：${escapeHtml(word)}</div>
-  <div class="know-btns"><button id="knowExtGen" class="primary">生成例句</button></div>
-  <div class="know-ext-out" id="knowExtendOut">点上方按钮，立刻看到这个词的 3 个例句（由浅入深，配中文翻译和用法要点）。\n常用词为本地例句库，秒出、不联网；未收录的词才会联网生成。</div>`;
+  const n=knowData.items.length;
+  // 词条在这里就能翻页，不必切回「背一背」；翻页会自动读本地例句库（收录了就是秒出）
+  return `<div class="know-prog">第 ${knowIdx+1} / ${n} 个词条</div>
+  <div class="know-term">${escapeHtml(word)}</div>
+  <div class="know-btns"><button id="knowExtGen" class="primary">生成例句</button><button id="knowExtPrev">← 上一个</button><button id="knowExtNext">下一个 →</button><button id="knowExtShuffle">打乱顺序</button></div>
+  <div class="know-ext-out" id="knowExtendOut">正在读取本地例句库…</div>
+  <div class="know-hint">也可以用键盘 ← → 翻词条</div>`;
 }
+// 翻到某个词条后先把本地例句库的结果显示出来；未收录则提示点「生成例句」联网
+async function knowExtAutoShow(){
+  const out=$('#knowExtendOut');
+  if(!out || !knowCfg || knowCfg.kind==='text' || !knowData) return;
+  const item=knowData.items[knowOrder[knowIdx]];
+  const ck=knowExtendKeyItem(item);
+  out.className='know-ext-out'; out.textContent='读取本地例句库…';
+  try{
+    const kb=await ensureExKb();
+    const hit=kb && kb[ck];
+    if(hit && (hit.ex||[]).length){
+      out.className='know-ext-out know-ext-ok';
+      out.innerHTML=kbEntryHtml(hit);
+      return;
+    }
+  }catch(e){}
+  // 之前联网生成过的词条，翻回来直接显示，不再花一次额度
+  if(exAiCache[ck]){
+    out.className='know-ext-out know-ext-ok';
+    out.textContent=exAiCache[ck];
+    return;
+  }
+  out.className='know-ext-out';
+  out.textContent='这个词条还没收录在本地例句库。\n点上方「生成例句」联网生成（约 3–5 秒）。';
+}
+function knowExtNav(d){
+  knowNav(d);                                    // 内部已 renderKnowPanel()
+  if(knowMode==='extend' && knowCfg && knowCfg.kind!=='text') knowExtAutoShow();
+}
+// 键盘 ← → 翻词条 / 翻卡片（正在输入框里打字时不干扰）
+document.addEventListener('keydown', e=>{
+  if(e.key!=='ArrowLeft' && e.key!=='ArrowRight') return;
+  const t=e.target;
+  if(t && (t.tagName==='INPUT' || t.tagName==='TEXTAREA' || t.isContentEditable)) return;
+  if(!knowData || !knowCfg) return;
+  const panel=$('#knowPanel');
+  if(!panel || !panel.offsetParent) return;
+  knowExtNav(e.key==='ArrowLeft' ? -1 : 1);
+  e.preventDefault();
+});
 // ===== text 型（知识梳理 / 必背范文 / 词汇拓展 等散文类）=====
 // 卷首标题行（如「Unit1Lookitup! 单元核心知识」）会被 PDF 抽取粘进正文块里，读的时候要去掉
 function isTitleLine(line){
@@ -2086,6 +2162,10 @@ function bindKnow(){
   const prev=$('#knowPrev'); if(prev) prev.onclick=()=>knowNav(-1);
   const next=$('#knowNext'); if(next) next.onclick=()=>knowNav(1);
   const shuf=$('#knowShuffle'); if(shuf) shuf.onclick=knowShuffle;
+  // 用一用 · 词条模式：在这里直接翻页
+  const ep=$('#knowExtPrev'); if(ep) ep.onclick=()=>knowExtNav(-1);
+  const en2=$('#knowExtNext'); if(en2) en2.onclick=()=>knowExtNav(1);
+  const es=$('#knowExtShuffle'); if(es) es.onclick=knowShuffle;
   const grade=$('#knowGrade'); if(grade) grade.onclick=knowGrade;
   const reveal=$('#knowReveal'); if(reveal) reveal.onclick=knowReveal;
   const next2=$('#knowNext2'); if(next2) next2.onclick=()=>knowNav(1);
@@ -2145,7 +2225,7 @@ function knowGrade(){
   });
   knowScore[allOk?'right':'wrong']++;
   const res=$('#knowTestResult');
-  if(res){ res.className='know-result '+(allOk?'ok':'bad'); res.textContent= allOk?'✓ 全对！继续保持' : '✗ 有错，看红色框里的正确答案，再记一遍～'; }
+  if(res){ res.className='know-result '+(allOk?'ok':'bad'); res.textContent= allOk?'✓ 全对' : '✗ 有错。对照标出的正确答案再记一遍。'; }
   // 学习记录：测一测成绩（全部空着不算一次测验）
   if(answered>0) trackQuiz({src:'know', mod:curPaperLabel || '知识互动', right:right, wrong:wrong, unans:unans, total:right+wrong});
 }
@@ -2270,10 +2350,10 @@ async function aiComplete(messages, onDelta){
   } finally { clearTimeout(to); }
 }
 function fallbackExtend(word){
-  return '这个词还没收进本地例句库，联网 AI 也暂时没连上。\n你可以：\n① 自己用「'+word+'」造个简单句；\n② 稍后重试，或点右下角 💬 在 AI 答疑里问：“请用 '+word+' 造 3 个由浅入深的句子并翻译”。';
+  return '这个词还没收进本地例句库，联网 AI 也暂时没连上。\n你可以：\n① 自己用「'+word+'」造个简单句；\n② 稍后重试，或在右下角「AI 答疑」里提问：“请用 '+word+' 造 3 个由浅入深的句子并翻译”。';
 }
 function fallbackExtendText(){
-  return '这份资料还没内置出题库，联网 AI 也暂时没连上。\n你可以稍后重试，或点右下角 💬 在 AI 答疑里直接提问。';
+  return '这份资料还没内置出题库，联网 AI 也暂时没连上。\n你可以稍后重试，或在右下角「AI 答疑」里直接提问。';
 }
 // ===== 用一用：本地例句库（秒查） + 云端兜底 =====
 function kbEnOnly(s){ return String(s||'').replace(/[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]+/g,' ').replace(/[^A-Za-z' -]+/g,' ').replace(/\s+/g,' ').trim(); }
@@ -2295,18 +2375,19 @@ async function ensureExKb(){
   }catch(e){ exKb=null; }
   return exKb;
 }
-function kbEntryHtml(e, word){
+function kbEntryHtml(e){
   const pre=(s,tag)=>{ s=String(s||'').trim(); return /^(注意|切记|记住|要点|提示|用法要点|易错)/.test(s) ? s : tag+s; };
   const exs=(e.ex||[]).map((x,i)=>
-    `<div class="kb-ex"><div class="kb-en"><span class="kb-n">${i+1}</span>${escapeHtml(x.en)}</div>`
+    `<div class="kb-ex"><span class="kb-n">${i+1}</span><div class="kb-ex-body">`
+    +`<div class="kb-en">${escapeHtml(x.en)}</div>`
     +`<div class="kb-zh">${escapeHtml(x.zh)}</div>`
     +(x.note?`<div class="kb-note">${escapeHtml(pre(x.note,'要点：'))}</div>`:'')
-    +`</div>`).join('');
-  return `<div class="kb-head">${escapeHtml(e.head||word)}</div>`
-    +(e.forms?`<span class="kb-forms">${escapeHtml(e.forms)}</span>`:'')
+    +`</div></div>`).join('');
+  // 词条名已由上方词条头显示，这里不再重复；脚注交代来源，读起来像一份有出处的资料
+  return (e.forms?`<div class="kb-forms">${escapeHtml(e.forms)}</div>`:'')
     +(e.tip?`<div class="kb-tip">${escapeHtml(pre(e.tip,'注意：'))}</div>`:'')
     +exs
-    +`<div class="kb-foot">共 ${(e.ex||[]).length} 句 · 本地例句库（离线秒出）</div>`;
+    +`<div class="kb-foot">共 ${(e.ex||[]).length} 句 · 本地例句库 · 离线秒出</div>`;
 }
 // ===== 用一用 · 文本资料出小题 =====
 // 优先级：本地出题库（秒出） → 已生成过的缓存 → 复用正在进行中的请求（切走再回来不重新等） → 联网生成
@@ -2371,7 +2452,8 @@ async function knowExtendGenText(out, force){
 // 切回「用一用」时把已有结果/正在等的进度接回来（不会自动发起新请求）
 async function hydrateExtendOut(){
   try{
-    if(!knowCfg || knowCfg.kind!=='text' || knowMode!=='extend') return;
+    if(!knowCfg || knowMode!=='extend') return;
+    if(knowCfg.kind!=='text'){ await knowExtAutoShow(); return; }
     const out=$('#knowExtendOut'); if(!out) return;
     const key=quizCacheKey();
     const baked=await quizBaked(quizKey());
@@ -2393,12 +2475,18 @@ async function knowExtendGen(){
   if(knowCfg.kind!=='text'){
     const item=knowData.items[knowOrder[knowIdx]];
     word=knowExtendWord(item);
+    const ck=knowExtendKeyItem(item);
     out.className='know-ext-out'; out.textContent='查询中…';
     const kb=await ensureExKb();
-    const hit=kb && kb[knowExtendKeyItem(item)];
+    const hit=kb && kb[ck];
     if(hit && (hit.ex||[]).length){
       out.className='know-ext-out know-ext-ok';
-      out.innerHTML=kbEntryHtml(hit, word);
+      out.innerHTML=kbEntryHtml(hit);
+      return;
+    }
+    if(exAiCache[ck]){
+      out.className='know-ext-out know-ext-ok';
+      out.textContent=exAiCache[ck];
       return;
     }
   } else {
@@ -2412,8 +2500,10 @@ async function knowExtendGen(){
   out.className='know-ext-out'; out.textContent='未收录，正在联网生成…';
   try{
     const text=await aiComplete([{role:'system', content:sysC},{role:'user', content:usrC}]);
+    const clean=plainify(String(text||'').trim()||'(未返回内容)');
+    exAiCache[knowExtendKeyItem(item)]=clean;
     out.className='know-ext-out know-ext-ok';
-    out.textContent=plainify(String(text||'').trim()||'(未返回内容)');
+    out.textContent=clean;
   }catch(e){
     out.className='know-ext-out know-ext-fallback';
     out.textContent= fallbackExtend(word);

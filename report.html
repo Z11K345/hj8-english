@@ -8,11 +8,11 @@
 <meta http-equiv="Expires" content="0">
 <title>学习报告 · 沪教八上英语学习助手</title>
 <style>
-:root{ --bg:#f5f7fa; --card:#fff; --primary:#2b6cb0; --primary-soft:#ebf3fb;
-       --text:#1a202c; --muted:#66788a; --border:#e3e8ef; --ok:#2f9e6d; --warn:#b7791f; --bad:#c0392b; --na:#8a94a6;
+:root{ --bg:#f4f2ed; --card:#fff; --primary:#1d4a6b; --primary-soft:#eef2f5; --primary-line:#c9d6e0;
+       --text:#1a1d21; --muted:#6d7580; --border:#dedad2; --ok:#1c6b45; --warn:#8a5a18; --bad:#9e2f26; --na:#7c848e;
        --font-ui:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
        --font-en:Georgia,"Times New Roman","Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
-       --ink:#232a33; --ink-soft:#5b6674; --rule:#dfe4ea; }
+       --ink:#1a1d21; --ink-soft:#596069; --rule:#dedad2; }
 *{box-sizing:border-box;}
 body{margin:0;background:var(--bg);color:var(--text);line-height:1.75;font-size:16px;
   font-family:var(--font-ui);-webkit-font-smoothing:antialiased;}
@@ -43,7 +43,7 @@ h1{font-size:25px;font-weight:600;letter-spacing:.01em;margin:0 0 10px;color:var
 .chart{display:flex;align-items:flex-end;gap:7px;height:158px;padding:8px 0 0;border-bottom:1px solid var(--rule);}
 .col{flex:1 1 0;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0;}
 .col .bar{width:100%;max-width:46px;background:var(--primary);border-radius:0;min-height:2px;transition:height .3s;opacity:.9;}
-.col .bar.empty{background:#e8edf3;opacity:1;}
+.col .bar.empty{background:#e6e2da;opacity:1;}
 .col .v{font-family:var(--font-en);font-size:11.5px;color:var(--muted);margin-bottom:5px;white-space:nowrap;}
 .chart-x{display:flex;gap:7px;padding-top:7px;}
 .chart-x div{flex:1 1 0;text-align:center;font-size:11.5px;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -52,9 +52,9 @@ h1{font-size:25px;font-weight:600;letter-spacing:.01em;margin:0 0 10px;color:var
 .hrow .t{display:flex;justify-content:space-between;font-size:13.5px;gap:10px;align-items:baseline;}
 .hrow .t b{font-weight:500;color:var(--ink);}
 .hrow .t span{color:var(--muted);font-size:12.5px;white-space:nowrap;font-family:var(--font-en);font-variant-numeric:tabular-nums;}
-.hrow .track{height:6px;background:#eef2f7;border-radius:0;overflow:hidden;margin-top:7px;}
+.hrow .track{height:6px;background:#eae6de;border-radius:0;overflow:hidden;margin-top:7px;}
 .hrow .fill{height:100%;background:var(--primary);border-radius:0;}
-.hrow .fill.low{background:#c9762f;}
+.hrow .fill.low{background:var(--warn);}
 .hrow .fill.ok{background:var(--ok);}
 /* 表格 */
 table{width:100%;border-collapse:collapse;font-size:13.5px;}
@@ -63,16 +63,16 @@ th{color:var(--muted);font-weight:600;font-size:11.5px;letter-spacing:.08em;bord
 td{color:var(--ink-soft);}
 td.num,th.num{text-align:right;white-space:nowrap;font-family:var(--font-en);font-variant-numeric:tabular-nums;}
 .badge{display:inline-block;font-size:11.5px;padding:1px 7px;border-radius:2px;background:var(--primary-soft);color:var(--primary);font-weight:600;letter-spacing:.03em;}
-.badge.card{background:#eefaf3;color:var(--ok);}
-.badge.rec{background:#fdf3e7;color:var(--warn);}
+.badge.card{background:#eaf3ee;color:var(--ok);}
+.badge.rec{background:#faf4e8;color:var(--warn);}
 .pill{display:inline-block;font-size:12px;font-weight:600;padding:1px 8px;border-radius:2px;font-family:var(--font-en);font-variant-numeric:tabular-nums;}
-.pill.good{background:#e8f7f0;color:var(--ok);}
-.pill.mid{background:#fdf3e7;color:var(--warn);}
-.pill.bad{background:#fdecea;color:var(--bad);}
+.pill.good{background:#eaf3ee;color:var(--ok);}
+.pill.mid{background:#faf4e8;color:var(--warn);}
+.pill.bad{background:#fbecea;color:var(--bad);}
 .note{font-size:12.5px;color:var(--muted);line-height:1.85;border-top:1px solid var(--rule);padding-top:16px;}
 .empty{text-align:left;padding:24px 0;color:var(--muted);font-size:14px;max-width:44em;}
 .empty b{display:block;font-size:15.5px;font-weight:600;color:var(--ink);margin-bottom:8px;}
-.warnbox{background:none;border:0;border-left:3px solid var(--warn);border-radius:0;padding:4px 0 4px 14px;font-size:13.5px;color:#8a5a00;margin-top:14px;line-height:1.85;}
+.warnbox{background:none;border:0;border-left:3px solid var(--warn);border-radius:0;padding:4px 0 4px 14px;font-size:13.5px;color:var(--warn);margin-top:14px;line-height:1.85;}
 @media(max-width:640px){
   .wrap{padding:24px 14px 60px;}
   h1{font-size:21px;}
@@ -234,7 +234,7 @@ function render(){
         + '<br>建议先回到「背一背」过一遍，再用「测一测」重做一次。'
         + (lowSample ? '<br>这几项题量还少，结论仅供参考；多测几次会更准。' : '') + '</div>';
     } else if(r.mods.some(function(m){ return m.rate !== null; })){
-      html += '<div class="warnbox" style="background:#eefaf3;border-color:#c9eddc;color:#2f9e6d;">做过测验的内容正确率都在 70% 以上，掌握得不错。</div>';
+      html += '<div class="warnbox" style="background:#eaf3ee;border-color:#cbe4d8;color:#1c6b45;">做过测验的内容正确率都在 70% 以上，掌握得不错。</div>';
     }
     html += '</div>';
   }
