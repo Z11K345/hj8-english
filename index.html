@@ -193,9 +193,13 @@ function loadModelsFromRelay(){
 }
 function probeCloud(){
   return (async()=>{
-    if(cloud){
+    // 云端只放行自身域名的 Origin：外部域名（如 GitHub Pages）直连必被 CORS 拦下。
+    // 已配置中继时就不再发这一次注定失败的请求——省一个往返，也免得控制台刷红。
+    let sameOrigin = false;
+    try{ sameOrigin = (new URL(CLOUD_CFG.endpoint)).origin === location.origin; }catch(e){}
+    if(cloud && (sameOrigin || !AI_RELAY_BASE)){
       try{ modelsCached = (await cloud.llm.models.list()) || []; cloudReady = true; aiRoute = 'cloud'; return; }
-      catch(e){ console.warn('云端直连失败（外部域名会被云端 Origin 白名单拦下），尝试自建中继', e); cloudReady = false; }
+      catch(e){ console.warn('云端直连失败，尝试自建中继', e); cloudReady = false; }
     }
     if(AI_RELAY_BASE && await loadModelsFromRelay()){ relayReady = true; aiRoute = 'relay'; return; }
     relayReady = false; aiRoute = '';

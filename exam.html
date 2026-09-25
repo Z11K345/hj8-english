@@ -2198,11 +2198,16 @@ async function aiPickRoute(){
   if(aiRoute) return aiRoute;
   if(aiRouteProbe) return aiRouteProbe;
   aiRouteProbe=(async()=>{
-    // ① 云端直连
-    try{
-      const ok=await ensureKnowCloud();
-      if(ok && knowCloudReady && knowCloud){ aiRoute='cloud'; return aiRoute; }
-    }catch(e){}
+    // ① 云端直连：只有同源才试。云端只放行自身域名的 Origin，GitHub Pages 等外部域名
+    //    直连必被 CORS 拦下；已配中继时跳过这一步，省一个往返也不刷控制台错误。
+    let sameOrigin=false;
+    try{ sameOrigin=(new URL(KNOW_CLOUD_CFG.endpoint)).origin===location.origin; }catch(e){}
+    if(sameOrigin || !AI_RELAY_BASE){
+      try{
+        const ok=await ensureKnowCloud();
+        if(ok && knowCloudReady && knowCloud){ aiRoute='cloud'; return aiRoute; }
+      }catch(e){}
+    }
     // ② 自建中继（顺带把模型列表也取回来，让模型选择在两站表现一致）
     if(AI_RELAY_BASE){
       try{
