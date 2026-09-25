@@ -2093,6 +2093,11 @@ async function initKnowCloud(){
   try{ knowModels = await knowCloud.llm.models.list(); knowCloudReady=true; }
   catch(e){ knowCloudReady=false; }
 }
+// 只挑「文本对话」模型：图像模型等条目只有 id/name，没有任何能力字段，选了不会回答
+function pickChatModel(){
+  const list=(knowModels||[]).filter(m=>!m.disabled);
+  return list.find(m=> m.id==='auto' || m.maxInputTokens || m.maxOutputTokens || m.supportsToolCall || m.vendor) || list[0] || null;
+}
 function fallbackExtend(word){
   return '这个词还没收进本地例句库，且当前网络不支持联网生成。\n你可以：\n① 自己用「'+word+'」造个简单句；\n② 点右下角 💬 在 AI 答疑里问：“请用 '+word+' 造 3 个由浅入深的句子并翻译”。';
 }
@@ -2145,7 +2150,7 @@ function quizStart(key){
   const job=(async()=>{
     const ok=await ensureKnowCloud();
     if(!ok||!knowCloudReady||!knowCloud) return '';
-    const model=(knowModels||[]).find(m=>!m.disabled)||(knowModels||[])[0];
+    const model=pickChatModel();
     if(!model) return '';
     const ctx=textBlocks().map(b=>(b.title?('【'+b.title+'】\n'):'')+(b.text||'')).join('\n\n');
     let text='';
@@ -2229,7 +2234,7 @@ async function knowExtendGen(){
   const ok = await ensureKnowCloud();
   if(!ok || !knowCloudReady || !knowCloud){ out.className='know-ext-out know-ext-fallback'; out.textContent= fallbackExtend(word); return; }
   try{
-    const model=(knowModels||[]).find(m=>!m.disabled) || (knowModels||[])[0];
+    const model=pickChatModel();
     if(!model) throw new Error('NO_MODEL');
     let text='';
     for await(const c of knowCloud.llm.chat.completions.create({

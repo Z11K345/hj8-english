@@ -462,7 +462,9 @@ async function loadModels(){
       if(num === 0) return '免费';
       return num + 'x';
     };
-    models.filter(m=>!m.disabled).forEach(m=>{
+    // 只列「文本对话」模型：图像模型等条目只有 id/name，没有任何能力字段，选了不会回答
+    const isChatModel = (m)=> m.id === 'auto' || !!(m.maxInputTokens || m.maxOutputTokens || m.supportsToolCall || m.vendor);
+    models.filter(m => !m.disabled && isChatModel(m)).forEach(m=>{
       const o = document.createElement('option');
       const tag = modelTag(m);
       o.value = m.id;
