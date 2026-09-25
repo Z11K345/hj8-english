@@ -13,71 +13,81 @@ BASE = r"C:\Users\GFQH-GF-ZK\WorkBuddy\2026-09-20-12-23-11\学习助手"
 OUT = os.path.join(BASE, "chat-app", "index.html")
 
 BOOK_TITLE = "沪教·英语 八年级上册（全国版·2025版）"
-CACHE_BUSTER = "20260924d"
+CACHE_BUSTER = "20260924e"
 
 css = """
-:root{ --bg:#f5f7fa; --card:#ffffff; --primary:#2b6cb0; --primary-soft:#ebf3fb;
-       --text:#1a202c; --muted:#66788a; --border:#e3e8ef; --warn:#b7791f; --bad:#c0392b; }
+:root{
+  /* 字体：界面用无衬线，英文/长文用衬线，避免一律默认黑体的“AI 味” */
+  --font-ui:"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei","Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  --font-read:"Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",Georgia,"Times New Roman",serif;
+  --font-en:Georgia,"Times New Roman","Source Han Serif SC","Noto Serif SC","Songti SC","SimSun",serif;
+  --bg:#ffffff; --card:#ffffff; --primary:#2b6cb0; --primary-soft:#eef3f8;
+  --ink:#232a33; --ink-soft:#5b6674; --rule:#dfe4ea;
+  --text:#232a33; --muted:#5b6674; --border:#dfe4ea; --warn:#8a6212; --bad:#a93226;
+}
 *{box-sizing:border-box;}
-body{margin:0;font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,sans-serif;
-  background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;}
+body{margin:0;font-family:var(--font-ui);background:var(--bg);color:var(--text);
+  line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
 .wrap{max-width:1400px;margin:0 auto;padding:0 12px;}
 .main{margin:8px 0;}
-.exam-frame{width:100%;height:calc(100vh - 28px);border:0;border-radius:12px;background:#fff;}
+.exam-frame{width:100%;height:calc(100vh - 28px);border:1px solid var(--rule);border-radius:3px;background:#fff;display:block;}
 @media(max-width:760px){
   .exam-frame{height:calc(100vh - 20px);}
 }
 /* 浮动 AI 按钮 */
-.chat-fab{position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;font-size:26px;border:none;box-shadow:0 4px 14px rgba(43,108,176,.4);z-index:40;cursor:pointer;}
-.chat-fab:hover{filter:brightness(1.05);}
+.chat-fab{position:fixed;right:18px;bottom:18px;width:54px;height:54px;border-radius:50%;background:var(--primary);color:#fff;font-size:24px;border:none;box-shadow:0 2px 10px rgba(35,42,51,.18);z-index:40;cursor:pointer;}
+.chat-fab:hover{filter:brightness(1.06);}
 /* AI 弹层：右侧抽屉，不遮挡试卷中心，试卷仍可查看/滚动 */
 .ai-mask{position:fixed;inset:0;display:none;z-index:50;pointer-events:none;background:transparent;}
 .ai-mask.show{display:block;}
-.ai-panel{position:fixed;right:0;top:0;height:100vh;width:min(440px,94vw);background:#fff;display:flex;flex-direction:column;overflow:hidden;box-shadow:-10px 0 40px rgba(0,0,0,.18);pointer-events:auto;}
+.ai-panel{position:fixed;right:0;top:0;height:100vh;width:min(440px,94vw);background:#fff;display:flex;flex-direction:column;overflow:hidden;border-left:1px solid var(--rule);box-shadow:-8px 0 28px rgba(35,42,51,.07);pointer-events:auto;}
 /* AI 面板为悬浮层，打开时不缩小试卷版面（试卷保持全宽，面板浮于其上、可关闭） */
-.ai-head{background:var(--primary);color:#fff;padding:11px 14px;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:space-between;}
-.ai-head .gear{cursor:pointer;font-size:18px;user-select:none;}
-.ai-head .x{cursor:pointer;font-size:18px;user-select:none;}
+.ai-head{background:#fff;color:var(--ink);padding:12px 14px;font-size:14.5px;font-weight:600;letter-spacing:.02em;
+  border-bottom:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;}
+.ai-head .gear{cursor:pointer;font-size:16px;user-select:none;color:var(--ink-soft);}
+.ai-head .x{cursor:pointer;font-size:16px;user-select:none;color:var(--ink-soft);}
+.ai-head .gear:hover,.ai-head .x:hover{color:var(--ink);}
 .ai-lock{padding:26px 22px;flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;}
 .ai-lock .t{font-size:15px;font-weight:700;margin-bottom:14px;}
 .ai-lock .row{display:flex;gap:8px;align-items:center;}
-.ai-lock input{flex:1 1 auto;padding:10px 12px;border:1px solid var(--border);border-radius:8px;font-size:15px;}
-.ai-lock .ok{background:var(--primary);color:#fff;border:none;border-radius:8px;padding:10px 20px;font-size:14px;cursor:pointer;}
+.ai-lock input{flex:1 1 auto;padding:10px 12px;border:1px solid var(--rule);border-radius:4px;font-size:15px;font-family:inherit;}
+.ai-lock .ok{background:var(--primary);color:#fff;border:none;border-radius:4px;padding:10px 20px;font-size:14px;cursor:pointer;font-family:inherit;}
 .ai-lock .msg{color:var(--bad);font-size:13px;margin-top:10px;min-height:18px;}
-.ai-body{flex:1 1 auto;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;background:#fbfdff;}
-.ai-body .msg{max-width:88%;padding:9px 12px;border-radius:10px;font-size:14.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;}
-.ai-body .msg.user{align-self:flex-end;background:var(--primary);color:#fff;border-bottom-right-radius:2px;}
-.ai-body .msg.bot{align-self:flex-start;background:#eef2f7;color:var(--text);border-bottom-left-radius:2px;}
-.ai-body .msg.sys{align-self:flex-start;background:#fff7ed;color:var(--warn);font-size:12.5px;border:1px solid #fde2c0;max-width:95%;text-align:left;}
-.ai-input{display:flex;gap:8px;padding:10px;border-top:1px solid var(--border);background:var(--card);}
-.ai-input textarea{flex:1 1 auto;resize:none;height:44px;border:1px solid var(--border);border-radius:8px;padding:8px 10px;font-family:inherit;font-size:14px;line-height:1.5;}
-.ai-input button{border:none;background:var(--primary);color:#fff;border-radius:8px;padding:0 16px;font-size:14px;cursor:pointer;}
+.ai-body{flex:1 1 auto;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:12px;background:#fff;}
+.ai-body .msg{max-width:88%;padding:9px 12px;border-radius:4px;font-size:14.5px;line-height:1.68;white-space:pre-wrap;word-break:break-word;}
+.ai-body .msg.user{align-self:flex-end;background:var(--primary-soft);color:var(--ink);border:1px solid #d9e4ee;}
+.ai-body .msg.bot{align-self:flex-start;background:#fff;color:var(--ink);border:1px solid var(--rule);border-left:3px solid #c9d3dd;}
+.ai-body .msg.sys{align-self:stretch;background:#faf8f3;color:var(--warn);font-size:12.5px;border:0;border-left:3px solid #e6d9bd;max-width:100%;text-align:left;border-radius:0;padding:8px 12px;}
+.ai-input{display:flex;gap:8px;padding:10px;border-top:1px solid var(--rule);background:#fff;}
+.ai-input textarea{flex:1 1 auto;resize:none;height:44px;border:1px solid var(--rule);border-radius:4px;padding:8px 10px;font-family:inherit;font-size:14px;line-height:1.5;color:var(--ink);}
+.ai-input textarea:focus{outline:none;border-color:var(--primary);}
+.ai-input button{border:none;background:var(--primary);color:#fff;border-radius:4px;padding:0 16px;font-size:14px;cursor:pointer;font-family:inherit;}
 .ai-input button:disabled{opacity:.5;cursor:default;}
 .ai-input button.stop{background:var(--bad);}
-.ai-input button.img-btn{font-size:18px;padding:0 12px;line-height:1;}
+.ai-input button.img-btn{font-size:17px;padding:0 12px;line-height:1;}
 /* 待发送图片预览条 */
-#imgPrev{display:none;flex-wrap:wrap;gap:8px;padding:8px 10px 0;background:var(--card);}
-.thumb{position:relative;width:62px;height:62px;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#fff;}
+#imgPrev{display:none;flex-wrap:wrap;gap:8px;padding:8px 10px 0;background:#fff;}
+.thumb{position:relative;width:62px;height:62px;border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:#fff;}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
-.thumb-x{position:absolute;top:1px;right:2px;color:#fff;background:rgba(0,0,0,.5);border-radius:50%;width:18px;height:18px;line-height:18px;text-align:center;font-size:13px;cursor:pointer;}
+.thumb-x{position:absolute;top:1px;right:2px;color:#fff;background:rgba(35,42,51,.55);border-radius:50%;width:18px;height:18px;line-height:18px;text-align:center;font-size:13px;cursor:pointer;}
 /* 用户消息中的图片（已发送） */
 .u-imgs{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
-.u-img{max-width:150px;max-height:150px;border-radius:6px;display:block;}
-.ai-model{display:flex;align-items:center;gap:8px;padding:8px 10px;border-top:1px solid var(--border);background:var(--card);font-size:13px;color:var(--muted);}
-.ai-model select{flex:1 1 auto;padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-size:13px;}
+.u-img{max-width:150px;max-height:150px;border-radius:3px;display:block;}
+.ai-model{display:flex;align-items:center;gap:8px;padding:8px 10px;border-top:1px solid var(--rule);background:#fff;font-size:13px;color:var(--muted);}
+.ai-model select{flex:1 1 auto;padding:6px 8px;border:1px solid var(--rule);border-radius:4px;font-size:13px;font-family:inherit;}
 /* 防止浏览器把 AI 密码识别为登录密码而弹出“保存密码”提示，暴露 8888 */
 .code-mask{-webkit-text-security:disc;}
 /* 设置弹层 */
-.modal-mask{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:center;justify-content:center;z-index:60;}
+.modal-mask{position:fixed;inset:0;background:rgba(35,42,51,.34);display:none;align-items:center;justify-content:center;z-index:60;}
 .modal-mask.show{display:flex;}
-.modal{background:#fff;border-radius:12px;padding:18px 20px;width:min(420px,92vw);box-shadow:0 8px 30px rgba(0,0,0,.2);}
-.modal h3{margin:0 0 12px;font-size:16px;}
+.modal{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:18px 20px;width:min(420px,92vw);box-shadow:0 12px 34px rgba(35,42,51,.16);}
+.modal h3{margin:0 0 12px;font-size:15.5px;}
 .modal label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px;}
-.modal input{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:14px;}
+.modal input{width:100%;padding:8px 10px;border:1px solid var(--rule);border-radius:4px;font-size:14px;font-family:inherit;}
 .modal .row{display:flex;gap:10px;justify-content:flex-end;margin-top:16px;}
-.modal .row button{border:none;border-radius:8px;padding:8px 16px;font-size:14px;cursor:pointer;}
+.modal .row button{border:none;border-radius:4px;padding:8px 16px;font-size:14px;cursor:pointer;font-family:inherit;}
 .modal .save{background:var(--primary);color:#fff;}
-.modal .cancel{background:#eef2f7;color:var(--text);}
+.modal .cancel{background:#eef1f4;color:var(--text);}
 @media(max-width:760px){ .exam-frame{height:calc(100vh - 130px);} }
 """
 

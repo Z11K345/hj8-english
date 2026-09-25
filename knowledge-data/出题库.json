@@ -1,0 +1,96 @@
+{
+ "meta": {
+  "name": "英语出题库",
+  "version": 1,
+  "updated": "2026-09-24",
+  "note": "本地出题库：文本型知识资料的小题由云端模型批量生成后内置，运行时秒出；未收录时才回退云端。",
+  "count": 17
+ },
+ "entries": {
+  "Unit 1（核心知识）": {
+   "t": "一、单词拼写：达芬奇非常聪明，他在很多不同的领域都有非凡的才能。（根据音标 /'tæləntɪd/ 和句意写出单词）\nLeonardo da Vinci was extremely intelligent, and he was unusually ________ in many different fields.\n答案：talented\n\n二、短语翻译：恐龙大约在6600万年前突然灭绝了。（根据汉语提示写出短语）\nDinosaurs suddenly ________ ________ about 66 million years ago.\n答案：died out\n\n三、语法填空：用 some 或 any 填空，使句子完整、正确。\nWould you like ________ bananas? I have ________ in my bag, but I don't have ________ apples.\n答案：some; some; any",
+   "file": "/知识梳理/Unit 1（核心知识）.json",
+   "gen": "2026-09-24"
+  },
+  "Unit 1（知识梳理）": {
+   "t": "1. 根据汉语意思写出正确的单词：达·芬奇非常聪明，他在很多不同的领域都有非凡的才能。Da Vinci was extremely intelligent, and he was unusually ________ (有才能的) in many different fields.\n答案：talented\n\n2. 用括号中所给单词的适当形式填空：Some dinosaurs were as ________ (small) as chickens, and others were as big as ten elephants.\n答案：small\n\n3. 根据汉语意思完成句子：这些天有任何重要的事情吗？Is there ________ ________ these days?\n答案：anything important",
+   "file": "/知识梳理/Unit 1（知识梳理）.json",
+   "gen": "2026-09-24"
+  },
+  "Unit 2（核心知识）": {
+   "t": "用所给单词的适当形式填空：The old man replied ______ (with) hesitation and said he just wanted rice.\n答案：without\n\n根据中文提示写出正确的短语：我们需要核对火车或航班时刻表。We need to check the train or ______ ______.\n答案：flight schedule\n\n用英语写出“第32”：______\n答案：thirty-second",
+   "file": "/知识梳理/Unit 2（核心知识）.json",
+   "gen": "2026-09-24"
+  },
+  "Unit 2（知识梳理）": {
+   "t": "She got to the airport early to check the flight ______ (时刻表).\n答案：schedule\n\nI ______ (同意) with you that the movie we saw last night was really exciting.\n答案：agree\n\nThe population of the city continued to rise ______ (急剧地) between 1950 and 2000.\n答案：sharply",
+   "file": "/知识梳理/Unit 2（知识梳理）.json",
+   "gen": "2026-09-24"
+  },
+  "Unit 3（核心知识）": {
+   "t": "用所给单词的正确形式填空：The Internet has brought big changes to ______ (day) life.\n答案：everyday\n\n根据汉语意思完成句子：未来，汽车将与智慧城市网络共享数据。In the future, cars will ______ data ______ the smart city network.\n答案：share; with\n\n用所给单词的正确形式填空：This computer is much ______ (powerful) than that one.\n答案：more powerful",
+   "file": "/知识梳理/Unit 3（核心知识）.json",
+   "gen": "2026-09-24"
+  },
+  "Unit 3（知识梳理）": {
+   "t": "一、根据汉语提示写出正确的单词：网络让我们的生活更加便利，我们可以通过它和世界各地的人保持联系。\n答案：network\n\n二、用括号中所给单词的适当形式填空：There ________ (be) fewer traffic accidents because cars will drive themselves in the future.\n答案：will be\n\n三、根据汉语意思完成句子：在我看来，我们应该明智地使用互联网，不要让它占据我们太多时间。\n________ ________ ________, we should use the Internet wisely and don't let it take up too much of our time.\n答案：In my opinion",
+   "file": "/知识梳理/Unit 3（知识梳理） .json",
+   "gen": "2026-09-24"
+  },
+  "Unit 4（核心知识）": {
+   "t": "用括号内所给单词的正确形式填空：Although this invention was great, some of the later ones were even ______ (good).\n答案：better\n根据汉语意思写出正确的英语短语：毫无疑问，轮子是有史以来最重要的发明之一。\n答案：Without doubt, the wheel is one of the most important inventions of all time.\n根据句意及首字母提示补全单词：The two cities are 200 kilometres apart, so the d______ between them is quite long.\n答案：distance",
+   "file": "/知识梳理/Unit 4（核心知识）.json",
+   "gen": "2026-09-24"
+  },
+  "Unit 4（知识梳理）": {
+   "t": "1. 根据汉语意思写出英语短语：步行；依靠；毫无疑问。\n答案：on foot；depend on；without doubt\n\n2. 用括号中所给单词的适当形式填空：This small village ______ (depend) on the local river for water.\n答案：depends\n\n3. 根据汉语意思完成句子：我的发明能帮助人们避开交通堵塞。它不用汽油，依靠太阳能驱动。\n答案：My invention can help people avoid traffic jams. It doesn't use petrol and uses solar power.",
+   "file": "/知识梳理/Unit 4（知识梳理）.json",
+   "gen": "2026-09-24"
+  },
+  "Unit 5（核心知识）": {
+   "t": "用所给单词的正确形式填空：They are very ________ (grate) that the host family let them stay in their home.\n答案：grateful\n\n根据中文提示写出正确的英语短语：处理；应付\n答案：deal with\n\n用括号内动词的适当时态填空：She ________ (not see) the Great Wall yet, and she hasn’t been to the Summer Palace either.\n答案：hasn’t seen",
+   "file": "/知识梳理/Unit 5（核心知识） .json",
+   "gen": "2026-09-24"
+  },
+  "Unit 5（知识梳理）": {
+   "t": "“我以前看过关于长城的视频，但亲眼看到它绝对是一次难忘的经历！”用英语怎么说？\n答案：I've watched videos about the Great Wall before, but seeing it in person is definitely an unforgettable experience!\n\n用 lonely 或 alone 填空：Anna can go to school ______, but she never feels ______ because she has many friends.\n答案：alone; lonely\n\n根据写作提示，把“我仍然记得我教你们包饺子的那一天”翻译成英语（用上 remember the day when）。\n答案：I still remember the day when I taught you how to make dumplings.",
+   "file": "/知识梳理/Unit 5（知识梳理） .json",
+   "gen": "2026-09-24"
+  },
+  "Unit 6（核心知识）": {
+   "t": "题目：请根据中文意思写出正确的单词：士兵 ______\n答案：soldier\n\n题目：请将下列短语翻译成英文：开……的玩笑 ______\n答案：make jokes about\n\n题目：用括号中所给动词的适当形式填空：I ______ (finish) my homework already, so I can go out to play now.\n答案：have finished",
+   "file": "/知识梳理/Unit 6（核心知识） .json",
+   "gen": "2026-09-24"
+  },
+  "Unit 6（知识梳理）": {
+   "t": "1. 士兵们在战争中勇敢地与敌人作战，最终取得了胜利。请根据中文提示补全句子：The soldiers ________ ________ the enemy bravely in the war and won the victory at last.\n答案：fought against\n\n2. 他们最终成功攻取了那座城市。请根据中文提示完成句子：They ________ ________ capturing the city in the end.\n答案：succeeded in\n\n3. 请用括号中所给词的适当形式填空：First, Tom had a clever idea. Then, everyone followed his advice and worked together. ________ (final), they solved the problem successfully.\n答案：Finally",
+   "file": "/知识梳理/Unit 6（知识梳理） .json",
+   "gen": "2026-09-24"
+  },
+  "Unit 7（核心知识）": {
+   "t": "用所给单词的适当形式填空：Eating ______ (regular) is good for your health.\n答案：regularly\n根据中文提示写出短语：弄懂；弄清楚 ______\n答案：figure out\n语法填空：Unless you ______ (take) time to relax, your brain will find it hard to remember things.\n答案：take",
+   "file": "/知识梳理/Unit 7（核心知识） .json",
+   "gen": "2026-09-24"
+  },
+  "Unit 7（知识梳理）": {
+   "t": "把下列短语翻译成英语：保持思维活跃的生活状态。\n答案：live a mentally active life\n\n用所给词的适当形式填空：Eating too much junk food ______ (be) bad for your health.\n答案：is\n\n根据汉语提示完成句子：好的记忆方法在我们的学习中确实是宝贵的助力。\nGood memory methods are truly ______ ______ in our study.\n答案：valuable helpers",
+   "file": "/知识梳理/Unit 7（知识梳理） .json",
+   "gen": "2026-09-24"
+  },
+  "Unit 8（知识梳理）": {
+   "t": "1. 请根据中文意思写出正确的单词：My grandfather is very ________ (忠诚的) to his old friends.\n答案：faithful\n\n2. 她因为解决了那个难题而感到自豪。请用 pride 的固定搭配完成句子：She ________ ________ in her ability to solve that difficult problem.\n答案：takes pride\n\n3. 用括号中所给词的适当形式填空：Linda sings ________ (beautiful) than any other student in her class.\n答案：more beautifully",
+   "file": "/知识梳理/Unit 8（知识梳理） .json",
+   "gen": "2026-09-24"
+  },
+  "【沪教】八上英语必背范文": {
+   "t": "Mark Twain was born in the countryside in Florida in 1835. When he was 12, his father ____ (die).\n答案：died\n\nThe high-speed train moves so smoothly that passengers can watch movies or have a sleep on it. It can save us lots of time. 短语“高速列车”的英文是 ____。\n答案：the high-speed train\n\nFrom Cao Chong, I learn to think creatively. When we are faced with a big problem, we should look for a simple and smart ____.\n答案：solution",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-24"
+  },
+  "【沪教】八上英语词汇拓展背诵": {
+   "t": "1. 根据汉语意思写出单词：有才智的；聪明的（形容词）\n答案：intelligent\n\n2. 根据汉语意思写出短语：发生；进行\n答案：take place\n\n3. 用所给词的适当形式填空：My parents often advise me ________ (stay) awake in class.\n答案：to stay",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-24"
+  }
+ }
+}
