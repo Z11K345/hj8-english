@@ -247,6 +247,9 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-ext-out{margin-top:0;border-top:1px solid var(--rule);padding:16px 0 0;font-family:var(--font-read);font-size:15.5px;line-height:1.85;color:var(--ink);white-space:pre-wrap;word-break:break-word;background:none;border-radius:0;min-height:0;max-width:46em;}
 .know-ext-out.know-ext-ok{background:none;}
 .know-ext-out.know-ext-fallback{background:none;border-top-color:var(--na);color:#8a5a00;padding-left:12px;border-left:3px solid var(--na);}
+/* 用一用 · 要点选择（一个核心知识里可以按「核心词汇 / 核心短语 / 重点句型 / 核心语法」分别练） */
+.know-scope{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 4px;max-width:46em;}
+.know-scope .know-tab{max-width:22em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 /* 用一用 · 本地例句库展示 */
 .kb-head{font-family:var(--font-en);font-size:20px;font-weight:600;color:var(--ink);letter-spacing:.01em;margin-bottom:4px;}
 .kb-forms{font-family:var(--font-ui);font-size:13.5px;color:var(--ink-soft);border-left:2px solid var(--rule);padding:2px 0 2px 11px;margin:10px 0;display:block;line-height:1.75;}
@@ -480,7 +483,9 @@ async function renderPdf(el, url){
   try{ pdf = await window.pdfjsLib.getDocument({url}).promise; }
   catch(e){ el.innerHTML = '<div class="pdf-loading">试卷加载失败：' + (e.message||e) + '</div>'; return; }
   curPdfDoc = pdf;   // 保存文档引用，供点击题号时实时检索位置
-  el.innerHTML = '';
+  // 渲染进度条挂在末尾：画布始终插在它前面，保证 canvas 顺序与页码一致（题号跳转依赖这个顺序）
+  el.innerHTML = '<div class="pdf-loading" id="pdfProg">正在渲染 0/' + pdf.numPages + ' 页…</div>';
+  const prog = ()=> el.querySelector('#pdfProg');
   for(let i=1;i<=pdf.numPages;i++){
     try{
       const page = await pdf.getPage(i);
@@ -489,9 +494,13 @@ async function renderPdf(el, url){
       canvas.width = vp.width; canvas.height = vp.height;
       const ctx = canvas.getContext('2d');
       await page.render({canvasContext:ctx, viewport:vp}).promise;
-      el.appendChild(canvas);
+      const ph = prog();
+      if(ph) el.insertBefore(canvas, ph); else el.appendChild(canvas);
+      if(ph) ph.textContent = '正在渲染 ' + i + '/' + pdf.numPages + ' 页…';
+      if(i % 3 === 0) await new Promise(r=> setTimeout(r, 0));   // 每 3 页让出主线程，长卷也不卡页面
     }catch(e){ const d=document.createElement('div'); d.className='pdf-loading'; d.textContent='第'+i+'页渲染失败'; el.appendChild(d); }
   }
+  const ph = prog(); if(ph) ph.remove();
   // rebuildNavAsync(); // 当前隐藏顶部题号导航条，不再实时扫描刷新
 }
 
@@ -499,18 +508,13 @@ function showFatal(msg){ $('#loading').style.display='none'; const f=$('#fatal')
 
 async function init(){
   try{
-    const r = await fetch('exam-data/manifest.json?v=' + Date.now(), {cache:'no-store'});
+    const r = await fetch('exam-data/manifest.json', {cache:'no-store'});
     if(!r.ok) throw new Error('HTTP '+r.status);
     manifest = await r.json();
   }catch(e){
     showFatal('无法加载试卷清单（exam-data/manifest.json）。请通过网站访问本页面，不要直接用浏览器打开本地文件。');
     return;
   }
-  // 载入题号位置表（点击题号跳转到试卷对应题目）
-  try{
-    const pr = await fetch('exam-data/positions.json?v=' + Date.now(), {cache:'no-store'});
-    if(pr.ok) ALL_POS = await pr.json();
-  }catch(e){ ALL_POS = null; }
   $('#loading').style.display='none';
   const catSel = $('#catSel'), paperSel = $('#paperSel');
   manifest.cats.forEach((c, ci)=>{
@@ -520,6 +524,26 @@ async function init(){
   paperSel.addEventListener('change', ()=>{ curPi = +paperSel.value; loadPaper(curPi); });
   populatePapers();
   loadPaper(0);
+  loadPositionsAsync();   // 题号位置表体积不小，放到首屏之后再后台载入，不拖慢打开速度
+}
+// 题号位置表（点击题号跳转用）：首屏之后再加载，避免和试卷抢带宽
+function loadPositionsAsync(){
+  const go=()=> fetch('exam-data/positions.json', {cache:'no-store'})
+    .then(r=> r.ok ? r.json() : null)
+    .then(j=>{
+      if(!j) return;
+      ALL_POS = j;
+      // 位置表迟到时补一次：如果当前卷还没拿到离线位置，就补上（否则这一卷只能靠实时检索）
+      const cat = manifest && manifest.cats[curCi];
+      const p = cat && cat.papers[curPi];
+      if(p && !Object.keys(curPositions).length){
+        const posKey = (p.cat || cat.name || '') + '||' + p.label;
+        curPositions = (ALL_POS && ALL_POS[posKey]) || {};
+      }
+    })
+    .catch(()=>{});
+  if(window.requestIdleCallback) requestIdleCallback(go, {timeout: 3000});
+  else setTimeout(go, 1200);
 }
 
 function populatePapers(){
@@ -1595,7 +1619,26 @@ let exKb=null, exKbTried=false;
 let quizKb=null, quizKbTried=false;
 const quizCache={}, quizInflight={};
 const QUIZ_LS='knowQuizV1';
-function quizKey(){ return String((knowData&&knowData.title)||'').trim(); }
+let quizScope=-1;    // -1 = 整份资料；>=0 = textBlocks() 里的第几个要点
+let quizRound=1;     // 「换一组」轮次：同一个要点可以反复换新题
+// 要点名字：优先用块标题；没标题的块用序号（与生成脚本 build_quiz.js 保持一致）
+function blockLabel(b, i){
+  const t=String((b&&b.title)||'').trim();
+  if(t) return t;
+  return '第 '+(i+1)+' 部分';
+}
+function quizScopeList(){
+  if(!knowCfg || knowCfg.kind!=='text') return [];
+  return textBlocks().map((b,i)=>({i:i, label:blockLabel(b,i)}));
+}
+// 出题库索引键：与生成脚本 build_quiz.js 保持一致（'资料标题##要点名' / '资料标题##全部'）
+function quizKey(){
+  const title=String((knowData&&knowData.title)||'').trim();
+  const blocks=textBlocks();
+  const label=(quizScope>=0 && blocks[quizScope]) ? blockLabel(blocks[quizScope], quizScope) : '全部';
+  return title+'##'+label;
+}
+function quizCacheKey(){ return quizKey()+(quizRound>1?('@'+quizRound):''); }
 function quizLsGet(k){ try{ const o=JSON.parse(localStorage.getItem(QUIZ_LS)||'{}'); return o[k]||''; }catch(e){ return ''; } }
 function quizLsSet(k,v){ try{ const o=JSON.parse(localStorage.getItem(QUIZ_LS)||'{}'); o[k]=v; localStorage.setItem(QUIZ_LS,JSON.stringify(o)); }catch(e){} }
 async function ensureQuizKb(){
@@ -1637,6 +1680,16 @@ function deGlueDeep(v, depth){
 }
 
 function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+// 模型爱写 markdown（**加粗**、###、`代码`、- 列表），这里都是纯文本展示，抹平成干净文字
+function plainify(s){
+  return String(s==null?'':s)
+    .replace(/```[a-z]*\n?/gi,'')
+    .replace(/\*\*([^*\n]+)\*\*/g,'$1')
+    .replace(/(^|\n)#{1,6}\s*/g,'$1')
+    .replace(/(^|\n)\s*[-*]\s+/g,'$1· ')
+    .replace(/`([^`\n]+)`/g,'$1')
+    .replace(/\*\*/g,'');
+}
 // 知识自测判分：答案里用 / 、 、 分隔的都算正确（如 was, were 任意一个即可）
 function knowMatch(input, answer){
   const inp = normalizeBlank(input).replace(/\s+/g,'');
@@ -1713,7 +1766,8 @@ async function loadKnowledge(url){
   knowCfg = buildKnowCfg(knowData);
   knowOrder = (knowData.items||[]).map((_,i)=>i);
   knowIdx = 0; knowScore = {right:0,wrong:0}; knowMode='flash'; knowFlipped=false;
-  ensureQuizKb();     // 预载本地出题库（很小），让「用一用」点下去就是秒出
+  quizScope = -1; quizRound = 1;    // 换资料：出题范围与轮次都重置
+  // 出题库不在打开试卷时就抢带宽（试卷才是大头），等学生真的点「用一用」再按需加载
   renderKnowPanel();
 }
 function knowFrontText(item){
@@ -2010,9 +2064,18 @@ function flushRec(){
   recAcc = null;
 }
 function knowExtendHtmlText(){
-  return `<div class="know-ext-word">把这份资料交给 AI，照着出几道小题练手或讲解难点：</div>
-  <div class="know-btns"><button id="knowExtGen" class="primary">出小题</button></div>
-  <div class="know-ext-out" id="knowExtendOut">点上方「出小题」，立刻看到这份资料的 3 道小题（附答案）。\n常考资料已内置出题库，秒出、不联网。</div>`;
+  const list=quizScopeList();
+  const chips = list.length>1
+    ? '<div class="know-scope">'
+      + `<button class="know-tab ${quizScope<0?'on':''}" data-scope="-1">全部要点</button>`
+      + list.map(s=>`<button class="know-tab ${quizScope===s.i?'on':''}" data-scope="${s.i}">${escapeHtml(s.label)}</button>`).join('')
+      + '</div>'
+    : '';
+  const cur = quizScope>=0 && list[quizScope] ? list[quizScope].label : '全部要点';
+  return `<div class="know-ext-word">选一个要点只练它，或选「全部要点」综合练；每次出 ${QUIZ_N} 道，答完可以「换一组」继续。</div>`
+  + chips
+  + `<div class="know-btns"><button id="knowExtGen" class="primary">出小题</button><button id="knowExtMore">换一组</button></div>`
+  + `<div class="know-ext-out" id="knowExtendOut">当前范围：${escapeHtml(cur)}。\n常考要点已内置出题库（秒出、不联网）；没内置的会联网生成。</div>`;
 }
 function bindKnow(){
   const p=$('#knowPanel');
@@ -2027,6 +2090,14 @@ function bindKnow(){
   const reveal=$('#knowReveal'); if(reveal) reveal.onclick=knowReveal;
   const next2=$('#knowNext2'); if(next2) next2.onclick=()=>knowNav(1);
   const ext=$('#knowExtGen'); if(ext) ext.onclick=knowExtendGen;
+  // text 型「用一用」：切换要点（每个要点单独出题）+ 换一组
+  p.querySelectorAll('[data-scope]').forEach(b=> b.onclick=()=>{
+    quizScope=parseInt(b.dataset.scope,10); if(isNaN(quizScope)) quizScope=-1;
+    quizRound=1; renderKnowPanel();
+  });
+  const more=$('#knowExtMore'); if(more) more.onclick=()=>{
+    quizRound++; knowExtendGenText($('#knowExtendOut'), true);
+  };
   // text 型：阅读遮罩 / 抽背显示与自查
   const rh=document.getElementById('knowReadHide'); if(rh) rh.onclick=()=>{ document.querySelectorAll('.know-read-t').forEach(e=> e.style.display='none'); };
   const rs=document.getElementById('knowReadShow'); if(rs) rs.onclick=()=>{ document.querySelectorAll('.know-read-t').forEach(e=> e.style.display=''); };
@@ -2036,8 +2107,16 @@ function bindKnow(){
     const pr=$('#recp'+i); if(pr) pr.style.display='none';
     $('#recb'+i).innerHTML='<button class="know-rec-ok" data-i="'+i+'">记住了</button><button class="know-rec-no" data-i="'+i+'">没记住</button>';
   });
-  document.querySelectorAll('.know-rec-ok').forEach(b=> b.onclick=()=>{ knowScore.right++; markRec(b.dataset.i,true); });
-  document.querySelectorAll('.know-rec-no').forEach(b=> b.onclick=()=>{ knowScore.wrong++; markRec(b.dataset.i,false); });
+  // 「记住了 / 没记住」是点「显示」之后才生成的按钮，事先绑不到 —— 用事件委托（只挂一次）
+  if(!p.dataset.recDelegated){
+    p.dataset.recDelegated='1';
+    p.addEventListener('click', ev=>{
+      const ok=ev.target.closest && ev.target.closest('.know-rec-ok');
+      const no=ev.target.closest && ev.target.closest('.know-rec-no');
+      if(ok){ knowScore.right++; markRec(ok.dataset.i, true); }
+      else if(no){ knowScore.wrong++; markRec(no.dataset.i, false); }
+    });
+  }
 }
 function knowToggleFlip(){
   knowFlipped=!knowFlipped;
@@ -2094,15 +2173,102 @@ async function initKnowCloud(){
   catch(e){ knowCloudReady=false; }
 }
 // 只挑「文本对话」模型：图像模型等条目只有 id/name，没有任何能力字段，选了不会回答
+// 默认模型必须挑快而稳的：auto 会先跑完整条推理链，实测同一个出题请求 150 秒都不返回，
+// 而 deepseek-v4-flash 2.6 秒就出结果——学生在等题，不能默认走推理链。
+const FAST_MODELS=['deepseek-v4-flash','hy3','deepseek-v4'];
 function pickChatModel(){
   const list=(knowModels||[]).filter(m=>!m.disabled);
-  return list.find(m=> m.id==='auto' || m.maxInputTokens || m.maxOutputTokens || m.supportsToolCall || m.vendor) || list[0] || null;
+  const chat=list.filter(m=> m.id==='auto' || m.maxInputTokens || m.maxOutputTokens || m.supportsToolCall || m.vendor);
+  const pool=chat.length?chat:list;
+  for(const id of FAST_MODELS){ const hit=pool.find(m=>m.id===id); if(hit) return hit; }
+  return pool.find(m=> !m.onlyReasoning && !m.supportsReasoning) || pool[0] || null;
+}
+
+// ===== 统一 AI 通路 =====
+// ① 云端直连：仅 WorkBuddy 站自己的域名在云端白名单内，直连最快（走 SDK，可流式）
+// ② 自建中继：GitHub Pages 等外部域名的请求会被云端 403（Origin 白名单 + 无 CORS 头），
+//    改由中继服务做「服务端转发」——服务端之间没有浏览器 Origin，云端正常放行。
+// ③ 两者都不可用时给出明确提示（不再假装「仅 WorkBuddy 版可用」）
+const AI_RELAY_BASE = (function(){
+  try{ return localStorage.getItem('aiRelayBase') || 'https://hj8-english-ai-relay.app.workbuddy.host'; }
+  catch(e){ return 'https://hj8-english-ai-relay.app.workbuddy.host'; }
+})();
+let aiRoute=null, aiRouteProbe=null;
+async function aiPickRoute(){
+  if(aiRoute) return aiRoute;
+  if(aiRouteProbe) return aiRouteProbe;
+  aiRouteProbe=(async()=>{
+    // ① 云端直连
+    try{
+      const ok=await ensureKnowCloud();
+      if(ok && knowCloudReady && knowCloud){ aiRoute='cloud'; return aiRoute; }
+    }catch(e){}
+    // ② 自建中继（顺带把模型列表也取回来，让模型选择在两站表现一致）
+    if(AI_RELAY_BASE){
+      try{
+        const base=AI_RELAY_BASE.replace(/\/$/,'');
+        const r=await fetch(base+'/models',{cache:'no-store'});
+        if(r.ok){
+          const j=await r.json();
+          const list=Array.isArray(j)?j:(j&&(j.models||j.data))||[];
+          if(list.length){ knowModels=list; aiRoute='relay'; return aiRoute; }
+        }
+      }catch(e){}
+    }
+    aiRoute='';
+    return aiRoute;
+  })();
+  return aiRouteProbe;
+}
+// 统一的对话补全：两种通路都返回最终文本，onDelta 有值时逐段回调（用于流式显示）
+// 60 秒兜底超时：模型卡住时给出明确失败，而不是让学生一直看着「出题中…」
+const AI_TIMEOUT_MS=60000;
+async function aiComplete(messages, onDelta){
+  const route=await aiPickRoute();
+  const model=pickChatModel();
+  const ac=new AbortController();
+  const to=setTimeout(()=>{ try{ ac.abort(); }catch(e){} }, AI_TIMEOUT_MS);
+  try{
+    if(route==='cloud'){
+      let text='';
+      for await(const c of knowCloud.llm.chat.completions.create({model:(model&&model.id)||'deepseek-v4-flash', messages, stream:true, temperature:0.6, signal:ac.signal})){
+        const d=c.choices?.[0]?.delta;
+        if(d && d.content){ text+=d.content; if(onDelta) onDelta(d.content); }
+      }
+      if(!text.trim()) throw new Error('EMPTY_REPLY');
+      return text;
+    }
+    if(route==='relay'){
+      const r=await fetch(AI_RELAY_BASE.replace(/\/$/,'')+'/ai',{
+        method:'POST', headers:{'Content-Type':'application/json'}, signal:ac.signal,
+        body:JSON.stringify({model:(model&&model.id)||'deepseek-v4-flash', messages, stream:true, temperature:0.6})
+      });
+      if(!r.ok){ const t=await r.text().catch(()=> ''); throw new Error('HTTP '+r.status+' '+t.slice(0,120)); }
+      const raw=await r.text();
+      let text='';
+      raw.split(/\r?\n/).forEach(line=>{
+        const s=line.trim();
+        if(!s.startsWith('data:')) return;
+        const p=s.slice(5).trim();
+        if(!p || p==='[DONE]') return;
+        let d; try{ d=JSON.parse(p); }catch(e){ return; }
+        const c=d.choices&&d.choices[0]&&d.choices[0].delta&&d.choices[0].delta.content;
+        if(!c) return;
+        // 中继偶尔会透传非标准事件（如错误说明），过滤掉明显的英文提示句
+        if(/^(I waited|I'm sorry|Sorry,)/i.test(c)) return;
+        text+=c; if(onDelta) onDelta(c);
+      });
+      if(!text.trim()) throw new Error('EMPTY_REPLY');
+      return text;
+    }
+    throw new Error('NO_BACKEND');
+  } finally { clearTimeout(to); }
 }
 function fallbackExtend(word){
-  return '这个词还没收进本地例句库，且当前网络不支持联网生成。\n你可以：\n① 自己用「'+word+'」造个简单句；\n② 点右下角 💬 在 AI 答疑里问：“请用 '+word+' 造 3 个由浅入深的句子并翻译”。';
+  return '这个词还没收进本地例句库，联网 AI 也暂时没连上。\n你可以：\n① 自己用「'+word+'」造个简单句；\n② 稍后重试，或点右下角 💬 在 AI 答疑里问：“请用 '+word+' 造 3 个由浅入深的句子并翻译”。';
 }
 function fallbackExtendText(){
-  return '这份资料还没内置出题库，且当前网络连不上在线出题。\n你可以先点右下角 💬 在 AI 答疑里问：“请根据这份资料出几道小题”。';
+  return '这份资料还没内置出题库，联网 AI 也暂时没连上。\n你可以稍后重试，或点右下角 💬 在 AI 答疑里直接提问。';
 }
 // ===== 用一用：本地例句库（秒查） + 云端兜底 =====
 function kbEnOnly(s){ return String(s||'').replace(/[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef]+/g,' ').replace(/[^A-Za-z' -]+/g,' ').replace(/\s+/g,' ').trim(); }
@@ -2138,34 +2304,39 @@ function kbEntryHtml(e, word){
     +`<div class="kb-foot">共 ${(e.ex||[]).length} 句 · 本地例句库（离线秒出）</div>`;
 }
 // ===== 用一用 · 文本资料出小题 =====
-// 优先级：本地出题库（秒出） → 已生成过的缓存 → 复用正在进行中的请求（切走再回来不重新等） → 发起云端生成
+// 优先级：本地出题库（秒出） → 已生成过的缓存 → 复用正在进行中的请求（切走再回来不重新等） → 联网生成
 function quizWaitMsg(){ return '正在联网出题，大约 10-20 秒。\n这段时间可以切去看别的资料，回来结果还在，不用重新等。'; }
 async function quizBaked(key){
   const qk=await ensureQuizKb();
   const hit=qk&&key?qk[key]:null;
   return (hit&&hit.t)?hit.t:'';
 }
+// 出题的资料范围：选定要点 → 只送该要点；未选 → 送整份资料的要点
+function quizCtx(){
+  const blocks=textBlocks();
+  if(quizScope>=0 && blocks[quizScope]){
+    const b=blocks[quizScope];
+    return (b.title?('【'+b.title+'】\n'):'')+String(b.text||'');
+  }
+  return blocks.map(b=>(b.title?('【'+b.title+'】\n'):'')+(b.text||'')).join('\n\n');
+}
+const QUIZ_N=6;
+const QUIZ_SYS='你是初中英语辅导老师。下面是一份初二英语复习资料的某个要点，请只围绕这个要点出 '+QUIZ_N+' 道小题（含答案），适合初二学生。'
+  +'要求：① '+QUIZ_N+' 道题从不同角度考同一个要点（如单词拼写、词义辨析、固定搭配、句型转换、语法选择、完成句子），不要重复考同一个点；'
+  +'② 每题先写题目，再在下一行写「答案：…」；'
+  +'③ 题目里不要出现「要点」「资料」「片段」「根据上面」这类字样，直接写题目本身；'
+  +'④ 只输出这 '+QUIZ_N+' 道题，不要标题、不要解释、不要 markdown 代码块、不要多余空行。';
 function quizStart(key){
   if(quizInflight[key]) return quizInflight[key];
+  const ctx=(quizCtx()||'').slice(0, 6000);
   const job=(async()=>{
-    const ok=await ensureKnowCloud();
-    if(!ok||!knowCloudReady||!knowCloud) return '';
-    const model=pickChatModel();
-    if(!model) return '';
-    const ctx=textBlocks().map(b=>(b.title?('【'+b.title+'】\n'):'')+(b.text||'')).join('\n\n');
-    let text='';
-    for await(const c of knowCloud.llm.chat.completions.create({
-      model: model.id,
-      messages:[
-        {role:'system', content:'你是初中英语辅导老师。下面是一份初二英语复习资料。请基于资料出 3 道小题（含答案），题型可以是单词拼写、短语翻译或语法填空，适合初二学生。输出格式：每题一行，先写题目再写「答案：…」。不要任何多余文字。'},
-        {role:'user', content:'资料内容：\n'+ctx+'\n\n请基于上面资料出 3 道小题并附答案。'}
-      ],
-      stream:true, temperature:0.6
-    })){
-      const d=c.choices?.[0]?.delta;
-      if(d && d.content) text+=d.content;
-    }
-    return text.trim();
+    try{
+      const text=await aiComplete([
+        {role:'system', content:QUIZ_SYS},
+        {role:'user', content:'要点内容：\n'+ctx+'\n\n请围绕上面这个要点出 '+QUIZ_N+' 道小题并附答案。'}
+      ]);
+      return String(text||'').trim();
+    }catch(e){ return ''; }
   })();
   quizInflight[key]=job;
   job.then(v=>{ if(v){ quizCache[key]=v; quizLsSet(key,v); } delete quizInflight[key]; },
@@ -2175,15 +2346,18 @@ function quizStart(key){
 function quizShow(out, text, cls){
   if(!out) return;
   out.className='know-ext-out '+(cls||'know-ext-ok');
-  out.textContent=deGlue(text);      // 出题库/云端题目同样过一遍粘连修正
+  out.textContent=plainify(deGlue(text));   // 出题库/联网题目同样过一遍粘连修正与 markdown 抹平
 }
-async function knowExtendGenText(out){
-  const key=quizKey();
+// force=true 表示「换一组」：跳过内置题库与旧缓存，强制重新出题
+async function knowExtendGenText(out, force){
+  const key=quizCacheKey();
   if(out){ out.className='know-ext-out'; out.textContent='出题中…'; }
-  const baked=await quizBaked(key);
-  if(baked){ quizCache[key]=baked; quizShow(out,baked); return; }
-  const saved=quizCache[key]||quizLsGet(key);
-  if(saved){ quizCache[key]=saved; quizShow(out,saved); return; }
+  if(!force){
+    const baked=await quizBaked(quizKey());
+    if(baked){ quizCache[key]=baked; quizShow(out,baked); return; }
+    const saved=quizCache[key]||quizLsGet(key);
+    if(saved){ quizCache[key]=saved; quizShow(out,saved); return; }
+  }
   quizShow(out, quizWaitMsg(), '');
   const v=await quizStart(key);
   if(v) quizShow(out, quizCache[key]||v);
@@ -2194,8 +2368,8 @@ async function hydrateExtendOut(){
   try{
     if(!knowCfg || knowCfg.kind!=='text' || knowMode!=='extend') return;
     const out=$('#knowExtendOut'); if(!out) return;
-    const key=quizKey();
-    const baked=await quizBaked(key);
+    const key=quizCacheKey();
+    const baked=await quizBaked(quizKey());
     if(baked){ quizShow(out,baked); return; }
     const saved=quizCache[key]||quizLsGet(key);
     if(saved){ quizCache[key]=saved; quizShow(out,saved); return; }
@@ -2226,30 +2400,15 @@ async function knowExtendGen(){
     // ② 文本资料：走本地出题库 / 缓存 / 复用进行中的请求
     return knowExtendGenText(out);
   }
-  // ③ 未命中的词条：走云端 AI
+  // ③ 未命中的词条：走联网 AI（云端直连 / 自建中继）
   let sysC, usrC;
   sysC='你是初中英语老师，为学生制作例句。要求：① 一次给 3 个例句，必须由浅入深（第1句最短最基础，第2句贴近日常，第3句稍长或含常见搭配/时态变化）；② 若该词条有形态变化，先单独一行列出全部形态（动词：原形/第三人称单数/过去式/过去分词/现在分词），并让例句尽量体现不同形态；③ 每句英文下一行紧跟中文翻译；④ 最后用一行说明用法要点或易错点。不要任何多余文字。';
   usrC='词条：'+word+'\n（若英文有粘连或夹杂中文释义、词性标注，请先还原成正确英文，再举例。）';
   out.className='know-ext-out'; out.textContent='未收录，正在联网生成…';
-  const ok = await ensureKnowCloud();
-  if(!ok || !knowCloudReady || !knowCloud){ out.className='know-ext-out know-ext-fallback'; out.textContent= fallbackExtend(word); return; }
   try{
-    const model=pickChatModel();
-    if(!model) throw new Error('NO_MODEL');
-    let text='';
-    for await(const c of knowCloud.llm.chat.completions.create({
-      model: model.id,
-      messages:[
-        {role:'system', content:sysC},
-        {role:'user', content:usrC}
-      ],
-      stream:true, temperature:0.6
-    })){
-      const d=c.choices?.[0]?.delta;
-      if(d && d.content) text+=d.content;
-    }
+    const text=await aiComplete([{role:'system', content:sysC},{role:'user', content:usrC}]);
     out.className='know-ext-out know-ext-ok';
-    out.textContent=(text.trim()||'(未返回内容)');
+    out.textContent=plainify(String(text||'').trim()||'(未返回内容)');
   }catch(e){
     out.className='know-ext-out know-ext-fallback';
     out.textContent= fallbackExtend(word);

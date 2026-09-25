@@ -1,96 +1,446 @@
 {
  "meta": {
   "name": "英语出题库",
-  "version": 1,
-  "updated": "2026-09-24",
-  "note": "本地出题库：文本型知识资料的小题由云端模型批量生成后内置，运行时秒出；未收录时才回退云端。",
-  "count": 17
+  "version": 2,
+  "updated": "2026-09-25",
+  "note": "本地出题库：键为「资料标题##要点名」（##全部 = 整份资料综合），每条 6 道小题，由云端模型批量生成后内置，运行时秒出；未收录或点「换一组」时才联网生成。",
+  "count": 87
  },
  "entries": {
-  "Unit 1（核心知识）": {
-   "t": "一、单词拼写：达芬奇非常聪明，他在很多不同的领域都有非凡的才能。（根据音标 /'tæləntɪd/ 和句意写出单词）\nLeonardo da Vinci was extremely intelligent, and he was unusually ________ in many different fields.\n答案：talented\n\n二、短语翻译：恐龙大约在6600万年前突然灭绝了。（根据汉语提示写出短语）\nDinosaurs suddenly ________ ________ about 66 million years ago.\n答案：died out\n\n三、语法填空：用 some 或 any 填空，使句子完整、正确。\nWould you like ________ bananas? I have ________ in my bag, but I don't have ________ apples.\n答案：some; some; any",
+  "Unit 1（核心知识）##一、核心词汇": {
+   "t": "1. 根据句意及首字母提示补全单词：Thomas Edison was a very i______ man and he invented many things.\n答案：intelligent\n\n2. 用括号中所给单词的适当形式填空：Lang Lang is a ______ (talent) pianist and many people like his music.\n答案：talented\n\n3. 选择最佳答案：The old man can ______ remember what happened on that day, because it was too terrible.\nA. maybe  B. perhaps  C. completely  D. hardly\n答案：C\n\n4. 句型转换：The book is about the birth of a famous artist.（改为一般疑问句）\n答案：Is the book about the birth of a famous artist?\n\n5. 完成句子：我们应该学会独立组织我们的学习活动。\nWe should learn to ______ our study activities by ourselves.\n答案：organize\n\n6. 根据句意，用适当的介词填空：Please write your name ______ the top of the notebook.\n答案：at",
    "file": "/知识梳理/Unit 1（核心知识）.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 1（知识梳理）": {
-   "t": "1. 根据汉语意思写出正确的单词：达·芬奇非常聪明，他在很多不同的领域都有非凡的才能。Da Vinci was extremely intelligent, and he was unusually ________ (有才能的) in many different fields.\n答案：talented\n\n2. 用括号中所给单词的适当形式填空：Some dinosaurs were as ________ (small) as chickens, and others were as big as ten elephants.\n答案：small\n\n3. 根据汉语意思完成句子：这些天有任何重要的事情吗？Is there ________ ________ these days?\n答案：anything important",
+  "Unit 1（核心知识）##二、核心短语": {
+   "t": "将下列中文翻译成英文：灭绝\n答案：die out\n\n用恰当的短语填空：This kind of bird is ______ ______（与……相似）the one in the picture.\n答案：similar to\n\n单项选择：The two languages ______ each other, so they have some similar words.\nA. are related to  B. go back a long way  C. play an important role  D. die out\n答案：A\n\n句型转换：These books are in alphabetical order.（对划线部分提问，划线部分为 in alphabetical order）\n答案：How are these books?\n\n完成句子：熊猫已经在地球上生活了很久。\nPandas have ______ ______ ______ ______ on the earth.\n答案：gone back a long way\n\n根据首字母提示拼写单词：Please put these names in a______ order.\n答案：alphabetical",
+   "file": "/知识梳理/Unit 1（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 1（核心知识）##三、重点句型": {
+   "t": "1. DaVinci was extremely ________ (intelligence) and talented in many different fields.\n答案：intelligent\n2. His notebooks ________ some interesting drawings of flying machines and other vehicles.\nA. include  B. includes  C. including  D. included\n答案：A\n3. Some dinosaurs were as small as chickens, and ________ were as big as ten elephants.\n答案：others\n4. About 66 million years ago, dinosaurs suddenly ________ ________.\n答案：died out\n5. They were similar ________ early Chinese encyclopaedias because they included works by different scholars.\n答案：to\n6. Yuan spent his whole life ________ (develop) different kinds of hybrid rice.\n答案：developing",
+   "file": "/知识梳理/Unit 1（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 1（核心知识）##四、核心语法": {
+   "t": "1. 用 some 或 any 填空：I'm thirsty. Could you give me ______ water?\n答案：some\n\n2. 用 some 或 any 填空：He doesn't have ______ brothers or sisters.\n答案：any\n\n3. 单项选择：There isn't ______ in the classroom. Everyone is on the playground.\nA. somebody  B. anybody  C. nobody\n答案：B\n\n4. 用括号内单词的正确形式填空：Everyone ______ (like) music in our class.\n答案：likes\n\n5. 将下列句子改为否定句：I have something important to tell you.\n答案：I don't have anything important to tell you.\n\n6. 根据汉语意思完成句子，每空一词：你想喝点什么吗？\nWould you like ______ ______ ______?\n答案：something to drink",
+   "file": "/知识梳理/Unit 1（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 1（核心知识）##全部": {
+   "t": "1. 用括号内所给单词的适当形式填空：Da Vinci was unusually ________ (talent) in many different fields.\n答案：talented\n2. 根据汉语意思完成句子：恐龙大约6600万年前突然灭绝了。Dinosaurs suddenly ________ ________ about 66 million years ago.\n答案：died out\n3. 单项选择：Yuan Longping spent his ________ life developing different kinds of hybrid rice.\nA. whole  B. original  C. prehistoric  D. artistic\n答案：A\n4. 用 some 或 any 填空：Would you like ________ bananas?\n答案：some\n5. 单项选择：There isn't ________ in the classroom.\nA. anybody  B. somebody  C. nobody  D. everybody\n答案：A\n6. 将下列句子翻译成英语：每个人都有他自己的爱好。Everyone ________ his own hobby.\n答案：has",
+   "file": "/知识梳理/Unit 1（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 1（知识梳理）##第 1 部分": {
+   "t": "1. 根据音标写出下列单词：/ˈdaɪnəsɔː(r)/ ________；/ˈteləntɪd/ ________；/ˈɔːɡənaɪz/ ________。  \n答案：dinosaur；talented；organize\n\n2. 用方框中所给短语的适当形式填空：be talented in, die out, be related to, go back a long way  \n(1) This kind of bird ________ the eagle.  \n(2) The tradition of eating mooncakes ________ in China.  \n(3) Many animals will ________ if we don't protect them.  \n(4) Lang Lang ________ playing the piano.  \n答案：(1) is related to (2) goes back a long way (3) die out (4) is talented in\n\n3. 单项选择：Yuan Longping spent his whole life ________ hybrid rice.  \nA. develop　B. developing　C. to develop　D. developed  \n答案：B\n\n4. 按要求完成句子：Da Vinci was talented in many different fields.（改为一般疑问句）  \n________ Da Vinci ________ in many different fields?  \n答案：Was；talented\n\n5. 根据汉语意思完成句子，每空一词：有些恐龙像鸡一样小，有些像十头大象一样大。  \nSome dinosaurs were ________ ________ ________ chickens, and ________ were as big as ten elephants.  \n答案：as small as；others\n\n6. 用 some 或 any 填空：  \n(1) There are ________ interesting drawings in his notebook.  \n(2) Do you have ________ questions about dinosaurs?  \n(3) I don't have ________ brothers or sisters.  \n答案：(1) some (2) any (3) any",
    "file": "/知识梳理/Unit 1（知识梳理）.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 2（核心知识）": {
-   "t": "用所给单词的适当形式填空：The old man replied ______ (with) hesitation and said he just wanted rice.\n答案：without\n\n根据中文提示写出正确的短语：我们需要核对火车或航班时刻表。We need to check the train or ______ ______.\n答案：flight schedule\n\n用英语写出“第32”：______\n答案：thirty-second",
+  "Unit 1（知识梳理）##一、 some 和 any的用法": {
+   "t": "1. 用 some 或 any 填空：I have ______ questions to ask you.\n答案：some\n\n2. 用 some 或 any 填空：Do you have ______ brothers or sisters?\n答案：any\n\n3. 选出正确的一项：Would you like ______ tea?\nA. any  B. some  C. many  D. a\n答案：B\n\n4. 句型转换：I have some money.（改为否定句）\n答案：I don't have any money.\n\n5. 完成句子：这所学校的任何一个学生都不应该迟到。（每空一词）\n______ student in this school should ______ be late.\n答案：Any; not\n\n6. 用 some 或 any 填空：There isn't ______ milk in the fridge. You need to buy ______.\n答案：any; some",
+   "file": "/知识梳理/Unit 1（知识梳理）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 1（知识梳理）##二、复合不定代词": {
+   "t": "1. 用 someone, anyone, nobody, everything 填空：______ is here, so we can begin the meeting.\n答案：Everyone\n\n2. 选择填空：There is ______ in the box. It is empty.\nA. something  B. anything  C. nothing  D. everything\n答案：C\n\n3. 选择填空：I have ______ important to tell you.\nA. something  B. anything  C. nothing  D. everything\n答案：A\n\n4. 选择填空：______ in our class likes Mr. Wang because he is kind.\nA. Someone  B. Anyone  C. Everyone  D. Nobody\n答案：C\n\n5. 句型转换：There is something interesting in today's newspaper.（改为一般疑问句）\n答案：Is there anything interesting in today's newspaper?\n\n6. 完成句子：每个人都应该保持安静。\n______ ______ keep quiet.\n答案：Everyone should",
+   "file": "/知识梳理/Unit 1（知识梳理）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 1（知识梳理）##全部": {
+   "t": "1. 用括号内所给单词的适当形式填空：Da Vinci was extremely ______ (intelligence), and he was unusually ______ (talent) in many different fields.\n答案：intelligent；talented\n2. 根据汉语意思完成句子：恐龙大约6600万年前突然灭绝了。About 66 million years ago, dinosaurs suddenly ______ ______.\n答案：died out\n3. 单项选择：Some dinosaurs were ______ small as chickens, and ______ were as big as ten elephants.\nA. so; others  B. as; others  C. as; other  D. so; the others\n答案：B\n4. 用方框中所给短语的适当形式填空：be famous for  /  one of  /  go back a long way  /  in alphabetical order\nThe editors organized the entries ______.\n答案：in alphabetical order\n5. 单项选择：—Would you like ______ to drink? —Yes, please. I'd like some orange juice.\nA. anything  B. something  C. everything  D. nothing\n答案：B\n6. 用括号内所给单词的适当形式填空：Either Tom or his friends ______ (be) coming to the party.\n答案：are",
+   "file": "/知识梳理/Unit 1（知识梳理）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 2（核心知识）##一、核心词汇": {
+   "t": "1. 根据中文意思写出正确的英语单词：航程；日程安排。\n答案：flight；schedule\n\n2. 用方框中的单词填空：Everywhere / Currently / Exactly\n________, more and more people are using mobile phones to check their schedules.\n答案：Currently\n\n3. 选择最佳答案：The word \"challenge\" in the sentence \"He challenged me to a game of chess\" means ________.\nA. 承诺  B. 向（某人）挑战  C. 回复  D. 检查\n答案：B\n\n4. 句型转换：I wonder where he is from.（改为同义句，用 do you think 改写）\n________ do you think he is from?\n答案：Where\n\n5. 用所给词的适当形式填空：He agreed ________ (check) the budget with me tomorrow morning.\n答案：to check\n\n6. 完成句子：这个符号代表百分之五十。\nThis symbol ________ 50 ________.\n答案：represents；per cent",
    "file": "/知识梳理/Unit 2（核心知识）.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 2（知识梳理）": {
-   "t": "She got to the airport early to check the flight ______ (时刻表).\n答案：schedule\n\nI ______ (同意) with you that the movie we saw last night was really exciting.\n答案：agree\n\nThe population of the city continued to rise ______ (急剧地) between 1950 and 2000.\n答案：sharply",
+  "Unit 2（核心知识）##二、核心短语": {
+   "t": "1. 根据中文提示写出正确的英文短语：航班时刻表 ______  \n答案：flight schedule\n\n2. 用方框中的短语填空：go up / go down  \nThe price of the toy cars may ______ if fewer people buy them.  \n答案：go down\n\n3. 单项选择：Please ______ my phone number before you leave.  \nA. write down  B. go up  C. instead of  D. for a moment  \n答案：A\n\n4. 句型转换：They went to the park by bike instead of taking a bus.（改为同义句，用 instead of 的反义表达）  \nThey went to the park by bike ______ ______ taking a bus.  \n答案：rather than\n\n5. 完成句子：她毫不犹豫地回答了问题。  \nShe answered the question ______ ______.  \n答案：without hesitation\n\n6. 词义辨析：选词填空：for a moment / at the moment  \nCan you wait ______? I need to find my ticket.  \n答案：for a moment",
+   "file": "/知识梳理/Unit 2（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 2（核心知识）##三、重点句型": {
+   "t": "1. 根据句意和首字母提示填空：The old man came to the palace and the king c______ him to a game.\n答案：challenged\n\n2. 用所给词的适当形式填空：If you ______ (win) the game, you can have any prize.\n答案：win\n\n3. 单项选择：He looked at the small piece of gold in his hand and wondered ______ with it.\nA. what to do\nB. how to do\nC. what to do it\nD. how do\n答案：A\n\n4. 句型转换：The old man replied without hesitation.（改为同义句）\nThe old man replied ______ ______.\n答案：without hesitating\n\n5. 完成句子：想了一会儿之后，国王同意了。\nAfter ______ ______ it for a moment, the king agreed.\n答案：thinking about\n\n6. 根据汉语提示完成句子：然后我们需要核对火车或航班时刻表。\nAnd then we need to check the train or ______ ______.\n答案：flight schedule",
+   "file": "/知识梳理/Unit 2（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 2（核心知识）##四、核心语法（基数词和序数词）": {
+   "t": "1. 用英语写出“第12”这个序数词：______。\n答案：twelfth\n\n2. 选择填空：There are ______ students in our school, and ______ of them like playing basketball.\nA. five hundred; hundreds\nB. five hundreds; hundred\nC. five hundred; hundred\nD. five hundreds; hundreds\n答案：A\n\n3. 将下列句子中的时间改为用“past / to”表达：The film starts at 7:45.\n答案：The film starts at a quarter to eight.\n\n4. 完成句子：我们教室长8米，宽6米。\nOur classroom is ______ ______ ______ and ______ ______ ______.\n答案：eight meters long; six meters wide\n\n5. 用英语表达“3/4”和“11%”：\n3/4：______；11%：______。\n答案：three quarters / three fourths; eleven per cent\n\n6. 句型转换：He is a boy. He is eight years old.（合并为一句，用复合形容词改写）\n答案：He is an eight-year-old boy.",
+   "file": "/知识梳理/Unit 2（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 2（核心知识）##全部": {
+   "t": "用所给单词的正确形式填空：Look! There are five ______ (thousand) people waiting for the flight at the airport.\n答案：thousand\n\n根据句意选择正确的单词填空：He looked at the small piece of gold in his hand and ______ (wondered / replied) what to do with it.\n答案：wondered\n\n用英语写出“9 减 3 等于 6”：________________________________________\n答案：9 minus 3 equals/is 6.\n\n将下列句子翻译成英语：想了一会儿之后，国王同意了。\n答案：After thinking about it for a moment, the king agreed.\n\n单项选择：There are ______ students in our school, and ______ of them are from the countryside.\nA. two thousands; hundreds    B. two thousand; hundreds\nC. two thousand; hundred      D. two thousands; hundred\n答案：B\n\n用英语表示时间 8:30 和 11:45（各写两种表达方式）。\n答案：8:30 — at half past eight / at eight thirty；11:45 — at a quarter to twelve / at eleven forty-five",
+   "file": "/知识梳理/Unit 2（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 2（知识梳理）##全部": {
+   "t": "The old man replied ______ hesitation and asked for one grain of rice.\n答案：without\n\n用恰当的介词填空：Please write ______ the flight number before you leave.\n答案：down\n\n用 challenge 的适当形式填空：Our school ______ theirs to a basketball match yesterday.\n答案：challenged\n\n单项选择：I don’t like coffee. I’ll have tea ______.\nA. instead of  B. instead  C. too  D. also\n答案：B\n\n用括号内所给词的适当形式填空：Two ______ (hundred) students are in the hall.\n答案：hundred\n\n根据句意填空：The population of the city went ______ sharply after 2000.\n答案：up",
    "file": "/知识梳理/Unit 2（知识梳理）.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 3（核心知识）": {
-   "t": "用所给单词的正确形式填空：The Internet has brought big changes to ______ (day) life.\n答案：everyday\n\n根据汉语意思完成句子：未来，汽车将与智慧城市网络共享数据。In the future, cars will ______ data ______ the smart city network.\n答案：share; with\n\n用所给单词的正确形式填空：This computer is much ______ (powerful) than that one.\n答案：more powerful",
+  "Unit 3（核心知识）##一、核心词汇": {
+   "t": "用所给单词的适当形式填空：The Internet has changed our lives in many ways, and its ______ (affect) on young people is huge.\n答案：effect\n选词填空（每词限用一次）：positive / negative / social / digital\nMy father often reads news on his ______ newspaper, while my mother prefers paper books.\n答案：digital\n根据句意和首字母提示补全单词：The heavy rain caused a serious f______ in the village, and many people lost their homes.\n答案：flood\n单项选择：\nThe teacher warned us ______ in the river because it was too dangerous.\nA. not swim  B. not to swim  C. don't swim  D. to not swim\n答案：B\n句型转换：People use mobile phones to download apps every day.（改为被动语态）\nMobile phones ______ ______ to download apps every day.\n答案：are used\n完成句子（每空一词）：这家公司主要在网络上销售电脑软件。\nThis company mainly sells computer ______ ______ on the Internet.\n答案：software；online（或 software；websites，若强调网络平台也可，但“on the Internet”已给出，此处更常填 online）",
    "file": "/知识梳理/Unit 3（核心知识）.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 3（知识梳理）": {
-   "t": "一、根据汉语提示写出正确的单词：网络让我们的生活更加便利，我们可以通过它和世界各地的人保持联系。\n答案：network\n\n二、用括号中所给单词的适当形式填空：There ________ (be) fewer traffic accidents because cars will drive themselves in the future.\n答案：will be\n\n三、根据汉语意思完成句子：在我看来，我们应该明智地使用互联网，不要让它占据我们太多时间。\n________ ________ ________, we should use the Internet wisely and don't let it take up too much of our time.\n答案：In my opinion",
+  "Unit 3（核心知识）##二、核心短语": {
+   "t": "1. 单词拼写：The Internet can c________ us to people all over the world.\n答案：connect\n\n2. 词义辨析：选出与“in person”意思最接近的一项：A. by phone  B. face to face  C. by letter\n答案：B\n\n3. 固定搭配：Mobile payment has ________ big changes ________ our daily life.\nA. brought; to  B. taken; for  C. warned; about\n答案：A\n\n4. 句型转换：We should share the good news with our friends.（改为同义句）\nWe should ________ the good news ________ our friends.\n答案：share; with\n\n5. 语法选择：The use of computers has a great effect ________ the way we study.\nA. in  B. on  C. at\n答案：B\n\n6. 完成句子：我们应该与父母保持联系。\nWe should ________ ________ ________ ________ our parents.\n答案：stay in touch with",
+   "file": "/知识梳理/Unit 3（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 3（核心知识）##三、重点句型": {
+   "t": "1. 根据汉语提示写出单词：The internet has brought big ________ (变化) to everyday life.\n答案：changes\n\n2. 用括号中所给词的适当形式填空：In the future, even more things ________ (connect) to the internet.\n答案：will be connected\n\n3. 单项选择：Some computers are even ________ than human beings.\nA. smart  B. smarter  C. smartest  D. the smartest\n答案：B\n\n4. 句型转换：Smart cities will be more eco-friendly than cities today. (改为一般疑问句)\n答案：Will smart cities be more eco-friendly than cities today?\n\n5. 完成句子：事故将更少，因为汽车将自动驾驶。\nThere will be ________ ________ because cars will drive themselves.\n答案：fewer accidents\n\n6. 根据汉语意思完成句子：你认为互联网对我们的日常生活有负面影响吗？\nDo you think the internet has ________ ________ on our daily lives?\n答案：negative effects",
+   "file": "/知识梳理/Unit 3（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 3（核心知识）##四、核心语法【形容词的比较级和最高级（一）】": {
+   "t": "1. 用所给词的适当形式填空：Of all the students in our class, Li Ming is ________ (tall).\n答案：the tallest\n\n2. 单项选择：This book is ________ than that one. A. interesting B. more interesting C. most interesting\n答案：B\n\n3. 用所给词的适当形式填空：The weather is getting ________ and ________ (hot) in summer.\n答案：hotter; hotter\n\n4. 单项选择：Shanghai is one of the ________ cities in China. A. large B. larger C. largest\n答案：C\n\n5. 句型转换：Tom is taller than Jack.（改为同义句，用比较级 the 结构）Tom is ________ ________ of the two.\n答案：the taller\n\n6. 完成句子：你学习越努力，你取得的进步就越大。________ ________ you study, ________ ________ progress you will make.\n答案：The harder; the greater",
+   "file": "/知识梳理/Unit 3（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 3（核心知识）##全部": {
+   "t": "1. 用所给词的适当形式填空：The internet has brought big ______ (change) to everyday life.\n答案：changes\n\n2. 根据汉语意思完成句子：未来，会有更多事物接入互联网，因此生活将继续发生变化。\nIn the future, even more things will be ______ ______ the internet, so life will continue to change.\n答案：connected to\n\n3. 单项选择：Some computers are even ______ than human beings.\nA. smart  B. smarter  C. smartest  D. the smartest\n答案：B\n\n4. 用所给词的适当形式填空：Of all the cities, Shanghai is one of the ______ (large) cities in China.\n答案：largest\n\n5. 根据汉语意思完成句子：你学习越努力，你知道得就越多。\n______ ______ you study, ______ ______ you know.\n答案：The harder; the more\n\n6. 单项选择：Do you think the internet has negative ______ on our daily lives?\nA. effect  B. effects  C. affect  D. affects\n答案：B",
+   "file": "/知识梳理/Unit 3（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 3（知识梳理）##全部": {
+   "t": "1. 用方框中所给单词的适当形式填空：The heavy rain caused a serious ________ in the village, and many people lost their homes.\n答案：flood\n2. 根据汉语意思完成句子：这家公司给我们的日常生活带来了巨大的变化。\nThe company has ________ big ________ to our everyday life.\n答案：brought; changes\n3. 用适当的介词填空：Please stay in touch ________ your parents when you are away from home.\n答案：with\n4. 单项选择：There ________ a football match on TV tomorrow evening.\nA. is  B. was  C. will be  D. have\n答案：C\n5. 用括号内所给单词的适当形式填空：This bag is much ________ (heavy) than that one.\n答案：heavier\n6. 根据汉语意思完成句子：在我看来，我们应该明智地使用互联网。\n________ my ________, we should use the Internet wisely.\n答案：In; opinion",
    "file": "/知识梳理/Unit 3（知识梳理） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 4（核心知识）": {
-   "t": "用括号内所给单词的正确形式填空：Although this invention was great, some of the later ones were even ______ (good).\n答案：better\n根据汉语意思写出正确的英语短语：毫无疑问，轮子是有史以来最重要的发明之一。\n答案：Without doubt, the wheel is one of the most important inventions of all time.\n根据句意及首字母提示补全单词：The two cities are 200 kilometres apart, so the d______ between them is quite long.\n答案：distance",
+  "Unit 4（核心知识）##一、核心词汇": {
+   "t": "1. 根据英文释义写出单词：a large round object filled with air, used as a toy or decoration.\n答案：balloon\n\n2. 用括号中所给单词的正确形式填空：I don't think the film is interesting. ______ (person), I prefer the one we saw last week.\n答案：Personally\n\n3. 选择正确答案：Although it was raining heavily, ______ they went to school on time.\nA. but  B. /  C. so  D. however\n答案：B\n\n4. 将下列句子改为同义句，每空一词：You should stay away from junk food.\nYou should ______ ______ junk food.\n答案：avoid eating\n\n5. 从方框中选择合适的单词填空：depend, depend on, depended\n—Will you go to the park tomorrow?\n—It ______ the weather. If it rains, I won't go.\n答案：depends on\n\n6. 根据汉语意思完成句子，每空一词：就我个人而言，我认为这个决定取决于你。\n______ ______ ______, I think this decision ______ ______ you.\n答案：Personally speaking, depends on",
    "file": "/知识梳理/Unit 4（核心知识）.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 4（知识梳理）": {
-   "t": "1. 根据汉语意思写出英语短语：步行；依靠；毫无疑问。\n答案：on foot；depend on；without doubt\n\n2. 用括号中所给单词的适当形式填空：This small village ______ (depend) on the local river for water.\n答案：depends\n\n3. 根据汉语意思完成句子：我的发明能帮助人们避开交通堵塞。它不用汽油，依靠太阳能驱动。\n答案：My invention can help people avoid traffic jams. It doesn't use petrol and uses solar power.",
+  "Unit 4（核心知识）##二、核心短语": {
+   "t": "根据句意及首字母提示补全单词：The Wright brothers invented the first successful airplane, but before that, people traveled by s________ locomotive.\n答案：steam\n\n从方框中选择合适的短语填空：Don't ________ him just because he made a mistake. Everyone needs encouragement.\n答案：make fun of\n\n用所给短语的适当形式填空：A large number of tourists ________ (visit) the Great Wall every year.\n答案：visit\n\n单项选择：The accident ________ on a rainy night last week.\nA. took place  B. takes place  C. will take place  D. is taking place\n答案：A\n\n按要求完成句子，每空一词：You can depend on him to finish the task.（改为同义句）\nYou can ________ ________ him to finish the task.\n答案：rely on\n\n将下列句子翻译成英语：毫无疑问，学好英语对我们很重要。\n答案：Without doubt, learning English well is very important to us.",
+   "file": "/知识梳理/Unit 4（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 4（核心知识）##三、重点句型": {
+   "t": "1. 根据句意及首字母提示补全单词：The wheel is one of the most important i________ of all time.\n答案：inventions\n\n2. 用括号中所给单词的适当形式填空：A candle does not produce as ________ (much) light as a light bulb.\n答案：much\n\n3. 单项选择：Although this meant that people could travel further and faster, ________ large amounts of goods was still a difficult job.\nA. transport  B. transporting  C. transported  D. transports\n答案：B\n\n4. 句型转换：The wheel changed the way humans move. It also allowed us to build all types of amazing machines. (用not only...but also...合并为一句)\n答案：The wheel not only changed the way humans move, but it also allowed us to build all types of amazing machines.\n\n5. 完成句子：有了电灯，人们晚上能做的事和白天一样多。\nWith electric lights, people can do ________ ________ things in the evenings ________ they can in the daytime.\n答案：as many; as\n\n6. 翻译句子：毫无疑问，轮子是有史以来最重要的发明之一。\n答案：Without doubt, the wheel is one of the most important inventions of all time.",
+   "file": "/知识梳理/Unit 4（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 4（核心知识）##四、核心语法：形容词的原级、比较级和最高级（二）": {
+   "t": "用 good 的适当形式填空：This is the ______ film I have ever seen.\n答案：best\n\n用括号内单词的适当形式填空：His English is ______ (bad) than mine.\n答案：worse\n\n单项选择：There are ______ books in our library as in theirs.\nA. as many  B. as much  C. more  D. most\n答案：A\n\n句型转换：Tom is not as tall as Jack.（改为同义句，每空一词）\nJack is ______ ______ Tom.\n答案：taller than\n\n完成句子：这个房间是那个房间的三倍大。\nThis room is three times ______ ______ ______ that one.\n答案：as big as\n\n翻译句子：他尽可能快地跑向学校。\nHe runs to school as ______ as he ______.\n答案：fast; can",
+   "file": "/知识梳理/Unit 4（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 4（核心知识）##全部": {
+   "t": "用所给单词的适当形式填空：Although the trip was tiring, we still felt very ______ (excite) about the amazing machines we saw.\n答案：excited\n\n根据句意及首字母提示补全单词：You should a______ the picture to the wall with tape so that everyone can see it clearly.\n答案：attach\n\n翻译句子：毫无疑问，轮子是有史以来最重要的发明之一。\n答案：Without doubt, the wheel is one of the most important inventions of all time.\n\n用适当的介词或副词填空：In the past, people often traveled ______ foot, but now they can go almost anywhere by plane.\n答案：on\n\n单项选择：My brother is ______ than me, but I am ______ in my class.\nA. taller; the tallest\nB. tall; tallest\nC. taller; tallest\nD. more tall; the tallest\n答案：A\n\n根据中文提示完成句子：这个房间是那个房间的两倍大。\nThis room is ______ ______ ______ that one.\n答案：twice as big as",
+   "file": "/知识梳理/Unit 4（核心知识）.json",
+   "gen": "2026-09-25"
+  },
+  "Unit 4（知识梳理）##全部": {
+   "t": "1. 用括号中所给单词的适当形式填空：The wheel is one of the most important ______ (invent) of all time.\n答案：inventions\n2. 根据汉语意思完成句子：毫无疑问，轮子是有史以来最重要的发明之一。\n______ ______, the wheel is one of the most important inventions of all time.\n答案：Without doubt\n3. 单项选择：A large amount of time ______ needed to finish this project.\nA. are  B. is  C. were  D. be\n答案：B\n4. 用括号中所给单词的适当形式填空：Not only you but also he ______ (be) good at English.\n答案：is\n5. 单项选择：Which of the following describes the use of “be able to”?\nA. I am able to speak three languages.\nB. I am as tall as my brother.\nC. I have as many books as you do.\nD. I depend on my parents for food.\n答案：A\n6. 根据汉语意思完成句子：我的发明能帮人们避免交通堵塞。\nMy invention will help people ______ ______ ______.\n答案：avoid traffic jams",
    "file": "/知识梳理/Unit 4（知识梳理）.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 5（核心知识）": {
-   "t": "用所给单词的正确形式填空：They are very ________ (grate) that the host family let them stay in their home.\n答案：grateful\n\n根据中文提示写出正确的英语短语：处理；应付\n答案：deal with\n\n用括号内动词的适当时态填空：She ________ (not see) the Great Wall yet, and she hasn’t been to the Summer Palace either.\n答案：hasn’t seen",
+  "Unit 5（核心知识）##一、核心词汇": {
+   "t": "1. 根据汉语意思写单词：交流；交换 ________\n答案：exchange\n\n2. 用括号内单词的正确形式填空：She felt very ________ (nerve) before the English speech.\n答案：nervous\n\n3. 选词填空：I'm ________ because I don't know anyone here.（lonely / grateful）\n答案：lonely\n\n4. 句型转换：I have already finished my homework.（改为否定句）\n答案：I haven't finished my homework yet.\n\n5. 单项选择：It is important for students to learn to deal ________ problems by themselves.\nA. with  B. for  C. about  D. from\n答案：A\n\n6. 完成句子：在外国生活时，你可能会感到想家。\nWhen you live in a foreign country, you may ________ ________.\n答案：feel homesick",
    "file": "/知识梳理/Unit 5（核心知识） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 5（知识梳理）": {
-   "t": "“我以前看过关于长城的视频，但亲眼看到它绝对是一次难忘的经历！”用英语怎么说？\n答案：I've watched videos about the Great Wall before, but seeing it in person is definitely an unforgettable experience!\n\n用 lonely 或 alone 填空：Anna can go to school ______, but she never feels ______ because she has many friends.\n答案：alone; lonely\n\n根据写作提示，把“我仍然记得我教你们包饺子的那一天”翻译成英语（用上 remember the day when）。\n答案：I still remember the day when I taught you how to make dumplings.",
+  "Unit 5（核心知识）##二、核心短语": {
+   "t": "根据句意及首字母提示补全单词：I watched a wonderful Beijing o__________ with my parents last night.\n答案：opera\n\n用所给词的适当形式填空：The Great Wall snakes its __________ (way) through the mountains.\n答案：way\n\n选择填空：When you study in a foreign country, you may experience culture __________.\nA. shock  B. surprise  C. problem  D. trouble\n答案：A\n\n句型转换：I don't know how I can deal with this problem.（改为同义句）\nI don't know how __________ __________ with this problem.\n答案：to deal\n\n完成句子：他很快就适应了新学校，并且感到舒适自在。\nHe soon got used to the new school and __________ __________ __________.\n答案：felt at home\n\n选择填空：My cousin lives with a host __________ when she studies in Canada.\nA. family  B. home  C. house  D. room\n答案：A",
+   "file": "/知识梳理/Unit 5（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 5（核心知识）##三、重点句型": {
+   "t": "1. 根据中文提示写出单词：I'm really ________ (感激的) that they let me stay in their home.\n答案：grateful\n\n2. 用 already, yet 或 either 填空：She has not seen the Great Wall ________, and she has not been to the Summer Palace ________.\n答案：yet; either\n\n3. 单项选择：I plan to ________ with them when I return home.\nA. keep in touch  B. keep to touch  C. keep touching  D. keep in touching\n答案：A\n\n4. 句型转换：I have learnt a bit of tai chi. (改为一般疑问句)\n答案：Have you learnt a bit of tai chi?\n\n5. 单项选择：If you travel to a foreign country, you may feel ________, strange or anxious.\nA. confused  B. confusing  C. confuse  D. confuses\n答案：A\n\n6. 完成句子：到目前为止，这是一次很棒的经历。\n________ ________, it's been a fantastic experience.\n答案：So far",
+   "file": "/知识梳理/Unit 5（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 5（核心知识）##四、核心语法（现在完成时）": {
+   "t": "一、用括号内动词的正确形式填空。\nMy father ______ (finish) his work already.\n答案：has finished\n\n二、选词填空：用 have gone to, have been to 或 have been in 填空。\nLily is not here. She ______ the library.\n答案：has gone to\n\n三、单项选择。\n— ______ you ever ______ to the Great Wall?\n— Yes, I have.\nA. Have; gone  B. Have; been  C. Has; been\n答案：B\n\n四、句型转换：将下列句子改为否定句。\nTom has already read this book.\n答案：Tom hasn't read this book yet.\n\n五、完成句子：根据汉语意思，补全英文句子，每空一词。\n我叔叔在上海待了两年了。\nMy uncle ______ ______ ______ Shanghai for two years.\n答案：has been in\n\n六、用 for 或 since 填空。\nWe have known each other ______ we were ten years old.\n答案：since",
+   "file": "/知识梳理/Unit 5（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 5（核心知识）##全部": {
+   "t": "1. 用括号内单词的正确形式填空：I'm really ______ (grate) that they let me stay in their home.\n答案：grateful\n\n2. 根据汉语意思写出对应的英语短语：解决；处理 ______\n答案：deal with\n\n3. 单项选择：— Have you seen the Great Wall ______? — No, I haven't seen it ______.\nA. yet; already  B. already; yet  C. yet; yet  D. already; already\n答案：C\n\n4. 用所给动词的正确形式填空：She ______ (not be) to the Summer Palace yet.\n答案：hasn't been\n\n5. 单项选择：My brother ______ Shanghai. He won't come back until next week.\nA. has been to  B. has gone to  C. has been in  D. went to\n答案：B\n\n6. 翻译句子：如果你去国外旅行，你可能会感到困惑、陌生或焦虑。\n答案：If you travel to a foreign country, you may feel confused, strange or anxious.",
+   "file": "/知识梳理/Unit 5（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 5（知识梳理）##全部": {
+   "t": "用所给单词的正确形式填空：They let me stay in their home, and I'm really ______ (grateful) for that.\n答案：grateful\n单项选择：The small river ______ its way through the quiet village.\nA. snakes  B. snake  C. is snaking  D. snaked\n答案：A\n用适当的介词填空：I've learnt a bit ______ tai chi, and I really enjoy it.\n答案：of\n单项选择：—Have you seen the Great Wall ______?  —No, I haven't seen it ______.\nA. yet; already  B. already; yet  C. yet; yet  D. already; already\n答案：C\n根据汉语提示完成句子：我打算回家后和他们保持联系。\nI plan to ______ ______ ______ with them when I return home.\n答案：keep in touch\n书面表达（写出一句感谢的话）：假设你是一名在北京待了一年的交换生，请用英语写一句话，表达你对寄宿家庭的感激之情，要求使用 be grateful that 结构。\n答案：I'm really grateful that you let me stay in your home and took good care of me.",
    "file": "/知识梳理/Unit 5（知识梳理） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 6（核心知识）": {
-   "t": "题目：请根据中文意思写出正确的单词：士兵 ______\n答案：soldier\n\n题目：请将下列短语翻译成英文：开……的玩笑 ______\n答案：make jokes about\n\n题目：用括号中所给动词的适当形式填空：I ______ (finish) my homework already, so I can go out to play now.\n答案：have finished",
+  "Unit 6（核心知识）##一、核心词汇": {
+   "t": "1. 根据首字母提示填单词：The old man likes reading books by Mo Yan, a famous a________.\n答案：author\n\n2. 用括号中所给单词的适当形式填空：The soldiers ________ (success) in taking the city at last.\n答案：succeeded\n\n3. 选词填空：The box is ________ (empty / full). There is nothing in it.\n答案：empty\n\n4. 句型转换：We crossed the river secretly.（改为同义句）\nWe crossed the river ________ ________.\n答案：in secret\n\n5. 单项选择：They had to stay at home ________ the heavy rain.\nA. because B. so C. because of\n答案：C\n\n6. 完成句子：敌人半夜袭击了这座小村庄。\nThe enemy ________ the small village at midnight.\n答案：attacked",
    "file": "/知识梳理/Unit 6（核心知识） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 6（知识梳理）": {
-   "t": "1. 士兵们在战争中勇敢地与敌人作战，最终取得了胜利。请根据中文提示补全句子：The soldiers ________ ________ the enemy bravely in the war and won the victory at last.\n答案：fought against\n\n2. 他们最终成功攻取了那座城市。请根据中文提示完成句子：They ________ ________ capturing the city in the end.\n答案：succeeded in\n\n3. 请用括号中所给词的适当形式填空：First, Tom had a clever idea. Then, everyone followed his advice and worked together. ________ (final), they solved the problem successfully.\n答案：Finally",
+  "Unit 6（核心知识）##二、核心短语": {
+   "t": "用括号内单词的正确形式填空：Don't ______ (make) jokes about others' appearance. It's not polite.\n答案：make\n从方框中选择合适的短语完成句子（be full of / be jealous of / be tired of）：I ______ doing the same thing every day. I need a change.\n答案：am tired of\n根据汉语意思完成句子，每空一词：他嫉妒他哥哥的新自行车。He ______ ______ ______ his brother's new bike.\n答案：is jealous of\n句型转换：She succeeded in passing the exam.（改为一般疑问句）______ she ______ in passing the exam?\n答案：Did; succeed\n单项选择：The bottle ______ orange juice. Please don't drink it all. A. is full of B. is tired of C. is jealous of D. makes jokes about\n答案：A\n根据句意及首字母提示补全单词：It's dangerous to go o______ in such bad weather.\n答案：onboard",
+   "file": "/知识梳理/Unit 6（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 6（核心知识）##三、重点句型": {
+   "t": "1. 用括号中所给单词的正确形式填空：The Greeks ________ (spend) ten years trying to take over the city of Troy.\n答案：spent\n\n2. 选词填空（so...that / such...that）：The wooden horse was ________ big ________ the Trojans couldn't take it with them.\n答案：so; that\n\n3. 单项选择：By midnight, the main square was empty, ________ the huge horse.\nA. besides  B. except for  C. because of  D. instead of\n答案：B\n\n4. 句型转换：The Greeks succeeded in capturing Troy in just one night with a clever trick.（对划线部分提问：in just one night）\n答案：How long did the Greeks succeed in capturing Troy with a clever trick?（或：When did the Greeks succeed in capturing Troy with a clever trick?）\n\n5. 根据汉语完成句子，每空一词：这些士兵在特洛伊人庆祝的时候偷偷地回来了。\nThese soldiers ________ ________ while the Trojans were celebrating.\n答案：came; back\n\n6. 根据句意及首字母提示补全单词：In the early morning of the third day, he asked his soldiers to fill 20 large boats with s________ men.\n答案：straw",
+   "file": "/知识梳理/Unit 6（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 6（核心知识）##四、核心语法（现在完成时和一般过去时）": {
+   "t": "1. 用括号中所给单词的正确形式填空：\nMy sister ______ (finish) her homework already. Now she can watch TV.\n答案：has finished\n\n2. 用括号中所给单词的正确形式填空：\nWe ______ (visit) the Science Museum last Friday.\n答案：visited\n\n3. 选择正确的词填空：\nI have ______ been to Beijing. I want to go there this summer.\nA. ever  B. never  C. just  D. yet\n答案：B\n\n4. 句型转换：\nThe meeting has been on for ten minutes.（改为同义句）\nThe meeting ______ ten minutes ______.\n答案：started; ago\n\n5. 单项选择：\n— ______ you ______ your homework yet?\n— Yes, I finished it half an hour ago.\nA. Did; finish  B. Have; finished  C. Do; finish  D. Are; finishing\n答案：B\n\n6. 完成句子：\nThey ______ (not visit) the museum this week. (现在还是这周，他们这周没参观过博物馆)\n答案：haven't visited",
+   "file": "/知识梳理/Unit 6（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 6（核心知识）##全部": {
+   "t": "用方框中所给单词的适当形式填空：The police found the ______ of an old city near the river.（备选词：remains / joke）\n答案：remains\n\n用适当的介词填空：The little boy likes to make jokes ______ his classmates, but sometimes they get angry.\n答案：about\n\n根据汉语意思完成句子，每空一词：他太小了，不能自己搬动那个箱子。He is ______ young ______ he can't carry the box by himself.\n答案：so; that\n\n用所给动词的适当形式填空：The Greeks ______ (succeed) in capturing the city of Troy in just one night.\n答案：succeeded\n\n用所给动词的适当形式填空：I ______ (never be) to Greece, but my cousin visited the country last year.\n答案：have never been\n\n用所给动词的适当形式填空：She ______ (work) in this company for three years, and she still works there now.\n答案：has worked",
+   "file": "/知识梳理/Unit 6（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 6（知识梳理）##全部": {
+   "t": "The film was so boring that I fell asleep in the cinema.\n答案：这部电影太无聊了，以至于我在电影院里睡着了。\n\nThey spent two hours finishing the difficult math problem yesterday.\n答案：昨天他们花了两个小时完成那道数学难题。\n\nShe has already seen the movie three times.\n答案：她已经看过这部电影三遍了。\n\nThe room is filled with the smell of fresh flowers.\n答案：房间里充满了鲜花的香气。\n\n用 wise 或 wisdom 的正确形式填空：The old man is known for his ______ ideas and he solved many difficult problems.\n答案：wise\n\n在写作中，为了让故事逻辑清晰，可以使用哪些连接词来连接不同情节？请写出至少四个。\n答案：First, Then, Next, Finally（也可写 At last）",
    "file": "/知识梳理/Unit 6（知识梳理） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 7（核心知识）": {
-   "t": "用所给单词的适当形式填空：Eating ______ (regular) is good for your health.\n答案：regularly\n根据中文提示写出短语：弄懂；弄清楚 ______\n答案：figure out\n语法填空：Unless you ______ (take) time to relax, your brain will find it hard to remember things.\n答案：take",
+  "Unit 7（核心知识）##一、核心词汇（黑体部分为重点词汇）": {
+   "t": "用所给单词的适当形式填空：He goes to bed at nine o'clock every day, so he has a ______ (regular) sleep habit.  \n答案：regular\n\n选词填空：The word \"bank\" has different meanings. You can know its meaning from the ______. (context / summary)  \n答案：context\n\n完成句子：多吃坚果尤其有助于保持健康。  \nEating more nuts ______ ______ helps maintain health.  \n答案：especially\n\n句型转换：The box has some old photos in it. (改为同义句)  \nThe box ______ some old photos.  \n答案：contains\n\n语法选择：Please write down the key points ______ you can remember them better.  \nA. so that  B. because  C. but  D. or  \n答案：A\n\n根据中文提示完成句子：他常常在考试前感到焦虑不安。  \nHe ______ ______ ______ before exams.  \n答案：tends to feel stressed",
    "file": "/知识梳理/Unit 7（核心知识） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 7（知识梳理）": {
-   "t": "把下列短语翻译成英语：保持思维活跃的生活状态。\n答案：live a mentally active life\n\n用所给词的适当形式填空：Eating too much junk food ______ (be) bad for your health.\n答案：is\n\n根据汉语提示完成句子：好的记忆方法在我们的学习中确实是宝贵的助力。\nGood memory methods are truly ______ ______ in our study.\n答案：valuable helpers",
+  "Unit 7（核心知识）##二、核心短语": {
+   "t": "将下列短语翻译成英语：识字卡片。\n答案：flash card\n\n用适当的介词填空：She makes a point ______ reading English aloud every morning.\n答案：of\n\n选出与“figure out”意思最接近的一项：A. 算出 B. 放弃 C. 推迟 D. 分发\n答案：A\n\n将下列句子改为同义句：Finally, and it is also important, we should protect the environment. （使用 last but not least）\n答案：Last but not least, we should protect the environment.\n\n选择正确的短语完成句子：The earthquake is a kind of ______. A. flash card B. natural disaster C. make a point of D. figure out\n答案：B\n\n完成句子：最后但同样重要的是，我们需要弄清楚这个问题。\nLast but not least, we need to ______ ______ this problem.\n答案：figure out",
+   "file": "/知识梳理/Unit 7（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 7（核心知识）##三、重点句型": {
+   "t": "1. 根据句意及首字母提示补全单词：You should make a p______ of trying new things every day.\n答案：point\n\n2. 用方框中所给短语的适当形式填空：make up / make a point of / last but not least\n______, don't forget to get plenty of sleep before the exam.\n答案：Last but not least\n\n3. 单项选择：You will be exercising your brain ______ improving your memory.\nA. as well as  B. as good as  C. as well  D. so well as\n答案：A\n\n4. 句型转换：It is important to get plenty of sleep.（改为同义句）\n______ plenty of sleep is important.\n答案：Getting\n\n5. 完成句子：除非你花时间放松，否则你的大脑会很难记住事情。\n______ you take time to relax, your brain will find ______ hard to remember things.\n答案：Unless；it\n\n6. 根据汉语意思完成句子：因此，随着年龄的增长，人们出现记忆丧失是很正常的。\nTherefore, it is ______ ______ for people to experience memory loss as they get older.\n答案：quite normal",
+   "file": "/知识梳理/Unit 7（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 7（核心知识）##四、核心语法（if和unless 引导的条件状语从句）": {
+   "t": "1. 用括号内单词的正确形式填空：If it ________ (be) fine tomorrow, we will go hiking.\n答案：is\n2. 选择填空：You won't pass the exam ________ you study hard.  A. if  B. unless  C. because  D. so\n答案：B\n3. 句型转换：If you don't get up early, you will miss the bus.（保持句意不变，用 unless 改写）\n答案：Unless you get up early, you will miss the bus.\n4. 完成句子：如果你每天练习说英语，你的口语将会提高。（每空一词）If you practice speaking English every day, your spoken English ________ ________.\n答案：will improve\n5. 选择填空：If you ________ the glass with hot water, it breaks.  A. will fill  B. filled  C. fill  D. are filling\n答案：C\n6. 同义句转换：Work hard, or you will fail the test.（用 if 改写）\n答案：If you don't work hard, you will fail the test.",
+   "file": "/知识梳理/Unit 7（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 7（核心知识）##全部": {
+   "t": "用括号内所给单词的正确形式填空：Eating ______ (regular) is good for your health and memory.\n答案：regularly\n\n根据汉语意思完成句子：最后但同样重要的是，保证充足的睡眠。______ ______ ______ ______, it is important to get plenty of sleep.\n答案：Last but not least\n\n单项选择：If you ______ too stressed, your memory ______ less sharp.\nA. get; becomes  B. will get; becomes  C. get; will become\n答案：C\n\n同义句转换：Unless you take time to relax, your brain will find it hard to remember things.（用 if...not 改写）\n答案：If you don't take time to relax, your brain will find it hard to remember things.\n\n用括号内所给单词的正确形式填空：A healthy diet helps ______ (maintain) a good memory.\n答案：maintain\n\n根据汉语意思完成句子：你可以编一个故事，把清单中的项目联系起来，这样你就会记住它们。You can make up a story to ______ items in a list ______ ______ you will remember them.\n答案：link; so that",
+   "file": "/知识梳理/Unit 7（核心知识） .json",
+   "gen": "2026-09-25"
+  },
+  "Unit 7（知识梳理）##全部": {
+   "t": "用括号中所给单词的正确形式填空：Eating too much junk food ______ (be) bad for your health.\n答案：is\n单项选择：—Would you mind ______ the window? It's cold outside. —Of course not.\nA. close  B. to close  C. closing  D. closed\n答案：C\n用括号中所给单词的正确形式填空：People ______ (tend) to feel sleepy after eating a big meal.\n答案：tend\n单项选择：If it ______ tomorrow, we will stay at home.\nA. will rain  B. rains  C. rained  D. is raining\n答案：B\n根据汉语意思完成句子，每空一词：除非你花时间放松，否则你的大脑会很难记住事情。______ you take time to relax, your brain will find ______ hard to remember things.\n答案：Unless; it\n单项选择：We will cancel the trip ______ the rain stops.\nA. if  B. unless  C. because  D. so\n答案：B",
    "file": "/知识梳理/Unit 7（知识梳理） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "Unit 8（知识梳理）": {
-   "t": "1. 请根据中文意思写出正确的单词：My grandfather is very ________ (忠诚的) to his old friends.\n答案：faithful\n\n2. 她因为解决了那个难题而感到自豪。请用 pride 的固定搭配完成句子：She ________ ________ in her ability to solve that difficult problem.\n答案：takes pride\n\n3. 用括号中所给词的适当形式填空：Linda sings ________ (beautiful) than any other student in her class.\n答案：more beautifully",
+  "Unit 8（知识梳理）##全部": {
+   "t": "用括号内所给单词的适当形式填空：It is nice ______ (hold) the lovely cat in our arms.\n答案：to hold\n单项选择：My parents are both ______ for my education and health.\nA. responsible  B. faithful  C. magical  D. awake\n答案：A\n用括号内所给单词的适当形式填空：Ducan was full of ______ (proud) for his clever dog.\n答案：pride\n用适当的介词填空：Cats and dogs are ______ the most popular pets.\n答案：among\n用括号内所给单词的适当形式填空：She dances ______ (beautiful) than any other student in her class.\n答案：more beautifully\n单项选择：He works ______ in the office, so everyone likes him.\nA. hard  B. hardly  C. harder  D. hardest\n答案：D",
    "file": "/知识梳理/Unit 8（知识梳理） .json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "【沪教】八上英语必背范文": {
-   "t": "Mark Twain was born in the countryside in Florida in 1835. When he was 12, his father ____ (die).\n答案：died\n\nThe high-speed train moves so smoothly that passengers can watch movies or have a sleep on it. It can save us lots of time. 短语“高速列车”的英文是 ____。\n答案：the high-speed train\n\nFrom Cao Chong, I learn to think creatively. When we are faced with a big problem, we should look for a simple and smart ____.\n答案：solution",
+  "【沪教】八上英语必背范文##第 1 篇": {
+   "t": "1. 用所给词的适当形式填空：Mark Twain was an American ______ (write).\n答案：writer\n2. 选择填空：The Adventures of Tom Sawyer is one of his most famous ______.\nA. book  B. novels  C. job  D. countries\n答案：B\n3. 英汉互译：be proud to ______\n答案：为……感到自豪\n4. 句型转换：It is important for us to seize the time.（改为同义句，用 it 作形式主语不变）\n答案：To seize the time is important for us.\n5. 单项选择：His major contribution was his book ______ Haiguo Tuzhi.\nA. call  B. called  C. calling  D. calls\n答案：B\n6. 完成句子：他鼓励我对新思想持开放态度。He inspired me to ______ ______ ______ new ideas.\n答案：be open to",
    "file": "/知识点总结/【沪教】八上英语必背范文.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
   },
-  "【沪教】八上英语词汇拓展背诵": {
-   "t": "1. 根据汉语意思写出单词：有才智的；聪明的（形容词）\n答案：intelligent\n\n2. 根据汉语意思写出短语：发生；进行\n答案：take place\n\n3. 用所给词的适当形式填空：My parents often advise me ________ (stay) awake in class.\n答案：to stay",
+  "【沪教】八上英语必背范文##第 2 篇": {
+   "t": "1. 用括号中所给词的适当形式填空：According to the survey, 40 ______ (per cent) of our classmates often do some washing.  \n答案：per cent\n\n2. 用括号中所给词的适当形式填空：The rest of the students ______ (be) from Grade 8.  \n答案：are\n\n3. 单项选择：______ the survey, 30% of the students played phones during the holiday.  \nA. According to  B. Because of  C. Instead of  D. As for  \n答案：A\n\n4. 根据汉语意思完成句子，每空一词：我们应该好好利用这些假日。  \nWe should ______ good ______ ______ these holidays.  \n答案：make; use; of\n\n5. 句型转换，每空一词：It is helpful for us to learn some life skills from it.（改为同义句）  \n______ some life skills from it ______ helpful for us.  \n答案：Learning; is\n\n6. 单项选择：Don’t spend too much time ______ online games.  \nA. play  B. to play  C. playing  D. played  \n答案：C",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语必背范文##第 3 篇": {
+   "t": "1. 单词拼写：The Internet is very ________ (方便的), so we can buy things without going out.\n答案：convenient\n\n2. 词义辨析：Playing computer games too much is ________ to our health. (A. useful  B. harmful  C. careful  D. helpful)\n答案：B\n\n3. 固定搭配：We shouldn't spend too much time ________ computer games.\n答案：playing\n\n4. 句型转换：Shopping online is fast and convenient. (改为一般疑问句)\n答案：Is shopping online fast and convenient?\n\n5. 语法选择：We can shop ________ we like because most online shops are open 24 hours a day. (A. whenever  B. however  C. wherever  D. whatever)\n答案：A\n\n6. 完成句子：在我看来，我们在网上购物时应该学会如何保持安全。\n________ ________ ________, we should learn how to keep safe while shopping online.\n答案：In my opinion",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语必背范文##第 4 篇": {
+   "t": "1. 单词拼写：Technological ________ (发明) play an important role in our daily lives.\n答案：inventions\n\n2. 词义辨析：AI can help farmers ________ crops. A. growing B. grow C. to growing D. grew\n答案：B\n\n3. 固定搭配：AI can be used to do dangerous jobs and keep workers ________.\n答案：safe\n\n4. 句型转换：The high-speed train moves so smoothly that passengers can watch movies on it. (改为同义句)\n答案：The high-speed train moves smoothly enough for passengers to watch movies on it.\n\n5. 语法选择：I don't think AI can take the place of human beings because ________ can't produce new ideas.\n答案：they\n\n6. 完成句子：作为一名学生，我为我国的高铁感到骄傲。\nAs a student, I ________ ________ ________ our country's high-speed train.\n答案：am proud of",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语必背范文##第 5 篇": {
+   "t": "1. 根据句意及首字母提示补全单词：Thank you for making me feel at h________ when I stayed with you in Britain.\n答案：home\n\n2. 用括号内所给单词的正确形式填空：Your support has not only improved my grades but also ________ (teach) me valuable lessons.\n答案：taught\n\n3. 单项选择：It was nice ________ you to take me to the places of interest during the holidays.\nA. for  B. of  C. to  D. with\n答案：B\n\n4. 句型转换：You always give me a helping hand.（改为同义句，每空一词）\nYou always ________ me ________.\n答案：help; out\n\n5. 完成句子：我非常感激你的帮助，也真心珍惜我们的友谊。（每空一词）\nI feel deeply ________ and truly ________ our friendship.\n答案：grateful; cherish\n\n6. 根据汉语意思完成句子：我希望我们能永远保持联系。（每空一词）\nI hope we can ________ ________ ________ each other forever.\n答案：keep in touch",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语必背范文##第 6 篇": {
+   "t": "1. 单词拼写：Zhuge Liang used a c________ idea to get many arrows.\n答案：clever\n\n2. 词义辨析：选出与 “wise” 意思最接近的一项：A. strong  B. smart  C. quick  D. young\n答案：B\n\n3. 固定搭配：Cao Chong came ________ a brilliant idea to weigh the elephant.\n答案：up with\n\n4. 句型转换：Being smart is better than being just strong.（改为同义句）\n答案：Being wise is better than being only strong.\n\n5. 语法选择：The straw men ________ full of arrows soon after the enemy started shooting.\nA. is  B. was  C. were  D. are\n答案：C\n\n6. 完成句子：从这个故事中，我学会了遇到困难时要创造性地思考。\nFrom this story, I learn ________ ________ creatively when facing difficulties.\n答案：to think",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语必背范文##第 7 篇": {
+   "t": "1. 根据首字母提示补全单词：If you want to improve your memory, you should exercise your b________ more often.\n答案：brain\n\n2. 用括号中所给单词的适当形式填空：To keep your brain active, it is a good idea ________ (learn) something new.\n答案：to learn\n\n3. 单项选择：Living a healthy lifestyle ________. It helps improve your memory.\nA. makes sense\nB. takes place\nC. gets lost\nD. turns off\n答案：A\n\n4. 句型转换：You should have a balanced diet. (改为同义句)\n________ ________ a balanced diet is good for your brain.\n答案：Having / To have\n\n5. 完成句子：如果你有任何困难，请随时和你的朋友或老师谈谈。\nIf you have any ________, please talk to your friends or teachers anytime you need.\n答案：trouble\n\n6. 根据句意及汉语提示完成句子：We need to stay relaxed so that we can ________ ________ (记住) things more quickly.\n答案：memorize / remember",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语必背范文##第 8 篇": {
+   "t": "1. 单词拼写：Dogs are very ______ (忠诚的) and always happy to see you.\n答案：loyal\n\n2. 词义辨析：选出与 “companion” 意思最接近的一项。A. enemy  B. friend  C. stranger  D. teacher\n答案：B\n\n3. 固定搭配：Birds are easy to ______ ______, so we don’t have to spend too much time on them.\n答案：look after\n\n4. 句型转换：Birds don’t need a big space.（改为同义句）\nBirds don’t need a big ______ ______ ______.\n答案：amount of space\n\n5. 语法选择：Many people ______ dogs or cats, but I think birds make the perfect pets.  A. like  B. likes  C. liked  D. is liking\n答案：A\n\n6. 完成句子：狗会给你无条件的爱，它们只在乎和你在一起。\nDogs give you ______ love, and they ______ ______ anything but being with you.\n答案：unconditional; care about",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语必背范文##全部": {
+   "t": "1. 根据第 2 篇，45% 的学生在暑假期间做了什么？\n答案：They studied during the holiday. They read books or did their homework.\n\n2. 根据第 2 篇，作者认为我们应该怎样度过一个有意义的假期？\n答案：We should make good use of the holidays and not spend too much time playing online games.\n\n3. 根据第 3 篇，电脑对我们有哪些帮助？请写出两点。\n答案：We can look for some information about our studies on the Internet. What's more, we can watch different movies on the Internet.\n\n4. 根据第 3 篇，一些学生花太多时间玩电脑游戏或网上聊天会带来什么影响？\n答案：It is not only harmful to their health, but it also affects their study.\n\n5. 根据曹冲的故事，曹冲用什么方法称出了大象的重量？\n答案：He had the elephant led onto a big boat in the river, marked the water level on the boat's side, then took the elephant off and filled the boat with stones until it sank to the same mark. The weight of the stones was equal to the weight of the elephant.\n\n6. 根据第 7 篇，为了改善记忆力，作者给出了哪些建议？请写出两点。\n答案：First, we need to exercise our brain more often to keep it active. Besides, we had better remember something again and again to better memorize it in a short time.",
+   "file": "/知识点总结/【沪教】八上英语必背范文.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 1 篇": {
+   "t": "1. 根据中文提示写出正确的单词：恐龙在英语中是 ________。\n答案：dinosaur\n\n2. 用所给词的适当形式填空：Tom is very ________ (intelligence), and he always gets good grades.\n答案：intelligent\n\n3. 选择最佳答案：The girl is ________ in music. She can play the piano very well.\nA. talented  B. talent  C. perhaps  D. notebook\n答案：A\n\n4. 句型转换：Maybe he is at home now. (改为同义句)\n________ he is at home now.\n答案：Perhaps\n\n5. 根据句意及首字母提示完成句子：I wrote down the important points in my n________.\n答案：notebook\n\n6. 选择最佳答案：We can use an electric ________ to go to school. It is good for the environment.\nA. dinosaur  B. vehicle  C. artist  D. historian\n答案：B",
    "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
-   "gen": "2026-09-24"
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 2 篇": {
+   "t": "1. 根据中文写出单词：完全的；完整的（形容词）\n答案：complete\n\n2. 用括号中所给词的适当形式填空：He finished the work ________ (complete) on time.\n答案：completely\n\n3. 选择填空：The famous ________ is drawing a picture of the sea.\nA. scientist  B. artist  C. pianist  D. journalist\n答案：B\n\n4. 句型转换：The old man died two years ago.（改为同义句，用death）\n答案：The old man's death was two years ago.\n\n5. 用所给词的适当形式填空：The ________ (organize) helps many poor children go to school.\n答案：organization\n\n6. 完成句子：她出生在上海。\nShe ________ ________ in Shanghai.\n答案：was born",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 3 篇": {
+   "t": "1. 根据汉语意思写出正确的英语单词：订购；命令；顺序。\n答案：order\n\n2. 用方框中的短语填空：in order to, in order, keep order, place an order。\n(1) The students are waiting for their teacher ______.\n(2) We should ______ in the library.\n(3) I'd like to ______ for a new bike online.\n(4) ______ get good grades, she studies hard every day.\n答案：(1) in order (2) keep order (3) place an order (4) In order to\n\n3. 单项选择：The teacher ordered us ______ quiet in class.\nA. keep  B. to keep  C. keeping  D. kept\n答案：B\n\n4. 句型转换：He ordered his son to clean the room.（改为同义句）\nHe ______ his son ______ the room.\n答案：told; to clean\n\n5. 完成句子：为了赶上早班公交车，他每天六点起床。\nHe gets up at six every day ______ ______ ______ catch the early bus.\n答案：in order to\n\n6. 根据句意及首字母提示补全单词：Please put these books in alphabetical o______.\n答案：order",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 4 篇": {
+   "t": "1. 用适当的介词填空：This kind of paper is famous ________ its softness.\n答案：for\n\n2. 单项选择：The little girl is talented ________ music and she can play the piano well.\nA. at  B. in  C. on  D. for\n答案：B\n\n3. 根据中文完成句子：杭州以西湖而闻名，并且有着悠久的历史。\nHangzhou is ________ ________ the West Lake and it has a long ________.\n答案：famous for；history\n\n4. 句型转换：The old city has a long history.（改为同义句）\nThe old city ________ ________ a long way.\n答案：goes back\n\n5. 用所给词的适当形式填空：Mo Yan is a famous writer, and his works ________ (be) related to real life.\n答案：are\n\n6. 根据句意及首字母提示写单词：You can look u________ the new word in the dictionary.\n答案：up",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 5 篇": {
+   "t": "用所给单词的适当形式填空：The ______ (fly) from Shanghai to Beijing takes about two hours.\n答案：flight\n\n选词填空：We should finish the work ______ schedule. (on / in / at)\n答案：on\n\n根据句意及首字母提示填词：The word has three different meanings ______ (到处；各个地方).\n答案：everywhere\n\n单项选择：My teacher ______ me to take part in the English speech competition.\nA. promised  B. challenged  C. kept  D. won\n答案：B\n\n按要求完成句子，每空一词：He promised to help me with my English. (改为同义句)\nHe ______ ______ ______ to help me with my English.\n答案：made a promise\n\n将下列句子翻译成英语：他在比赛中获得了一等奖。\n答案：He won first prize in the competition.",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 6 篇": {
+   "t": "1. 用括号中所给单词的适当形式填空：I asked him a question, but he gave me no ______ (reply).\n\n答案：reply\n\n2. 选词填空：用 reply 或 answer 填空。She didn't ______ to my letter, so I sent another one.\n\n答案：reply\n\n3. 根据句意及汉语提示完成句子：______ (犹豫) to ask your teacher if you don't understand.\n\n答案：Don't hesitate\n\n4. 句型转换：It's no wonder that he passed the exam.（改为同义句）______ ______ that he passed the exam.\n\n答案：No wonder\n\n5. 单项选择：I ______ with you on this matter. Let's do it together.\n\nA. agree  B. wonder  C. check  D. reply\n\n答案：A\n\n6. 完成句子：他毫不犹豫地接受了我的建议。He accepted my advice ______ ______.\n\n答案：without hesitation",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 7 篇": {
+   "t": "用括号中所给单词的适当形式填空：The company's profits fell ______ (sharp) last year.  \n答案：sharply\n\n选词填空（count / count on / countless）：You can always ______ him to help you when you are in trouble.  \n答案：count on\n\n单项选择：There are ______ stars in the sky. We can't count them all.  \nA. countable  B. uncountable  C. countless  D. counted  \n答案：C\n\n句型转换：The price of the computer went up to 5,000 yuan.（对划线部分 5,000 yuan 提问）  \n______ ______ did the price of the computer go up ______?  \n答案：How much; to\n\n根据汉语提示完成句子：请把这个重要的电话号码写下来。  \nPlease ______ ______ this important phone number.  \n答案：write down\n\n用所给单词的正确形式填空：The dove is often used as a ______ (symbol) of peace.  \n答案：symbol",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 8 篇": {
+   "t": "1. 用 instead of 完成句子：I drink tea ______ coffee in the morning.\n答案：instead of\n\n2. 用 take the place of 的同义短语替换划线部分：Robots will replace humans in many jobs.\n答案：take the place of\n\n3. 选择填空：He will go there ______ me, because I am ill.\nA. instead of  B. instead  C. instead of with  D. instead for\n答案：A\n\n4. 句型转换：I will take his place to finish the work. (改为同义句)\nI will finish the work ______ ______ him.\n答案：instead of\n\n5. 根据汉语完成句子：请用钢笔代替铅笔写你的名字。\nPlease write your name ______ a pen ______ ______ a pencil.\n答案：with; instead of\n\n6. 用所给词的适当形式填空：If you can't go, I will go ______ (instead).\n答案：instead",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 9 篇": {
+   "t": "1. 根据音标/ˈnetwɜːk/写出单词：________\n答案：network\n\n2. 用所给词的适当形式填空：The village was ________ (flood) after the heavy rain.\n答案：flooded\n\n3. 选择填空：You can find a lot of information ________ the Internet.\nA. in  B. on  C. at  D. by\n答案：B\n\n4. 句型转换：I paid 200 yuan for this mobile device.（改为同义句）\nI ________ 200 yuan ________ this mobile device.\n答案：spent; on\n\n5. 选择填空：The teacher warned us ________ in the river.\nA. not to swim  B. to not swim  C. don't swim  D. not swim\n答案：A\n\n6. 完成句子：这家公司专注于移动支付。\nThis company focuses on ________ ________.\n答案：mobile payment",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 10 篇": {
+   "t": "一、根据音标和词义写出单词：/fləʊ/ v. 流动；流\n答案：flow\n\n二、用所给词的适当形式填空：The old machine runs ______ (smooth) after being repaired.\n答案：smoothly\n\n三、选词填空：Please ______ (take / leave) a message for me if I am not at home.\n答案：take\n\n四、用 appropriate 介词填空：______ my opinion, students should not spend too much time on social media.\n答案：In\n\n五、选择填空：My teacher often encourages us to think in a ______ way when we face problems.\nA. negative  B. positive  C. social  D. digital\n答案：B\n\n六、完成句子：依我看，社交媒体对我们的学习有消极的影响。\n______ ______ ______, social media has a negative ______ ______ our study.\n答案：In my opinion; effect on",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 11 篇": {
+   "t": "1. 根据汉语意思写出正确的英语单词：评论（名词）。\n答案：comment\n\n2. 用括号中所给单词的适当形式填空：The report is ________ (base) on a true story.\n答案：based\n\n3. 选词填空：electric / electronic / electrical\nMy father bought an ________ dictionary for me.\n答案：electronic\n\n4. 句型转换：The app is connected to the Internet.（改为一般疑问句）\n答案：Is the app connected to the Internet?\n\n5. 根据汉语意思完成句子：这项新技术给我们的生活带来了巨大变化。\nThe new technology has ________ ________ ________ ________ our life.\n答案：brought big changes to\n\n6. 单项选择：The phrase “take... for example” means “________” in Chinese.\nA. 为……树立好榜样  B. 以……为例  C. 在……的基础上  D. 对……做出评论\n答案：B",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 12 篇": {
+   "t": "1. 用所给词的适当形式填空：The restaurant ______ (connect) to the shopping mall by a bridge.\n答案：is connected\n\n2. 选词填空：My father went to the meeting ______ (in person / in public) yesterday.\n答案：in person\n\n3. 单项选择：Don't worry. I'll share the good news ______ you.\nA. to  B. with  C. for  D. at\n答案：B\n\n4. 根据汉语意思完成句子：请以我为例。\nPlease ______ me ______ ______.\n答案：take; for example\n\n5. 句型转换：The teacher allows us to play games after class.（改为被动语态）\nWe ______ ______ ______ play games after class.\n答案：are allowed to\n\n6. 选择填空：Our teacher warned us ______ in the river.\nA. not swim  B. not to swim  C. to not swim  D. don't swim\n答案：B",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 13 篇": {
+   "t": "1. 根据中文提示写出正确的单词：Although the ______ (气球) is big, it is very light.\n答案：balloon\n\n2. 用 although 完成句子，注意句意和语法：______ it was raining hard, we still went to school on time.\n答案：Although\n\n3. 选择正确的词填空：You can ______ the picture on the wall with tape. (attach / pull)\n答案：attach\n\n4. 句型转换：The old man depends on his son for help. (改为同义句，用 rely on 替换 depends on)\n答案：The old man relies on his son for help.\n\n5. 用括号中所给词的适当形式填空：His ______ (person) opinion is different from ours, but we still respect him.\n答案：personal\n\n6. 完成句子：多吃蔬菜对你的健康有益。 Eating more vegetables ______ ______ ______ your health.\n答案：is beneficial to",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 14 篇": {
+   "t": "1. 根据中文提示写出正确的单词：The bird hurt one of its ________ (翅膀) and could not fly.\n答案：wings\n\n2. 用括号中所给单词的适当形式填空：The mountain is too ________ (distance) for us to see clearly.\n答案：distant\n\n3. 单项选择：You should avoid ________ too much junk food if you want to keep healthy.\nA. eat  B. to eat  C. eating  D. ate\n答案：C\n\n4. 句型转换：Tom noticed the boy playing the piano in the room. (改为被动语态)\nThe boy ________ ________ ________ playing the piano in the room.\n答案：was noticed\n\n5. 根据中文完成句子：在课堂上，我们应该注意听老师讲课。\nWe should ________ ________ ________ the teacher in class.\n答案：notice listening to\n\n6. 用方框中所给短语的适当形式填空：A number of students ________ (be) playing basketball on the playground now.\n答案：are",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 15 篇": {
+   "t": "用适当的介词填空：Don't make fun ______ your classmates.\n答案：of\n\n选词填空：A number of students ______ (is / are) playing on the playground.\n答案：are\n\n句型转换：I depend on my parents. (改为同义句)\nI ______ ______ my parents.\n答案：rely on\n\n完成句子：毫无疑问，他会赢得这场比赛。\n______ ______ that he will win the game.\n答案：There's no doubt\n\n根据汉语写短语：大量（后接不可数名词）______\n答案：large amounts of\n\n用所给词的适当形式填空：______ (traffic) jam is a serious problem in big cities.\n答案：Traffic",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 16 篇": {
+   "t": "用所给词的适当形式填空：They decided ______ (visit) the science museum this weekend.\n答案：to visit\n\n选词填空：The little boy was in search ______ his lost toy car everywhere.\n答案：of\n\n句型转换：He started to learn the piano two years ago.（改为同义句）He ______ ______ the piano for two years.\n答案：has learned\n\n单项选择：The wooden chair is made ______ wood, and it was made ______ a skilled worker. A. of; by  B. from; in  C. into; by\n答案：A\n\n完成句子：几年后，这座城市因它的美丽而闻名。______ ______ hundred years later, the city became famous for its beauty.\n答案：A few\n\n根据汉语意思完成句子：结果，我们不得不步行回家。______ ______ ______, we had to go home ______ ______.\n答案：As a result; on foot",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 17 篇": {
+   "t": "1. 根据中文提示补全单词：I felt very ________ (紧张的) before the speech.\n答案：nervous\n\n2. 用括号内单词的正确形式填空：She looked at me ________ (grateful) when I helped her.\n答案：gratefully\n\n3. 单项选择：We should be grateful ________ our parents for their love and support.\nA. to  B. for  C. with  D. at\n答案：A\n\n4. 用适当的介词填空：Everyone was shocked ________ the bad news.\n答案：at\n\n5. 完成句子：我想要一双筷子。\nI would like ________ ________ ________ chopsticks.\n答案：a pair of\n\n6. 句型转换：She is old enough to be independent. (改为同义句，每空一词)\nShe is old enough to ________ ________ herself.\n答案：depend on",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 18 篇": {
+   "t": "1. 根据中文提示写出正确的单词：My cousin has lived in Canada for five years, so he is a ______ (外国人) now.\n答案：foreigner\n\n2. 用括号内单词的正确形式填空：I felt very ______ (confuse) when I heard the two different answers.\n答案：confused\n\n3. 单项选择：She is always ______ about her son's study.  A. anxious  B. alone  C. similar  D. unexpected\n答案：A\n\n4. 句型转换：Tom expects that he can get a good grade in the exam. (改为同义句)  Tom expects ______ ______ a good grade in the exam.\n答案：to get\n\n5. 完成句子：当你到一个新地方时，你可能会对那里的风俗感到不熟悉。  When you go to a new place, you may ______ ______ ______ the customs there.\n答案：be unfamiliar with\n\n6. 选词填空：alone / lonely  Although he lives ______, he never feels ______ because he has many friends online.\n答案：alone; lonely",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 19 篇": {
+   "t": "1. 用所给词的适当形式填空：The teacher's advice was very ______ (accept) to all the students.\n答案：acceptable\n\n2. 用适当的介词填空：I'm sure you will feel ______ home soon after you move into the new house.\n答案：at\n\n3. 单项选择：I ______ a letter from my pen pal yesterday, but I didn't ______ his invitation to the party.\nA. received; receive\nB. received; accept\nC. accepted; receive\nD. accepted; accept\n答案：B\n\n4. 根据汉语意思完成句子：我们应该学会处理生活中遇到的各种问题。\nWe should learn to ______ ______ all kinds of problems we meet in life.\n答案：deal with\n\n5. 句型转换：I spent two hours doing my homework last night.（改为同义句）\nIt ______ me two hours ______ ______ my homework last night.\n答案：took; to do\n\n6. 根据首字母提示补全单词：There are t______ of tourists visiting the Great Wall every year.\n答案：thousands",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 20 篇": {
+   "t": "用括号内单词的正确形式填空：So far, he ______ (visit) three science museums in Shanghai.\n答案：has visited\n\n选词填空（每词限用一次）：also / as well / too\nShe likes English, and she enjoys maths ______.\n答案：as well\n\n根据汉语意思完成句子，每空一词：我们计划下周去动物园。\nWe ______ ______ go to the zoo next week.\n答案：plan to\n\n句型转换，每空一词：They keep in touch with each other by email.（改为同义句）\nThey keep in touch with ______ ______ by email.\n答案：one another\n\n单项选择：\nMy teacher ______ us ______ the history of our school yesterday.\nA. introduce; to\nB. introduced; to\nC. introduced; with\nD. introduce; with\n答案：B\n\n根据汉语意思完成句子，每空一词：他每天坚持跑步，所以他很健康。\nHe ______ ______ every day, so he is very healthy.\n答案：keeps running",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 21 篇": {
+   "t": "1. 根据音标 /ˈɔːθə(r)/ 写出对应的单词，并写出它的同义词。\n答案：author；writer\n\n2. 用 besides 或 except 填空：All the students went to the museum ______ Tom, because he was ill.\n答案：except\n\n3. 用括号中所给词的适当形式填空：The scientists worked together and finally ______ (success) in solving the problem.\n答案：succeeded\n\n4. 将下列句子改为同义句：He was successful in passing the exam.\nHe ______ ______ passing the exam.\n答案：succeeded in\n\n5. 选择填空：The old man kept the letter ______ secret for many years.\nA. in  B. on  C. at  D. for\n答案：A\n\n6. 根据汉语意思完成句子：这座城堡建造于 200 年前。\nThis castle ______ ______ 200 years ago.\n答案：was located",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 22 篇": {
+   "t": "1. 用括号内单词的正确形式填空：The old man ______ (fight) in the war many years ago, and he was a brave ______ (fight).\n答案：fought; fighter\n\n2. 选词填空：The two boys had a ______ (fight / beat) after school, and the taller one ______ (beat / fought) the shorter one.\n答案：fight; beat\n\n3. 单项选择：Don't ______ to know the answer if you really don't know it. It's better to be honest.\nA. pretend  B. fail  C. attack  D. fill\n答案：A\n\n4. 句型转换：Lucy didn't pass the English exam.（用 fail 改写，保持句意不变）\nLucy ______ ______ ______ the English exam.\n答案：failed to pass\n\n5. 根据汉语提示完成句子：我们应该勇敢地同困难作斗争，为我们的梦想而奋斗。\nWe should bravely ______ ______ difficulties and ______ ______ our dreams.\n答案：fight against; fight for\n\n6. 用适当的介词填空：The little boy walked ______ his mother and said, \"I will never fail ______ doing my homework again.\"\n答案：towards; in",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 23 篇": {
+   "t": "1. 用括号中所给单词的正确形式填空：They were ________ (success) in finishing the work on time.\n答案：successful\n\n2. 单项选择：The bottle ________ oil. Don't break it.\nA. is full of  B. is full with  C. is filled of  D. full of\n答案：A\n\n3. 句型转换：The room is filled with people.（改为同义句）\nThe room ________ ________ ________ people.\n答案：is full of\n\n4. 完成句子：我厌倦了每天做同样的工作。\nI ________ ________ ________ doing the same work every day.\n答案：am tired of\n\n5. 从方框中选择合适的短语填空：look up to / look through / look forward to / look after\nMy little brother ________ going to the zoo this weekend.\n答案：looks forward to\n\n6. 用所给词的适当形式填空：The teacher ordered us ________ (not talk) in class.\n答案：not to talk",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 24 篇": {
+   "t": "用括号中所给单词的正确形式填空：He goes to the library ______ (regular) to borrow books.\n答案：regularly\n\n选词填空：The word \"note\" can be a verb. It means the same as ______. (write down / look up)\n答案：write down\n\n用正确的介词填空：A close link ______ sleep and memory is known to scientists.\n答案：between\n\n句型转换：She repeats the words many times. (用repeatedly改写句子，保持句意不变)\n答案：She repeatedly repeats the words many times.\n\n单项选择：—What does \"especially\" mean? —It means ______. A. usually B. specially C. quickly D. quietly\n答案：B\n\n完成句子：为了保持健康，我们应该定期运动。To keep healthy, we should ______ ______ ______.\n答案：do regular exercise",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 25 篇": {
+   "t": "用括号内单词的正确形式填空：He is good at ________ (maintain) a good relationship with his classmates.\n答案：maintaining\n\n从方框中选择合适的词填空：relaxed / relaxing / stressed / stressful\nI felt very ________ before the exam, but listening to music made me feel ________.\n答案：stressed; relaxed\n\n单项选择：We should ________ a balanced diet and eat more fruit and vegetables.\nA. keep  B. lose  C. stress  D. tend\n答案：A\n\n句型转换：I often lose contact with my old friends.（改为同义句）\nI often ________ ________ ________ my old friends.\n答案：lose contact with\n\n完成句子：在压力下，我们往往会感到焦虑不安。\nUnder ________, we ________ ________ feel worried and nervous.\n答案：stress; tend to\n\n用括号内单词的正确形式填空：Don't be too hard on yourself. ________ (normal) speaking, everyone makes mistakes.\n答案：Normally",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 26 篇": {
+   "t": "一、根据音标写出单词：/ˈkɒntekst/\n答案：context\n\n二、用所给词的适当形式填空：I don't think this sentence has any ________ (sense) at all.\n答案：sense\n\n三、选词填空（contain / make sense / figure out）：The box ________ a lot of old photos, but I can't ________ why my mother keeps them.\n答案：contains; figure out\n\n四、单项选择：The story is hard to understand because there are many new words in it. You should guess their meanings from the ________.\nA. image  B. summary  C. context  D. chemistry\n答案：C\n\n五、完成句子：这条消息毫无道理。你最好再弄懂它。\nThis piece of news doesn't ________ ________ ________. You'd better ________ it ________.\n答案：make any sense; figure; out（或 make sense at all; figure; out）\n\n六、根据中文提示完成句子：总之，学习化学时我们要认真观察每一个实验。\n________ ________, we should watch every experiment carefully when we study ________.\n答案：In summary; chemistry",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 27 篇": {
+   "t": "1. 根据句意及首字母提示补全单词：In my p______ of view, reading before bed is a good habit.\n答案：point\n\n2. 用方框中的短语填空：point at / point out / figure out\nThe teacher ______ the mistake in my homework and asked me to correct it.\n答案：pointed out\n\n3. 单项选择：Please ______ the word on the blackboard and tell me its meaning.\nA. point at  B. point out  C. figure out  D. put out\n答案：A\n\n4. 句型转换：Finally, we finished the work on time.（用 last but not least 改写，句意不变）\n______ ______ ______ ______, we finished the work on time.\n答案：Last but not least\n\n5. 根据汉语意思完成句子：最后但同样重要的是，别忘了锻炼你的大脑。\n______ ______ ______ ______, don't forget to exercise your brain.\n答案：Last but not least\n\n6. 根据句意及汉语提示完成句子：We should ______ ______ ______ ______ (弄清楚) how to solve the problem.\n答案：figure out",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 28 篇": {
+   "t": "1. 用括号内单词的正确形式填空：The police caught the ______ (attack) who hurt the old man.\n答案：attacker\n2. 选词填空：Please ______ to your parents and tell them the truth. (be faithful to / hold on)\n答案：be faithful to\n3. 根据汉语意思完成句子：开会前请屏住呼吸，保持冷静。Please ______ ______ ______ before the meeting and stay calm.\n答案：hold your breath\n4. 单项选择：It is our ______ to protect the animals in danger. A. responsible B. responsibility C. response D. responsibly\n答案：B\n5. 句型转换：He is responsible for cleaning the classroom. (改为同义句)He ______ ______ ______ to clean the classroom.\n答案：has the responsibility\n6. 用括号内单词的正确形式填空：The baby is ______ (awake), so please keep quiet.\n答案：awake",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 29 篇": {
+   "t": "1. 用括号中所给词的适当形式填空：This beautiful city is famous for the ______ (flat) of its land, so many people come here to ride bikes.\n答案：flatness\n\n2. 选择最佳答案：I had no ______ but to wait for the next bus because I was late.\nA. chance  B. choice  C. way  D. reason\n答案：B\n\n3. 用适当的介词填空：Our teacher gave us some useful advice ______ how to improve our English.\n答案：on\n\n4. 句型转换：He advised us to take more exercise.（改为同义句）\nHe ______ ______ more exercise.\n答案：suggested taking\n\n5. 选择最佳答案：The heavy rain ______ the road to be closed yesterday.\nA. caused  B. advised  C. complained  D. relieved\n答案：A\n\n6. 完成句子：如果你对这项服务不满意，你可以向经理投诉。\nIf you are not satisfied with the service, you can ______ ______ the manager.\n答案：complain to",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 30 篇": {
+   "t": "用所给单词的正确形式填空：The old man has a lot of ______ (wealth), but he lives a simple life.\n答案：wealth\n\n用括号内单词的正确形式填空：The ______ (magic) performed a wonderful trick at the party.\n答案：magician\n\n单项选择：The little girl sang the song ______ on the stage. A. pride B. proud C. proudly D. prideful\n答案：C\n\n句型转换：She is proud of her hometown. (改为同义句) She ______ ______ ______ her hometown.\n答案：takes pride in\n\n完成句子：我哥哥在一家饭店当服务员。(每空一词) My brother ______ ______ a waiter in a restaurant.\n答案：serves as\n\n用 among 或 between 填空：The little house is ______ the tall trees.\n答案：among",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##第 31 篇": {
+   "t": "1. 根据中文写出正确的英文短语：非常小心\n答案：take great care\n\n2. 用所给词的适当形式填空：The little boy lay on the sofa and ______ (lie) around all afternoon.\n答案：lay\n\n3. 单项选择：My father often advises me ______ too much time playing computer games.\nA. not to spend  B. to not spend  C. not spend  D. don't spend\n答案：A\n\n4. 句型转换：She was very pleased to see her old friend.（改为同义句，用 be pleased with 改写）\n答案：She was very pleased with seeing her old friend.\n\n5. 用适当的介词填空：The dog barked ______ the stranger at the gate.\n答案：at\n\n6. 完成句子：总而言之，我们应该从错误中学习。\n______ ______ ______, we should ______ ______ our mistakes.\n答案：In a word, learn from",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
+  },
+  "【沪教】八上英语词汇拓展背诵##全部": {
+   "t": "1. 用括号中所给单词的适当形式填空：The old man is very ________ (intelligence), and he often comes up with good ideas.\n答案：intelligent\n2. 根据汉语意思，用适当的短语完成句子：这座博物馆因它的艺术藏品而闻名。The museum ________ ________ ________ its art collection.\n答案：is famous for\n3. 单项选择：There ________ a number of books in the library, and the number of them ________ still growing.\nA. are; is\nB. is; are\nC. are; are\nD. is; is\n答案：A\n4. 用括号中所给单词的适当形式填空：It is ________ (possible) for him to finish the work in an hour, so he needs more time.\n答案：impossible\n5. 单项选择：—Would you like to join us in the exchange visit?\n—I'd love to, but I ________ whether I have enough time.\nA. know\nB. doubt\nC. believe\nD. decide\n答案：B\n6. 根据汉语意思，用适当的短语完成句子：你最好步行去学校，因为现在正是交通阻塞的高峰时间。You'd better go to school on foot, because there is a ________ ________ at this rush hour.\n答案：traffic jam",
+   "file": "/知识点总结/【沪教】八上英语词汇拓展背诵.json",
+   "gen": "2026-09-25"
   }
  }
 }

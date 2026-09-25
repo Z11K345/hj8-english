@@ -101,6 +101,14 @@ const SYSTEM_PROMPT = `你是英语辅导老师，服务对象以初中生为主
 
 const CLOUD_CFG = {endpoint: "https://hj8-english.app.workbuddy.host", publishableKey: "wbpk_9qIMV7q3yKetV5njz3ea2G_y20o9SesGLDsQhd0xO2fQgybLltRLeoc"};
 
+// AI 中继地址：云端只放行 WorkBuddy 自己域名的 Origin，GitHub Pages 等外部域名会被 403。
+// 中继由服务端转发（服务端没有浏览器 Origin），因此任何站点都能用它调用同一个云端 AI。
+// 调试时可在控制台执行 localStorage.setItem('aiRelayBase','http://127.0.0.1:8901') 覆盖。
+const AI_RELAY_BASE = (function(){
+  try{ return localStorage.getItem('aiRelayBase') || "https://hj8-english-ai-relay.app.workbuddy.host"; }
+  catch(e){ return "https://hj8-english-ai-relay.app.workbuddy.host"; }
+})();
+
 // AI 使用密码：仅存内存变量，刷新页面或重新打开必须重新输入。改成你自己的密码即可。
 const AI_PASSWORD = '8888';
 
@@ -131,17 +139,38 @@ function initCloud(){
 }
 const cloud = initCloud();
 let cloudReady = false;        // 云端是否实际可达（页面加载时探测一次）
+let relayReady = false;        // 云端不可达时，是否可用自建中继（GitHub Pages 版走这条路）
+let aiRoute = '';              // 'cloud' | 'relay' | 'local'
+function loadModelsFromRelay(){
+  return fetch(AI_RELAY_BASE.replace(/\/$/,'') + '/models', {cache:'no-store'})
+    .then(r=> r.ok ? r.json() : null)
+    .then(j=>{ const list = Array.isArray(j) ? j : (j && (j.models || j.data)) || []; if(list.length){ modelsCached = list; return true; } return false; })
+    .catch(()=> false);
+}
 function probeCloud(){
-  if(!cloud){ cloudReady = false; return Promise.resolve(); }
   return (async()=>{
-    try{ modelsCached = (await cloud.llm.models.list()) || []; cloudReady = true; }
-    catch(e){ console.warn('云端探测失败，回退本地模式', e); cloudReady = false; }
+    if(cloud){
+      try{ modelsCached = (await cloud.llm.models.list()) || []; cloudReady = true; aiRoute = 'cloud'; return; }
+      catch(e){ console.warn('云端直连失败（外部域名会被云端 Origin 白名单拦下），尝试自建中继', e); cloudReady = false; }
+    }
+    if(AI_RELAY_BASE && await loadModelsFromRelay()){ relayReady = true; aiRoute = 'relay'; return; }
+    relayReady = false; aiRoute = '';
   })();
 }
 const cloudProbePromise = probeCloud();
 
 function getLocalCfg(){
   try { return JSON.parse(localStorage.getItem('llmCfg')||'null'); } catch(e){ return null; }
+}
+// 默认模型：必须是快而稳的文本模型。auto 会先跑完整条推理链，实测同一个提问 150 秒都不返回；
+// deepseek-v4-flash 两三秒就能答完 —— 答疑场景等不起推理链。
+const FAST_MODELS = ['deepseek-v4-flash', 'hy3', 'deepseek-v4'];
+// 只认「文本对话」模型：图像模型等条目只有 id/name，没有任何能力字段，选了不会回答
+const isChatModel = (m)=> m.id === 'auto' || !!(m.maxInputTokens || m.maxOutputTokens || m.supportsToolCall || m.vendor);
+function defaultChatModel(list){
+  const pool = (list||[]).filter(m=>m.disabled!==true);
+  for(const id of FAST_MODELS){ const hit = pool.find(m=>m.id===id); if(hit) return hit; }
+  return pool.find(m=> !m.onlyReasoning && !m.supportsReasoning) || pool[0] || null;
 }
 function loadConvId(){
   conversationId = localStorage.getItem('chatConvId') || ('conv_'+Date.now()+'_'+Math.random().toString(36).slice(2,9));
@@ -156,6 +185,17 @@ function addMsg(text, who){
   body.appendChild(d);
   body.scrollTop = body.scrollHeight;
   return d;
+}
+
+// 模型爱写 markdown（**加粗**、###、`代码`、- 列表），但这里是纯文本展示，抹平成干净文字
+function plainify(s){
+  return String(s==null?'':s)
+    .replace(/```[a-z]*\n?/gi,'')
+    .replace(/\*\*([^*\n]+)\*\*/g,'$1')
+    .replace(/(^|\n)#{1,6}\s*/g,'$1')
+    .replace(/(^|\n)\s*[-*]\s+/g,'$1· ')
+    .replace(/`([^`\n]+)`/g,'$1')
+    .replace(/\*\*/g,'');
 }
 
 // 用户消息（支持图文混排）：text 可为空，images 为待发送图片数组副本
@@ -244,8 +284,8 @@ async function callCloudLLM(messages){
   if(!cloud) throw new Error('NO_BACKEND');
   const models = await cloud.llm.models.list();
   const enabled = (models||[]).filter(m=>m.disabled!==true);
-  // 优先用用户在下拉框中选的模型；未选则取第一个可用
-  const model = enabled.find(m=>m.id===selectedModelId) || enabled[0] || models[0];
+  // 优先用用户在下拉框中选的模型；未选则挑快而稳的（auto 会跑完整推理链，实测同一个请求 150 秒都不返回）
+  const model = enabled.find(m=>m.id===selectedModelId) || defaultChatModel(enabled);
   if(!model) throw new Error('NO_MODEL');
   let text='';
   if(controller) controller.abort();
@@ -281,11 +321,44 @@ async function callLocalLLM(messages){
   return j.choices[0].message.content;
 }
 
+// 自建中继：与云端同一个模型、同一份额度，只是改由中继的服务端转发（外部域名也能用）
+async function callRelayLLM(messages){
+  if(!relayReady || !AI_RELAY_BASE) throw new Error('NO_BACKEND');
+  const enabled = (modelsCached||[]).filter(m=>m.disabled!==true && isChatModel(m));
+  const model = enabled.find(m=>m.id===selectedModelId) || defaultChatModel(enabled) || {id:'deepseek-v4-flash'};
+  if(controller) controller.abort();
+  controller = new AbortController();
+  const to = setTimeout(()=>{ try{ controller.abort(); }catch(e){} }, 60000);
+  try{
+    const r = await fetch(AI_RELAY_BASE.replace(/\/$/,'') + '/ai', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({model: model.id, messages, stream:true, temperature:0.6}),
+      signal: controller.signal
+    });
+    if(!r.ok){ const t = await r.text().catch(()=> ''); throw new Error('HTTP '+r.status+' '+t.slice(0,200)); }
+    const raw = await r.text();
+    let text = '';
+    raw.split(/\r?\n/).forEach(line=>{
+      const s = line.trim();
+      if(!s.startsWith('data:')) return;
+      const p = s.slice(5).trim();
+      if(!p || p === '[DONE]') return;
+      let d; try{ d = JSON.parse(p); }catch(e){ return; }
+      const c = d.choices && d.choices[0] && d.choices[0].delta && d.choices[0].delta.content;
+      if(c) text += c;
+    });
+    if(!text.trim()) throw new Error('EMPTY_REPLY');
+    return text;
+  } finally { clearTimeout(to); }
+}
+
 function friendlyError(e){
   const msg = e.message || String(e);
-  if(msg==='NO_BACKEND') return 'AI 后端未就绪：点右上角 ⚙ 填入你自己的 OpenAI 兼容 API Key，或确认云端模式可用。';
+  if(msg==='NO_BACKEND') return 'AI 后端未就绪：点右上角 ⚙ 填入你自己的 OpenAI 兼容 API Key；若使用 GitHub Pages 版，请确认网络能访问 AI 中继。';
   if(msg==='NO_MODEL') return '当前无可用模型，请稍后重试。';
-  if(msg==='AbortError' || /abort/i.test(msg)) return '请求超时（45 秒），请稍后重试或检查网络。';
+  if(msg==='EMPTY_REPLY') return 'AI 没返回内容，请再试一次。';
+  if(msg==='AbortError' || /abort/i.test(msg)) return '请求超时，请稍后重试或检查网络。';
   const code = (e.error && e.error.code) || '';
   if(code.startsWith('auth_')) return '后端授权/来源校验失败：请刷新页面或重新发布后再试。';
   if(code.startsWith('quota_')) return '配额不足或调用过于频繁，请稍后重试。';
@@ -308,19 +381,28 @@ async function send(){
   generating=true; userAborted=false; sendBtn.disabled=true; if(stopBtn) stopBtn.style.display='';
   const messages = [{role:'system', content: SYSTEM_PROMPT}].concat(history.slice(-12));
   try{
-    // 优先用云端；若云端不可达且有本地 Key，则自动回退本地，避免静默失败
+    // 通路顺序：云端直连（WorkBuddy 站）→ 自建中继（GitHub 等外部站）→ 用户自有 Key
+    await cloudProbePromise;
     let ans;
     if(cloudReady){
       try{ ans = await callCloudLLM(messages); }
       catch(e){
-        if(userAborted) throw e;   // 用户主动停止，不再回退本地
-        if(getLocalCfg()){ ans = await callLocalLLM(messages); addMsg('云端暂不可用，已自动切换本地 AI。','sys'); }
+        if(userAborted) throw e;
+        if(relayReady){ ans = await callRelayLLM(messages); }
+        else if(getLocalCfg()){ ans = await callLocalLLM(messages); addMsg('云端暂不可用，已自动切换到你配置的本地 AI。','sys'); }
+        else throw e;
+      }
+    } else if(relayReady){
+      try{ ans = await callRelayLLM(messages); }
+      catch(e){
+        if(userAborted) throw e;
+        if(getLocalCfg()){ ans = await callLocalLLM(messages); addMsg('在线通道暂不可用，已自动切换到你配置的本地 AI。','sys'); }
         else throw e;
       }
     } else {
       ans = await callLocalLLM(messages);
     }
-    bot.textContent = ans || '（未返回内容）';
+    bot.textContent = plainify(ans || '（未返回内容）');
     history.push({role:'assistant', content: ans || ''});
   }catch(e){
     bot.className='msg sys';
@@ -391,23 +473,25 @@ function showChat(){
   cloudProbePromise.then(()=>{ loadModels(); ensureGuidance(); });
 }
 
-// 云端不可达且未配置本地 Key 时，给出明确引导（不静默失败）
+// 在线通道（云端直连 / 自建中继）都不可达且未配置本地 Key 时，给出明确引导（不静默失败）
 function ensureGuidance(){
-  if(!cloudReady && !getLocalCfg()){
-    addMsg('云端 AI 暂不可达。点右上角 ⚙ 填入你自己的 OpenAI 兼容 API Key（仅存本机浏览器），即可使用本地 AI 答疑。','sys');
+  if(!cloudReady && !relayReady && !getLocalCfg()){
+    addMsg('在线 AI 暂时连不上。点右上角 ⚙ 填入你自己的 OpenAI 兼容 API Key（仅存本机浏览器），即可继续答疑。','sys');
   }
 }
 
-// 拉取并填充可选模型；云端不可达时自动隐藏，由 ensureGuidance 引导本地模式
+// 拉取并填充可选模型；两种在线通道都不可达时自动隐藏，由 ensureGuidance 引导本地模式
 async function loadModels(){
   const row = document.getElementById('aiModelRow');
   const sel = document.getElementById('modelSel');
-  if(!cloudReady){ row.style.display='none'; return; }
+  if(!cloudReady && !relayReady){ row.style.display='none'; return; }
   try{
-    const models = modelsCached || (modelsCached = await cloud.llm.models.list()) || [];
+    if(!modelsCached){ modelsCached = cloudReady ? ((await cloud.llm.models.list()) || []) : modelsCached; }
+    const models = modelsCached || [];
+    if(!models.length){ row.style.display='none'; return; }
     sel.innerHTML = '';
     const def = document.createElement('option');
-    def.value = ''; def.textContent = '默认（第一个可用）';
+    def.value = ''; def.textContent = '默认（' + ((defaultChatModel(models)||{}).id || '推荐模型') + '）';
     sel.appendChild(def);
     // 标签：依据云端返回的 credits 字段如实标注积分倍率；0 或缺失 → 免费；auto → 倍率浮动
     const modelTag = (m)=>{
@@ -418,8 +502,6 @@ async function loadModels(){
       if(num === 0) return '免费';
       return num + 'x';
     };
-    // 只列「文本对话」模型：图像模型等条目只有 id/name，没有任何能力字段，选了不会回答
-    const isChatModel = (m)=> m.id === 'auto' || !!(m.maxInputTokens || m.maxOutputTokens || m.supportsToolCall || m.vendor);
     models.filter(m => !m.disabled && isChatModel(m)).forEach(m=>{
       const o = document.createElement('option');
       const tag = modelTag(m);
