@@ -300,7 +300,7 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-rec-card.rec-ok{border-left-color:var(--ok);}
 .know-rec-card.rec-no{border-left-color:var(--bad);}
 .know-rec-title{font-family:var(--font-ui);font-weight:600;color:var(--ink);font-size:13.5px;letter-spacing:.03em;margin-bottom:8px;}
-.know-rec-prompt{font-family:var(--font-read);color:var(--ink-soft);font-size:15px;line-height:1.7;}
+.know-rec-prompt{font-family:var(--font-read);color:var(--ink);font-size:16px;line-height:1.7;font-weight:500;}
 .know-rec-ans{white-space:pre-wrap;word-break:break-word;line-height:1.85;font-size:15px;margin-top:8px;}
 .know-rec-btns{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;}
 .know-rec-btns button{border:1px solid var(--rule);background:#fff;color:var(--ink-soft);border-radius:3px;padding:5px 14px;font-size:13px;cursor:pointer;font-family:var(--font-ui);letter-spacing:.04em;}
@@ -308,6 +308,9 @@ select:focus{outline:none; border-color:var(--primary);}
 .know-rec-btns button.know-rec-ok{background:var(--ok);color:#fff;border-color:var(--ok);}
 .know-rec-btns button.know-rec-no{background:var(--bad);color:#fff;border-color:var(--bad);}
 .know-rec-done{font-size:13px;font-weight:600;}
+/* 测一测 · 分组标题（一、核心词汇 24 条…）与提问行：先只给提示，答案点了「显示」才出现 */
+.know-rec-blocktitle{font-family:var(--font-ui);font-weight:600;color:var(--ink);font-size:14.5px;letter-spacing:.04em;margin:22px 0 8px;}
+.know-rec-blocktitle .know-rec-count{font-weight:400;color:var(--muted);font-size:12px;margin-left:8px;letter-spacing:.02em;}
 /* ===== text 型阅读：印刷品式排版（无卡片、无胶囊，靠字号/字族/对齐分层） ===== */
 .know-read-card{background:#fff;border:0;border-top:1px solid var(--rule);border-radius:0;padding:26px 0 10px;margin:0;max-width:100%;}
 .know-read-card:first-of-type{border-top:0;padding-top:8px;}
@@ -475,6 +478,7 @@ let curCard = null, curCardKey = '';   // 当前答题卡结构与 localStorage 
 let curAnswers = null, curSaved = {}, lastMin = 30;   // 当前答案（用于自动批改）/ 已存作答 / 上次考试时长
 let curPositions = {};   // 题号在学生版试卷上的位置 {题号:[页码,纵向比例]}，用于点击题号跳转（考试/浏览时用，最准）
 let curAnswerPositions = {};   // 题号在解析版试卷上的位置（仅含答题卡的卷从 answers.json 取），解锁解析版后用
+let secPosCache = {};   // 大题标题在当前视图 PDF 里的位置缓存（答题卡大题序号 + 跳转定位用）
 let viewingAnswer = false;     // 当前 #pdfViewer 显示的是否为解析版（决定跳转用哪套位置）
 let ALL_POS = null;            // 全部试卷的题号位置表（positions.json）
 let curPdfDoc = null;          // 当前已加载的 PDF 文档（供点击题号时实时检索题号位置）
@@ -606,7 +610,7 @@ async function loadPaper(pi){
   curPositions = (ALL_POS && ALL_POS[posKey]) ? ALL_POS[posKey] : {};
   curAnswerPositions = {};
   viewingAnswer = false;
-  curPdfDoc = null; runtimePos = {}; navNumbers = null;
+  curPdfDoc = null; runtimePos = {}; navNumbers = null; secPosCache = {};
   $('#qnoNav').style.display = 'none';   // 非 PDF 或切换时先隐藏，render() 里按需显示
   // 切换试卷时清掉上一套的答题卡状态
   $('#answerPadWrap').classList.remove('cardmode');
@@ -830,6 +834,7 @@ function showAnswerPdf(){
   const p = manifest.cats[curCi].papers[curPi];
   if(!p.answerPdf) return;
   viewingAnswer = true;                 // 解析版视图：跳转改用解析版题号位置
+  secPosCache = {};                     // 学生版/解析版版面不同，大题位置缓存作废
   curStudentPdf = p.answerPdf;          // 让「新窗口打开/下载」也指向解析版
   curAnswerPdf = p.answerPdf;
   setupPdfTools();
@@ -875,8 +880,7 @@ function gradeCard(){
     });
     if(isLetter){
       total++;   // 仅统计可批改（答案为单字母）的选择题
-      const right = chips.querySelector('.chip[data-l="'+ansL+'"]');
-      if(right) right.classList.add('g-answer');   // 无论对错，标出正确选项
+      // 正确选项不在这里标出（等于直接给答案），家长码解锁后由 revealCardAnswers() 标绿
       const pick = chips.querySelector('.chip[data-l="'+chosen+'"]');
       if(chosen && chosen === ansL){ correct++; if(pick) pick.classList.add('g-ok'); }
       else if(chosen){ if(pick) pick.classList.add('g-bad'); wrong++; }
@@ -891,9 +895,7 @@ function gradeCard(){
     // 优先按「板块下标_题号」(si_no) 查答案，兼容单元检测旧版全局 no
     const ans = curAnswers ? (curAnswers[si + '_' + no] || curAnswers[String(no)] || curAnswers[no] || '') : '';
     inp.readOnly = true;
-    let ref = inp.parentElement.querySelector('.blank-ref');
-    if(!ref){ ref = document.createElement('div'); ref.className = 'blank-ref'; inp.parentElement.appendChild(ref); }
-    ref.textContent = '参考答案：' + (ans || '（暂无）');
+    // 参考答案不在批改时直接显示（只标对错），家长码解锁后由 revealCardAnswers() 填入
     const val = (inp.value || '').trim();
     inp.classList.remove('g-ok','g-bad');
     if(String(ans).trim()){
@@ -942,7 +944,7 @@ function submit(auto){
         <div class="stat"><span>未作答</span><b style="color:var(--na)">${stats.unans}</b></div>
         <div class="stat"><span>填空/作文</span><b>${extraTxt || '—'}</b></div>
       </div>
-      <div style="font-size:13px;color:var(--muted);margin-top:6px;">答题卡已自动批改（✓绿/✗红，正确选项已标出；填空绿色=对、红色=错，均附参考答案）。答案与解析已锁定，需家长输入家长码后查看；点顶部「展开答题卡」或右侧竖条可重新对照检查。</div>`;
+      <div style="font-size:13px;color:var(--muted);margin-top:6px;">答题卡已自动批改（✓绿/✗红；填空绿色=对、红色=错）。参考答案与正确选项已锁定，需家长输入家长码后显示；点顶部「展开答题卡」或右侧竖条可重新对照检查。</div>`;
     } else {
       s.innerHTML = '<div class="summary-row"><div class="stat"><span>状态</span><b>已交卷</b></div></div>'
         + '<div style="font-size:13px;color:var(--muted);margin-top:6px;">答案与解析已锁定，需家长输入家长码后查看。</div>';
@@ -1009,6 +1011,28 @@ function submit(auto){
   try{ $('#summary').scrollIntoView({behavior:'smooth', block:'center'}); }catch(e){}
 }
 
+// 家长码解锁后：答题卡揭示参考答案（填空逐题附答案）与正确选项（选择题标绿）
+function revealCardAnswers(){
+  const body = $('#cardBody'); if(!body) return;
+  body.querySelectorAll('.blank-input').forEach(inp=>{
+    const no = inp.dataset.no, si = inp.dataset.si;
+    const ans = curAnswers ? (curAnswers[si + '_' + no] || curAnswers[String(no)] || curAnswers[no] || '') : '';
+    let ref = inp.parentElement.querySelector('.blank-ref');
+    if(!ref){ ref = document.createElement('div'); ref.className = 'blank-ref'; inp.parentElement.appendChild(ref); }
+    ref.textContent = '参考答案：' + (ans || '（暂无）');
+  });
+  if(curAnswers){
+    body.querySelectorAll('.mc-chips').forEach(chips=>{
+      const no = chips.dataset.no, si = chips.dataset.si;
+      const ans = String(curAnswers[si + '_' + no] || curAnswers[String(no)] || curAnswers[no] || '').trim().toUpperCase();
+      if(/^[A-F]$/.test(ans)){
+        const right = chips.querySelector('.chip[data-l="'+ans+'"]');
+        if(right) right.classList.add('g-answer');
+      }
+    });
+  }
+}
+
 // 家长码解锁：揭示正确答案（标绿）与解析
 function unlockAnswers(){
   if(!submitted || !answersLocked) return;
@@ -1020,6 +1044,7 @@ function unlockAnswers(){
   // PDF 原卷模式：把解析版 PDF 替换到原学生卷位置（同一处、版面不变），答题卡保持可见
   if(paperIsPdf){
     $('#ansWrap').style.display='none';
+    if(paperHasCard) revealCardAnswers();   // 解锁后答题卡上才显示参考答案与正确选项
     showAnswerPdf();
     return;
   }
@@ -1203,10 +1228,10 @@ const padToggleBtn = $('#padToggleBtn');
 if(padToggleBtn){ padToggleBtn.onclick = collapseCard; }
 
 // ===== 正式答题卡：依据 card.json 渲染（MC 选项块 / 填空行 / 作文框），自动保存 =====
-function noBadge(no){
+function noBadge(no, si){
   const b = document.createElement('div'); b.className = 'card-no'; b.textContent = no; b.title = '点击跳到试卷该题';
   b.style.cursor = 'pointer'; b.style.pointerEvents = 'auto';
-  b.addEventListener('click', ()=>{ jumpToQuestion(no); });
+  b.addEventListener('click', ()=>{ jumpToQuestion(no, si); });
   return b;
 }
 
@@ -1225,17 +1250,52 @@ function scrollToY(scroller, y){
   if(scroller === window) window.scrollTo({top:y, behavior:'smooth'});
   else scroller.scrollTo({top:y, behavior:'smooth'});
 }
-// 在已加载的 PDF 文本里检索题号 no 的精确位置（行首数字），返回 {pageIdx, yFrac}
-async function searchPdfForQuestion(no){
+// 在指定页找「行首题号」no 的位置（行首数字），返回 {pageIdx, yFrac}
+// yFracMin：只找该纵向位置之下的行（配合大题标题定位，避免匹配到前面大题的同号题）
+async function searchPageForQuestion(pageIdx, no, yFracMin){
   if(!curPdfDoc) return null;
+  let page, tc;
+  try{ page = await curPdfDoc.getPage(pageIdx); tc = await page.getTextContent(); }
+  catch(e){ return null; }
+  const v = page.getViewport({scale:1});
+  const pageH = v.height || 1;
+  // 把文本项按 y（PDF 坐标，自下而上）聚类成行，取每行最左侧文本判断是否为行首题号
+  const lines = {};
+  for(const it of tc.items){
+    if(!it.str || !it.str.trim()) continue;
+    const y = it.transform ? it.transform[5] : 0;
+    const key = Math.round(y/3)*3;
+    (lines[key] = lines[key] || []).push(it);
+  }
+  const ys = Object.keys(lines).map(Number).sort((a,b)=>b-a);   // 自上而下
   const sNo = String(no);
+  for(const y of ys){
+    const row = lines[y].sort((a,b)=>(a.transform?a.transform[4]:0)-(b.transform?b.transform[4]:0));
+    const lead = (row[0].str||'').trim();
+    const m = lead.match(/^\s*[（(]?\s*(\d{1,3})(?:[\．.、）)\s]|$)/);
+    if(m && m[1] === sNo){
+      const yFrac = 1 - y/pageH;   // 转成「距顶部比例」，与 positions.json 约定一致
+      if(yFrac < 0.04 || yFrac > 0.95) continue;   // 跳过页眉/页脚行
+      if(yFracMin != null && yFrac < yFracMin) continue;   // 只看大题标题之下
+      const rest = lead.slice(m[0].length).trim();
+      if(!rest && parseInt(m[1],10) > 99 && m[0] === sNo) continue; // 纯数字(无标点)且数值大：标题/水印，跳过
+      return {pageIdx, yFrac: Math.max(0, Math.min(1, yFrac))};
+    }
+  }
+  return null;
+}
+// 定位大题标题（如「三、根据首字母或者完成单词」）在 PDF 里的位置，返回 {pageIdx, yFrac, label}
+// label = 标题行自带的大题序号（三），答题卡分组标题用它补「第三大题」标志
+async function findSectionStart(title){
+  if(!curPdfDoc) return null;
+  const needle = String(title||'').replace(/\s+/g,'');
+  if(!needle) return null;
   for(let i=1;i<=curPdfDoc.numPages;i++){
     let page, tc;
     try{ page = await curPdfDoc.getPage(i); tc = await page.getTextContent(); }
     catch(e){ continue; }
     const v = page.getViewport({scale:1});
     const pageH = v.height || 1;
-    // 把文本项按 y（PDF 坐标，自下而上）聚类成行，取每行最左侧文本判断是否为行首题号
     const lines = {};
     for(const it of tc.items){
       if(!it.str || !it.str.trim()) continue;
@@ -1243,36 +1303,49 @@ async function searchPdfForQuestion(no){
       const key = Math.round(y/3)*3;
       (lines[key] = lines[key] || []).push(it);
     }
-    const ys = Object.keys(lines).map(Number).sort((a,b)=>b-a);   // 自上而下
+    const ys = Object.keys(lines).map(Number).sort((a,b)=>b-a);
     for(const y of ys){
       const row = lines[y].sort((a,b)=>(a.transform?a.transform[4]:0)-(b.transform?b.transform[4]:0));
-      const lead = (row[0].str||'').trim();
-      const m = lead.match(/^\s*[（(]?\s*(\d{1,3})(?:[\．.、）)\s]|$)/);
-      if(m && m[1] === sNo){
-        const yFrac = 1 - y/pageH;   // 转成「距顶部比例」，与 positions.json 约定一致
-        if(yFrac < 0.04 || yFrac > 0.95) continue;   // 跳过页眉/页脚行
-        const rest = lead.slice(m[0].length).trim();
-        if(!rest && parseInt(m[1],10) > 99 && m[0] === sNo) continue; // 纯数字(无标点)且数值大：标题/水印，跳过
-        return {pageIdx:i, yFrac: Math.max(0, Math.min(1, yFrac))};
+      const rowText = row.map(t=>t.str||'').join('').replace(/\s+/g,'');
+      if(rowText.includes(needle)){
+        const yFrac = Math.max(0, Math.min(1, 1 - y/pageH));
+        const m = rowText.match(/^([一二三四五六七八九十]{1,3})\s*[、.．]/);
+        return {pageIdx:i, yFrac, label: m ? m[1] : ''};
       }
     }
   }
   return null;
 }
-// 取得题号 no 的位置：优先运行时缓存/精确检索，其次离线 positions.json 兜底
-async function findQuestion(no){
+// 取得题号 no 的位置：带大题上下文（si）时先定位大题标题、只在其后找同号题，
+// 修复「第三大题点 1 跳到第一大题的 1」的错位；找不到再整卷兜底，最后用离线 positions.json
+async function findQuestion(no, si){
   const sNo = String(no);
-  if(runtimePos[sNo]) return runtimePos[sNo];
+  const ck = (si != null ? si + '_' : '') + sNo;
+  if(runtimePos[ck]) return runtimePos[ck];
   if(curPdfDoc){
-    const pos = await searchPdfForQuestion(no);
-    if(pos){ runtimePos[sNo] = pos; return pos; }
+    if(si != null && curCard && curCard.sections && curCard.sections[si]){
+      let st = secPosCache[si];
+      if(!st){ st = await findSectionStart(curCard.sections[si].title); if(st) secPosCache[si] = st; }
+      if(st){
+        const pos = await searchPageForQuestion(st.pageIdx, no, st.yFrac);
+        if(pos){ runtimePos[ck] = pos; return pos; }
+        for(let i = st.pageIdx + 1; i <= curPdfDoc.numPages; i++){
+          const p2 = await searchPageForQuestion(i, no);
+          if(p2){ runtimePos[ck] = p2; return p2; }
+        }
+      }
+    }
+    for(let i=1;i<=curPdfDoc.numPages;i++){
+      const p3 = await searchPageForQuestion(i, no);
+      if(p3){ runtimePos[ck] = p3; return p3; }
+    }
   }
   if(viewingAnswer && curAnswerPositions[sNo]) return curAnswerPositions[sNo];
   return curPositions[sNo] || null;
 }
 // 点击答题卡题号 / 题号导航条 → 实时检索并滚动到试卷对应题目（学生版/解析版均可）
-async function jumpToQuestion(no){
-  const pos = await findQuestion(no);
+async function jumpToQuestion(no, si){
+  const pos = await findQuestion(no, si);
   if(!pos) return;
   const pageIdx = pos.pageIdx, yFrac = (typeof pos.yFrac === 'number') ? pos.yFrac : 0;
   const v = $('#pdfViewer');
@@ -1500,7 +1573,7 @@ async function buildCard(p){
     } else if(sec.type === 'blank'){
       sec.nos.forEach(no=>{
         const row = document.createElement('div'); row.className = 'card-row';
-        row.appendChild(noBadge(no));
+        row.appendChild(noBadge(no, si));
         const bd = document.createElement('div'); bd.className = 'card-body';
         const inp = document.createElement('input'); inp.className = 'blank-input'; inp.type = 'text';
         inp.placeholder = '第 ' + no + ' 题';
@@ -1514,7 +1587,7 @@ async function buildCard(p){
       const optN = sec.opts || 4;
       sec.nos.forEach(no=>{
         const row = document.createElement('div'); row.className = 'card-row';
-        row.appendChild(noBadge(no));
+        row.appendChild(noBadge(no, si));
         const bd = document.createElement('div'); bd.className = 'card-body';
         const chips = document.createElement('div'); chips.className = 'mc-chips';
         chips.dataset.si = si; chips.dataset.no = no;
@@ -1537,7 +1610,27 @@ async function buildCard(p){
     }
     body.appendChild(secDiv);
   });
+  numberCardSections(card.sections);   // 异步：从 PDF 识别大题序号补到标题（顺带缓存跳转定位）
   updateCountdown();   // 载入已存作答时即显示正确进度
+}
+// 大题序号：从 PDF 里找各大题标题行（一般以「三、」开头），把序号补到答题卡分组标题上，
+// 让孩子能对上「这是第三大题」；找不到序号就不加（避免猜错）。顺带把标题位置缓存给「点题号跳转」用。
+async function numberCardSections(sections){
+  for(let t=0; t<24 && !curPdfDoc; t++){ await new Promise(r=>setTimeout(r,500)); }   // 等 PDF 文档就绪（最多 12 秒）
+  if(!curPdfDoc) return;
+  const docRef = curPdfDoc;
+  const body = $('#cardBody'); if(!body) return;
+  const titles = body.querySelectorAll('.card-sec-title');
+  for(let si=0; si<sections.length; si++){
+    if(curPdfDoc !== docRef) return;   // 中途换了试卷/视图，放弃本轮
+    const st = await findSectionStart(sections[si].title);
+    if(!st) continue;
+    secPosCache[si] = st;
+    const el = titles[si];
+    if(el && st.label && !/^[一二三四五六七八九十]/.test(el.textContent||'')){
+      el.textContent = st.label + '、' + el.textContent;
+    }
+  }
 }
 // 答题卡模式下：隐藏/显示左侧试卷，便于专注作答
 const cardPdfToggle = $('#cardPdfToggle');
@@ -1686,7 +1779,7 @@ async function ensureGlueMap(){
   }catch(e){ glueMap=null; }
   return glueMap;
 }
-const GLUE_RE=/[A-Za-z]{8,}/g;
+const GLUE_RE=/[A-Za-z]{4,}/g;
 function deGlue(s){
   if(!glueMap) return s;
   return String(s).replace(GLUE_RE, w => glueMap[w] || w);
@@ -1789,7 +1882,7 @@ async function loadKnowledge(url){
   knowCfg = buildKnowCfg(knowData);
   knowOrder = (knowData.items||[]).map((_,i)=>i);
   knowIdx = 0; knowScore = {right:0,wrong:0}; knowMode='flash'; knowFlipped=false;
-  quizScope = -1; quizRound = 1;    // 换资料：出题范围与轮次都重置
+  quizScope = -1; quizRound = 1; extOutMode='quiz';    // 换资料：出题范围与轮次都重置
   // 出题库不在打开试卷时就抢带宽（试卷才是大头），等学生真的点「用一用」再按需加载
   renderKnowPanel();
 }
@@ -1988,6 +2081,8 @@ function deGlueEn(s){
   // 省略号 / 连续标点（... ?!）后面不补空格，否则 as...as... 会被拆坏
   t=t.replace(/([,.;:!?])(?=[A-Za-z])/g, (m,p,idx,whole)=> (idx>0 && /[.?!]/.test(whole[idx-1])) ? m : p+' ');
   t=t.replace(/[A-Za-z]+/g, w=> GLUE_KEEP.test(w) ? w : w.replace(/([a-z])([A-Z])/g,'$1 $2'));
+  // 数字紧跟英文（66million / 6600万年前那类 PDF 粘连）：字母段≥3 才补空格，避免拆坏 2nd / 3rd
+  t=t.replace(/(\d)([A-Za-z]{3,})/g,'$1 $2');
   return t;
 }
 // 中英句对识别：英文句子 + 中文译文。这类必须分两行，不能拆成并排小标签
@@ -2103,17 +2198,145 @@ function knowFlashHtmlText(){
   });
   return `<div class="know-read-tools"><button id="knowReadHide" class="primary">遮住全部</button><button id="knowReadShow">显示全部</button></div>`+html;
 }
+// 测一测（text 型）：先只给提示（中文意思 / 句型译文 / 语法小节标题），答案点「显示」才出现，
+// 点「隐藏」可以收回去再背一遍 —— 不然只显示一次就没有自查的作用了
+function blockTestKind(b){
+  const t=String((b&&b.title)||'');
+  if(/词汇/.test(t)) return 'vocab';
+  if(/短语|词组/.test(t)) return 'phrase';
+  if(/句型|句子|范文/.test(t)) return 'sentence';
+  return 'grammar';
+}
+// 核心词汇 → 每个词条一张卡：提示=中文释义，答案=单词+音标+词性
+function vocabTestEntries(text){
+  const lines=String(text||'').split(/\n/).map(s=>s.trim()).filter(Boolean);
+  const merged=[];
+  for(let i=0;i<lines.length;i++){
+    let line=lines[i];
+    if(/\/[^\/]+\//.test(line) && /[A-Za-z]/.test(line)){
+      const entries=parseVocabLine(line);
+      const last=entries[entries.length-1];
+      if(last && !last.mean){
+        const nx=lines[i+1];
+        if(nx && !/\/[^\/]+\//.test(nx) && /^[\u4e00-\u9fa5\u3000-\u303f\uff00-\uffef\s]+$/.test(nx)){ line=line+' '+nx; i++; }
+      }
+    }
+    merged.push(line);
+  }
+  const out=[];
+  merged.forEach(line=>{ parseVocabLine(line).forEach(e=>{
+    // 释义以全角括号开头时（如 piece n.（音乐作品的）一首），parseVocabLine 会把它误归入词性 —— 归回释义
+    if(!e.mean && e.pos && /[\u4e00-\u9fa5]/.test(e.pos)){ e.mean=e.pos; e.pos=''; }
+    if(e.word) out.push(e);
+  }); });
+  return out;
+}
+// 核心短语 → 每组「中文 英文」一张卡：提示=中文，答案=英文（与背一背的两列词条同源解析）
+function phraseTestPairs(text){
+  const out=[];
+  String(text||'').split(/\n/).map(s=>s.trim()).filter(Boolean).forEach(line=>{
+    const tokens=line.match(/[\u4e00-\u9fa5；，、…]+|[^\s\u4e00-\u9fa5；，、…]+/g)||[line];
+    const cjk=tokens.filter(t=>/[\u4e00-\u9fa5]/.test(t));
+    const latin=tokens.filter(t=>/[A-Za-z]/.test(t));
+    if(cjk.length<2||latin.length<2) return;
+    const items=[];
+    const re=/([\u4e00-\u9fa5；，、…]+)\s*([^\u4e00-\u9fa5；，、…]+)|([^\u4e00-\u9fa5；，、…]+)\s*([\u4e00-\u9fa5；，、…]+)/g;
+    let m; while((m=re.exec(line))!==null){
+      const item=(m[1]!==undefined)?(m[1]+' '+m[2]):(m[3]+' '+m[4]);
+      items.push(item.trim().replace(/\s+/g,' '));
+    }
+    const ok=items.length>=2 && items.every(it=> it.length<=32 && (it.match(/[A-Za-z][A-Za-z'’-]*/g)||[]).length<=4);
+    if(!ok) return;
+    let pairs=items.map(it=>({
+      en:(it.match(/[A-Za-z][A-Za-z'’.\-]*/g)||[]).join(' ').replace(/\s+/g,' ').trim(),
+      zh:(it.match(/[\u4e00-\u9fa5；，、…]/g)||[]).join('').trim()
+    }));
+    for(let k=pairs.length-1;k>=0;k--){
+      const p0=pairs[k];
+      if(!p0.en && p0.zh && k+1<pairs.length){ pairs[k+1].zh=p0.zh+pairs[k+1].zh; pairs.splice(k,1); }
+      else if(!p0.en && !p0.zh) pairs.splice(k,1);
+    }
+    pairs.forEach(p=>{ if(p.en&&p.zh&&p.zh.length<=20) out.push(p); });
+  });
+  return out;
+}
+// 重点句型 → 每句一张卡：提示=中文译文，答案=英文原句
+function sentenceTestItems(text){
+  const lines=String(text||'').split(/\n/).map(s=>s.trim()).filter(Boolean);
+  const items=[]; let cur=null;
+  lines.forEach(line=>{
+    const lm=line.match(/^\d+\s*[.、]\s*/);
+    if(lm){
+      if(cur) items.push(cur);
+      cur={en:'',zh:'',no:lm[0].trim()};
+      const rest=line.slice(lm[0].length);
+      const pair=splitSentencePair(rest);
+      if(pair){ cur.en=pair.en; cur.zh=pair.zh; }
+      else if(/^[\u4e00-\u9fa5……；，、。\s（）()]+$/.test(rest)) cur.zh=rest;
+      else cur.en=rest;
+    }else if(cur){
+      if(/^[\u4e00-\u9fa5……；，、。\s（）()]+$/.test(line)) cur.zh+=(cur.zh?'　':'')+line;
+      else cur.en+=(cur.en?' ':'')+line;
+    }
+  });
+  if(cur) items.push(cur);
+  return items.filter(it=>it.en||it.zh);
+}
+// 核心语法 → 每个（一）（二）小节一张卡：提示=小节标题，答案=整段讲解
+function grammarTestSections(text){
+  const lines=String(text||'').split(/\n/).map(s=>s.trim()).filter(Boolean);
+  const secs=[]; let cur=null;
+  const push=()=>{ if(cur&&(cur.head||cur.body)) secs.push(cur); cur=null; };
+  lines.forEach(line=>{
+    if(/^（[一二三四五六七八九十]+）/.test(line)){ push(); cur={head:line,body:''}; }
+    else if(cur) cur.body+=(cur.body?'\n':'')+line;
+    else cur={head:'',body:line};
+  });
+  push();
+  return secs;
+}
+function testItemsOf(b,kind){
+  const text=String((b&&b.text)||'');
+  const items=[];
+  if(kind==='vocab'){
+    vocabTestEntries(text).forEach(e=>{ if((e.mean||'').trim()) items.push({p:escapeHtml(e.mean.trim()), a:vocabChipHtml(e)}); });
+  }else if(kind==='phrase'){
+    phraseTestPairs(text).forEach(pr=>{ items.push({p:escapeHtml(pr.zh), a:'<span class="ph-en">'+escapeHtml(deGlueEn(pr.en))+'</span>'}); });
+  }else if(kind==='sentence'){
+    sentenceTestItems(text).forEach((it,idx)=>{
+      items.push({
+        p:'<b class="know-num">'+escapeHtml(it.no||((idx+1)+'. '))+'</b>'+escapeHtml(it.zh||'（先自己回忆英文，点「显示」对答案）'),
+        a: it.en ? '<p class="know-read-line pair-en" style="margin:0;">'+escapeHtml(deGlueEn(it.en))+'</p>' : '<p class="know-read-line pair-zh" style="margin:0;">'+escapeHtml(it.zh||'')+'</p>'
+      });
+    });
+  }else{
+    grammarTestSections(text).forEach(sec=>{
+      const full=(sec.head?sec.head+'\n':'')+sec.body;
+      items.push({
+        p: sec.head ? '<b class="know-num">'+escapeHtml(sec.head)+'</b>' : escapeHtml((sec.body||'').replace(/\s+/g,' ').slice(0,36))+'…',
+        a: renderTextBlockHtml(full)
+      });
+    });
+  }
+  return items;
+}
 function knowTestHtmlText(){
   const blocks=textBlocks();
-  let html='<div class="know-prog">抽背自查：点「显示」看原文，再点「记住 / 没记住」</div>';
-  blocks.forEach((b,i)=>{
-    const title=b.title?`<div class="know-rec-title">${escapeHtml(b.title)}</div>`:'';
-    const lines=(b.text||'').split(/\n/).map(x=>x.trim()).filter(x=>x && !isTitleLine(x));
-    const prompt=(lines[0]||'').replace(/\s+/g,' ').trim().slice(0,22);
-    html+=`<div class="know-rec-card" data-i="${i}">${title}`
-      +`<div class="know-rec-prompt" id="recp${i}">${escapeHtml(prompt)}…</div>`
-      +`<div class="know-rec-ans" id="reca${i}" style="display:none;">${renderTextBlockHtml(b.text||'')}</div>`
-      +`<div class="know-rec-btns" id="recb${i}"><button class="know-rec-show" data-i="${i}">显示</button></div></div>`;
+  let html='<div class="know-prog">抽背自查：先看提示自己回忆 → 点「显示」对答案 → 点「记住了 / 没记住」；点「隐藏」收回答案，可以再背一遍。</div>';
+  let gi=0;
+  blocks.forEach(b=>{
+    const kind=blockTestKind(b);
+    let items=testItemsOf(b,kind);
+    if(!items.length) items=[{p:'这一部分，先自己回忆一遍再对答案', a:renderTextBlockHtml(b.text||'')}];
+    if(b.title) html+='<div class="know-rec-blocktitle">'+escapeHtml(b.title)+'<span class="know-rec-count">'+items.length+' 条</span></div>';
+    items.forEach(it=>{
+      html+='<div class="know-rec-card" data-i="'+gi+'">'
+        +'<div class="know-rec-prompt" id="recp'+gi+'">'+it.p+'</div>'
+        +'<div class="know-rec-ans" id="reca'+gi+'" style="display:none;">'+it.a+'</div>'
+        +'<div class="know-rec-btns" id="recb'+gi+'"><button class="know-rec-show" data-i="'+gi+'">显示</button></div>'
+        +'</div>';
+      gi++;
+    });
   });
   html+='<div class="know-result" id="knowTestResult"></div>';
   return html;
@@ -2122,7 +2345,7 @@ function markRec(i, ok){
   const card=document.querySelector('.know-rec-card[data-i="'+i+'"]');
   if(!card) return;
   card.classList.add(ok?'rec-ok':'rec-no');
-  const btns=$('#recb'+i); if(btns) btns.innerHTML='<span class="know-rec-done">'+(ok?'✓ 记住':'✗ 没记住')+'</span>';
+  const btns=$('#recb'+i); if(btns) btns.innerHTML='<span class="know-rec-done">'+(ok?'✓ 记住':'✗ 没记住')+'</span><button class="know-rec-hide" data-i="'+i+'">隐藏</button>';
   const res=$('#knowTestResult');
   if(res){ res.className='know-result '+(ok?'ok':'bad'); res.textContent='已记住 '+knowScore.right+' · 没记住 '+knowScore.wrong; }
   // 学习记录：抽背自查先累计，离开这张卡时再汇总成一条，避免刷出几百条记录
@@ -2148,9 +2371,9 @@ function knowExtendHtmlText(){
       + '</div>'
     : '';
   const cur = quizScope>=0 && list[quizScope] ? list[quizScope].label : '全部要点';
-  return `<div class="know-ext-word">选一个要点只练它，或选「全部要点」综合练；每次出 ${QUIZ_N} 道，答完可以「换一组」继续。</div>`
+  return `<div class="know-ext-word">选一个要点只练它，或选「全部要点」综合练；每次出 ${QUIZ_N} 道，「换一组」继续换新题；「详细讲解」会把该要点逐条讲透（语法和句型含结构拆解与易错点）。</div>`
   + chips
-  + `<div class="know-btns"><button id="knowExtGen" class="primary">出小题</button><button id="knowExtMore">换一组</button></div>`
+  + `<div class="know-btns"><button id="knowExtGen" class="primary">出小题</button><button id="knowExtMore">换一组</button><button id="knowExtExplain">详细讲解</button></div>`
   + `<div class="know-ext-out" id="knowExtendOut">当前范围：${escapeHtml(cur)}。\n常考要点已内置出题库（秒出、不联网）；没内置的会联网生成。</div>`;
 }
 function bindKnow(){
@@ -2170,10 +2393,11 @@ function bindKnow(){
   const reveal=$('#knowReveal'); if(reveal) reveal.onclick=knowReveal;
   const next2=$('#knowNext2'); if(next2) next2.onclick=()=>knowNav(1);
   const ext=$('#knowExtGen'); if(ext) ext.onclick=knowExtendGen;
+  const exp=$('#knowExtExplain'); if(exp) exp.onclick=knowExplainGen;
   // text 型「用一用」：切换要点（每个要点单独出题）+ 换一组
   p.querySelectorAll('[data-scope]').forEach(b=> b.onclick=()=>{
     quizScope=parseInt(b.dataset.scope,10); if(isNaN(quizScope)) quizScope=-1;
-    quizRound=1; renderKnowPanel();
+    quizRound=1; extOutMode='quiz'; renderKnowPanel();
   });
   const more=$('#knowExtMore'); if(more) more.onclick=()=>{
     quizRound++; knowExtendGenText($('#knowExtendOut'), true);
@@ -2181,19 +2405,24 @@ function bindKnow(){
   // text 型：阅读遮罩 / 抽背显示与自查
   const rh=document.getElementById('knowReadHide'); if(rh) rh.onclick=()=>{ document.querySelectorAll('.know-read-t').forEach(e=> e.style.display='none'); };
   const rs=document.getElementById('knowReadShow'); if(rs) rs.onclick=()=>{ document.querySelectorAll('.know-read-t').forEach(e=> e.style.display=''); };
-  document.querySelectorAll('.know-rec-show').forEach(b=> b.onclick=()=>{
-    const i=b.dataset.i;
-    const a=$('#reca'+i); if(a) a.style.display='block';
-    const pr=$('#recp'+i); if(pr) pr.style.display='none';
-    $('#recb'+i).innerHTML='<button class="know-rec-ok" data-i="'+i+'">记住了</button><button class="know-rec-no" data-i="'+i+'">没记住</button>';
-  });
-  // 「记住了 / 没记住」是点「显示」之后才生成的按钮，事先绑不到 —— 用事件委托（只挂一次）
+  // 「显示 / 隐藏 / 记住了 / 没记住」按钮都会随状态动态重建，事先绑不到 —— 统一用事件委托（只挂一次）
   if(!p.dataset.recDelegated){
     p.dataset.recDelegated='1';
     p.addEventListener('click', ev=>{
-      const ok=ev.target.closest && ev.target.closest('.know-rec-ok');
-      const no=ev.target.closest && ev.target.closest('.know-rec-no');
-      if(ok){ knowScore.right++; markRec(ok.dataset.i, true); }
+      const hit=sel=> ev.target.closest && ev.target.closest(sel);
+      const show=hit('.know-rec-show'), hide=hit('.know-rec-hide'), ok=hit('.know-rec-ok'), no=hit('.know-rec-no');
+      if(show){
+        const i=show.dataset.i;
+        const a=$('#reca'+i); if(a) a.style.display='block';
+        const pr=$('#recp'+i); if(pr) pr.style.display='none';
+        $('#recb'+i).innerHTML='<button class="know-rec-ok" data-i="'+i+'">记住了</button><button class="know-rec-no" data-i="'+i+'">没记住</button><button class="know-rec-hide" data-i="'+i+'">隐藏</button>';
+      }else if(hide){
+        const i=hide.dataset.i;
+        const a=$('#reca'+i); if(a) a.style.display='none';
+        const pr=$('#recp'+i); if(pr) pr.style.display='';
+        $('#recb'+i).innerHTML='<button class="know-rec-show" data-i="'+i+'">显示</button>';
+      }
+      else if(ok){ knowScore.right++; markRec(ok.dataset.i, true); }
       else if(no){ knowScore.wrong++; markRec(no.dataset.i, false); }
     });
   }
@@ -2436,6 +2665,7 @@ function quizShow(out, text, cls){
 }
 // force=true 表示「换一组」：跳过内置题库与旧缓存，强制重新出题
 async function knowExtendGenText(out, force){
+  extOutMode='quiz';
   const key=quizCacheKey();
   if(out){ out.className='know-ext-out'; out.textContent='出题中…'; }
   if(!force){
@@ -2449,12 +2679,66 @@ async function knowExtendGenText(out, force){
   if(v) quizShow(out, quizCache[key]||v);
   else quizShow(out, fallbackExtendText(), 'know-ext-fallback');
 }
+// ===== 用一用 · 详细讲解：把选定要点的语法 / 句型 / 词汇逐条讲透 =====
+// 与出小题共用缓存与「进行中请求复用」机制，讲解结果按要点缓存，切走再回来不重新等
+let expInflight={}, extOutMode='quiz';
+function explainSys(label){
+  const s=String(label||'');
+  if(/语法/.test(s)) return '你是初中英语老师，学生是初二学生。请把下面这份资料里的语法要点讲透，让学生看完就懂、会做题。要求：'
+    +'① 先用一两句大白话说清楚这条语法是干什么用的；'
+    +'② 逐条讲解规则，每条规则配一个英文例句和中文翻译，规则和例句各占一行；'
+    +'③ 给出结构公式（如 some + 复数名词、any 用于否定句），单独成行；'
+    +'④ 列出 2-4 个初二学生最容易犯的错，用「✗ 错句 → ✓ 正确」的正误对比，各占一行；'
+    +'⑤ 结尾用两三行小结（什么时候用、怎么记）。'
+    +'排版要求：分点①②③、每点独立成行、空行分段；不要 markdown 代码块。';
+  if(/句型/.test(s)) return '你是初中英语老师，学生是初二学生。请逐句讲解下面资料中的重点句型，每个句型按这个格式讲：'
+    +'① 句型原文 + 中文意思；'
+    +'② 结构拆解：一句话点明句子主干和关键短语搭配（如 be talented in + 名词）；'
+    +'③ 仿写例句：给一个能直接套用的例句（英文一行、中文翻译一行）；'
+    +'④ 考点提示：考试常在这个句型里考什么（时态、介词搭配、同义转换等）。'
+    +'每个句型之间空一行；全部用大白话，每点独立成行；不要 markdown 代码块。';
+  if(/词汇|短语|词组/.test(s)) return '你是初中英语老师，学生是初二学生。请把下面资料里的词汇/短语逐个讲透，每个词/短语按这个格式：'
+    +'① 词或短语 + 词性 + 中文意思；'
+    +'② 1-2 个例句（英文一行、中文翻译一行）；'
+    +'③ 常见搭配或易错点一行（如不可数、常用介词、近义辨析）。'
+    +'每个词之间空一行；分点①②③、每点独立成行；不要 markdown 代码块。';
+  return '你是初中英语老师，学生是初二学生。请把下面这份要点内容详细讲解一遍：把里面的知识点逐条展开（是什么、怎么用、举例、易错点），分点①②③、每点独立成行、空行分段，用初二学生能看懂的大白话，不要 markdown 代码块。';
+}
+async function knowExplainGen(){
+  const out=$('#knowExtendOut'); if(!out) return;
+  const key='exp::'+quizKey();
+  extOutMode='exp';
+  const saved=quizCache[key]||quizLsGet(key);
+  if(saved){ quizShow(out,saved); return; }
+  quizShow(out,'正在联网整理详细讲解，大约 10-20 秒。\n这段时间可以切去看别的资料，回来结果还在，不用重新等。','');
+  if(!expInflight[key]){
+    const label=(quizScope>=0 && textBlocks()[quizScope]) ? blockLabel(textBlocks()[quizScope],quizScope) : '全部要点';
+    const ctx=(quizCtx()||'').slice(0,6000);
+    const job=(async()=>{
+      try{ return String(await aiComplete([{role:'system',content:explainSys(label)},{role:'user',content:'要点内容：\n'+ctx+'\n\n请按系统要求讲解。'}])||'').trim(); }
+      catch(e){ return ''; }
+    })();
+    expInflight[key]=job;
+    job.then(v=>{ if(v){ quizCache[key]=v; quizLsSet(key,v); } delete expInflight[key]; },
+            ()=>{ delete expInflight[key]; });
+  }
+  const v=await expInflight[key];
+  if(v){ if(extOutMode==='exp') quizShow(out,quizCache[key]||v); }
+  else quizShow(out, fallbackExtendText(), 'know-ext-fallback');
+}
 // 切回「用一用」时把已有结果/正在等的进度接回来（不会自动发起新请求）
 async function hydrateExtendOut(){
   try{
     if(!knowCfg || knowMode!=='extend') return;
     if(knowCfg.kind!=='text'){ await knowExtAutoShow(); return; }
     const out=$('#knowExtendOut'); if(!out) return;
+    // 上次看的是「详细讲解」就还原讲解内容，别被出题结果顶掉
+    const expKey='exp::'+quizKey();
+    if(extOutMode==='exp'){
+      const expSaved=quizCache[expKey]||quizLsGet(expKey);
+      if(expSaved) quizShow(out,expSaved);
+      return;
+    }
     const key=quizCacheKey();
     const baked=await quizBaked(quizKey());
     if(baked){ quizShow(out,baked); return; }
