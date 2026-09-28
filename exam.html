@@ -140,9 +140,34 @@ select:focus{outline:none; border-color:var(--primary);}
   .pdf-viewer{height:calc(100vh - 96px); padding:0;}
 }
 /* 默认：试卷按适中尺寸显示，一屏能看到更多页高（点顶栏「原始大小」可切真实像素、左右拖动看细节） */
-.pdf-viewer canvas{background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.35); width:100%; height:auto; max-width:min(720px,94vw); margin:0 auto; display:block;}
-.pdf-viewer.native canvas{width:auto; height:auto; max-width:none;}
+.pdf-viewer .pdf-page{position:relative; width:100%; max-width:min(720px,94vw); margin:0 auto;}
+.pdf-viewer .pdf-page canvas{background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.35); width:100%; height:auto; max-width:none; margin:0; display:block;}
+.pdf-viewer.native .pdf-page{max-width:none; width:auto;}
+.pdf-viewer.native .pdf-page canvas{width:auto; height:auto; max-width:none;}
 .pdf-loading{color:#ded9d0; padding:30px; font-size:14px; text-align:center;}
+/* PDF 文本层：透明文字精确覆盖在画布上，让试卷上的英文可以像普通网页文字一样圈选/双击选词。
+   仅铺在「原卷」上，不改变观感；关掉时给 body 加 .no-textlayer。 */
+.pdf-textlayer{position:absolute; inset:0; overflow:hidden; line-height:1; opacity:1;
+  -webkit-user-select:text; user-select:text; cursor:text;}
+.pdf-textlayer span,.pdf-textlayer br{position:absolute; white-space:pre; transform-origin:0 0;
+  color:transparent; -webkit-text-fill-color:transparent; cursor:text;}
+.pdf-textlayer ::selection{background:rgba(29,74,107,.28);}
+.pdf-textlayer span::selection{background:rgba(29,74,107,.28);}
+.pdf-viewer.native .pdf-textlayer{display:none;}
+body.no-textlayer .pdf-textlayer{display:none;}
+/* 从试卷里选中文字后浮出的小条：读一遍 / 慢慢读 / 问 AI */
+#pickBar{position:fixed; z-index:60; display:none; align-items:center; gap:6px; padding:6px 8px;
+  background:#fff; border:1px solid var(--rule); border-radius:var(--radius); box-shadow:0 8px 26px rgba(26,29,33,.2);}
+#pickBar.show{display:flex;}
+#pickBar .pb-txt{max-width:190px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  font-family:var(--font-en); font-size:12.5px; color:var(--muted); padding-right:2px;}
+#pickBar button{height:28px; padding:0 11px; font-size:12.5px; font-family:inherit; cursor:pointer;
+  border:1px solid var(--rule); border-radius:var(--radius); background:#fff; color:var(--ink); white-space:nowrap;}
+#pickBar button:hover{background:#f7f6f2;}
+#pickBar button.primary{background:var(--primary); border-color:var(--primary); color:#fff; font-weight:600;}
+#pickBar button.primary:hover{background:var(--primary-dark);}
+/* 选中文字的高亮反馈（朗读中：逐词/逐句亮起） */
+.pdf-textlayer span.rd-on{background:rgba(29,74,107,.2); border-radius:2px;}
 /* 听力音频播放器：仅带音频的试卷出现，悬浮在试卷底部，不额外占一行高度 */
 .pdf-col{position:relative;}
 #audioBar{position:absolute; left:50%; bottom:12px; transform:translateX(-50%); z-index:15; display:flex; align-items:center; gap:8px; background:rgba(17,24,39,.92); color:#fff; padding:6px 12px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.4); max-width:94%; box-sizing:border-box;}
@@ -421,6 +446,13 @@ select:focus{outline:none; border-color:var(--primary);}
       </div>
       <audio id="auEl" preload="none"></audio>
     </div>
+    <!-- 从试卷里圈选一段英文后浮出：读一遍 / 慢慢读 / 问 AI -->
+    <div id="pickBar">
+      <span class="pb-txt" id="pbTxt"></span>
+      <button type="button" class="primary" id="pbRead">读一遍</button>
+      <button type="button" id="pbSlow">慢慢读</button>
+      <button type="button" id="pbAsk">问 AI</button>
+    </div>
     <div id="answerPadWrap" style="margin-top:14px;">
       <div class="pad-head" style="display:flex;justify-content:space-between;align-items:center;margin:6px 2px 8px;">
         <div style="font-size:14px;font-weight:700;color:var(--primary);">我的答题区（自动保存，关掉页面也不丢）</div>
@@ -482,6 +514,7 @@ let secPosCache = {};   // 大题标题在当前视图 PDF 里的位置缓存（
 let viewingAnswer = false;     // 当前 #pdfViewer 显示的是否为解析版（决定跳转用哪套位置）
 let ALL_POS = null;            // 全部试卷的题号位置表（positions.json）
 let curPdfDoc = null;          // 当前已加载的 PDF 文档（供点击题号时实时检索题号位置）
+let curPdfUrl = '';            // 当前试卷地址（文本层缓存以它为主键）
 let runtimePos = {};           // 运行时检索到的题号位置缓存（按当前试卷）
 let navNumbers = null;         // 运行时从 PDF 文本扫描出的题号全集（用于导航条，比离线更全）
 let examStarted = false, examEndTime = 0, timerInterval = null;
@@ -495,35 +528,103 @@ const LETTERS = "ABCDEFGH";
 
 // ===== PDF.js：把原卷/解析版渲染成居中真实试卷页 =====
 const PDFJS_VER = '3.11.174';
+const PDF_RENDER_SCALE = 1.6;
+// 文本层：按解析版/原卷各自缓存「页 → 行文本」，供圈选朗读与整段朗读使用
+let pdfLineCache = {};     // { [pdfUrl]: { [pageNo]: [ {y, text, items} ] } }
 function initPdfJs(){
   if(!window.pdfjsLib) return false;
   window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/' + PDFJS_VER + '/pdf.worker.min.js';
   return true;
 }
+// 把一页的文本项按 y 聚成行（与 searchPageForQuestion 同一套聚类规则，保持行为一致）
+function pdfItemsToLines(tc, pageH){
+  const lines = {};
+  for(const it of (tc.items || [])){
+    if(!it.str || !it.str.trim()) continue;
+    const y = it.transform ? it.transform[5] : 0;
+    const key = Math.round(y / 3) * 3;
+    (lines[key] = lines[key] || []).push(it);
+  }
+  const ys = Object.keys(lines).map(Number).sort((a, b) => b - a);   // 自上而下
+  return ys.map(y => {
+    const row = lines[y].slice().sort((a, b) => (a.transform ? a.transform[4] : 0) - (b.transform ? b.transform[4] : 0));
+    return {
+      y,
+      yFrac: Math.max(0, Math.min(1, 1 - y / (pageH || 1))),
+      text: row.map(t => t.str || '').join('').replace(/\s+/g, ' ').trim(),
+      items: row
+    };
+  }).filter(l => l.text);
+}
+// 构建某一页的透明文本层：把每个文本项按 PDF 坐标绝对定位到画布上。
+// 这样试卷上的英文就能被鼠标圈选、双击选词了（canvas 本身是选不了字的）。
+function buildTextLayer(page, viewport, pageNo, lines){
+  const layer = document.createElement('div');
+  layer.className = 'pdf-textlayer';
+  layer.dataset.page = pageNo;
+  const vp1 = page.getViewport({scale: 1});
+  const sx = viewport.width / (vp1.width || 1);
+  const sy = viewport.height / (vp1.height || 1);
+  for(const it of (page.__items || [])){
+    if(!it.str) continue;
+    const sp = document.createElement('span');
+    sp.textContent = it.str;
+    const tr = it.transform || [1, 0, 0, 1, 0, 0];
+    const fh = Math.hypot(tr[2], tr[3]) || it.height || 10;   // 字高（含旋转）
+    const x = tr[4] * sx;
+    const yTop = (vp1.height - tr[5]) * sy - fh * sy * 0.82;  // 基线 → 顶边（约 0.82 字高，PDF.js 同款估算）
+    sp.style.left = x.toFixed(2) + 'px';
+    sp.style.top = yTop.toFixed(2) + 'px';
+    sp.style.fontSize = (fh * sy).toFixed(2) + 'px';
+    sp.style.transform = 'scaleX(1)';
+    layer.appendChild(sp);
+  }
+  return layer;
+}
 async function renderPdf(el, url){
   el.innerHTML = '<div class="pdf-loading">正在加载试卷…</div>';
   runtimePos = {}; navNumbers = null;   // 切卷/解锁解析版：清空运行时缓存
+  hidePickBar();
   if(!initPdfJs()){ el.innerHTML = '<div class="pdf-loading">PDF 组件未加载（可能离线），请用上方「新窗口打开」按钮查看原卷。</div>'; return; }
   let pdf;
   try{ pdf = await window.pdfjsLib.getDocument({url}).promise; }
   catch(e){ el.innerHTML = '<div class="pdf-loading">试卷加载失败：' + (e.message||e) + '</div>'; return; }
   curPdfDoc = pdf;   // 保存文档引用，供点击题号时实时检索位置
+  curPdfUrl = url;
+  if(!pdfLineCache[url]) pdfLineCache[url] = {};
   // 渲染进度条挂在末尾：画布始终插在它前面，保证 canvas 顺序与页码一致（题号跳转依赖这个顺序）
   el.innerHTML = '<div class="pdf-loading" id="pdfProg">正在渲染 0/' + pdf.numPages + ' 页…</div>';
   const prog = ()=> el.querySelector('#pdfProg');
   for(let i=1;i<=pdf.numPages;i++){
     try{
       const page = await pdf.getPage(i);
-      const vp = page.getViewport({scale:1.6});
+      const vp = page.getViewport({scale:PDF_RENDER_SCALE});
+      const wrap = document.createElement('div');
+      wrap.className = 'pdf-page';
+      wrap.dataset.page = i;
       const canvas = document.createElement('canvas');
       canvas.width = vp.width; canvas.height = vp.height;
       const ctx = canvas.getContext('2d');
       await page.render({canvasContext:ctx, viewport:vp}).promise;
+      wrap.appendChild(canvas);
+      // 文本层（放在画布之上）：先取文本，再按坐标铺透明文字
+      try{
+        const tc = await page.getTextContent();
+        page.__items = tc.items || [];
+        const vp1 = page.getViewport({scale:1});
+        const lines = pdfItemsToLines(tc, vp1.height);
+        pdfLineCache[url][i] = lines;
+        const layer = buildTextLayer(page, vp, i, lines);
+        wrap.appendChild(layer);
+      }catch(e){ /* 文本层失败不影响看卷 */ }
       const ph = prog();
-      if(ph) el.insertBefore(canvas, ph); else el.appendChild(canvas);
+      if(ph) el.insertBefore(wrap, ph); else el.appendChild(wrap);
       if(ph) ph.textContent = '正在渲染 ' + i + '/' + pdf.numPages + ' 页…';
       if(i % 3 === 0) await new Promise(r=> setTimeout(r, 0));   // 每 3 页让出主线程，长卷也不卡页面
-    }catch(e){ const d=document.createElement('div'); d.className='pdf-loading'; d.textContent='第'+i+'页渲染失败'; el.appendChild(d); }
+    }catch(e){
+      const d=document.createElement('div'); d.className='pdf-loading'; d.textContent='第'+i+'页渲染失败';
+      const ph = prog(); if(ph) el.insertBefore(d, ph); else el.appendChild(d);
+    }
   }
   const ph = prog(); if(ph) ph.remove();
   // rebuildNavAsync(); // 当前隐藏顶部题号导航条，不再实时扫描刷新
@@ -2793,6 +2894,155 @@ async function knowExtendGen(){
     out.textContent= fallbackExtend(word);
   }
 }
+
+// ===== 试卷圈选朗读：在 PDF 上选中一段英文 → 直接读 / 慢慢读 / 问 AI =====
+// 发音由父页（index.html）的「读一读」统一提供（Web Speech 本机合成），这里只负责取选区 + 传消息，
+// 避免两处各写一套语音逻辑。父页不在（比如单独新窗口打开 exam.html）时降级为本页自带的最小朗读。
+let pickText = '';                 // 当前选中的原文
+let pickSlow = false;              // 「慢慢读」的语速标记
+function pickBarEl(){ return document.getElementById('pickBar'); }
+function hidePickBar(){ const b = pickBarEl(); if(b) b.classList.remove('show'); }
+// 把选区清理成「适合朗读的英文」：压平空白、去掉 PDF 抽取常见的粘连碎片行号
+function pickClean(s){
+  return String(s || '')
+    .replace(/[\u00ad]/g, '')
+    .replace(/[_—–]{2,}/g, ' ')               // 填空横线不参与朗读
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([,.;:!?])\s*/g, '$1 ')
+    .replace(/\s+([’'])\s*/g, '$1')
+    .trim();
+}
+// 长段落按句切分，逐句朗读（一次念几百词会失控，也听不清）
+function pickSentences(s){
+  const t = pickClean(s);
+  if(!t) return [];
+  const parts = t.match(/[^.!?;]+[.!?;]*/g) || [t];
+  const out = [];
+  for(const p0 of parts){
+    let p = p0.trim();
+    if(!p) continue;
+    // 太短的片段并到上一句，避免读成碎词
+    if(out.length && p.length < 12 && !/[.!?]$/.test(out[out.length - 1])){ out[out.length - 1] += ' ' + p; }
+    else out.push(p);
+  }
+  return out.slice(0, 40);
+}
+// 本页兜底朗读（父页不可用时）
+let pickSeq = 0;
+function pickSpeakLocal(text, slow){
+  if(!('speechSynthesis' in window)) return false;
+  try{ window.speechSynthesis.cancel(); }catch(e){}
+  const my = ++pickSeq;
+  const list = pickSentences(text);
+  const rate = slow ? 0.7 : 0.85;
+  const speakAt = (i)=>{
+    if(my !== pickSeq || i >= list.length) return;
+    const u = new SpeechSynthesisUtterance(list[i]);
+    u.lang = 'en-US'; u.rate = rate; u.pitch = 1;
+    u.onend = ()=>{ if(my === pickSeq) speakAt(i + 1); };
+    u.onerror = ()=>{ if(my === pickSeq) speakAt(i + 1); };
+    try{ window.speechSynthesis.speak(u); }catch(e){}
+  };
+  speakAt(0);
+  return true;
+}
+function pickRead(slow){
+  const t = pickClean(pickText);
+  if(!t) return;
+  // 优先交给父页「读一读」：那里有云端释义、例句、缓存，体验一致
+  try{
+    if(window.parent && window.parent !== window){
+      window.parent.postMessage({ type:'read-aloud', text:t, slow:!!slow, src:'exam' }, '*');
+      hidePickBar();
+      return;
+    }
+  }catch(e){}
+  pickSpeakLocal(t, slow);
+  hidePickBar();
+}
+// 「问 AI」：把选中的段落作为问题送给父页 AI 答疑面板
+function pickAsk(){
+  const t = pickClean(pickText);
+  if(!t) return;
+  try{
+    if(window.parent && window.parent !== window){
+      window.parent.postMessage({ type:'ask-ai', text:'请看试卷里的这段话，逐句讲解意思、语法要点和怎么读：\n' + t }, '*');
+      hidePickBar();
+      return;
+    }
+  }catch(e){}
+  alert('请点右下角「AI 答疑」把这段话贴进去提问。\n\n原文：\n' + t);
+  hidePickBar();
+}
+// 选区 → 定位悬浮条
+function pickShowBar(){
+  const sel = window.getSelection();
+  if(!sel || sel.isCollapsed) { hidePickBar(); return; }
+  const raw = String(sel.toString() || '');
+  // 至少要有英文字母才值得浮出（避免点到空白/中文题号就弹）
+  if(!/[A-Za-z]{2}/.test(raw)){ hidePickBar(); return; }
+  const t = pickClean(raw);
+  if(t.length > 1200) return;      // 整页全选这类超长选区不弹，避免误触
+  pickText = t;
+  const b = pickBarEl();
+  if(!b) return;
+  document.getElementById('pbTxt').textContent = t.length > 34 ? t.slice(0, 34) + '…' : t;
+  b.classList.add('show');
+  // 定位在选区中点上方；不够位就翻到下方
+  try{
+    const r = sel.getRangeAt(0).getBoundingClientRect();
+    const bw = b.offsetWidth || 320, bh = b.offsetHeight || 42;
+    let x = r.left + r.width / 2 - bw / 2;
+    let y = r.top - bh - 8;
+    if(y < 8) y = r.bottom + 10;
+    x = Math.max(8, Math.min(window.innerWidth - bw - 8, x));
+    y = Math.max(8, Math.min(window.innerHeight - bh - 8, y));
+    b.style.left = x + 'px';
+    b.style.top = y + 'px';
+  }catch(e){}
+}
+(function bindPickBar(){
+  const b = pickBarEl();
+  if(b){
+    document.getElementById('pbRead').onclick = ()=> pickRead(false);
+    document.getElementById('pbSlow').onclick = ()=> pickRead(true);
+    document.getElementById('pbAsk').onclick  = ()=> pickAsk();
+    b.addEventListener('mousedown', e=> e.preventDefault());   // 别让点按钮清掉选区
+  }
+  // 只在试卷区域内响应（答题卡、知识面板里选字不弹条）
+  const viewer = document.getElementById('pdfViewer');
+  const inViewer = (node)=> !!(viewer && node && (viewer === node || viewer.contains(node)));
+  document.addEventListener('mouseup', (e)=>{
+    if(!inViewer(e.target)){ return; }
+    setTimeout(pickShowBar, 0);
+  }, true);
+  document.addEventListener('mousedown', (e)=>{
+    const b2 = pickBarEl();
+    if(b2 && b2.contains(e.target)) return;
+    if(!inViewer(e.target)) hidePickBar();
+  }, true);
+  // 选区被清掉（点空白、滚动离开）时收起
+  document.addEventListener('selectionchange', ()=>{
+    const sel = window.getSelection();
+    if(!sel || sel.isCollapsed) hidePickBar();
+  });
+  // 页面滚动时悬浮条会跟丢，直接收起（避免悬在半空）
+  window.addEventListener('scroll', hidePickBar, {passive:true});
+  // Esc：先收悬浮条；若父页的面板（读一读/AI答疑）开着，把按键转交给父页去关
+  document.addEventListener('keydown', (e)=>{
+    if(e.key !== 'Escape') return;
+    const had = pickBarEl() && pickBarEl().classList.contains('show');
+    hidePickBar();
+    if(!had){
+      try{ if(window.parent && window.parent !== window) window.parent.postMessage({type:'esc'}, '*'); }catch(err){}
+    }
+  });
+})();
+// 父页回传：朗读状态（用于高亮/结束提示）
+window.addEventListener('message', (e)=>{
+  const d = e.data || {};
+  if(d.type === 'read-done'){ /* 目前只用于关掉悬浮条，预留 */ }
+});
 
 // 学习报告入口（给家长看学习时长与测验情况）
 (function(){

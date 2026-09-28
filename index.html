@@ -137,18 +137,18 @@ body{margin:0;font-family:var(--font-ui);background:var(--bg);color:var(--text);
 <body>
 <div class="wrap">
   <div class="main">
-    <iframe class="exam-frame" src="exam.html?v=20260928a" title="在线做题"></iframe>
+    <iframe class="exam-frame" src="exam.html?v=20260928b" title="在线做题"></iframe>
   </div>
 </div>
 <button class="chat-fab" id="chatFab" title="AI 答疑">AI 答疑</button>
-<button class="read-btn" id="readBtn" title="粘贴单词或短语，自动标音标、给中文、朗读">读一读</button>
+<button class="read-btn" id="readBtn" title="① 在试卷上圈选一段英文，直接读；② 也可以把单词/短语粘进来，自动标音标、给中文">读一读</button>
 <div class="read-mask" id="readMask">
   <div class="read-card">
-    <div class="read-head"><span>读一读 · 粘贴即读</span><span class="tools"><span class="hbtn" id="readHelp">说明</span><span class="hbtn" id="readClose">关闭</span></span></div>
+    <div class="read-head"><span id="readTitle">读一读 · 粘贴即读</span><span class="tools"><span class="hbtn" id="readHelp">说明</span><span class="hbtn" id="readClose">关闭</span></span></div>
     <div class="read-sub" id="readSub">沪教·英语 八年级上册（全国版·2025版） · 单词/短语/句子都能读</div>
     <div class="read-body">
       <textarea id="readInput" class="read-input" placeholder="把不会读的单词或短语粘进来，例如：&#10;be famous for&#10;communicate&#10;as soon as possible"></textarea>
-      <div class="read-hint">粘贴后自动拆分并朗读；也可以直接打字，按 Ctrl+Enter 立即读。一行一个，或用逗号、分号隔开。</div>
+      <div class="read-hint" id="readHint">粘贴后自动拆分并朗读；也可以直接打字，按 Ctrl+Enter 立即读。一行一个，或用逗号、分号隔开。<br>在左边试卷上圈选一段英文，这里会自动读起来。</div>
       <div class="read-row">
         <button class="primary" id="readPlayAll">全部朗读</button>
         <button id="readClear">清空</button>
@@ -664,13 +664,32 @@ function closeAI(){ aiMask.classList.remove('show'); const ef=document.querySele
 aiClose.onclick = closeAI;
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && aiMask.classList.contains('show')) closeAI(); });
 
-// 来自试卷 iframe 的「截题问AI」截图：接收图片并打开 AI 提问
+// 来自试卷 iframe 的消息：截题问AI 的截图 / 圈选朗读 / 圈选问AI
 window.addEventListener('message', function(e){
   const d = e.data || {};
   if(d.type === 'exam-screenshot' && d.image){
     pendingImages.push({ name:'截题.png', dataUrl: d.image });
     renderImgPrev();
     openAI();
+    return;
+  }
+  // 试卷里圈选一段英文 → 直接读（走本页「读一读」同一套语音，体验一致）
+  if(d.type === 'read-aloud' && d.text){
+    try{ rdReadFromExam(String(d.text), !!d.slow); }catch(err){}
+    return;
+  }
+  // 试卷里圈选一段英文 → 丢给 AI 答疑讲解
+  if(d.type === 'ask-ai' && d.text){
+    openAI();
+    const box = document.getElementById('chatIn');
+    if(box){ box.value = String(d.text); box.focus(); }
+    return;
+  }
+  // 试卷里按 Esc：焦点在 iframe 内，键不会冒泡到这里，由 iframe 转交 → 关掉当前打开的面板
+  if(d.type === 'esc'){
+    if(rdMask.classList.contains('show')) rdClose();
+    else if(aiMask.classList.contains('show')) closeAI();
+    return;
   }
 });
 
@@ -709,6 +728,9 @@ let rdSeq = 0;           // 朗读代次：换一批就 +1，让上一批的队�
 let rdCache = {};
 let rdVoices = [];
 let rdSpeakingKey = '';
+// 两种模式：'word'（粘贴单词/短语，按行拆分查释义） / 'passage'（试卷圈选整段，按句朗读+翻译）
+// 必须在这里声明：下面的 rdLoadVoices→rdVoiceHint 会在初始化时就读取它
+let rdMode = 'word';
 
 try{ rdCache = JSON.parse(localStorage.getItem(RD_KEY) || '{}') || {}; }catch(e){ rdCache = {}; }
 try{
@@ -825,8 +847,24 @@ function rdVoiceHint(){
   if(!box) return;
   let it = null;
   try{ it = rdVoiceAccent(); }catch(e){ it = null; }
-  box.textContent = '沪教·英语 八年级上册（全国版·2025版） · 单词/短语/句子都能读 · 当前人声：'
+  const what = rdMode === 'passage' ? '整段英文逐句读' : '单词/短语/句子都能读';
+  box.textContent = '沪教·英语 八年级上册（全国版·2025版） · ' + what + ' · 当前人声：'
     + (it ? it.name + '（' + it.accent + '）' : '未检测到英文语音 — 点「说明」');
+}
+// 两种模式：'word'（粘贴单词/短语，按行拆分查释义） / 'passage'（试卷圈选整段，按句朗读+翻译）
+function rdSetMode(m){
+  rdMode = (m === 'passage') ? 'passage' : 'word';
+  const ti = document.getElementById('readTitle');
+  const hi = document.getElementById('readHint');
+  const inp = document.getElementById('readInput');
+  if(ti) ti.textContent = rdMode === 'passage' ? '读一读 · 试卷整段朗读' : '读一读 · 粘贴即读';
+  if(hi) hi.innerHTML = rdMode === 'passage'
+    ? '已按句拆开，逐句朗读；每一句给出中文翻译。<br>想读单词/短语，点「关闭」后重新打开面板即可。'
+    : '粘贴后自动拆分并朗读；也可以直接打字，按 Ctrl+Enter 立即读。一行一个，或用逗号、分号隔开。<br>在左边试卷上圈选一段英文，这里会自动读起来。';
+  if(inp) inp.placeholder = rdMode === 'passage'
+    ? '这里显示从试卷圈选的段落，每行一句'
+    : '把不会读的单词或短语粘进来，例如：\nbe famous for\ncommunicate\nas soon as possible';
+  rdVoiceHint();
 }
 function rdRender(){
   rdList.innerHTML = '';
@@ -939,6 +977,104 @@ async function rdAnnotate(list, targets){
   }
 }
 
+// ▼▼ 试卷圈选朗读入口：从 exam.html 收到一段试卷原文 ▼▼
+// 一段话和「一个短语」不一样：不能按行拆成 30 条去查音标（那是给单词表用的）。
+// 这里按句子切分，每条是一句完整英文——朗读自然，释义也才有意义。
+function rdSplitPassage(text){
+  const t = String(text || '')
+    .replace(/[\u00ad]/g, '')
+    .replace(/[_—–-]{2,}/g, ' blank ')        // 试卷填空横线：读成 blank，比念一串下划线自然
+    .replace(/\s+/g, ' ')
+    .replace(/\s*([,.;:!?])\s*/g, '$1 ')
+    .trim();
+  if(!t) return [];
+  // 先按句末标点切；粘连的长句再按分号/逗号兜底
+  const parts = t.match(/[^.!?]+[.!?]+["”']?|[^.!?]+$/g) || [t];
+  const out = [];
+  for(const p0 of parts){
+    let p = p0.trim();
+    if(!p) continue;
+    if(p.length < 12 && out.length){ out[out.length - 1] += ' ' + p; continue; }
+    // 单句过长（PDF 抽取常整段无句号）：按分号或逗号再切，但仍归成同一条，朗读按自然停顿
+    out.push(p);
+  }
+  return out.slice(0, 12);   // 一次最多 12 句，够读一整段了
+}
+// 按句朗读一段话（不查释义，纯粹读），可放慢
+function rdSpeakPassage(sentences, slow){
+  if(!('speechSynthesis' in window)){ rdFoot.textContent = '这个浏览器不支持语音朗读，建议用 Chrome 或 Edge 打开。'; return; }
+  try{ window.speechSynthesis.cancel(); }catch(e){}
+  const my = ++rdSeq;
+  const rate = slow ? 0.7 : (parseFloat(rdRate.value) || 0.85);
+  const speakAt = (i)=>{
+    if(my !== rdSeq) return;
+    if(i >= sentences.length){ rdSpeakingKey = ''; rdMarkPlaying(''); rdFoot.textContent = '整段读完（共 ' + sentences.length + ' 句）。'; return; }
+    const u = new SpeechSynthesisUtterance(sentences[i]);
+    const v = rdPickVoice();
+    if(v){ u.voice = v; u.lang = v.lang || 'en-US'; } else { u.lang = 'en-US'; }
+    u.rate = rate; u.pitch = 1;
+    rdSpeakingKey = sentences[i];
+    rdMarkPlaying(sentences[i]);
+    u.onend = ()=>{ if(my === rdSeq) speakAt(i + 1); };
+    u.onerror = ()=>{ if(my === rdSeq) speakAt(i + 1); };
+    try{ window.speechSynthesis.speak(u); }catch(e){}
+  };
+  speakAt(0);
+}
+// 入口：试卷里圈选一段 → 打开「读一读」面板、填入原文、开始逐句朗读并标释义
+function rdReadFromExam(text, slow){
+  const clean = String(text || '').trim();
+  if(!clean) return;
+  const sentences = rdSplitPassage(clean);
+  if(!sentences.length) return;
+  rdMask.classList.add('show');
+  rdVoiceHint();
+  // 切换成「读段落」模式：面板标题与提示语相应变化，避免误导成「一行一个」
+  try{ rdSetMode('passage'); }catch(e){}
+  rdSuppressInput = true;
+  rdInput.value = sentences.join('\n');
+  rdSuppressInput = false;
+  // 已在缓存里的句子直接显示释义，命中则不发请求
+  rdItems = sentences.map(t=>{
+    const c = rdCache[t.toLowerCase()];
+    return {t, phon: c ? c.phon : '', pos: c ? c.pos : '', zh: c && c.zh ? c.zh : '', ex: c ? (c.ex || '') : '', exZh: c ? (c.exZh || '') : ''};
+  });
+  rdSeq++;
+  rdRender();
+  rdFoot.textContent = '已从试卷取到 ' + sentences.length + ' 句，正在朗读…';
+  rdSpeakPassage(sentences, !!slow);
+  // 句子较长时仍尝试标出整句意思（一条一句，不走单词表那套）
+  const targets = [], boxes = [];
+  rdItems.forEach(b=>{ if(!b.zh){ targets.push(b.t); boxes.push(b); } });
+  if(targets.length) rdAnnotateSentences(boxes, targets);
+}
+// 句子释义：只取中文意思（不要求音标/词性，句子没有这些），失败也不影响朗读
+async function rdAnnotateSentences(list, targets){
+  try{
+    const messages = [
+      {role:'system', content:'你是英语老师。用户给的是一段英文试卷里的若干句子。为每一句给出简洁的中文翻译，只输出 JSON，不要解释文字、不要 markdown。'},
+      {role:'user', content:'按这个结构返回，顺序与输入一致：\n{"items":[{"en":"原句","zh":"中文翻译"}]}\n句子：\n' + targets.join('\n')}
+    ];
+    await cloudProbePromise;
+    let raw;
+    if(cloudReady) raw = await callCloudLLM(messages);
+    else if(relayReady) raw = await callRelayLLM(messages);
+    else { const cfg = getLocalCfg(); if(!cfg) return; raw = await callLocalLLM(messages); }
+    const items = rdParseJson(raw);
+    let hit = 0;
+    targets.forEach((t, i)=>{
+      const o = items[i] || {};
+      if(!o.zh) return;
+      const key = t.toLowerCase();
+      rdCache[key] = Object.assign({}, rdCache[key] || {}, {zh: o.zh, ex:'', exZh:'', at: Date.now()});
+      if(list[i]){ list[i].zh = o.zh; hit++; }
+    });
+    try{ localStorage.setItem(RD_KEY, JSON.stringify(rdCache)); }catch(e){}
+    if(hit){ rdRender(); rdFoot.textContent = '已从试卷取到 ' + rdItems.length + ' 句 · 已译 ' + hit + ' 句 · 逐句朗读中'; }
+  }catch(e){ /* 译文拿不到不影响朗读 */ }
+}
+// ▼▲
+
 /* ---------- 主流程：粘贴 → 拆分 → 朗读 → 标注 ---------- */
 function rdRun(text, autoSpeak){
   const all = rdSplit(text);
@@ -965,25 +1101,32 @@ function rdRun(text, autoSpeak){
 
 rdBtn.onclick = ()=>{
   rdMask.classList.add('show');
+  // 手动点开面板 = 回到「单词/短语」模式（试卷圈选那条路会自己切换成整段模式）
+  if(rdMode !== 'word' && !rdInput.value.trim()) rdSetMode('word');
   rdVoiceHint();
   try{ rdInput.focus(); }catch(e){}
 };
 function rdClose(){
   rdStop();
   rdMask.classList.remove('show');
+  rdSetMode('word');
 }
 document.getElementById('readClose').onclick = rdClose;
 document.getElementById('readHelp').onclick = ()=>{
   const has = rdVoices.length;
   alert('读一读 使用说明\n\n'
-    + '1. 把不会读的单词/短语粘到框里，会自动拆分、朗读，并标出音标、词性、中文意思。\n'
-    + '2. 一行一个；用逗号、分号隔开也行。\n'
-    + '3. 每行可以「读一遍」「慢慢读」；朗读完全在本机完成，不联网、不消耗积分。\n'
-    + '4. 释义由在线 AI 生成，第一次会遇到云端；同一条再读时直接用本机缓存。\n\n'
+    + '【最常用的两种用法】\n'
+    + '① 试卷上圈选：用鼠标在左边试卷（PDF）上拖选一段英文，会浮出「读一遍 / 慢慢读 / 问 AI」，点一下就逐句读，并给出每句中文翻译。\n'
+    + '② 粘贴单词/短语：把不会读的单词或短语粘到框里，自动拆分、朗读，并标出音标、词性、中文意思。\n\n'
+    + '【细节】\n'
+    + '3. 一行一个；用逗号、分号隔开也行。\n'
+    + '4. 每条可以「读一遍」「慢慢读」；朗读完全在本机完成，不联网、不消耗积分。\n'
+    + '5. 释义由在线 AI 生成，第一次会遇到云端；同样的内容再读时直接用本机缓存。\n'
+    + '6. 试卷上双击单词可以只选中一个词；圈选整段则整段逐句读。\n\n'
     + '当前本机可用的英文语音：' + (has ? has + ' 个' : '0 个（这会导致没声音）') + '\n'
     + (has ? '' : '开启方法：Windows「设置 → 时间和语言 → 语言和区域」→ 给「英语(美国)」或「英语(英国)」添加语音包；或直接用 Chrome / Edge 打开本页。'));
 };
-document.getElementById('readClear').onclick = ()=>{ rdStop(); rdInput.value=''; rdItems=[]; rdRender(); rdFoot.textContent='发音由浏览器内置语音合成提供（离线可用，不联网、不消耗积分）。'; try{ rdInput.focus(); }catch(e){} };
+document.getElementById('readClear').onclick = ()=>{ rdStop(); rdSuppressInput = true; rdInput.value=''; rdSuppressInput = false; rdItems=[]; rdSetMode('word'); rdRender(); rdFoot.textContent='发音由浏览器内置语音合成提供（离线可用，不联网、不消耗积分）。'; try{ rdInput.focus(); }catch(e){} };
 document.getElementById('readPaste').onclick = async ()=>{
   try{
     const t = await navigator.clipboard.readText();
@@ -1001,7 +1144,10 @@ rdInput.addEventListener('paste', ()=>{
   }, 0);
 });
 let rdTimer = null;
+let rdSuppressInput = false;      // 程序填入输入框（试卷圈选）时不要触发下面的 word 模式逻辑
 rdInput.addEventListener('input', ()=>{
+  if(rdSuppressInput) return;
+  if(rdMode === 'passage') rdSetMode('word');   // 用户自己动手改内容了 → 回到单词/短语模式
   const v = rdInput.value;
   if(!v.trim()){ rdStop(); rdItems = []; rdRender(); return; }
   if(rdTimer) clearTimeout(rdTimer);
