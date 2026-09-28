@@ -13,7 +13,7 @@ BASE = r"C:\Users\GFQH-GF-ZK\WorkBuddy\2026-09-20-12-23-11\学习助手"
 OUT = os.path.join(BASE, "chat-app", "index.html")
 
 BOOK_TITLE = "沪教·英语 八年级上册（全国版·2025版）"
-CACHE_BUSTER = "20260925a"
+CACHE_BUSTER = "20260928a"
 
 css = """
 :root{
@@ -36,8 +36,7 @@ body{margin:0;font-family:var(--font-ui);background:var(--bg);color:var(--text);
 @media(max-width:760px){
   .exam-frame{height:calc(100vh - 20px);}
 }
-/* 浮动入口：改成带文字的方形标签，比圆形表情按钮更像个工具（原文案是 💬） */
-.chat-fab{position:fixed;right:18px;bottom:18px;height:40px;padding:0 18px;border-radius:var(--radius);background:var(--primary);color:#fff;font-family:var(--font-ui);font-size:13.5px;font-weight:600;letter-spacing:.08em;border:none;box-shadow:0 3px 14px rgba(26,29,33,.22);z-index:40;cursor:pointer;}
+/* 浮动入口：改成带文字的方形标签，比圆形表情按钮更像个工具（原文案是 💬） */.chat-fab{position:fixed;right:18px;bottom:18px;height:40px;padding:0 18px;border-radius:var(--radius);background:var(--primary);color:#fff;font-family:var(--font-ui);font-size:13.5px;font-weight:600;letter-spacing:.08em;border:none;box-shadow:0 3px 14px rgba(26,29,33,.22);z-index:40;cursor:pointer;}
 .chat-fab:hover{background:var(--primary-dark);}
 /* AI 弹层：右侧抽屉，不遮挡试卷中心，试卷仍可查看/滚动 */
 .ai-mask{position:fixed;inset:0;display:none;z-index:50;pointer-events:none;background:transparent;}
@@ -84,6 +83,49 @@ body{margin:0;font-family:var(--font-ui);background:var(--bg);color:var(--text);
 .ai-model select{flex:1 1 auto;padding:6px 8px;border:1px solid var(--rule);border-radius:var(--radius);font-size:13px;font-family:inherit;}
 /* 防止浏览器把 AI 密码识别为登录密码而弹出“保存密码”提示，暴露 8888 */
 .code-mask{-webkit-text-security:disc;}
+/* ---- 读一读（粘贴即读）---- */
+.read-btn{position:fixed;right:18px;bottom:66px;height:40px;padding:0 18px;border-radius:var(--radius);background:#fff;color:var(--primary);font-family:var(--font-ui);font-size:13.5px;font-weight:600;letter-spacing:.08em;border:1px solid var(--primary-line);box-shadow:0 3px 14px rgba(26,29,33,.18);z-index:40;cursor:pointer;}
+.read-btn:hover{background:var(--primary-soft);}
+.read-mask{position:fixed;inset:0;background:rgba(26,29,33,.34);display:none;align-items:center;justify-content:center;z-index:70;}
+.read-mask.show{display:flex;}
+.read-card{background:#fff;border:1px solid var(--rule);border-radius:var(--radius);width:min(560px,94vw);max-height:92vh;overflow:auto;box-shadow:0 12px 34px rgba(26,29,33,.16);}
+.read-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--rule);font-size:14.5px;font-weight:600;letter-spacing:.04em;}
+.read-head .tools{display:flex;gap:14px;font-weight:400;font-size:12.5px;letter-spacing:.06em;}
+.read-head .hbtn{cursor:pointer;user-select:none;color:var(--muted);}
+.read-head .hbtn:hover{color:var(--ink);}
+.read-sub{font-size:11.5px;color:var(--muted);letter-spacing:.04em;padding:8px 16px;border-bottom:1px solid var(--rule);line-height:1.6;}
+.read-body{padding:14px 16px 4px;}
+.read-input{width:100%;min-height:78px;padding:10px 12px;border:1px solid var(--rule);border-radius:var(--radius);font-family:var(--font-en);font-size:18px;line-height:1.6;resize:vertical;color:var(--ink);}
+.read-input:focus{outline:none;border-color:var(--primary);}
+.read-hint{font-size:12px;color:var(--muted);margin-top:7px;line-height:1.7;}
+.read-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px;}
+.read-row button{border:1px solid var(--rule);background:#fff;color:var(--ink-soft);border-radius:var(--radius);padding:6px 15px;font-size:13.5px;cursor:pointer;font-family:var(--font-ui);letter-spacing:.04em;}
+.read-row button:hover{background:var(--primary-soft);color:var(--ink);}
+.read-row button.primary{background:var(--primary);color:#fff;border-color:var(--primary);font-weight:600;letter-spacing:.08em;padding:7px 20px;}
+.read-row button.primary:hover{background:var(--primary-dark);color:#fff;}
+.read-row .sp{font-size:11.5px;color:var(--muted);letter-spacing:.06em;margin-left:auto;}
+.read-list{border-top:1px solid var(--rule);margin:14px 0 0;padding:0;list-style:none;}
+/* 正在朗读的那一条：左侧色条 + 序号变色，不整行变色（整行变色会像选中态，且和 hover 撞） */
+.read-list li{display:grid;grid-template-columns:22px 1fr;column-gap:9px;border-bottom:1px solid var(--rule);border-left:3px solid transparent;padding:13px 0 13px 8px;transition:border-color .12s;}
+.read-list li.playing{border-left-color:var(--primary);background:#fbfaf7;}
+.read-list li.playing .n{color:var(--primary);font-weight:700;}
+.read-list li:hover{background:#fbfaf7;}
+.read-list .n{grid-column:1;text-align:right;color:var(--muted);font-family:var(--font-en);font-size:13.5px;line-height:1.65;font-variant-numeric:tabular-nums;}
+.read-list .bd{grid-column:2;min-width:0;}
+.read-list .en{font-family:var(--font-en);font-size:19px;font-weight:600;color:var(--ink);line-height:1.5;word-break:break-word;letter-spacing:.01em;}
+.read-list .zh{font-family:var(--font-read);font-size:14px;color:var(--ink-soft);margin-top:6px;line-height:1.75;white-space:pre-wrap;}
+/* 音标 / 词性一行：音标必须走英文字族（--font-en），中文界面字族缺 IPA 字形时会掉字或错位 */
+.read-list .meta{font-family:var(--font-en);font-size:12.5px;color:var(--muted);margin-top:7px;letter-spacing:.02em;word-break:break-word;}
+.read-list .meta .pos{font-family:var(--font-ui);font-style:italic;color:var(--ink-soft);}
+.read-list .ex{font-family:var(--font-en);font-size:14.5px;color:var(--ink);margin-top:9px;line-height:1.6;padding-left:10px;border-left:2px solid var(--rule);}
+.read-list .ex .exzh{display:block;font-family:var(--font-read);font-size:13.5px;color:var(--muted);margin-top:3px;}
+.read-list .acts{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap;}
+.read-list .acts button{border:1px solid var(--rule);background:#fff;color:var(--ink-soft);border-radius:var(--radius);padding:4px 12px;font-size:12.5px;cursor:pointer;font-family:var(--font-ui);letter-spacing:.04em;}
+.read-list .acts button:hover{background:var(--primary-soft);}
+.read-list .acts button.spk{color:var(--primary);border-color:var(--primary-line);}
+.read-empty{font-size:13px;color:var(--muted);padding:14px 0 4px;line-height:1.75;}
+.read-foot{font-size:11.5px;color:var(--muted);letter-spacing:.04em;padding:10px 16px 14px;line-height:1.7;}
+@media(max-width:760px){ .read-btn{bottom:60px;} }
 /* 设置弹层 */
 .modal-mask{position:fixed;inset:0;background:rgba(26,29,33,.34);display:none;align-items:center;justify-content:center;z-index:60;}
 .modal-mask.show{display:flex;}
@@ -367,7 +409,7 @@ async function callRelayLLM(messages){
 
 function friendlyError(e){
   const msg = e.message || String(e);
-  if(msg==='NO_BACKEND') return 'AI 后端未就绪：点右上角 ⚙ 填入你自己的 OpenAI 兼容 API Key；若使用 GitHub Pages 版，请确认网络能访问 AI 中继。';
+  if(msg==='NO_BACKEND') return 'AI 后端未就绪：点右上角「设置」填入你自己的 OpenAI 兼容 API Key；若使用 GitHub Pages 版，请确认网络能访问 AI 中继。';
   if(msg==='NO_MODEL') return '当前无可用模型，请稍后重试。';
   if(msg==='EMPTY_REPLY') return 'AI 没返回内容，请再试一次。';
   if(msg==='AbortError' || /abort/i.test(msg)) return '请求超时，请稍后重试或检查网络。';
@@ -488,7 +530,7 @@ function showChat(){
 // 在线通道（云端直连 / 自建中继）都不可达且未配置本地 Key 时，给出明确引导（不静默失败）
 function ensureGuidance(){
   if(!cloudReady && !relayReady && !getLocalCfg()){
-    addMsg('在线 AI 暂时连不上。点右上角 ⚙ 填入你自己的 OpenAI 兼容 API Key（仅存本机浏览器），即可继续答疑。','sys');
+    addMsg('在线 AI 暂时连不上。点右上角「设置」填入你自己的 OpenAI 兼容 API Key（仅存本机浏览器），即可继续答疑。','sys');
   }
 }
 
@@ -565,6 +607,356 @@ document.getElementById('modelSel').addEventListener('change', e=>{
   selectedModelId = e.target.value;
   try{ localStorage.setItem('chatModelId', selectedModelId); }catch(_){}
 });
+
+/* ==================== 读一读 · 粘贴即读 ====================
+   目标：孩子遇到不会读的单词/短语，粘进来就能听到读音（并且能知道什么意思）。
+   1) 朗读：Web Speech API（浏览器内置语音，离线可用，不联网、不花钱）
+   2) 音标/词性/中文：调用应用内已有的云端 AI（不引入新后端）
+   3) 重复粘贴同一条 → 直接命中缓存，秒出
+*/
+const RD_KEY = 'readKb_v1';                       // 释义缓存（本机）
+const RD_PREF = 'readPref_v1';                    // 语速 / 自动读
+const RD_LIMIT = 30;                              // 单次最多处理这么多条，避免刷爆额度
+// 语音偏好：先找英式，再找高质量美式，最后任何英文语音都行（宁可音色一般，也不能没声音）
+const RD_VOICE_PREF = [
+  'Microsoft Libby','Microsoft Ryan','Microsoft Sonia','Microsoft Thomas','Microsoft Hazel','Microsoft George',
+  'Daniel','Serena','Kate','Oliver','Arthur','Stephanie','Google UK English Female','Google UK English Male',
+  'Google US English','Microsoft Aria','Microsoft Jenny','Microsoft Guy','Microsoft Michelle','Samantha','Karen','Moira','Alex','Tessa','Fiona'
+];
+
+const rdMask = document.getElementById('readMask');
+const rdBtn = document.getElementById('readBtn');
+const rdInput = document.getElementById('readInput');
+const rdList = document.getElementById('readList');
+const rdRate = document.getElementById('readRate');
+const rdAuto = document.getElementById('readAuto');
+const rdFoot = document.getElementById('readFoot');
+
+let rdItems = [];        // [{t, en, zh, phon, pos, err}]
+let rdSeq = 0;           // 朗读代次：换一批就 +1，让上一批的队列自动作废
+let rdCache = {};
+let rdVoices = [];
+let rdSpeakingKey = '';
+
+try{ rdCache = JSON.parse(localStorage.getItem(RD_KEY) || '{}') || {}; }catch(e){ rdCache = {}; }
+try{
+  const p = JSON.parse(localStorage.getItem(RD_PREF) || '{}') || {};
+  if(p.rate) rdRate.value = p.rate;
+  if(typeof p.auto === 'boolean') rdAuto.checked = p.auto;
+}catch(e){}
+function rdSavePref(){ try{ localStorage.setItem(RD_PREF, JSON.stringify({rate: rdRate.value, auto: rdAuto.checked})); }catch(e){} }
+rdRate.onchange = rdSavePref; rdAuto.onchange = rdSavePref;
+
+/* ---------- 拆分：一行一条，逗号/分号/顿号也当分隔；去掉题号与多余空白 ---------- */
+function rdSplit(text){
+  return String(text || '')
+    .replace(/\r/g, '')
+    .split(/[\n;；]+/)
+    .map(s => s.replace(/[，,、]+/g, '\n'))
+    .join('\n')
+    .split('\n')
+    .map(s => s.replace(/^\s*(?:[-*·•]|\(?\d{1,2}\)?[.、)])\s*/, '').trim())
+    .filter(Boolean)
+    .filter((s, i, a) => a.indexOf(s) === i);
+}
+
+/* ---------- 语音：挑选最像「英式」的本地英文语音 ---------- */
+// 注意：rdLoadVoices 只负责取列表，绝不能回头调 rdPickVoice/rdVoiceHint ——
+// 否则「取不到语音 → 去取 → 取不到」会互相递归到爆栈。
+function rdLoadVoices(){
+  try{ rdVoices = (window.speechSynthesis.getVoices() || []).filter(v => /^en/i.test(v.lang || '')); }
+  catch(e){ rdVoices = []; }
+  rdVoiceHint();
+  return rdVoices;
+}
+if('speechSynthesis' in window){
+  rdLoadVoices();
+  window.speechSynthesis.onvoiceschanged = ()=>{ rdLoadVoices(); };
+}
+function rdPickVoice(){
+  // 只读已缓存列表；为空时最多主动取一次（用标志位防止重入）
+  if(!rdVoices.length && !rdPickVoice._busy){
+    rdPickVoice._busy = true;
+    try{ rdVoices = (window.speechSynthesis.getVoices() || []).filter(v => /^en/i.test(v.lang || '')); }
+    catch(e){}
+    rdPickVoice._busy = false;
+  }
+  const pool = rdVoices.slice();
+  for(const name of RD_VOICE_PREF){
+    const hit = pool.find(v => (v.name || '').toLowerCase().indexOf(name.toLowerCase()) === 0);
+    if(hit) return hit;
+  }
+  // 没有命中名单时：优先 en-GB，其次本地(localService)语音（更稳、无需联网），最后任意英文语音
+  return pool.find(v => v.lang === 'en-GB')
+      || pool.find(v => v.localService)
+      || pool.find(v => /^en/i.test(v.lang))
+      || null;
+}
+// 朗读文本：把换行与连续空白压平，避免读成奇怪的停顿。
+// 英式音标里的括注 (r)（如 fɔː(r)）直接念会被读出 "r"，而多数语音又读不出连读 r 音，故去掉。
+function rdSpeechText(s){
+  return String(s || '')
+    .replace(/\(r\)/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+// 逐条朗读；每次只查当批的当前项，避免把已过期的项读出来
+function rdPlayAt(i){
+  const my = rdSeq;
+  if(i >= rdItems.length){ rdSpeakingKey = ''; rdMarkPlaying(''); return; }
+  const raw = rdItems[i].t;
+  const text = rdSpeechText(raw);
+  if(!text){ rdPlayAt(i + 1); return; }
+  const u = new SpeechSynthesisUtterance(text);
+  const v = rdPickVoice();
+  if(v){ u.voice = v; u.lang = v.lang || 'en-US'; } else { u.lang = 'en-US'; }
+  u.rate = parseFloat(rdRate.value) || 0.85;
+  u.pitch = 1;
+  rdSpeakingKey = raw; rdMarkPlaying(raw);
+  u.onend = ()=>{ if(my === rdSeq) rdPlayAt(i + 1); };
+  u.onerror = ()=>{ if(my === rdSeq) rdPlayAt(i + 1); };
+  try{ window.speechSynthesis.speak(u); }catch(e){ rdMarkPlaying(''); }
+}
+function rdSpeakOne(text, btn){
+  if(!('speechSynthesis' in window)){ alert('这个浏览器不支持语音朗读，建议用 Chrome 或 Edge 打开。'); return; }
+  try{ window.speechSynthesis.cancel(); }catch(e){}
+  rdSeq++;
+  rdItems = [{t: text}];
+  rdPlayAt(0);
+}
+function rdStop(){ rdSeq++; try{ window.speechSynthesis.cancel(); }catch(e){} rdSpeakingKey = ''; rdMarkPlaying(''); }
+// 「正在读」用左侧色条 + 序号变色表示，不整行变色（整行变色会像选中态）
+function rdMarkPlaying(key){
+  Array.prototype.forEach.call(rdList.querySelectorAll('li'), li=>{
+    li.classList.toggle('playing', !!(key && li.getAttribute('data-t') === key));
+  });
+}
+function rdPlayAll(){
+  if(!rdItems.length) return;
+  if(!('speechSynthesis' in window)){ alert('这个浏览器不支持语音朗读，建议用 Chrome 或 Edge 打开。'); return; }
+  rdStop();
+  rdPlayAt(0);
+}
+
+/* ---------- 渲染 ---------- */
+function rdEsc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+// 把「实际会用哪个人声」写在面板上：孩子听到的口音和看到的音标不一致时，家长要知道原因
+function rdVoiceAccent(){
+  const v = rdPickVoice();
+  if(!v) return null;
+  const lang = String(v.lang || '').toLowerCase();
+  const accent = lang === 'en-gb' ? '英式' : (lang === 'en-us' ? '美式' : (lang.indexOf('en-') === 0 ? lang.slice(3).toUpperCase() : '英文'));
+  return {name: v.name || accent + '语音', accent};
+}
+function rdVoiceHint(){
+  const box = document.getElementById('readSub');
+  if(!box) return;
+  let it = null;
+  try{ it = rdVoiceAccent(); }catch(e){ it = null; }
+  box.textContent = '沪教·英语 八年级上册（全国版·2025版） · 单词/短语/句子都能读 · 当前人声：'
+    + (it ? it.name + '（' + it.accent + '）' : '未检测到英文语音 — 点「说明」');
+}
+function rdRender(){
+  rdList.innerHTML = '';
+  rdVoiceHint();
+  if(!rdItems.length){ rdFoot.textContent = '发音由浏览器内置语音合成提供（离线可用，不联网、不消耗积分）。'; return; }
+  const known = rdItems.filter(x => x.zh).length;
+  rdItems.forEach((it, i)=>{
+    const li = document.createElement('li');
+    li.setAttribute('data-t', it.t);
+    const metaBits = [];
+    if(it.phon) metaBits.push('/' + it.phon.replace(/^\/|\/$/g, '') + '/');
+    if(it.pos) metaBits.push(it.pos);
+    li.innerHTML = '<span class="n">' + (i + 1) + '</span>'
+      + '<div class="bd">'
+      + '<div class="en" title="点这一行也能读">' + rdEsc(it.t) + '</div>'
+      + (it.zh ? '<div class="zh">' + rdEsc(it.zh) + '</div>' : '')
+      + (metaBits.length ? '<div class="meta">' + rdEsc(it.phon ? '/' + it.phon.replace(/^\/|\/$/g, '') + '/' : '')
+          + (it.pos ? (it.phon ? '  ' : '') + '<span class="pos">' + rdEsc(it.pos) + '</span>' : '') + '</div>' : '')
+      + (it.ex ? '<div class="ex">例：' + rdEsc(it.ex) + (it.exZh ? '<span class="exzh">' + rdEsc(it.exZh) + '</span>' : '') + '</div>' : '')
+      + '<div class="acts">'
+      +   '<button class="spk" data-a="play">读一遍</button>'
+      +   '<button data-a="slow">慢慢读</button>'
+      +   (it.ex ? '<button data-a="ex">读例句</button>' : '')
+      +   (it.zh ? '' : '<button data-a="ask">问 AI 意思</button>')
+      + '</div></div>';
+    li.querySelector('.en').onclick = ()=> rdSpeakOne(it.t);
+    li.querySelector('.acts').addEventListener('click', ev=>{
+      const b = ev.target.closest('button'); if(!b) return;
+      const a = b.getAttribute('data-a');
+      if(a === 'play') rdSpeakOne(it.t);
+      else if(a === 'ex') rdSpeakOne(it.ex);
+      else if(a === 'slow'){
+        const old = rdRate.value; rdRate.value = '0.7';
+        rdSpeakOne(it.t, b);
+        setTimeout(()=>{ rdRate.value = old; rdSavePref(); }, 2600);
+      } else if(a === 'ask'){
+        openAI();
+        ta.value = '请说明「' + it.t + '」的意思、词性、读音要点，并给两个英文例句（附中文翻译）。';
+        try{ ta.focus(); }catch(e){}
+      }
+    });
+    rdList.appendChild(li);
+  });
+  rdFoot.textContent = '共 ' + rdItems.length + ' 条 · 已标注 ' + known + ' 条释义 · 发音由浏览器内置语音提供（离线可用）';
+}
+
+/* ---------- 取释义：先查本机缓存，未命中才联网（与答题卡/知识面板同一套云端通路） ---------- */
+async function rdAskAI(list){
+  const messages = [
+    {role:'system', content:'你是英语词典。用户会给出一批英文单词或短语（每行一条）。只输出 JSON，不要任何解释文字，不要 markdown 代码块。'},
+    {role:'user', content:
+      '为下面每一条英文给出：音标（国际音标，不带斜杠；英式优先）、词性（n./v./adj./adv./phr./prep. 等，短语写 phr.）、'
+      + '中文意思（多义项用「；」隔开，简短，最多 12 字）、一个最贴近中学语境的英文例句并附中文翻译。\n'
+      + '严格按这个 JSON 结构返回，顺序与输入一致：\n'
+      + '{"items":[{"en":"原文原样","phon":"...","pos":"...","zh":"...","ex":"...","exZh":"..."}]}\n'
+      + '原文：\n' + list.join('\n')}
+  ];
+  await cloudProbePromise;
+  if(cloudReady) return await callCloudLLM(messages);
+  if(relayReady) return await callRelayLLM(messages);
+  const cfg = getLocalCfg();
+  if(cfg) return await callLocalLLM(messages);
+  throw new Error('NO_BACKEND');
+}
+function rdParseJson(text){
+  let s = String(text || '').replace(/```[a-z]*/gi, '').trim();
+  const a = s.indexOf('{'), b = s.lastIndexOf('}');
+  if(a >= 0 && b > a) s = s.slice(a, b + 1);
+  const j = JSON.parse(s);
+  return (j && j.items) || [];
+}
+
+// 把一次云端结果落地到缓存与卡片上；返回成功写入释义的条数
+function rdApply(list, targets, items){
+  let hit = 0;
+  targets.forEach((t, i)=>{
+    const o = items[i] || {};
+    if(!o.zh && !o.phon) return;                 // 空壳结果不覆盖缓存，留给重试
+    const key = t.toLowerCase();
+    rdCache[key] = {phon: o.phon || '', pos: o.pos || '', zh: o.zh || '', ex: o.ex || '', exZh: o.exZh || '', at: Date.now()};
+    const box = list[i];
+    if(box){ box.phon = rdCache[key].phon; box.pos = rdCache[key].pos; box.zh = rdCache[key].zh; box.ex = rdCache[key].ex; box.exZh = rdCache[key].exZh; if(box.zh) hit++; }
+  });
+  try{ localStorage.setItem(RD_KEY, JSON.stringify(rdCache)); }catch(e){}
+  rdRender();
+  return hit;
+}
+// 云端偶发抖动很常见：失败或返回不完整时自动再试一次，避免「粘贴了却没释义」。
+async function rdAnnotate(list, targets){
+  const tries = 2;
+  for(let n = 0; n < tries; n++){
+    if(n) { rdFoot.textContent = '联网有点慢，正在重试（第 2 次）…'; await new Promise(r=>setTimeout(r, 1200)); }
+    else { rdFoot.textContent = '正在标音标与释义…'; }
+    try{
+      const items = rdParseJson(await rdAskAI(targets));
+      const hit = rdApply(list, targets, items);
+      if(hit){
+        rdFoot.textContent = '共 ' + rdItems.length + ' 条 · 已标注 ' + hit + ' 条释义 · 发音由浏览器内置语音提供（离线可用）';
+        return;
+      }
+      if(n === tries - 1) rdFoot.textContent = '共 ' + rdItems.length + ' 条 · 朗读可用；这次没取到释义，点条目里的「问 AI 意思」可单独查。';
+    }catch(e){
+      const noBackend = (e && e.message) === 'NO_BACKEND';
+      if(n === tries - 1){
+        rdFoot.textContent = noBackend
+          ? '在线 AI 暂时连不上，本条只能朗读、看不到释义。可点右上角「设置」填入 API Key，或直接在「AI 答疑」里问。'
+          : '释义获取失败（' + ((e && e.message) || e) + '），朗读不受影响。';
+      }
+    }
+  }
+}
+
+/* ---------- 主流程：粘贴 → 拆分 → 朗读 → 标注 ---------- */
+function rdRun(text, autoSpeak){
+  const all = rdSplit(text);
+  if(!all.length){ rdItems = []; rdRender(); rdFoot.textContent = '还没读到内容：把单词或短语粘到上面的框里。'; return; }
+  const shown = all.slice(0, RD_LIMIT);
+  const extra = all.length - shown.length;
+  const targets = [];
+  const boxes = [];
+  rdItems = shown.map(t=>{
+    const c = rdCache[t.toLowerCase()];
+    const box = (c && c.zh)
+      ? {t, phon:c.phon, pos:c.pos, zh:c.zh, ex:c.ex || '', exZh:c.exZh || ''}
+      : {t, phon: c ? c.phon : '', pos: c ? c.pos : '', zh: '', ex:'', exZh:''};
+    if(!box.zh){ targets.push(t); boxes.push(box); }
+    return box;
+  });
+  rdSeq++;
+  rdRender();
+  if(extra > 0) rdFoot.textContent = '共 ' + all.length + ' 条，先处理前 ' + RD_LIMIT + ' 条（一次太多会拖慢）。剩下的再粘一次即可。';
+  if(autoSpeak) rdPlayAll();
+  if(targets.length) rdAnnotate(boxes, targets);
+  else rdFoot.textContent = '共 ' + rdItems.length + ' 条 · 全部命中本机缓存（离线秒出）· 发音由浏览器内置语音提供';
+}
+
+rdBtn.onclick = ()=>{
+  rdMask.classList.add('show');
+  rdVoiceHint();
+  try{ rdInput.focus(); }catch(e){}
+};
+function rdClose(){
+  rdStop();
+  rdMask.classList.remove('show');
+}
+document.getElementById('readClose').onclick = rdClose;
+document.getElementById('readHelp').onclick = ()=>{
+  const has = rdVoices.length;
+  alert('读一读 使用说明\n\n'
+    + '1. 把不会读的单词/短语粘到框里，会自动拆分、朗读，并标出音标、词性、中文意思。\n'
+    + '2. 一行一个；用逗号、分号隔开也行。\n'
+    + '3. 每行可以「读一遍」「慢慢读」；朗读完全在本机完成，不联网、不消耗积分。\n'
+    + '4. 释义由在线 AI 生成，第一次会遇到云端；同一条再读时直接用本机缓存。\n\n'
+    + '当前本机可用的英文语音：' + (has ? has + ' 个' : '0 个（这会导致没声音）') + '\n'
+    + (has ? '' : '开启方法：Windows「设置 → 时间和语言 → 语言和区域」→ 给「英语(美国)」或「英语(英国)」添加语音包；或直接用 Chrome / Edge 打开本页。'));
+};
+document.getElementById('readClear').onclick = ()=>{ rdStop(); rdInput.value=''; rdItems=[]; rdRender(); rdFoot.textContent='发音由浏览器内置语音合成提供（离线可用，不联网、不消耗积分）。'; try{ rdInput.focus(); }catch(e){} };
+document.getElementById('readPaste').onclick = async ()=>{
+  try{
+    const t = await navigator.clipboard.readText();
+    if(!t){ alert('剪贴板里没有文字（或浏览器未授权读取剪贴板）。请用 Ctrl+V 粘到输入框。'); return; }
+    rdInput.value = (rdInput.value ? rdInput.value.replace(/\s*$/, '\n') : '') + t;
+    rdInput.dispatchEvent(new Event('input'));
+  }catch(e){ alert('浏览器不允许直接读剪贴板，请点输入框后按 Ctrl+V。'); }
+};
+document.getElementById('readPlayAll').onclick = rdPlayAll;
+
+// 粘贴即读：在输入框里 Ctrl+V 之后自动跑
+rdInput.addEventListener('paste', ()=>{
+  setTimeout(()=>{
+    rdInput.dispatchEvent(new Event('input'));
+  }, 0);
+});
+let rdTimer = null;
+rdInput.addEventListener('input', ()=>{
+  const v = rdInput.value;
+  if(!v.trim()){ rdStop(); rdItems = []; rdRender(); return; }
+  if(rdTimer) clearTimeout(rdTimer);
+  rdTimer = setTimeout(()=>{
+    if(rdAuto.checked) rdRun(v, true);
+    else { const list = rdSplit(v); rdItems = list.map(t=>{ const c=rdCache[t.toLowerCase()]||{}; return {t, phon:c.phon||'', pos:c.pos||'', zh:c.zh||'', ex:c.ex||'', exZh:c.exZh||''}; }); rdRender(); }
+  }, 420);
+});
+rdInput.addEventListener('keydown', e=>{
+  if(e.key === 'Enter' && (e.ctrlKey || e.metaKey)){ e.preventDefault(); rdRun(rdInput.value, true); }
+});
+// 面板打开时若已经有内容但还没读过，补读一遍（用标志位防止反复触发）
+let rdFocusArmed = false;
+rdInput.addEventListener('focus', ()=>{
+  if(rdFocusArmed) return;
+  if(!rdInput.value.trim() || rdItems.length || !rdAuto.checked) return;
+  rdFocusArmed = true;
+  setTimeout(()=>{ rdFocusArmed = false; }, 800);
+  rdRun(rdInput.value, true);
+});
+
+// Esc 关面板（比 AI 面板优先：读一读开着就先关它）
+document.addEventListener('keydown', e=>{
+  if(e.key !== 'Escape' || !rdMask.classList.contains('show')) return;
+  e.stopPropagation();
+  rdClose();
+}, true);
 """
 
 html = f"""<!DOCTYPE html>
@@ -586,6 +978,33 @@ html = f"""<!DOCTYPE html>
   </div>
 </div>
 <button class="chat-fab" id="chatFab" title="AI 答疑">AI 答疑</button>
+<button class="read-btn" id="readBtn" title="粘贴单词或短语，自动标音标、给中文、朗读">读一读</button>
+<div class="read-mask" id="readMask">
+  <div class="read-card">
+    <div class="read-head"><span>读一读 · 粘贴即读</span><span class="tools"><span class="hbtn" id="readHelp">说明</span><span class="hbtn" id="readClose">关闭</span></span></div>
+    <div class="read-sub" id="readSub">沪教·英语 八年级上册（全国版·2025版） · 单词/短语/句子都能读</div>
+    <div class="read-body">
+      <textarea id="readInput" class="read-input" placeholder="把不会读的单词或短语粘进来，例如：&#10;be famous for&#10;communicate&#10;as soon as possible"></textarea>
+      <div class="read-hint">粘贴后自动拆分并朗读；也可以直接打字，按 Ctrl+Enter 立即读。一行一个，或用逗号、分号隔开。</div>
+      <div class="read-row">
+        <button class="primary" id="readPlayAll">全部朗读</button>
+        <button id="readClear">清空</button>
+        <button id="readPaste">粘贴</button>
+        <span class="sp">语速</span>
+        <select id="readRate" style="padding:6px 8px;border:1px solid var(--rule);border-radius:var(--radius);font-size:13px;font-family:inherit;background:#fff;">
+          <option value="0.7">慢 0.7×</option>
+          <option value="0.85" selected>稍慢 0.85×</option>
+          <option value="1">正常 1×</option>
+        </select>
+        <label style="font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:5px;cursor:pointer;">
+          <input type="checkbox" id="readAuto" checked> 粘贴后自动读
+        </label>
+      </div>
+    </div>
+    <ul class="read-list" id="readList"></ul>
+    <div class="read-foot" id="readFoot">发音由浏览器内置语音合成提供（离线可用，不联网、不消耗积分）。若本机没有英文语音，请点「说明」查看开启方式。</div>
+  </div>
+</div>
 <div class="ai-mask" id="aiMask">
   <div class="ai-panel">
     <div class="ai-head"><span>AI 答疑</span><span class="tools"><span class="gear" id="chatGear" title="设置 API">设置</span><span class="x" id="aiClose" title="关闭">关闭</span></span></div>
