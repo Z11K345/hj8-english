@@ -13,7 +13,7 @@ BASE = r"C:\Users\GFQH-GF-ZK\WorkBuddy\2026-09-20-12-23-11\学习助手"
 OUT = os.path.join(BASE, "chat-app", "index.html")
 
 BOOK_TITLE = "沪教·英语 八年级上册（全国版·2025版）"
-CACHE_BUSTER = "20260928b"
+CACHE_BUSTER = "20260929a"
 
 css = """
 :root{
@@ -519,10 +519,30 @@ function openAI(){
     showChat();
   }
 }
+// 把一段文字塞进 AI 答疑输入框（#chatInput）。试卷圈选「问 AI」走这里。
+// 注意：输入区 #aiInput 在「未解锁」时是 display:none，这时 ta.value 赋值仍成功，
+// 但不可见、也可能被后续 showChat() 覆盖，所以解锁后（aiUnlocked 变 true）再补填一次。
+let aiPendingFill = '';
+function fillAiInput(text){
+  aiPendingFill = text || '';
+  ta.value = aiPendingFill;
+  try{ ta.focus(); }catch(e){}
+  // 光标放到末尾，方便直接回车发送
+  try{ ta.setSelectionRange(ta.value.length, ta.value.length); }catch(e){}
+  // 未解锁：值已就位，等用户输密码后 showChat() 会重新调用本函数补填
+  if(!aiUnlocked) return;
+  aiPendingFill = '';
+}
 function showChat(){
   aiLock.style.display='none';
   document.getElementById('chatBody').style.display='flex';
   document.getElementById('aiInput').style.display='flex';
+  // 若此前有「圈选问 AI」缓存的内容，解锁后补填进输入框
+  if(aiPendingFill){
+    ta.value = aiPendingFill;
+    aiPendingFill = '';
+    try{ ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }catch(e){}
+  }
   // 等云端探测结束再决定显示模型选择与提示，避免 localhost 下误判
   cloudProbePromise.then(()=>{ loadModels(); ensureGuidance(); });
 }
@@ -609,8 +629,7 @@ window.addEventListener('message', function(e){
   // 试卷里圈选一段英文 → 丢给 AI 答疑讲解
   if(d.type === 'ask-ai' && d.text){
     openAI();
-    const box = document.getElementById('chatIn');
-    if(box){ box.value = String(d.text); box.focus(); }
+    fillAiInput(String(d.text));
     return;
   }
   // 试卷里按 Esc：焦点在 iframe 内，键不会冒泡到这里，由 iframe 转交 → 关掉当前打开的面板
